@@ -7,49 +7,66 @@
 \localtableofcontents
 \newpage
 
-La Memoria es uno de los documentos que constituyen el Trabajo Final y asume la función fundamental de nexo de unión entre todos ellos. Tiene como misión justificar las soluciones adoptadas, su adecuación a la normativa legal aplicable y, conjuntamente con los Planos y el Pliego de Condiciones, debe describir de forma unívoca el objeto del Trabajo Final. La Memoria debe ser claramente comprensible, no sólo por profesionales especialistas sino por terceros y especialmente en lo que se refiere a los objetivos del Trabajo Final, las alternativas estudiadas, sus ventajas e inconvenientes, y las razones que han conducido a la solución elegida. La Memoria se iniciará con un índice que hará referencia a cada uno de los capítulos y apartados que la componen, con el fin de facilitar su utilización. En los puntos que siguen se indica el título y contenido de los capítulos y apartados en los que descompone la Memoria del Trabajo Final.
-
 \section{Objeto}
-En este capítulo de la Memoria se debe indicar el objetivo del Trabajo Final y su justificación.
+
+En este Trabajo Final de Grado de investigación se realizará el estudio e implementación de un método de aprendizaje federado bajo diversos dispositivos embebidos y simulados, con un doble propósito:
+
+\vspace{1em}
+
+\textbf{Primero}, el de experimentar diversas mejoras y contribuciones al mismo, comparando los resultados obtenidos con el algoritmo original - y otros equivalentes - para distintos conjuntos de datos, utilizados comúnmente como referentes en este tipo de literatura.
+
+\textbf{Segundo}, acompañar estos resultados de un análisis energético - para las distintas técnicas desarrolladas - y su posterior equiparación entre sí y con sus equivalentes centralizadas.
+
+\vspace{1em}
+
+Este último punto recoge la intención de fomentar el desarrollo de una Inteligencia Artificial (IA) verde por diseño (Green by Design) y estimular este factor como un criterio más a tener en cuenta a la hora de decidir el uso de uno u otro método en el campo del aprendizaje automático (ML).
+
+Y es que si el uso de las tecnologías de la información y comunicaciones supone hoy en día entre un 5\% y 9\% del consumo total de electricidad en el mundo, según este informe realizado por el Parlamento Europeo \cite{libro_roleAI}, podría llegar al 20\% en 2030. Dentro de dicho desglose, se cita que los recursos de computación necesarios para entrenar modelos de Inteligencia Artificial se están doblando cada cuatrimestre desde el año 2012, a medida que se buscan modelos cada vez más precisos y eficaces. Esto obliga a concienciar y acompañar tales avances tecnológicos desde una posición medio-ambientalmente sostenible.
 
 \section{Alcance}
-En este capítulo se debe indicar el ámbito de aplicación del Trabajo Final.
+El ámbito de aplicación de este Trabajo Final aborda diversos aspectos dentro del llamado Aprendizaje Automático y requiere el uso de distintos dispositivos embebidos. Para ello es necesario:
+\begin{itemize}[noitemsep,topsep=0pt]
+    \item \textbf{Estudio} del estado del arte de la Inteligencia Artificial, más concretamente del Aprendizaje Automático y Federado.
+    \item \textbf{Familiarización}, configuración e implantación de los sistemas desarrollados en dispositivos embebidos.
+    \item \textbf{Análisis} de la técnica y algoritmos de partida para evolucionar posibles mejoras y aplicaciones.
+    \item \textbf{Desarrollo} en Python de dichas técnicas, y su posterior despliegue en la red federada conformada por dispositivos físicos y simulados.
+    \item \textbf{Documentación} del TFG.
+\end{itemize}
+
+\newpage
 
 \section{Antecedentes}
 En este capítulo de la Memoria se deben indicar los condicionantes de partida, por ejemplo cuando el lugar, obra, instalación, infraestructura, actividad, etc. objeto del Trabajo Final dispone de permisos o legalizaciones previas, cuando se trata de una ampliación, rehabilitación o reforma, cuando constituye un cambio de actividad o uso, etc.
 
-\section{Normas y referencias}
-En este capítulo figurarán los siguientes apartados.\\
-Se incluye aquí un pequeño ejemplo sobre como se deberían de citar los libros \cite{Ejemplo_Libro}, artículos \cite{Ejemplo_Articulo}, congresos \cite{Ejemplo_Congreso}, sitios web \cite{Ejemplo_Web} y normas \citeNorma{Ejemplo_Norma}.
+\section{Referencias}
+En este capítulo figurarán los siguientes apartados:\\
+Bibliografía e índices de tablas y figuras empleadas en la memoria.
 
-\subsection{Disposiciones legales y normas aplicadas}
-En este apartado se deben incluir las referencias de las disposiciones legales (leyes, reglamentos, ordenanzas, normas de obligado cumplimiento por su inclusión en disposiciones legales, etc.) y de las normas que se deben tener en cuenta para la realización del Trabajo Final.
-
-\subsection{Bibliografía}
+\subsection*{Bibliografía}
 En este apartado se debe incluir un listado con las páginas web, libros, revistas  u otros textos que el autor considere de interés para justificar las soluciones adoptadas en el Trabajo Final.
 
 \bibliographystyle{plain}
 \bibliography{Bibliografia}
 
-\subsection{Programas de cálculo}
-Se debe incluir la relación de programas, modelos u otras herramientas utilizadas para desarrollar los diversos cálculos del Trabajo Final.
+\subsection*{Otras referencias}
 
-\subsection{Otras referencias}
-En este apartado se debe incluir cualquier información que, no estando relacionada en los apartados anteriores, se consideren de interés para la comprensión y materialización del Trabajo Final. Por ejemplo, se puede usar este apartado para citar las referencias de donde se hayan sacado las figuras \citeRefFig{Ejemplo_Ref_Figuras}.
+\subsubsection*{Tablas}
+\bibliographystyleRefFig{}
+\bibliographyRefFig{Bibliografia_Tablas}
+
+\subsubsection*{Figuras}
 
 \bibliographystyleRefFig{plain}
 \bibliographyRefFig{Bibliografia_Figuras}
 
+\subsubsection*{Programas de cálculo}
+TODO.Se debe incluir la relación de programas, modelos u otras herramientas utilizadas para desarrollar los diversos cálculos del Trabajo Final.
+
+\subsubsection*{Documentación}
+TODO
+
 \section{Definiciones y abreviaturas}
 Se deben relacionar todas las definiciones, abreviaturas, etc. que se han utilizado y su significado.
-
-\section{Requisitos de diseño}
-En este capítulo de la Memoria se deben describir las bases y datos de partida establecidos por el Tutor y los que derivan de:
-\begin{itemize}[noitemsep,topsep=0pt]
-    \item El emplazamiento, y su entorno socio-económico y ambiental.
-    \item Los estudios realizados encaminados a la definición de la solución adoptada.
-    \item Las interfaces con otros sistemas o elementos externos al Trabajo Final u otros que condicionan las soluciones técnicas del mismo.
-\end{itemize}
 
 \section{Análisis de las soluciones}
 En este capítulo de la Memoria se deben indicar las distintas alternativas estudiadas, qué caminos se han seguido para llegar a ellas, ventajas e inconvenientes de cada una y cuál es la solución finalmente elegida, junto con su justificación en función de los requisitos de la legislación y reglamentación aplicables.
