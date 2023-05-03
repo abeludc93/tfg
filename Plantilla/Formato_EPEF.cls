@@ -73,14 +73,14 @@
 \pagestyle{plain}
 
 % Modificaciones para las tablas de contenido
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
-\renewcommand{\contentsname}{\hfill Índice \hfill}
-\cftsetindents{chapter}{0em}{2em}
-\cftsetindents{section}{0em}{2.5em}
-\cftsetindents{subsection}{0em}{3em}
-\cftsetindents{subsubsection}{0em}{3.5em}
-\cftsetindents{paragraph}{0em}{4em}
+%\setcounter{secnumdepth}{4}
+%\setcounter{tocdepth}{4}
+%\renewcommand{\contentsname}{\hfill Índice \hfill}
+%\cftsetindents{chapter}{0em}{2em}
+%\cftsetindents{section}{0em}{2.5em}
+%\cftsetindents{subsection}{0em}{3em}
+%\cftsetindents{subsubsection}{0em}{3.5em}
+%\cftsetindents{paragraph}{0em}{4em}
 
 % Modificación del entorno de la bibliografía
 \newcites{Norma}{Normas y disposiciones legales}
