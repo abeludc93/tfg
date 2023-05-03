@@ -263,17 +263,166 @@ Aún que existen otros lenguajes de programación que son apropiados para el cam
     \item Parte del código base implementado ya en este lenguaje.
 \end{itemize}
 
-En cuanto a las librerías empleadas para el desarrollo de estos programas, encontramos las siguientes:
+En cuanto a las bibliotecas empleadas para el desarrollo de estos programas, encontramos las siguientes:
 
 \begin{itemize}[noitemsep,topsep=5pt]
-    \item Numpy
-    \item Matplotlib
-    \item Pandas
-    \item Scikit-learn
+    \item Numpy, \textit{Numerical Python}, utilizada para realizar operaciones matemáticas y científicas con matrices multidimensionales, proporcionando así herramientas para la manipulación de datos y cálculo numérico, incluyendo operaciones de álgebra lineal, transformadas de Fourier, números aleatorios y muchas más. Es, por tanto, una parte integral y base de muchas otras librerías usadas en la ciencia de datos y aprendizaje automático.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/numpy_logo.png}
+        \caption{Logo librería Numpy}
+        \label{fig:logo_numpy}
+    \end{figure}
+    \item Matplotlib, utilizada para la generación y visualización de datos en gráficos y diagramas, a partir de la información contenida en listas o \textit{arrays}.
+        \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/matplotlib_logo.png}
+        \caption{Logo librería Matplotlib}
+        \label{fig:logo_matplotlib}
+    \end{figure}
+    \item Pandas, utilizada para la manipulación y análisis de datos en estructuras conocidas como \textit{DataFrames}, con forma de tablas. Incluye herramientas para la limpieza de datos, transformación, agregación y filtrado de los mismos, además me utilidades para el manejo de datos faltantes o integración de varias fuentes.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.2\textwidth, width=0.3\textwidth]{Figuras/pandas_logo.png}
+        \caption{Logo librería Pandas}
+        \label{fig:logo_pandas}
+    \end{figure}
+    \item Scikit-learn, amplia biblioteca empleada para el aprendizaje automático y la minería de datos, que incluye varios algoritmos de clasificación, regresión, análisis de grupos, reducción de dimensionalidad, entre otros. Conocida por su facilidad de uso e implementación, y por estar diseñada para interoperar con otras librerías científicas (como Numpy o SciPy) es la herramienta para la investigación en ML.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.2\textwidth, width=0.3\textwidth]{Figuras/scikit_logo.png}
+        \caption{Logo librería Scikit-Learn}
+        \label{fig:logo_scikit}
+    \end{figure}
+    \item Keras, se trata de una API de alto nivel de \textit{Deep Learning}, o aprendizaje profundo, escrita en Python, que utiliza para su funcionamiento el framework proporcionado por la librería TensorFlow. Permite así crear modelos de DL complejos con una mínima cantidad de código, siendo fácil de usar, modular y extensible.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/keras_logo.png}
+        \caption{Logo librería Keras}
+        \label{fig:logo_keras}
+    \end{figure}
+    \item Tenseal, se trata de una librería de criptografía, que proporciona una API capaz de realizar encriptación homomórfica, al mismo tiempo que conserva su eficiencia al implementar la mayoría de las operaciones más costosas en C++.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/tenseal_logo.png}
+        \caption{Logo librería Tenseal}
+        \label{fig:logo_tenseal}
+    \end{figure}
+    \item Scipy, librería compuesta por herramientas y algoritmos matemáticos, contiene diversos módulos para la optimización, álgebra lineal, integración, interpolación, procesamiento de señales e imágen, entre otros; lo cual resulta muy útil para tareas de ciencia e ingeniería.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/scikit_logo.png}
+        \caption{Logo librería Scipy}
+        \label{fig:logo_scipy}
+    \end{figure}
 \end{itemize}
 
 \subsection{Configuración del entorno}
 \label{sec:config}
+
+En este apartado se procede a explicar en detalle cual ha sido la configuración, instalación y preparación necesaria para cada uno de los dispositivos embebidos utilizados.
+
+\paragraph{Raspberry Pi}
+
+Para los dos tipos de modelos utilizados - y descritos en apartados anteriores - el proceso ha sido el mismo y consta de las mismas partes. Se ha realizado, por tanto, un tipo de instalación llamado \textit{headless-config}, que se da cuando se instala y configura un SO sin ningún entorno gráfico ni soporte o periférico auxiliar, de manera que accedemos a él mediante una terminal de otro equipo conectado a la misma red.
+
+Los pasos que se han seguido se ilustran en la documentación de referencia de la fundación Raspberry, cuyo enlace incluimos en [\ref{sec:documentacion}] como \textit{Raspberry Pi Official Getting Started Guide}.
+
+\vspace{1cm}
+
+El proceso se resume en lo siguiente:
+
+\begin{enumerate}
+    \item Mediante la herramienta oficial \textbf{Raspberry Pi Imager Installer} se formatea y flashea el SO escogido mencionado anteriormente (Raspberry Pi OS Lite 32Bit). Desde el menú proporcionado por este programa ya podemos configurar el nombre de usuario, el nombre de host del dispositivo y hasta la configuración de red y permitir conexiones SSH; haciendo que se conecte así automáticamente a nuestra WLAN cuando se encienda.
+
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/pizero3.PNG}
+        \caption{Menú de configuración de Raspberry Pi Imager Installer}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/pizero4.PNG}
+        \caption{Grabando imagen de SO en tarjeta SD para modelo Pi Zero W}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/4b1.PNG}
+        \caption{Menú de configuración de Raspberry Pi Imager Installer}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/4b2.PNG}
+        \caption{Grabando imagen de SO en tarjeta SD para modelo Pi 4B}
+    \end{subfigure}
+    \caption{Instalación de SO en dispositivos Raspberry}
+    \label{fig:so_raspberrys}
+\end{figure}
+
+    \item Posteriormente se identifica el nuevo dispositivo conectado a la red de área local inalámbrica, se anota su IP y se le configura una estática para poder guardar y automatizar el perfil de conexión a dicho dispositivo mediante \textbf{SSH}.
+
+    %La 5 depizero, la 4b3
+    \begin{figure}[htb]
+    \centering
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.3\textwidth]{Figuras/pizero5.PNG}
+        \caption{IP modelo Pi Zero W en WLAN}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.3\textwidth]{Figuras/4b3.PNG}
+        \caption{IP modelo Pi 4B en WLAN}
+    \end{subfigure}
+    \caption{Identificando y asignando IP estáticas para modelos Raspberry en WLAN}
+    \label{fig:ip_raspberrys}
+    \end{figure}
+
+    \item Por último se procede a conectarse desde el ordenador portátil por SSH, bien directamente por consola de comandos de Windows CMD o usando un progama específico como PuTTY - que permite guardar dichas conexiones bajo perfiles - y actualizamos el sistema e instalamos la versión de \textbf{Python} y librerías necesarias.
+    
+\begin{figure}[htb]
+    \centering
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/pizero6.PNG}
+        \caption{Accediendo por SSH a modelo Pi Zero W}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/pizero9.PNG}
+        \caption{Actualizando e instalando paqueterías}
+    \end{subfigure}
+    
+    \vspace{0.5cm}
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/4b4.PNG}
+        \caption{Accediendo por SSH a modelo Pi 4B}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/4b6.PNG}
+        \caption{Actualizando e instalando paqueterías}
+    \end{subfigure}
+    \caption{Conexión a dispositivos en WLAN, actualización de SO e instalación de Python y librerías}
+    \label{fig:so_raspberrys}
+\end{figure}
+
+%la 6 y 9 de pizero, la 4b4 y 4b6
+\end{enumerate}
+
+\paragraph{Jetson Nano}
+
+%TODO
 
 \newpage
 
@@ -389,6 +538,7 @@ A continuación listamos la relación de programas, entornos y herramientas util
 
 \addcontentsline{toc}{subsection}{Documentación}
 \subsubsection*{Documentación}
+\label{sec:documentacion}
 En este apartado se reflejan todos aquellos manuales y documentación de la que nos hemos servido durante la configuración del \textit{hardware} empleado - equipo y dispositivos embebidos - así como para la consulta, uso e implementación del \textit{software} - desarrollo de los métodos y técnicas descritas -:
 
 \begin{itemize}[noitemsep, topsep=5pt]
@@ -439,6 +589,9 @@ Las abreviaturas introducidas en el presente trabajo se recogen en la siguiente 
     \item[CSI] \textit{Camera Serial Interface}, especificación de la  MIPI que define la interfaz entre una cámara digital y un procesador anfitrión.
     \item[BLE] \textit{Bluetooth Low Energy}, tecnología de red de área local inalámbrica de bajo consumo energético y rango similar al Bluetooth normal.
     \item[MIPI] \textit{Mobile Industry Processor Interface Alliance}, organización global, de afiliación abierta que desarrolla las especificaciones de interfaz para el ecosistema móvil y derivados.
+    \item[API] \textit{Application Programming Interface}, se dice de aquel fragmento de código que permite a diferentes aplicaciones comunicarse entre si y compartir información y utilidades, actuando de intermediario entre los dos sistemas.
+    \item[IP] \textit{Internet Protocol}, etiqueta numérica que identifica de manera única un dispositivo en una red, permitiendo así que se comunique con otros en la misma u otras redes, como Internet.
+    \item[WLAN] \textit{Wireless Local Area Network}, red de área local inalámbrica. 
 \end{description}
 \end{quote}
 
