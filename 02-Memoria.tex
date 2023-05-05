@@ -92,7 +92,7 @@ Este tipo de arquitectura es la más típica y utilizada en sistemas federados, 
 
 El proceso de entrenamiento de estos sistemas consiste normalmente de los siguientes pasos.
 
-\begin{enumerate}[noitemsep, htop=5pt]
+\begin{enumerate}[noitemsep, topsep=5pt]
     \item Los clientes entrenan localmente sus modelos y enmascaran sus resultados - pej. gradientes - mediante técnicas criptográficas o privacidad diferencial, para luego enviarlos de vuelta al servidor.
     \item El servidor recopila los resultados y realiza su agregación.
     \item El servidor envía de vuelta los resultados agregados a los participantes.
@@ -100,6 +100,13 @@ El proceso de entrenamiento de estos sistemas consiste normalmente de los siguie
 \end{enumerate}
 
 %figura cliente-servidor
+\begin{figure}[htb]
+    \centering
+    %\includesvg[pretex=\tiny]{Figuras/diagrama_cliente_servidor.svg}
+    \includegraphics[scale=0.8]{Figuras/diagrama_cliente_servidor.png}
+    \caption{Ejemplo de arquitectura cliente-servidor para sistema federado.}
+    \label{fig:arquitectura_cliente_servidor}
+\end{figure}
 
 En el caso de tratarse de un algoritmo iterativo, el proceso anterior se repite hasta que la función objetivo o función de perdida converja o se alcance el número máximo de rondas posibles.
 
@@ -109,19 +116,35 @@ Adicionalmente, también existe el denominado diseño Peer-To-Peer. En este, no 
 
 Para ello, deben ponerse de acuerdo en una estrategia que determine el orden de envío y recibo de los parámetros y resultados locales, además de hacerlo usando canales seguros, por ejemplo a través de medios criptográficos como esquemas de cifrado basados en clave pública. Se suelen hacer de dos formas:
 
-\begin{enumerate}[noitemsep, htop=0]
-    \item Transferencia cíclica.
-    \item Transferencia aleatoria.
-\end{enumerate}
+\begin{description}
+    \item[Transferencia cíclica] en ella, los trabajadores se organizan en cadena. Así, el primero manda, aguas abajo, el actual estado del modelo global al siguiente trabajador en la cadena, que lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de datos de entrenamiento, agregándolo y pasándoselo al siguiente. Este proceso se repite de manera consecutiva hasta que el modelo converja, el número máximo de iteraciones se alcance o se sobrepase el tiempo máximo de entrenamiento.
+    \item[Transferencia aleatoria] en esta, un trabajador \textit{k} selecciona aleatoriamente un número \textit{i} de ${1,....,L} \ {k}$ aleatoriamente y con igual probabilidad, para posteriormente enviarle el estado actual del modelo (sus pesos). Este trabajador \textit{i} lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de entrenamiento, para luego ser él quien seleccione al siguiente participante. Este proceso se ejecuta de manera concurrente entre los \textit{K} participantes y finaliza cuando todos ellos acuerden que el modelo haya convergido o que se sobrepasase el tiempo máximo establecido. A este método también se le llama \textbf{Gossip Learning}.
+\end{description}
 
 %figura diseño p2p
+\begin{figure}[htb]
+    \centering
+    %\includesvg[pretex=\tiny]{Figuras/diagrama_p2p.svg}
+    \includegraphics[scale=0.5]{Figuras/diagrama_p2p.png}
+    \caption{Ejemplo de arquitectura cliente-servidor para sistema federado.}
+    \label{fig:arquitectura_cliente_servidor}
+\end{figure}
 
 Comparado con la arquitectura clásica cliente-servidor, tiene la ventaja de que no se necesita este último rol, lo cual puede ser un requerimiento para ciertas aplicaciones prácticas además de evitar las fugas de información a esta figura coordinadora central. Las desventajas son varias, pero la más importante es el aumento de tiempo que conlleva este diseño, ya que las actualizaciones se harían en serie y no en lotes paralelos, como en el primer caso.
 
-Cabe mencionar el trabajo previo de un alumno de la UDC que ha desarrollado para su Trabajo Final de Master un protocolo y framework para la implementación de distintos algoritmos de aprendizaje federado bajo este tipo de arquitecturas. La referencia a este trabajo está disponible aquí \ref{} y el repositorio donde tiene el código es el siguiente \url{} \href{}{}.
+Cabe mencionar el trabajo previo de un alumno de la UDC de la Facultad de Informática que ha desarrollado para su Trabajo Final de Grado un \textit{framework} para la implementación de distintos algoritmos de aprendizaje federado bajo este tipo de arquitectura. La referencia a este trabajo está disponible aquí \cite{paper_p2pfl} y el repositorio donde tiene el código es el siguiente \href{https://github.com/pguijas/p2pfl}{GitHub - P2PFL}.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.4\textwidth, height=0.2\textwidth]{Figuras/logo_p2pfl.png}
+    \caption{Logo de la librería P2PFL}
+    \label{fig:logo_p2pfl}
+\end{figure}
 
 \subsection{Sistemas informáticos}
 En este apartado examinaremos los sistemas informáticos empleados para la ejecución de las técnicas desarrolladas.
+
+\vspace{1cm}
 
 \subsubsection{Sistemas embebidos}
 Se denominan así a los sistemas de computación basados en microprocesadores o microcontroladores que están diseñados para realizar unas pocas funciones dedicadas y limitadas, en contraste con los ordenadores personales, de propósito general.
@@ -131,6 +154,8 @@ Suelen estar integrados todos sus componentes en la placa base, presentando un a
 Normalmente se programan directamente en el lenguaje ensamblador del propio microcontrolador/microprocesador, aun que usando compiladores característicos pueden utilizarse lenguajes como C, C++ o incluso Java.
 
 Debido a su diseño especializado y enfocado en tareas específicas, los sistemas embebidos son típicamente más eficientes en términos de consumo de energía y recursos que las computadoras personales o de propósito general.
+
+\vspace{1cm}
 
 \paragraph{Raspberry Pi}
 
@@ -161,6 +186,8 @@ En la figura \ref{fig:foto_raspberry_pi_4b} se puede apreciar el aspecto de uno 
 \end{figure}
 
 A continuación presentamos dos tablas con las especificaciones de cada una de ellas:
+
+\vspace{3cm}
 
 \begin{table}[h]
     \flushleft
@@ -198,6 +225,8 @@ A continuación presentamos dos tablas con las especificaciones de cada una de e
     \caption{Especificaciones Raspberry Pi Model Zero W}
     \label{tab:especificaciones_raspberry_zerow}
 \end{table}
+
+\vspace{1cm}
 
 \paragraph{Jetson Nano}
 
@@ -467,9 +496,12 @@ El proceso se resume en lo siguiente:
 
 \paragraph{Jetson Nano}
 
-Para el otro equipo restante, la Jetson Nano B01, el proceso ha sido similar pero con ciertas variaciones, fruto de las particularidades de este dispositivo. Así, por ejemplo, al no tener un conexión inalámbrica por defecto (es cierto que ofrece un puerto de expansión pero la tarjeta de red se ha de instalar a mayores), se tuvo que conectar por microUSB este dispositivo al ordenador portátil anfitrión y conectar como si fuera un puerto COM, para desde ahí realizar la instalación y configuración del SO correspondiente, siguiendo así una \textit{headless-config}, igual que antes.
+Para el otro equipo restante, la Jetson Nano B01, el proceso ha sido similar pero con ciertas variaciones, fruto de las particularidades de este dispositivo. Así, por ejemplo, al no disponer de conexión inalámbrica (es cierto que ofrece un puerto de expansión pero la tarjeta de red se ha de instalar a mayores), se tuvo que enlazar por microUSB este dispositivo al ordenador portátil anfitrión y conectar como si fuera un puerto COM, para desde ahí realizar la instalación y configuración del SO correspondiente, siguiendo así una \textit{headless-config}, igual que antes.
 
 Una vez instalado y configurado, desde el equipo local, este dispositivo, se pudo desconectar, asignar una IP local estática y conectar directamente mediante cable Ethernet al router para acceder a él desde cualquier otro equipo conectado a la misma WLAN; sin la necesidad de estar directamente cableado con él.
+
+Los pasos seguidos, de igual modo, se ajustan a los documentados en la guía de referencia de la página de Nvidia para estos dispositivos, cuyo enlace incluimos en \ref{sec:documentacion} como \textit{Jetson Nano Getting Started Guide}.
+
 
 \vspace{1cm}
 
@@ -509,8 +541,6 @@ En definitiva, los pasos fueron los siguientes:
 \end{figure}
 %jetson5, 11, 13 y 16
 
-\vspace{1cm}
-
     \item Una vez configurado, nos desconectamos físicamente del dispositivo y lo conectamos por al \textit{router} mediante cable de red. Abrimos la ventana de administración de clientes DHCP y anotamos su IP, a través de la cúal somos capaces de obtener una terminal remota al dispositivo mediante SSH. Para evitar tener que repetir esta consulta en futuras ocasiones, configuramos una IP estática para este equipo y la anotamos junto con su MAC.
 
 \begin{figure}[htb]
@@ -531,7 +561,7 @@ En definitiva, los pasos fueron los siguientes:
 \end{figure}
 %jetson 18 y 25
     \item Por último, realizamos una actualización global del SO e instalamos los programas y librerías necesarios para desarrollar las pruebas de este Trabajo Final, es decir, Python en versión 3.10 y librerías mencionadas en el apartado anterior.
-\begin{figure}[htb]
+\begin{figure}[h]
     \centering
     \begin{subfigure}{.47\linewidth}
         \centering
@@ -550,7 +580,7 @@ En definitiva, los pasos fueron los siguientes:
 %jetson 20 y 23
 \end{enumerate}
 
-\newpage
+\clearpage
 
 \section{Metodología}
 En este capítulo explicamos como se han abordado las distintas pruebas que forman parte de este proyecto; desde su aplicación bajo distintos entornos, al procesamiento previo de datos de los conjuntos escogidos, pasando por optimización y validación de los modelos y las diferentes métricas utilizadas para ello.
