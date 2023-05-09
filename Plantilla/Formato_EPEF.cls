@@ -33,7 +33,8 @@
 \RequirePackage{pdfpages}
 \RequirePackage[resetlabels,labeled]{multibib}
 \RequirePackage{listings}
-\RequirePackage{svg}
+\RequirePackage{float}
+\RequirePackage{wrapfig}
 
 % Definición del color "Rosa UDC"
 \definecolor{UDC_Pink}{RGB}{199, 0, 125}

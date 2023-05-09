@@ -49,7 +49,25 @@ El ámbito de aplicación de este Trabajo Final aborda diversos aspectos dentro 
 Planteamos esta sección con un doble objetivo: realizar una revisión de las distintas tendencias dentro de la inteligencia artificial y el estado-del-arte de la misma así como el de efectuar una recapitulación teórica de los distintos campos que forman parte de ella.
 
 \subsection{Inteligencia Artificial}
-TODO
+Antes de entrar de lleno en las diferentes técnicas y algoritmos que ofrece la Inteligencia Artificial, es bueno dar un repaso por los fundamentos de este campo y sus diferentes ramas. La mejor forma de introducir así este tema es tener bien claro a que nos estamos refiriendo, ¿que es aquello a lo que se llama \textit{Artificial Intelligence}?, ¿como se distingue de otros conceptos como \textit{Machine Learning}, \textit{Data Mining}, \textit{Big Data} y otros conceptos tan en boga hoy día?
+
+A continuación presentamos un mapa conceptual \ref{fig:diagrama_ia} y unas definiciones que ayudan a aclarar estas nociones:
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.5]{Figuras/diagrama_IA.png}
+    \caption{Mapa conceptual AI - Data Science}
+    \label{fig:diagrama_ia}
+\end{figure}
+
+\begin{description}
+    \item[Artificial Intelligence] disciplina que busca crear algoritmos y sistemas que puedan imitar a la inteligencia humana para realizar tareas complejas de forma autónoma, por ejemplo percepción, toma de decisiones o aprendizaje.
+    \item[Machine Learning]
+    \item[Deep Learning]
+    \item[Data Science]
+    \item[Big Data]
+    \item[Data Mining]
+\end{description}
 
 \subsection{Aprendizaje automático}
 TODO
@@ -65,35 +83,35 @@ TODO
 \section{Diseño e implementación}
 En este capítulo se describe el diseño e implementación del sistema sobre el que se realizarán las pruebas de los distintos métodos desarrollados.
 
-Empezaremos así con una vista global del sistema y su arquitectura, para luego describir en detalle los sistemas embebidos, sistemas operativos, lenguajes de programación, librerías empleadas y configuración de los mismos.
+Empezaremos así con una vista global del conjunto y de su arquitectura, para luego describir en detalle los dispositivos embebidos, sistemas operativos, lenguajes de programación, librerías empleadas y configuración de los mismos.
 
 \subsection{Vista global del sistema}
 
-Antes de entrar detalles pormenorizados del diseño final del sistema es necesario concretar una vista global del mismo, incluyendo así los distintos elementos que formarán parte de él y las relaciones existentes entre ellos.
+Antes de entrar detalles pormenorizados del diseño final del sistema es necesario concretar una vista global de este, incluyendo así los distintos elementos que formarán parte de él y las relaciones existentes entre ellos.
 
-Todas las técnicas desarrolladas y pruebas realizadas se harán en cuatro tipos distintos de dispositivos físicos: un ordenador portátil personal, dos modelos diferentes de Raspberry Pi y una Jetson Nano.
+Todas las técnicas y pruebas desarrolladas se harán en cuatro tipos distintos de dispositivos físicos: un ordenador portátil personal, dos modelos diferentes de Raspberry Pi y una Jetson Nano.
 
-La división de trabajo y almacenamiento de datos se hará acorde a los límites y características de cada uno de ellos, de manera que no lleguemos a sobrepasarlos y fallar así a reproducir un entorno federado real.
+La división de trabajo y almacenamiento de datos se hará acorde a los límites y características de cada uno de ellos, de manera que no lleguemos a sobrepasarlos, fallando así la reproducción de un entorno federado real.
 
 Por esta razón el portátil, al tener mayor capacidad, será el encargado de albergar el servidor así como sucesivos lotes de clientes simulados, para cuando se realicen pruebas de escalabilidad.
 
-Y es que el método desarrollado es una aplicación de técnicas de aprendizaje automático federado, y, aun que también se han realizado pruebas con algoritmos equivalentes en sistemas centralizados, nos centraremos en el primero al ser el objeto de estudio primordial de este trabajo.
+El método desarrollado es una aplicación de un sistema de aprendizaje automático federado, en donde la computación y entrenamiento del modelo se hace de manera distribuida. Así, se conforma una red compuesta de varios dispositivos interconectados, siendo uno de ellos coordinador del proceso global, rol asignado al ordenador portátil, trabajando en conjunto. También se han realizado pruebas, por comparativa, con algoritmos y técnicas equivalentes pero de arquitectura centralizada, llevadas a cabo de igual modo en el dicho portátil.
 
 \subsubsection{Arquitectura}
-El diseño de estos sistemas se suele hacer siguiendo una arquitectura \textbf{cliente-servidor} clásica, donde un servidor orquestará el proceso de selección, entrenamiento, agregación y validación del modelo; y unos clientes que, teniendo acceso cada uno a su propio conjunto de datos, entrenaran un modelo local y recibirán las actualizaciones necesarias cuando sean llamados.
+El diseño de estos sistemas se suele hacer siguiendo una arquitectura \textbf{cliente-servidor} clásica, donde un servidor orquestará el proceso de selección, entrenamiento, agregación y validación del modelo, y unos clientes que, teniendo acceso cada uno a su propio conjunto de datos, entrenarán un modelo local y recibirán las actualizaciones y directrices necesarias cuando sean llamados.
 
-Existe otro tipo de arquitectura para estos sistemas, aunque no están muy desarrolladas, denominadas P2P (\textit{peer-to-peer}).
+Existe otro tipo de arquitectura para estos sistemas, aunque no está muy desarrollada, denominada P2P (\textit{peer-to-peer}).
 
 A continuación explicaremos estos dos tipos de arquitectura de manera genérica:
 
 \paragraph{Cliente-Servidor}
 
-Este tipo de arquitectura es la más típica y utilizada en sistemas federados, y también es conocida como diseño tipo \textit{master-worker}. En ella, \textit{K} participantes o clientes, cada uno con un subconjunto del grupo de datos, entrenan de manera colaborativa el modelo de aprendizaje automático con la ayuda de un servidor - tambien denominado coordinador o servidor de agregación -. Los supuestos para estos casos es que los participantes pueden ser honestos mientras que el servidor es honesto-pero-curioso (\textit{honest-but-curious}). Este concepto implica que, aunque el servidor no introduzca maliciosamente ni altere los resultados o computos del proceso, el diseño del algoritmo de entrenamiento tiene que ser tal que prevenga cualquier tipo de fuga de información útil que reciba de los clientes.
+Este tipo de arquitectura es la más típica y utilizada en sistemas federados, y también es conocida como diseño tipo \textit{master-worker}. En ella, \textit{K} participantes o clientes, cada uno con un subconjunto del grupo de datos, entrenan de manera colaborativa el modelo de aprendizaje automático con la ayuda de un servidor - tambien denominado coordinador o servidor de agregación -. Los supuestos para estos casos es que los participantes pueden ser honestos mientras que el servidor es honesto-pero-curioso (\textit{honest-but-curious}). Este concepto implica que, aunque el servidor no introduzca maliciosamente - ni altere los resultados o cómputos del proceso -, el diseño del algoritmo de entrenamiento tiene que ser tal que prevenga cualquier tipo de fuga de información útil este pueda recibir de los clientes.
 
 El proceso de entrenamiento de estos sistemas consiste normalmente de los siguientes pasos.
 
 \begin{enumerate}[noitemsep, topsep=5pt]
-    \item Los clientes entrenan localmente sus modelos y enmascaran sus resultados - pej. gradientes - mediante técnicas criptográficas o privacidad diferencial, para luego enviarlos de vuelta al servidor.
+    \item Los clientes entrenan localmente sus modelos y enmascaran sus resultados - p.ej. gradientes - mediante técnicas criptográficas o privacidad diferencial, para luego enviarlos de vuelta al servidor.
     \item El servidor recopila los resultados y realiza su agregación.
     \item El servidor envía de vuelta los resultados agregados a los participantes.
     \item Los clientes actualizan sus respectivos modelos locales con los resultados recibidos desencriptados.
@@ -108,7 +126,7 @@ El proceso de entrenamiento de estos sistemas consiste normalmente de los siguie
     \label{fig:arquitectura_cliente_servidor}
 \end{figure}
 
-En el caso de tratarse de un algoritmo iterativo, el proceso anterior se repite hasta que la función objetivo o función de perdida converja o se alcance el número máximo de rondas posibles.
+En el caso de tratarse de un algoritmo iterativo, el proceso anterior se repite hasta que la función objetivo - o \textit{loss function} - converja o se alcance el número máximo de rondas posibles.
 
 \paragraph{Peer-To-Peer}
 
@@ -117,8 +135,8 @@ Adicionalmente, también existe el denominado diseño Peer-To-Peer. En este, no 
 Para ello, deben ponerse de acuerdo en una estrategia que determine el orden de envío y recibo de los parámetros y resultados locales, además de hacerlo usando canales seguros, por ejemplo a través de medios criptográficos como esquemas de cifrado basados en clave pública. Se suelen hacer de dos formas:
 
 \begin{description}
-    \item[Transferencia cíclica] en ella, los trabajadores se organizan en cadena. Así, el primero manda, aguas abajo, el actual estado del modelo global al siguiente trabajador en la cadena, que lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de datos de entrenamiento, agregándolo y pasándoselo al siguiente. Este proceso se repite de manera consecutiva hasta que el modelo converja, el número máximo de iteraciones se alcance o se sobrepase el tiempo máximo de entrenamiento.
-    \item[Transferencia aleatoria] en esta, un trabajador \textit{k} selecciona aleatoriamente un número \textit{i} de ${1,....,L} \ {k}$ aleatoriamente y con igual probabilidad, para posteriormente enviarle el estado actual del modelo (sus pesos). Este trabajador \textit{i} lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de entrenamiento, para luego ser él quien seleccione al siguiente participante. Este proceso se ejecuta de manera concurrente entre los \textit{K} participantes y finaliza cuando todos ellos acuerden que el modelo haya convergido o que se sobrepasase el tiempo máximo establecido. A este método también se le llama \textbf{Gossip Learning}.
+    \item[Transferencia cíclica] en ella, los trabajadores se organizan en cadena. Así, el primero manda, aguas abajo, el actual estado del modelo global al siguiente trabajador de la cadena, que lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de datos de entrenamiento, agregándolo y pasándoselo al siguiente. Este proceso se repite de manera consecutiva hasta que el modelo converja, el número máximo de iteraciones se alcance o se sobrepase el tiempo máximo de entrenamiento.
+    \item[Transferencia aleatoria] en esta, un trabajador \textit{k} selecciona aleatoriamente un número \textit{i} de $\{1,....,L\} \backslash \{k\}$ aleatoriamente y bajo igual probabilidad, para posteriormente enviarle el estado actual del modelo (sus pesos). Este trabajador \textit{i} lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de entrenamiento, para luego ser él quien seleccione al siguiente participante. Este proceso se ejecuta de manera concurrente entre los \textit{K} participantes y finaliza cuando todos ellos acuerden que el modelo haya convergido o que se sobrepasase el tiempo máximo establecido. A este método también se le llama \textbf{Gossip Learning}.
 \end{description}
 
 %figura diseño p2p
@@ -130,9 +148,9 @@ Para ello, deben ponerse de acuerdo en una estrategia que determine el orden de 
     \label{fig:arquitectura_cliente_servidor}
 \end{figure}
 
-Comparado con la arquitectura clásica cliente-servidor, tiene la ventaja de que no se necesita este último rol, lo cual puede ser un requerimiento para ciertas aplicaciones prácticas además de evitar las fugas de información a esta figura coordinadora central. Las desventajas son varias, pero la más importante es el aumento de tiempo que conlleva este diseño, ya que las actualizaciones se harían en serie y no en lotes paralelos, como en el primer caso.
+Comparado con la arquitectura clásica cliente-servidor, tiene la ventaja de que no se necesita este último rol, lo cual puede ser un requerimiento para ciertas aplicaciones prácticas; además de evitar las fugas de información a esta figura coordinadora central. Las desventajas son varias, pero la más importante es el aumento de tiempo que conlleva este diseño, ya que las actualizaciones se harían en serie y no en lotes paralelos, como en el primer caso.
 
-Cabe mencionar el trabajo previo de un alumno de la UDC de la Facultad de Informática que ha desarrollado para su Trabajo Final de Grado un \textit{framework} para la implementación de distintos algoritmos de aprendizaje federado bajo este tipo de arquitectura. La referencia a este trabajo está disponible aquí \cite{paper_p2pfl} y el repositorio donde tiene el código es el siguiente \href{https://github.com/pguijas/p2pfl}{GitHub - P2PFL}.
+Cabe mencionar, por último, el trabajo previo de un alumno de la UDC de la Facultad de Informática que ha desarrollado para su Trabajo Final de Grado un \textit{framework} para la implementación de algoritmos de aprendizaje federado bajo este tipo de arquitectura. La referencia a este trabajo está disponible aquí \cite{paper_p2pfl} y el repositorio que alberga el código es el siguiente \href{https://github.com/pguijas/p2pfl}{GitHub - P2PFL}.
 
 \begin{figure}
     \centering
@@ -142,18 +160,18 @@ Cabe mencionar el trabajo previo de un alumno de la UDC de la Facultad de Inform
 \end{figure}
 
 \subsection{Sistemas informáticos}
-En este apartado examinaremos los sistemas informáticos empleados para la ejecución de las técnicas desarrolladas.
+En este apartado examinaremos los sistemas informáticos empleados en la ejecución de las técnicas desarrolladas.
 
 \vspace{1cm}
 
 \subsubsection{Sistemas embebidos}
-Se denominan así a los sistemas de computación basados en microprocesadores o microcontroladores que están diseñados para realizar unas pocas funciones dedicadas y limitadas, en contraste con los ordenadores personales, de propósito general.
+Se denominan así a los sistemas de computación basados en microprocesadores o microcontroladores que están diseñados para realizar unas pocas funciones dedicadas y limitadas; en contraste con los ordenadores personales, de propósito general.
 
-Suelen estar integrados todos sus componentes en la placa base, presentando un aspecto bien distinto al asociado a una computadora normal y específico al fin que deban cumplir.
+Suelen estar integrados todos sus componentes en la placa base, presentando un aspecto distinto al asociado a una computadora normal y específico al fin que deban cumplir.
 
-Normalmente se programan directamente en el lenguaje ensamblador del propio microcontrolador/microprocesador, aun que usando compiladores característicos pueden utilizarse lenguajes como C, C++ o incluso Java.
+Normalmente se programan directamente en el lenguaje ensamblador del propio microcontrolador/microprocesador, aun que usando compiladores característicos, pueden utilizarse lenguajes como C, C++ o incluso Java.
 
-Debido a su diseño especializado y enfocado en tareas específicas, los sistemas embebidos son típicamente más eficientes en términos de consumo de energía y recursos que las computadoras personales o de propósito general.
+Debido a su diseño especializado y enfocado en tareas específicas, los sistemas embebidos son, típicamente, más eficientes en términos de consumo de energía y recursos que las computadoras personales de propósito general.
 
 \vspace{1cm}
 
@@ -163,11 +181,11 @@ Son una serie de computadoras de placa única (\textit{SBC}), de bajo coste y ta
 
 El primer modelo fue lanzado en 2012 y, desde entonces, se han incorporado varias versiones, cada una con diferentes especificaciones y características.
 
-Estos dispositivos encuentran así utilidad en una amplia gama de proyectos, incluyendo sistemas de domótica, servidores web, centros multimedia, robots y en general todo lo relacionado con el IoT.
+Estos dispositivos encuentran así utilidad en una amplia gama de proyectos, incluyendo sistemas de domótica, servidores web, centros multimedia, robots y en general todo lo relacionado con el \textit{IoT}.
 
-La placa única de la Raspberry Pi cuenta, en todas sus versiones, con un procesador Broadcom, memoria RAM, puertos USB, HDMI, GPU, Ethernet, 40 pines GPIO, conector para cámara, ranura para tarjetas SD y otros componentes necesarios para ejecutar un sistema operativo completo y aplicaciones de software.
+La placa única de la Raspberry Pi cuenta, en todas sus versiones, con un procesador Broadcom, memoria RAM, puertos USB, HDMI, GPU, Ethernet, 40 pines GPIO, conector para cámara, ranura para tarjetas SD y todos los componentes necesarios para ejecutar un sistema operativo completo y aplicaciones de software.
 
-Su sistema operativo oficial es una versión adaptada de Debian llamada Raspberry Pi OS, aunque permite usar otros sistemas operativos que tengan distribuciones con arquitectura ARM, incluidos RISC OS 5, Arch Linux ARM, Pidora e incluso una versión de Windows 10. Como se puede observar la mayoría de ellos están basados en SO GNU/Linux.
+Su sistema operativo oficial es una versión adaptada de Debian llamada Raspberry Pi OS, aunque permite usar otros sistemas operativos que tengan distribuciones para arquitectura ARM, incluidos RISC OS 5, Arch Linux ARM, Pidora e incluso una versión de Windows 10. Como se puede observar la mayoría de ellos están basados en SO GNU/Linux.
 
 \begin{figure}[h]
     \centering
@@ -176,7 +194,7 @@ Su sistema operativo oficial es una versión adaptada de Debian llamada Raspberr
     \label{fig:foto_raspberry_pi_4b}
 \end{figure}
 
-En la figura \ref{fig:foto_raspberry_pi_4b} se puede apreciar el aspecto de uno de estos modelos, el denominado Raspberry Pi Model 4B. Junto con otro, más pequeño y de menor rendimiento, llamado Raspberry Pi Zero W, que se puede observar en la figura \ref{fig:foto_raspberry_pi_zero}, son los dos dispositivos embebidos de este fabricante con los que trabajaremos en este Trabajo Final.
+En la figura \ref{fig:foto_raspberry_pi_4b} se puede apreciar el aspecto de uno de estos modelos, el denominado Raspberry Pi Model 4B. Junto con otro, más pequeño y de menor rendimiento, llamado Raspberry Pi Zero W, que se puede observar en la figura \ref{fig:foto_raspberry_pi_zero}, son los dos dispositivos embebidos de este fabricante que emplearemos en este Trabajo Final.
 
 \begin{figure}[h]
     \centering
@@ -185,7 +203,7 @@ En la figura \ref{fig:foto_raspberry_pi_4b} se puede apreciar el aspecto de uno 
     \label{fig:foto_raspberry_pi_zero}
 \end{figure}
 
-A continuación presentamos dos tablas con las especificaciones de cada una de ellas:
+A continuación presentamos dos tablas con las especificaciones de cada uno de ellos:
 
 \vspace{3cm}
 
@@ -219,8 +237,9 @@ A continuación presentamos dos tablas con las especificaciones de cada una de e
 \textbf{Video y Audio} & miniHDMI. MIPI CSI.                             \\
 \textbf{Multimedia}    & VideoCore IV  @ 400MHz GPU. Gráficos OpenGL ES 2.0. \\
 \textbf{Tarjetas SD}   & Ranura para microSD para SO y almacenamiento.   \\
-\textbf{Alimentación}  & 5V DC via microUSB. 5V DC via GPIO.             \\ \hline
-\textbf{Entorno}       & Temperatura de funcionamiento 0-50ºC.          
+\textbf{Alimentación}  & 5V DC via microUSB. 5V DC via GPIO.             \\ 
+\textbf{Entorno}       & Temperatura de funcionamiento 0-50ºC.  \\
+    \hline
 \end{tabular}
     \caption{Especificaciones Raspberry Pi Model Zero W}
     \label{tab:especificaciones_raspberry_zerow}
@@ -232,9 +251,9 @@ A continuación presentamos dos tablas con las especificaciones de cada una de e
 
 Las Jetson son una serie de dispositivos embebidos de la compañía Nvidia que están diseñadas específicamente para aplicaciones de IA y robótica. Sus modelos son pequeños, de bajo consumo y ofrecen un alto rendimiento para las tareas de procesamiento de datos intensivas de estos campos, como procesamiento de imágenes, detección de objetos, reconocimiento de voz o \textit{Deep Learning}.
 
-Se ofrecen así una serie de modelos, que vienen equipadas con un amplio rango de potentes procesadores CPU/GPU para este tipo de dispositivos, incluyendo además interfaces para cámaras, sensores y otros dispositivos externos.
+Se ofrecen así una serie de modelos, que vienen equipados con un amplio rango de potentes procesadores CPU/GPU para lo normal en tipo de dispositivos, incluyendo además interfaces para cámaras, sensores y otros dispositivos externos.
 
-En este Trabajo Final se ha utilizado particularmente el modelo Jetson Nano, del que se puede apreciar su aspecto en la figura \ref{fig:foto_jetson_nano} y sus especificaciones en la tabla siguiente \ref{tab:especificaciones_jetson_nano}:
+En este Trabajo Final se ha utilizado específicamente el modelo Jetson Nano B01, del que se puede apreciar su aspecto en la figura \ref{fig:foto_jetson_nano} y sus especificaciones en la tabla siguiente \ref{tab:especificaciones_jetson_nano}:
 
 \begin{figure}[h]
     \centering
@@ -298,7 +317,7 @@ Con respecto a los sistemas simulados, nos referimos a todos aquellos clientes q
 
 \subsection{Sistemas operativos}
 
-Esta breve sección dispone, a modo informativo, los distintos sistemas operativos escogidos para los distintos dispositivos empleados. Dicha información se puede resumir en la tabla \ref{tab:sistemas_operativos}.
+Esta breve sección dispone, a modo informativo, los distintos sistemas operativos escogidos para los distintos sistemas informáticos. Dicha información se puede resumir en la tabla \ref{tab:sistemas_operativos}.
 
 \begin{table}[h]
     \centering
@@ -308,15 +327,15 @@ Dispositivo               & Sistema Operativo               \\ \hline
 Lenovo Legion Y540        & Windows 10 (64-bit)             \\
 Raspberry Pi Model 4B     & Raspberry Pi OS Lite (32-bit)   \\
 Raspberry Pi Model Zero W & Raspberry Pi OS Lite (32-bit)   \\
-Jetson Nano B01           & Jetson Nano Developer Kit Image \\ \hline
+Jetson Nano B01           & Jetson Nano Developer Kit Image (Linux4Tegra) \\ \hline
 \end{tabular}
     \caption{Sistemas operativos utilizados}
     \label{tab:sistemas_operativos}
 \end{table}
 
-Aun que ya se han mencionado anteriormente, cabe mencionar que la \textit{Jetson Nano Developer Kit SD Card Image} está basada en la distribución Ubuntu (Linux) y diseñada específicamente para este tipo de placas de Nvidia. Proporciona un entorno de desarrollo completo y preconfigurado para la programación de aplicaciones de IA y robótica, incluyendo bibliotecas y herramientas para la creación de redes neuronales y la gestión de la aceleración por GPU.
+Aun que ya se han tratado anteriormente, cabe mencionar que la \textit{Jetson Nano Developer Kit SD Card Image} está basada en una distribución Ubuntu (Linux) diseñada específicamente para este tipo de placas de Nvidia, denominada Linux4Tegra. Proporciona un entorno de desarrollo completo y preconfigurado para la programación de aplicaciones de IA y robótica, incluyendo bibliotecas y herramientas para la creación de redes neuronales y gestión de la aceleración por GPU.
 
-Por la otra banda, y al contrario, hemos elegido para los dispositivos del fabricante Raspberry el SO \textit{Raspberry Pi OS Lite}, que es la versión más compacta, ligera y minimalista disponible, ya que no incluye un entorno gráfico ni demasiadas aplicaciones preinstaladas, lo cual obliga a realizar dicha configuración manualmente, como se verá en apartado \ref{sec:config}.
+Por otro lado, y en un sentido contrario, hemos elegido para los dispositivos del fabricante Raspberry el SO \textit{Raspberry Pi OS Lite}, que es la versión más compacta, ligera y minimalista disponible que ofrece el fabricante, ya que no incluye un entorno gráfico ni demasiadas aplicaciones preinstaladas, lo cual obliga a realizar dicha configuración manualmente, como se verá en apartado \ref{sec:config}.
 
 Por último, en el ordenador portátil personal se ha utilizado una versión de Windows 10 de 64-bits, acorde al hardware instalado. 
 
@@ -326,7 +345,7 @@ El lenguaje de programación utilizado durante todo este Trabajo Final ha sido \
 
 Python lenguaje de programación de alto nivel, interpretado y que soporta múltiples paradigmas de programación, como la orientada a objetos, la imperativa y, en menor medida, la funcional. Uno de sus grandes atractivos es la gestión de memoria automática y su tipado dinámico.
 
-Utilizado en una amplia gama de aplicaciones, presenta una sintaxis muy sencilla, repercutiendo así en su clara legibilidad. Creado por Guido van Rossum en 1991, este informático hizo especial hincapié, desde las primeras fases de este proyecto, en seguir una filosofía de \textit{programación para todos}, en donde este lenguaje debería fácil, intuitivo y tan potente como otros, de código abierto, comprensible y apto para actividades diarias de prototipado rápido así como para productos finales.
+Utilizado en una amplia gama de aplicaciones, presenta una sintaxis muy sencilla, repercutiendo así en su clara legibilidad. Creado por Guido van Rossum en 1991, este informático hizo especial hincapié, desde las primeras fases de este proyecto, en seguir una filosofía de \textit{programación para todos}, en donde este lenguaje debería ser fácil, intuitivo y tan potente como otros, de código abierto, comprensible y apto para actividades diarias de prototipado rápido así como para productos finales.
 
 Aún que existen otros lenguajes de programación que son apropiados para el campo de la IA y el aprendizaje automático, como pueden ser C/C++, JavaScript, Java o incluso R, se ha escogido Python por las siguientes razones:
 
@@ -339,53 +358,53 @@ Aún que existen otros lenguajes de programación que son apropiados para el cam
 
 En cuanto a las bibliotecas empleadas para el desarrollo de estos programas, encontramos las siguientes:
 
-\begin{itemize}[noitemsep,topsep=5pt]
+\begin{itemize}[noitemsep,topsep=0pt]
     \item Numpy, \textit{Numerical Python}, utilizada para realizar operaciones matemáticas y científicas con matrices multidimensionales, proporcionando así herramientas para la manipulación de datos y cálculo numérico, incluyendo operaciones de álgebra lineal, transformadas de Fourier, números aleatorios y muchas más. Es, por tanto, una parte integral y base de muchas otras librerías usadas en la ciencia de datos y aprendizaje automático.
     \begin{figure}[h]
         \centering
-        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/numpy_logo.png}
+        \includegraphics[height=0.1\textwidth, width=0.1\textwidth]{Figuras/numpy_logo.png}
         \caption{Logo librería Numpy}
         \label{fig:logo_numpy}
     \end{figure}
     \item Matplotlib, utilizada para la generación y visualización de datos en gráficos y diagramas, a partir de la información contenida en listas o \textit{arrays}.
         \begin{figure}[h]
         \centering
-        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/matplotlib_logo.png}
+        \includegraphics[height=0.1\textwidth, width=0.1\textwidth]{Figuras/matplotlib_logo.png}
         \caption{Logo librería Matplotlib}
         \label{fig:logo_matplotlib}
     \end{figure}
-    \item Pandas, utilizada para la manipulación y análisis de datos en estructuras conocidas como \textit{DataFrames}, con forma de tablas. Incluye herramientas para la limpieza de datos, transformación, agregación y filtrado de los mismos, además me utilidades para el manejo de datos faltantes o integración de varias fuentes.
+    \item Pandas, utilizada para la manipulación y análisis de datos en estructuras conocidas como \textit{DataFrames}, con forma de tablas. Incluye herramientas para la limpieza de datos, transformación, agregación y filtrado de los mismos, además de utilidades para el manejo de datos faltantes o integración de varias fuentes.
     \begin{figure}[h]
         \centering
-        \includegraphics[height=0.2\textwidth, width=0.3\textwidth]{Figuras/pandas_logo.png}
+        \includegraphics[height=0.1\textwidth, width=0.2\textwidth]{Figuras/pandas_logo.png}
         \caption{Logo librería Pandas}
         \label{fig:logo_pandas}
     \end{figure}
-    \item Scikit-learn, amplia biblioteca empleada para el aprendizaje automático y la minería de datos, que incluye varios algoritmos de clasificación, regresión, análisis de grupos, reducción de dimensionalidad, entre otros. Conocida por su facilidad de uso e implementación, y por estar diseñada para interoperar con otras librerías científicas (como Numpy o SciPy) es la herramienta para la investigación en ML.
+    \item Scikit-learn, amplia biblioteca empleada para el aprendizaje automático y la minería de datos, que incluye varios algoritmos de clasificación, regresión, análisis de grupos y reducción de dimensionalidad, entre otros. Conocida por su facilidad de uso e implementación, y por estar diseñada para trabajar junto con otras librerías científicas, como Numpy o SciPy, es la herramienta idónea para la investigación en ML.
     \begin{figure}[h]
         \centering
-        \includegraphics[height=0.2\textwidth, width=0.3\textwidth]{Figuras/scikit_logo.png}
+        \includegraphics[height=0.1\textwidth, width=0.2\textwidth]{Figuras/scikit_logo.png}
         \caption{Logo librería Scikit-Learn}
         \label{fig:logo_scikit}
     \end{figure}
-    \item Keras, se trata de una API de alto nivel de \textit{Deep Learning}, o aprendizaje profundo, escrita en Python, que utiliza para su funcionamiento el framework proporcionado por la librería TensorFlow. Permite así crear modelos de DL complejos con una mínima cantidad de código, siendo fácil de usar, modular y extensible.
+    \item Keras, se trata de una API de alto nivel de \textit{Deep Learning} - o aprendizaje profundo - escrita en Python, que utiliza para su funcionamiento el framework proporcionado por la librería TensorFlow. Permite así crear modelos de DL complejos con una mínima cantidad de código, siendo fácil de usar, modular y extensible.
     \begin{figure}[h]
         \centering
-        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/keras_logo.png}
+        \includegraphics[height=0.1\textwidth, width=0.1\textwidth]{Figuras/keras_logo.png}
         \caption{Logo librería Keras}
         \label{fig:logo_keras}
     \end{figure}
-    \item Tenseal, se trata de una librería de criptografía, que proporciona una API capaz de realizar encriptación homomórfica, al mismo tiempo que conserva su eficiencia al implementar la mayoría de las operaciones más costosas en C++.
-    \begin{figure}[h]
+    \item Tenseal, librería criptográfica que proporciona una API para Python capaz de realizar encriptación homomórfica, al mismo tiempo que logra buena eficiencia al implementar la mayoría de las operaciones más costosas en C++.
+    \begin{figure}[H]
         \centering
-        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/tenseal_logo.png}
+        \includegraphics[height=0.1\textwidth, width=0.1\textwidth]{Figuras/tenseal_logo.png}
         \caption{Logo librería Tenseal}
         \label{fig:logo_tenseal}
     \end{figure}
-    \item Scipy, librería compuesta por herramientas y algoritmos matemáticos, contiene diversos módulos para la optimización, álgebra lineal, integración, interpolación, procesamiento de señales e imágen, entre otros; lo cual resulta muy útil para tareas de ciencia e ingeniería.
-    \begin{figure}[h]
+    \item Scipy, librería compuesta por herramientas y algoritmos matemáticos, que contiene diversos módulos para la optimización, álgebra lineal, integración, interpolación, procesamiento de señales e imagen, entre otros; lo cual resulta muy útil para tareas de ciencia e ingeniería.
+    \begin{figure}[H]
         \centering
-        \includegraphics[height=0.2\textwidth, width=0.2\textwidth]{Figuras/scikit_logo.png}
+        \includegraphics[height=0.1\textwidth, width=0.1\textwidth]{Figuras/scipy_logo.png}
         \caption{Logo librería Scipy}
         \label{fig:logo_scipy}
     \end{figure}
@@ -394,11 +413,11 @@ En cuanto a las bibliotecas empleadas para el desarrollo de estos programas, enc
 \subsection{Configuración del entorno}
 \label{sec:config}
 
-En este apartado se procede a explicar en detalle cual ha sido la configuración, instalación y preparación necesaria para cada uno de los dispositivos embebidos utilizados.
+En este apartado se procede a explicar, en detalle, cual ha sido la configuración, instalación y preparación necesaria para cada uno de los dispositivos embebidos utilizados.
 
 \paragraph{Raspberry Pi}
 
-Para los dos tipos de modelos utilizados - y descritos en apartados anteriores - el proceso ha sido el mismo y consta de las mismas partes. Se ha realizado, por tanto, un tipo de instalación llamado \textit{headless-config}, que se da cuando se instala y configura un SO sin ningún entorno gráfico ni soporte o periférico auxiliar, de manera que accedemos a él mediante una terminal de otro equipo conectado a la misma red.
+Para los dos tipos de modelos usados - y descritos en apartados anteriores - el proceso ha sido el mismo y consta de las mismas partes. Se ha realizado, por tanto, un tipo de instalación llamado \textit{headless-config}, que se da cuando se instala y configura un SO sin ningún entorno gráfico ni soporte o periférico auxiliar, de manera que accedemos a él mediante una terminal de otro equipo conectado a la misma red.
 
 Los pasos que se han seguido se ilustran en la documentación de referencia de la fundación Raspberry, cuyo enlace incluimos en [\ref{sec:documentacion}] como \textit{Raspberry Pi Official Getting Started Guide}.
 
@@ -406,10 +425,15 @@ Los pasos que se han seguido se ilustran en la documentación de referencia de l
 
 El proceso se resume en lo siguiente:
 
-\begin{enumerate}
-    \item Mediante la herramienta oficial \textbf{Raspberry Pi Imager Installer} se formatea y flashea el SO escogido mencionado anteriormente (Raspberry Pi OS Lite 32Bit). Desde el menú proporcionado por este programa ya podemos configurar el nombre de usuario, el nombre de host del dispositivo y hasta la configuración de red y permitir conexiones SSH; haciendo que se conecte así automáticamente a nuestra WLAN cuando se encienda.
+\begin{enumerate}[noitemsep, topsep=5pt]
+    \item Mediante la herramienta oficial \textbf{Raspberry Pi Imager Installer} se formatea y flashea el SO escogido mencionado anteriormente (Raspberry Pi OS Lite 32Bit). Desde el menú proporcionado por este programa ya podemos configurar el nombre de usuario, el nombre de host del dispositivo y hasta la configuración de red y permisos para conexiones SSH; haciendo que se conecte así automáticamente a nuestra WLAN cuando se encienda.
 
-\begin{figure}[htb]
+    \item Posteriormente se identifica el nuevo dispositivo conectado a la red de área local inalámbrica, se anota su IP y se le configura una estática para poder guardar y automatizar el perfil de conexión a dicho dispositivo mediante \textbf{SSH}.
+
+    \item Por último se procede a conectarse desde el ordenador portátil por SSH, bien directamente por consola de comandos de Windows CMD o usando un progama específico como PuTTY - que permite guardar dichas conexiones bajo perfiles - y actualizamos el sistema operativo e instalamos la versión de \textbf{Python} y librerías necesarias.
+\end{enumerate}
+
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.47\linewidth}
         \centering
@@ -435,14 +459,11 @@ El proceso se resume en lo siguiente:
         \includegraphics[width=\linewidth]{Figuras/4b2.PNG}
         \caption{Grabando imagen de SO en tarjeta SD para modelo Pi 4B}
     \end{subfigure}
-    \caption{Instalación de SO en dispositivos Raspberry}
+    \caption{\textcircled{1} - Instalación de SO en dispositivos Raspberry}
     \label{fig:so_raspberrys}
 \end{figure}
 
-    \item Posteriormente se identifica el nuevo dispositivo conectado a la red de área local inalámbrica, se anota su IP y se le configura una estática para poder guardar y automatizar el perfil de conexión a dicho dispositivo mediante \textbf{SSH}.
-
-    %La 5 depizero, la 4b3
-    \begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.47\linewidth}
         \centering
@@ -455,13 +476,11 @@ El proceso se resume en lo siguiente:
         \includegraphics[width=\linewidth, height=0.3\textwidth]{Figuras/4b3.PNG}
         \caption{IP modelo Pi 4B en WLAN}
     \end{subfigure}
-    \caption{Identificando y asignando IP estáticas para modelos Raspberry en WLAN}
+    \caption{\textcircled{2} - Identificando y asignando IP estáticas para modelos Raspberry en WLAN}
     \label{fig:ip_raspberrys}
-    \end{figure}
+\end{figure}
 
-    \item Por último se procede a conectarse desde el ordenador portátil por SSH, bien directamente por consola de comandos de Windows CMD o usando un progama específico como PuTTY - que permite guardar dichas conexiones bajo perfiles - y actualizamos el sistema e instalamos la versión de \textbf{Python} y librerías necesarias.
-    
-\begin{figure}[htb]
+\begin{figure}[H]
     \centering
     \begin{subfigure}{.47\linewidth}
         \centering
@@ -487,18 +506,15 @@ El proceso se resume en lo siguiente:
         \includegraphics[width=\linewidth]{Figuras/4b6.PNG}
         \caption{Actualizando e instalando paqueterías}
     \end{subfigure}
-    \caption{Conexión a dispositivos en WLAN, actualización de SO e instalación de Python y librerías}
+    \caption{\textcircled{3} - Conexión a dispositivos en WLAN, actualización de SO e instalación de Python y librerías}
     \label{fig:so_raspberrys}
 \end{figure}
-
-%la 6 y 9 de pizero, la 4b4 y 4b6
-\end{enumerate}
 
 \paragraph{Jetson Nano}
 
 Para el otro equipo restante, la Jetson Nano B01, el proceso ha sido similar pero con ciertas variaciones, fruto de las particularidades de este dispositivo. Así, por ejemplo, al no disponer de conexión inalámbrica (es cierto que ofrece un puerto de expansión pero la tarjeta de red se ha de instalar a mayores), se tuvo que enlazar por microUSB este dispositivo al ordenador portátil anfitrión y conectar como si fuera un puerto COM, para desde ahí realizar la instalación y configuración del SO correspondiente, siguiendo así una \textit{headless-config}, igual que antes.
 
-Una vez instalado y configurado, desde el equipo local, este dispositivo, se pudo desconectar, asignar una IP local estática y conectar directamente mediante cable Ethernet al router para acceder a él desde cualquier otro equipo conectado a la misma WLAN; sin la necesidad de estar directamente cableado con él.
+Una vez instalado y configurado desde el equipo local, se pudo desconectar el dispositivo y asignarle una IP local estática para conectarlo directamente mediante cable Ethernet al router y acceder así a él desde cualquier otro equipo conectado a la misma WLAN; sin la necesidad de estar cableado directamente con él.
 
 Los pasos seguidos, de igual modo, se ajustan a los documentados en la guía de referencia de la página de Nvidia para estos dispositivos, cuyo enlace incluimos en \ref{sec:documentacion} como \textit{Jetson Nano Getting Started Guide}.
 
@@ -508,9 +524,15 @@ Los pasos seguidos, de igual modo, se ajustan a los documentados en la guía de 
 En definitiva, los pasos fueron los siguientes:
 
 \begin{enumerate}
-    \item Una vez conectados físicamente al equipo mediante microUSB, procedemos a abrir una terminal remota para configurar la instalación inicial del SO, que, como se puede apreciar en la figura \ref{fig:so_jetson}, es una distribución específica de Ubuntu 18.04 denominada Linux Tegra. Se crea así usuario y nombre del equipo.
+    \item Nos conectamos físicamente al equipo mediante microUSB, procedemos a abrir una terminal remota para configurar la instalación inicial del SO, que, como se puede apreciar en la figura \ref{fig:so_jetson}, es una distribución específica de Ubuntu 18.04 denominada Linux Tegra. Se crea así usuario y nombre del equipo.
 
-\begin{figure}[htb]
+    \item Una vez configurado, nos desconectamos físicamente del dispositivo y lo conectamos por al \textit{router} mediante cable de red. Abrimos la ventana de administración de clientes DHCP y anotamos su IP, a través de la cúal somos capaces de obtener una terminal remota al dispositivo mediante SSH. Para evitar tener que repetir esta consulta en futuras ocasiones, configuramos una IP estática para este equipo y la anotamos junto con su MAC.
+
+    \item Por último, realizamos una actualización global del SO e instalamos los programas y librerías necesarios para desarrollar las pruebas de este Trabajo Final, es decir, Python en versión 3.10 y librerías mencionadas en el apartado anterior.
+
+\end{enumerate}
+
+\begin{figure}[h!]
     \centering
     \begin{subfigure}{.47\linewidth}
         \centering
@@ -536,14 +558,11 @@ En definitiva, los pasos fueron los siguientes:
         \includegraphics[width=\linewidth]{Figuras/jetson16.PNG}
         \caption{Instalación terminada, primer inicio }
     \end{subfigure}
-    \caption{Conexión física a dispositivo, configuración e instalación de SO para Jetson Nano}
+    \caption{\textcircled{1} - Conexión física a dispositivo, configuración e instalación de SO para Jetson Nano}
     \label{fig:so_jetson}
 \end{figure}
-%jetson5, 11, 13 y 16
 
-    \item Una vez configurado, nos desconectamos físicamente del dispositivo y lo conectamos por al \textit{router} mediante cable de red. Abrimos la ventana de administración de clientes DHCP y anotamos su IP, a través de la cúal somos capaces de obtener una terminal remota al dispositivo mediante SSH. Para evitar tener que repetir esta consulta en futuras ocasiones, configuramos una IP estática para este equipo y la anotamos junto con su MAC.
-
-\begin{figure}[htb]
+\begin{figure}[h!]
     \centering
     \begin{subfigure}{.47\linewidth}
         \centering
@@ -556,12 +575,11 @@ En definitiva, los pasos fueron los siguientes:
         \includegraphics[width=\linewidth, height=0.45\linewidth]{Figuras/jetson18.PNG}
         \caption{Accediendo mediante SSH al dispositivo}
     \end{subfigure}
-    \caption{Conexión mediante SSH, configuración de IP estática.}
+    \caption{\textcircled{2} - Conexión mediante SSH, configuración de IP estática.}
     \label{fig:ip_jetson}
 \end{figure}
-%jetson 18 y 25
-    \item Por último, realizamos una actualización global del SO e instalamos los programas y librerías necesarios para desarrollar las pruebas de este Trabajo Final, es decir, Python en versión 3.10 y librerías mencionadas en el apartado anterior.
-\begin{figure}[h]
+
+\begin{figure}[h!]
     \centering
     \begin{subfigure}{.47\linewidth}
         \centering
@@ -574,11 +592,9 @@ En definitiva, los pasos fueron los siguientes:
         \includegraphics[width=\linewidth]{Figuras/jetson23.PNG}
         \caption{Instalando dependencias necesarias}
     \end{subfigure}
-    \caption{Actualización e instalación de programas y librerías}
+    \caption{\textcircled{3} - Actualización e instalación de programas y librerías}
     \label{fig:python_jetson}
-\end{figure}    
-%jetson 20 y 23
-\end{enumerate}
+\end{figure}   
 
 \clearpage
 
