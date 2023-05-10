@@ -55,7 +55,7 @@ A continuación presentamos un mapa conceptual \ref{fig:diagrama_ia} y unas defi
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.5]{Figuras/diagrama_IA.png}
+    \includegraphics[scale=0.5]{Figuras/diagrama_IA_2.png}
     \caption{Mapa conceptual AI - Data Science}
     \label{fig:diagrama_ia}
 \end{figure}
@@ -74,7 +74,146 @@ A continuación presentamos un mapa conceptual \ref{fig:diagrama_ia} y unas defi
 Las técnicas exploradas y desarrolladas en este Trabajo Final corresponden a un área dentro del \textit{Aprendizaje Automático}, relativamente reciente, llamado \textit{Aprendizaje Federado}, por lo que las siguientes secciones se centrarán en profundizar en los fundamentos de ambas, así como en las técnicas de procesado de datos y preparación de los mismos, que es tan fundamental como la idoneidad o eficacia del propio algoritmo. Para acabar se introducirá el concepto de \textit{Algoritmos verdes}, que es lo quiere decir y que pretende alcanzar.
 
 \subsection{Aprendizaje automático}
+El aprendizaje automático nace con la idea de buscar algoritmos y técnicas que hagan posible que los ordenadores pudiesen \textit{aprender} sin ser programados para seguir unas reglas específicas, si no a través de la experiencia, partiendo de un gran volumen de ejemplos.
+
+Estos ejemplos formarán lo que se conoce luego como datos de entrada y, más específicamente, predictores o características (\textit{features or predictors}). Así, las algoritmos de ML se usan para descubrir patrones ocultos, establecer relaciones y grupos o predecir algún atributo.
+
+De lo anterior se puede concluir, a grosso modo, que \textit{Machine Learning} se puede usar para la resolución de problemas que no están determinados con fórmulas precisas y que, por tanto, se podrían reducir a una planteamiento basado en sistemas de reglas; si no que para aquellos donde se desconozca, bien por la gran cantidad de variables dependientes, bien por la complejidad o aleatoriedad de las mismas, la correspondencia entre causas y efectos.
+
+Las técnicas de ML hacen uso conjunto de distintas áreas de conocimiento para lograr sus objetivos, como la estadística, probabilística, cálculo y optimización mediante métodos numéricos. Además, también se inspira en otras disciplinas como la teoría de la información, la psicología o la neurociencia.
+
+Antes de entrar en los distintos tipos de aprendizaje automático existentes y, puesto que explicaremos en secciones posteriores, más en detalle, las diferencias entre este y técnicas más avanzadas como \textit{Deep Learning} o cómo desarrollar un modelo y sus pasos, se va a introducir ahora terminología y una aproximación general al proceso de funcionamiento de un método de ML.
+
+Haciendo un símil ejemplificativo, el proceso de un método de ML \textit{aprende} de la experiencia como lo podrían hacer unos estudiantes. Primero estos son enseñados por sus profesores (\textbf{\emph{entrenamiento/training}}). A final de curso, necesitan examinarse (\textbf{\emph{prueba/testing}}). La nota obtenida, calificada según determinadas métricas (\textbf{\emph{evaluación/evaluation}}), determina, si pasamos cierto corte (\textbf{umbral/baseline}), la necesidad de repetir todo el proceso de nuevo o si estamos preparados para su aplicación (\textbf{\emph{despliegue/deployment}}).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[height=0.4\textwidth, width= 0.8\textwidth]{Figuras/ml_process.png}
+    \caption{Flujo de procesado en métodos de Machine Learning \cite{flujo_ML}}
+    \label{fig:procesado_ML}
+\end{figure}
+
+Las palabras enfatizadas son parte de esta terminología e ilustran \ref{fig:procesado_ML}, de manera muy simple, un método de ML conocido como \textit{aprendizaje supervisado}.
+
+Existen varios tipos de Aprendizaje Automático, pero sin duda hay dos grandes categorías, \textbf{aprendizaje supervisado} y el \textbf{aprendizaje no-supervisado}. La diferencia entre estos, y algunos algoritmos de uso típico de cada uno de ellos, se explicarán en secciones posteriores. A continuación se deja una figura \ref{fig:cateogorizacion_ML} que muestra esta gran división categórica y algunos ejemplos de aplicación de cada una.
+
+%ilustracion categorias ML
+\begin{figure}[h!]
+    \centering
+    \includegraphics[height=0.6\textwidth, width= 0.9\textwidth]{Figuras/categorizacion_ML.png}
+    \caption{Categorización de Machine Learning \cite{categorizacion_ML}}
+    \label{fig:cateogorizacion_ML}
+\end{figure}
+
+En general, se diferencian los siguientes tipos de ML:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item Aprendizaje supervisado.
+    \item Aprendizaje no-supervisado.
+    \item Aprendizaje por refuerzo.
+    \item Aprendizaje semi-supervisado.
+    \item Aprendizaje por transferencia.
+    \item Detección de anomalías.
+\end{itemize}
+
+\subsubsection{Aprendizaje supervisado}
+Como sugiere el nombre, el aprendizaje para estos métodos está supervisado basado en un atributo u objetivo especificado del que se tiene constancia, es decir, que se encuentra correctamente etiquetado.
+
+Así, el conjunto de datos consta de un histórico de atributos objetivos etiquetados y acompañado de otras variables, que se usarán para predecirlo, denominadas \textit{predictores} o \textit{características}.
+
+El objetivo puede ser un atributo numérico continuo, un atributo binario que indique grupos sí/no
+o un atributo multiclase con más de dos categorías. Basado en la anterior separación, se habla entonces de tareas de aprendizaje supervisado de \textbf{regresión} o \textbf{clasificación}, correspondientemente.
+
+Las primeras tratan así de predecir valores continuos, mientras que las últimas agrupan en una u otra clase el conjunto de datos.
+
+%figura ejemplo
+\begin{figure}[H]
+    \centering
+\includegraphics[scale=0.4]{Figuras/clasificacion_regresion.jpeg}
+    \caption{Tareas de clasificación y regresión en aprendizaje supervisado \cite{starship_ML}}
+    \label{fig:clasificacion_regresion}
+\end{figure}
+
+%lista algoritmos
+Existen muchos algoritmos de Aprendizaje Automático que caen dentro de esta categoría supervisada, por ejemplo:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item Regresión logística.
+    \item Regresión lineal.
+    \item Árboles de decisión
+    \item KNN, \textit{K-Nearest-Neighbors}.
+    \item Random Forest
+    \item SVM, \textit{Support Vector Machines}
+    \item ...
+\end{itemize}
+
+\subsubsection{Aprendizaje no-supervisado}
+En el caso del aprendizaje no-supervisado, no existe un atributo objetivo, es decir, no se cuenta con datos etiquetados.
+
+El fin de estos métodos es entonces el de identificar patrones deduciendo la estructura y relaciones que tienen los atributos del conjunto de datos entre sí, separándolos en diferentes grupos o \textit{clusters}.
+
+Existen dos tipos de problemas que resuelven estas técnicas: la segmentación (o \textit{clustering}) y la reducción dimensional.
+
+El primero agrupa datos en diversos conjuntos según características similares que encuentre entre ellos y el último comprime en un número menor de variables el conjunto de datos, a expensas e intentando perder la mínima información posible del conjunto. Agrupación de clientes, recomendación de productos y extracción de componentes serían algunas aplicaciones prácticas de estas técnicas, que se ilustra en la figura \ref{fig:clasificacion_ML}.
+
+%figura ejemplo
+\begin{figure}[H]
+    \centering
+\includegraphics[scale=0.4]{Figuras/clasificacion_ML.jpeg}
+    \caption{Tareas de aprendizaje no-supervisado: segmentación y reducción dimensional \cite{starship_ML}}
+\label{fig:clasificacion_ML}
+\end{figure}
+
+%listado algoritmos
+Algunos de los algoritmos usados para esta categoría son, por ejemplo:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item K-means.
+    \item Clustering espectral.
+    \item PCA, \textit{Principal Component Analysis}.
+    \item Clustering jerárquico.
+    \item SVD, \textit{Singular Value Decomposition}
+    \item ...
+\end{itemize}
+
+\subsubsection{Aprendizaje por refuerzo}
+En esta categoría de aprendizaje automático existe un agente que interactúa con un ambiente y tiene que aprender a tomar acciones que maximicen una recompensa numérica dada por el modelo. El agente \textit{aprende} a través de prueba y error de manera iterativa, recibiendo información sobre el éxito o fracaso de sus acciones mediante recompensas o penalizaciones, de forma que existe una retroalimentación entre agente y ambiente, como se puede observar en la figura \ref{fig:flujo_refuerzo}.
+
+El objetivo del aprendizaje por refuerzo o \textbf{\emph{reinforcement learning}} es encontrar una estrategia que maximice la recompensa acumulada a largo plazo ya que, en general, existe siempre una mediación entre la exploración del entorno, la selección de acciones y la actualización de la política o función de valor.
+
+%figura
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{Figuras/reinforcement_ML.jpeg}
+    \caption{Flujo de trabajo de los métodos de aprendizaje por refuerzo \cite{starship_ML}}
+    \label{fig:flujo_refuerzo}
+\end{figure}
+
+%algoritmos
+En cuanto a los algoritmos de esta categoría de aprendizaje, podemos distinguir algunos específicos de dependiendo de su enfoque; así, tenemos:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item \textbf{Métodos de valores}. Se optimiza una función que asigna valores a cada estado o acciópn en función de la recompensa obtenida; por ejemnplo, algoritmo Monte Carlo.
+    \item \textbf{Métodos de política}. Se aprende una metodología que dicta que acción tomar en cada estado; por ejemplo, algoritmo Actor-Critic o Reinforce.
+    \item \textbf{Métodos de modelo}. Se usa un modelo del entorno para planificar acciones futuras; por ejemplo, algoritmo Dyna-Q.
+\end{itemize}
+
+%aplicaciones
+Este tipo de métodos se usan comúnmente en problemas de toma de decisiones secuenciales, como juegos, robótica o gestión de inventarios, por ejemplo.
+
+\subsubsection{Aprendizaje semi-supervisado}
 TODO
+
+\subsubsection{Aprendizaje por transferencia}
+TODO
+
+\subsubsection{Detección de anomalías}
+TODO
+
+\subsubsection{Aprendizaje profundo}
+TODO
+
+\subsubsection{Desarrollo de modelos}
+TODO
+%Data preprocessing.
+%Entrenamiento validacion y test.
+%conceptos ML, overfitting etc
 
 \subsection{Aprendizaje federado}
 TODO
