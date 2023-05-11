@@ -189,22 +189,55 @@ El objetivo del aprendizaje por refuerzo o \textbf{\emph{reinforcement learning}
 %algoritmos
 En cuanto a los algoritmos de esta categoría de aprendizaje, podemos distinguir algunos específicos de dependiendo de su enfoque; así, tenemos:
 \begin{itemize}[noitemsep, topsep=5pt]
-    \item \textbf{Métodos de valores}. Se optimiza una función que asigna valores a cada estado o acciópn en función de la recompensa obtenida; por ejemnplo, algoritmo Monte Carlo.
+    \item \textbf{Métodos de valores}. Se optimiza una función que asigna valores a cada estado o acción en función de la recompensa obtenida; por ejemplo, algoritmo Monte Carlo.
     \item \textbf{Métodos de política}. Se aprende una metodología que dicta que acción tomar en cada estado; por ejemplo, algoritmo Actor-Critic o Reinforce.
     \item \textbf{Métodos de modelo}. Se usa un modelo del entorno para planificar acciones futuras; por ejemplo, algoritmo Dyna-Q.
 \end{itemize}
 
 %aplicaciones
-Este tipo de métodos se usan comúnmente en problemas de toma de decisiones secuenciales, como juegos, robótica o gestión de inventarios, por ejemplo.
+Este tipo de métodos se usan comúnmente en problemas de toma de decisiones secuenciales, como juegos, robótica o gestión de inventarios, por nombrar unos ejemplos.
 
 \subsubsection{Aprendizaje semi-supervisado}
-TODO
+El aprendizaje semi-supervisado es una técnica que se usa cuando se tiene un gran volumen de datos sin etiquetar, es decir, donde se desconoce el valor del atributo objetivo y, por la contra, se posee sólo una pequeña cantidad de datos etiquetados. La idea es utilizar estos últimos para aprender un modelo que luego clasifique a los primeros.
+
+El modelo entonces \textit{aprende} a partir de los datos etiquetados y emplea esta información para inferir la estructura subyacente de los datos no etiquetados. Este flujo se ilustra en la figura \ref{fig:semi_supervisado}:
+
+%figura
+\begin{figure}[H]
+    \centering
+\includegraphics[scale=0.7]{Figuras/semi_supervised.jpg}
+    \caption{Flujo de trabajo de un modelo de aprendizaje semi-supervisado \cite{semi_supervised}}
+    \label{fig:semi_supervisado}
+\end{figure}
+
+%listado algoritmos
+Los algoritmos típicos utilizados en este tipo de métodos incluyen:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item \textbf{Clustering basado en grafos}. Se construye un grafo a partir de los datos etiquetados y se usa \textit{clustering} para asignar etiquetas a los desconocidos; p.ej. algoritmo de corte normalizado.
+    \item \textbf{Co-entrenamiento}. Dos modelos distintos etiquetan los datos desconocidos de forma iterativa usando cada uno las etiquetas asignadas por el otro para mejorar el rendimiento conjunto.
+    \item \textbf{Modelos generativos}. Se intenta modelar la distribución conjunta de los datos y sus etiquetas y luego usan esta para asignar la de los atributos desconocidos; p.ej. modelos de mezcla de Gaussianas.
+    \item \textbf{\emph{Reducción de dimensionalidad}}. Se reduce la dimensionalidad de los datos y se usa agrupamiento para asignar etiquetas a los datos desconocidos; p.ej. PCA, análisis de factores.
+\end{itemize}
 
 \subsubsection{Aprendizaje por transferencia}
-TODO
+En el aprendizaje por transferencia, también conocido como \textit{transfer learning}, se aprovecha el conocimiento adquirido por un modelo entrenado en una tarea específica para mejorar el rendimiento de un modelo destinada a otro fin o tarea relacionada pero diferente, sirviéndole así como punto de partida.
+
+A diferencia del resto de categorías de aprendizaje automático, el \textit{transfer learning} se centra en la transferencia de conocimiento de una tarea a otra, como se ve en la figura \ref{fig:transfer_learning}.
+
+%figura
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Figuras/transfer_learning.png}
+    \caption{Conceptualización de la aplicación del aprendizaje por transferencia}
+    \label{fig:transfer_learning}
+\end{figure}
+
+%ejemplos y algoritmos
+
+Este tipo de métodos tienen su aplicación más común en el campo de visión artificial.Un algoritmo de este tipo serían los conocidos como \textit{fine-tuning}, que consisten en tomar una red pre-entrenada en una tarea y adaptarla al problema específico, usualmente eliminando las capas finales de la red neuronal del modelo original y reemplazándola por nuevas que se adapten a las \textit{salidas} del nuevo problema, para luego dar comienzo al entrenamiento.
 
 \subsubsection{Detección de anomalías}
-TODO
+Los métodos de esta categoría tratan de identificar los puntos
 
 \subsubsection{Aprendizaje profundo}
 TODO
@@ -910,6 +943,7 @@ Las abreviaturas introducidas en el presente trabajo se recogen en la siguiente 
     \item[MAC] \textit{Media Access Control}, identificador de 6-bytes que corresponde de forma única a una tarjeta de red. Por esta razón también se le suele llamar dirección física, ya que es única para cada dispositivo.
     \item[DHCP] \textit{Dynamic Host Configuration Protocol}, protocolo de red utilizado para asignar de manera automática direcciones IP y otros parámetros de configuración de red, sin necesidad de configuración manual.
     \item[P2P] \textit{Peer-To-Peer}, modelo de comunicación entre dos o más dispositivos, de manera que establecen conexiones para compartir datos y recursos directamente entre ellos, sin necesidad de un servidor central.
+    \item[PCA] \textit{Principal Component Analysis}, técnica para analizar conjuntos de datos que contienen un gran número de dimensiones/características por observación, aumentando la interpretabilidad de los datos y su visualización reteniendo la máxima cantidad de información original.
 \end{description}
 \end{quote}
 
