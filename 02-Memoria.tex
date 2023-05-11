@@ -46,10 +46,10 @@ El ámbito de aplicación de este Trabajo Final aborda diversos aspectos dentro 
 \newpage
 
 \section{Antecedentes}
-Planteamos esta sección con un doble objetivo: realizar una revisión de las distintas tendencias dentro de la inteligencia artificial y el estado-del-arte de la misma así como el de efectuar una recapitulación teórica de los distintos campos que forman parte de ella.
+Planteamos esta sección con un doble objetivo: realizar una revisión de las distintas tendencias y estado-del-arte dentro de la inteligencia artificial así como el de efectuar un compendio teórica de los distintos campos que forman parte de ella.
 
 \subsection{Inteligencia Artificial}
-Antes de entrar de lleno en las diferentes técnicas y algoritmos que ofrece la Inteligencia Artificial, es bueno dar un repaso por los fundamentos de este campo y sus diferentes ramas. La mejor forma de introducir así este tema es tener bien claro a que nos estamos refiriendo, ¿que es aquello a lo que se llama \textit{Artificial Intelligence}?, ¿como se distingue de otros conceptos como \textit{Machine Learning}, \textit{Data Mining}, \textit{Big Data} y otros conceptos tan en boga hoy día?
+Antes de entrar de lleno en las diferentes técnicas y algoritmos que ofrece la Inteligencia Artificial, es bueno dar un repaso por los fundamentos de este campo y sus diferentes ramas. La mejor forma de introducir así este tema es tener bien claro a que nos estamos refiriendo; ¿que es aquello a lo que se llama \textit{Artificial Intelligence}?, ¿como se distingue de otros conceptos como \textit{Machine Learning}, \textit{Data Mining}, \textit{Big Data} y otros conceptos tan en boga hoy día?
 
 A continuación presentamos un mapa conceptual \ref{fig:diagrama_ia} y unas definiciones que ayudan a aclarar estas nociones:
 
@@ -62,29 +62,29 @@ A continuación presentamos un mapa conceptual \ref{fig:diagrama_ia} y unas defi
 
 \begin{description}
     \item[Artificial Intelligence] disciplina que busca crear algoritmos y sistemas que puedan imitar a la inteligencia humana para realizar tareas complejas de forma autónoma, por ejemplo percepción, toma de decisiones o aprendizaje.
-    \item[Machine Learning] conjunto de algoritmos capaces de identificar y aprender patrones en datos para realizar predicciones, de modo que tienen la habilidad de aprenderlos sin estar programados explícitamente para ello, si no descubriendo las relaciones entre variables por si solos. Es un término originado en los años 1950, definido por primera vez por Arthur Lee Samuel, informático teórico estadounidense. Tom Mitchell, informático teórico posterior, llegó a proponer la siguiente definición, más precisa: \textit{Un programa se dice que aprende de la experiencia \emph{E} con respecto a una tarea \emph{T} y una métrica de desempeño \emph{P}, si su rendimiento en \emph{T}, medido por \emph{P}, mejora con la experiencia \emph{E}}.
+    \item[Machine Learning] conjunto de algoritmos capaces de identificar y reconocer patrones en conjuntos de datos para, posteriormente, realizar predicciones u otras tareas, descubriendo así relaciones entre las variables de las observaciones por si solos y sin haber sido programados explícitamente para ello, si no a base de tratar con un gran volumen de datos o ejemplos.\\ Machine Learning es un término originado en los años 1950, definido por primera vez por Arthur Lee Samuel, informático teórico estadounidense. Tom Mitchell, informático teórico posterior, llegó a proponer la siguiente definición, más precisa: \textit{Un programa se dice que aprende de la experiencia \emph{E} con respecto a una tarea \emph{T} y una métrica de desempeño \emph{P}, si su rendimiento en \emph{T}, medido por \emph{P}, mejora con la experiencia \emph{E}}.
 
     \item De estas dos definiciones anteriores podemos concluir que el Aprendizaje Automático es una manera de Inteligencia Artificial. De todos modos, podemos tener IA sin ML; por ejemplo, si codificamos reglas, árboles de decisión o técnicas de búsqueda, podemos crear un agente heurístico de inteligencia artificial, sin un enfoque basado en el del ML.
-    \item[Deep Learning] técnica de ML que imita redes neuronales de manera artificial para aprender a partir de dtaos no estructurados, consiguiendo una mayor capacidad de representación que otras técnicas de ML tradicional.
+    \item[Deep Learning] técnica de ML que imita redes neuronales de manera artificial para aprender a partir de datos no estructurados, consiguiendo una mayor capacidad de representación que otras técnicas de ML tradicional.
     \item[Data Science] campo interdisciplinario que utiliza métodos estadísticos, de programación y de análisis de datos para extraer conocimiento de conjuntos de datos.
     \item[Big Data] término usado para el almacenamiento y procesado de grandes volúmenes de datos.
     \item[Data Mining] proceso de exploración y análisis de grandes conjuntos de datos para extraer valor de los mismos, como descubrir patrones, tendencias o relaciones útiles.
 \end{description}
 
-Las técnicas exploradas y desarrolladas en este Trabajo Final corresponden a un área dentro del \textit{Aprendizaje Automático}, relativamente reciente, llamado \textit{Aprendizaje Federado}, por lo que las siguientes secciones se centrarán en profundizar en los fundamentos de ambas, así como en las técnicas de procesado de datos y preparación de los mismos, que es tan fundamental como la idoneidad o eficacia del propio algoritmo. Para acabar se introducirá el concepto de \textit{Algoritmos verdes}, que es lo quiere decir y que pretende alcanzar.
+Las técnicas exploradas y desarrolladas en este Trabajo Final corresponden a un área dentro del \textit{Aprendizaje Automático}, relativamente reciente, llamado \textit{Aprendizaje Federado}, por lo que las siguientes secciones se centrarán en profundizar en los fundamentos de ambas, así como en las técnicas de procesado de datos y preparación de los mismos, que es tan fundamental para un buen desempeño como la idoneidad o eficacia del propio algoritmo. Para acabar se introducirá el concepto de \textit{Algoritmos verdes}, que es lo quiere decir y que pretende alcanzar.
 
 \subsection{Aprendizaje automático}
-El aprendizaje automático nace con la idea de buscar algoritmos y técnicas que hagan posible que los ordenadores pudiesen \textit{aprender} sin ser programados para seguir unas reglas específicas, si no a través de la experiencia, partiendo de un gran volumen de ejemplos.
+El aprendizaje automático nace con la idea de buscar algoritmos que hagan posible que los ordenadores pudiesen \textit{aprender} - sin ser programados para seguir unas reglas específicas dictadas de antemano - a través de la experiencia, partiendo de un gran volumen de ejemplos.
 
-Estos ejemplos formarán lo que se conoce luego como datos de entrada y, más específicamente, predictores o características (\textit{features or predictors}). Así, las algoritmos de ML se usan para descubrir patrones ocultos, establecer relaciones y grupos o predecir algún atributo.
+Estos ejemplos formarán lo que se conoce luego como datos de entrada y, más específicamente, predictores o características (\textit{features or predictors}). Así, los algoritmos de ML se usan para descubrir patrones ocultos, establecer relaciones y grupos o predecir algún atributo.
 
-De lo anterior se puede concluir, a grosso modo, que \textit{Machine Learning} se puede usar para la resolución de problemas que no están determinados con fórmulas precisas y que, por tanto, se podrían reducir a una planteamiento basado en sistemas de reglas; si no que para aquellos donde se desconozca, bien por la gran cantidad de variables dependientes, bien por la complejidad o aleatoriedad de las mismas, la correspondencia entre causas y efectos.
+De lo anterior se puede concluir, a grosso modo, que el \textit{Machine Learning} se puede usar para la resolución de problemas que no estén determinados con fórmulas precisas y que, por tanto, se podrían reducir a un planteamiento basado en sistemas de reglas; si no para aquellos donde se desconozca, bien por la gran cantidad de variables dependientes, bien por la complejidad o aleatoriedad de las mismas, la correspondencia entre causas y efectos.
 
 Las técnicas de ML hacen uso conjunto de distintas áreas de conocimiento para lograr sus objetivos, como la estadística, probabilística, cálculo y optimización mediante métodos numéricos. Además, también se inspira en otras disciplinas como la teoría de la información, la psicología o la neurociencia.
 
-Antes de entrar en los distintos tipos de aprendizaje automático existentes y, puesto que explicaremos en secciones posteriores, más en detalle, las diferencias entre este y técnicas más avanzadas como \textit{Deep Learning} o cómo desarrollar un modelo y sus pasos, se va a introducir ahora terminología y una aproximación general al proceso de funcionamiento de un método de ML.
+Antes de entrar en los distintos tipos de aprendizaje automático existentes y, puesto que explicaremos en secciones posteriores, más en detalle, los fundamentos de estos y de técnicas más avanzadas como \textit{Deep Learning}, además de cómo desarrollar un modelo y sus pasos, se va a introducir ahora la terminología necesaria y también una aproximación general al funcionamiento de un método típico de ML.
 
-Haciendo un símil ejemplificativo, el proceso de un método de ML \textit{aprende} de la experiencia como lo podrían hacer unos estudiantes. Primero estos son enseñados por sus profesores (\textbf{\emph{entrenamiento/training}}). A final de curso, necesitan examinarse (\textbf{\emph{prueba/testing}}). La nota obtenida, calificada según determinadas métricas (\textbf{\emph{evaluación/evaluation}}), determina, si pasamos cierto corte (\textbf{umbral/baseline}), la necesidad de repetir todo el proceso de nuevo o si estamos preparados para su aplicación (\textbf{\emph{despliegue/deployment}}).
+Haciendo un símil tosco, un método de ML \textit{aprende} de la experiencia como lo podrían hacer unos estudiantes. Primero estos son enseñados por sus profesores (\textbf{\emph{entrenamiento/training}}). A final de curso, necesitan examinarse (\textbf{\emph{prueba/testing}}). La nota obtenida, calificada según determinadas métricas (\textbf{\emph{evaluación/evaluation}}), determina, si pasamos cierto corte (\textbf{umbral\\/baseline}), la necesidad de repetir todo el proceso de nuevo o si estamos preparados para su aplicación (\textbf{\emph{despliegue/deployment}}).
 
 \begin{figure}[h!]
     \centering
@@ -93,7 +93,7 @@ Haciendo un símil ejemplificativo, el proceso de un método de ML \textit{apren
     \label{fig:procesado_ML}
 \end{figure}
 
-Las palabras enfatizadas son parte de esta terminología e ilustran \ref{fig:procesado_ML}, de manera muy simple, un método de ML conocido como \textit{aprendizaje supervisado}.
+Las palabras enfatizadas son parte de esta terminología e ilustran, en la figura \ref{fig:procesado_ML}, de manera muy simple, el flujo de trabajo de un método básico de \textit{aprendizaje automático}.
 
 Existen varios tipos de Aprendizaje Automático, pero sin duda hay dos grandes categorías, \textbf{aprendizaje supervisado} y el \textbf{aprendizaje no-supervisado}. La diferencia entre estos, y algunos algoritmos de uso típico de cada uno de ellos, se explicarán en secciones posteriores. A continuación se deja una figura \ref{fig:cateogorizacion_ML} que muestra esta gran división categórica y algunos ejemplos de aplicación de cada una.
 
@@ -115,10 +115,18 @@ En general, se diferencian los siguientes tipos de ML:
     \item Detección de anomalías.
 \end{itemize}
 
-\subsubsection{Aprendizaje supervisado}
-Como sugiere el nombre, el aprendizaje para estos métodos está supervisado basado en un atributo u objetivo especificado del que se tiene constancia, es decir, que se encuentra correctamente etiquetado.
+%figura sl_ul_rl
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{Figuras/unsupervised_supervised_reinforcement.jpeg}
+    \caption{Descripción de las tres categorías principales en Aprendizaje automático \cite{starship_ML}}
+    \label{fig:categorias_ml}
+\end{figure}
 
-Así, el conjunto de datos consta de un histórico de atributos objetivos etiquetados y acompañado de otras variables, que se usarán para predecirlo, denominadas \textit{predictores} o \textit{características}.
+\subsubsection{Aprendizaje supervisado}
+Como sugiere el nombre, el aprendizaje para estos métodos está supervisado por que se basa en un atributo u objetivo específico del que se tiene constancia, es decir, que se encuentra correctamente etiquetado.
+
+Así, el conjunto de datos consta de un atributo-objetivo etiquetado y acompañado de otras variables que se usarán para predecirlo, denominadas \textit{predictores} o \textit{características}.
 
 El objetivo puede ser un atributo numérico continuo, un atributo binario que indique grupos sí/no
 o un atributo multiclase con más de dos categorías. Basado en la anterior separación, se habla entonces de tareas de aprendizaje supervisado de \textbf{regresión} o \textbf{clasificación}, correspondientemente.
@@ -152,7 +160,7 @@ El fin de estos métodos es entonces el de identificar patrones deduciendo la es
 
 Existen dos tipos de problemas que resuelven estas técnicas: la segmentación (o \textit{clustering}) y la reducción dimensional.
 
-El primero agrupa datos en diversos conjuntos según características similares que encuentre entre ellos y el último comprime en un número menor de variables el conjunto de datos, a expensas e intentando perder la mínima información posible del conjunto. Agrupación de clientes, recomendación de productos y extracción de componentes serían algunas aplicaciones prácticas de estas técnicas, que se ilustra en la figura \ref{fig:clasificacion_ML}.
+El primero agrupa datos en diversos conjuntos según características similares que encuentre entre ellos y el último comprime en un número menor de variables el conjunto de datos, a expensas de - e intentando perder - la mínima información posible del conjunto. Agrupación de clientes, recomendación de productos y extracción de componentes serían algunas aplicaciones prácticas de estas técnicas, que se ilustra en la figura \ref{fig:clasificacion_ML}.
 
 %figura ejemplo
 \begin{figure}[H]
@@ -174,7 +182,7 @@ Algunos de los algoritmos usados para esta categoría son, por ejemplo:
 \end{itemize}
 
 \subsubsection{Aprendizaje por refuerzo}
-En esta categoría de aprendizaje automático existe un agente que interactúa con un ambiente y tiene que aprender a tomar acciones que maximicen una recompensa numérica dada por el modelo. El agente \textit{aprende} a través de prueba y error de manera iterativa, recibiendo información sobre el éxito o fracaso de sus acciones mediante recompensas o penalizaciones, de forma que existe una retroalimentación entre agente y ambiente, como se puede observar en la figura \ref{fig:flujo_refuerzo}.
+En esta categoría de aprendizaje automático existe un agente que interactúa con un ambiente y que tiene que aprender a tomar acciones que maximicen una recompensa numérica dada por el modelo. El agente \textit{aprende} a través de la prueba y error de manera iterativa, recibiendo información sobre el éxito o fracaso de sus acciones mediante recompensas o penalizaciones, de forma que existe una retroalimentación entre agente y ambiente, como se puede observar en la figura \ref{fig:flujo_refuerzo}.
 
 El objetivo del aprendizaje por refuerzo o \textbf{\emph{reinforcement learning}} es encontrar una estrategia que maximice la recompensa acumulada a largo plazo ya que, en general, existe siempre una mediación entre la exploración del entorno, la selección de acciones y la actualización de la política o función de valor.
 
@@ -187,7 +195,7 @@ El objetivo del aprendizaje por refuerzo o \textbf{\emph{reinforcement learning}
 \end{figure}
 
 %algoritmos
-En cuanto a los algoritmos de esta categoría de aprendizaje, podemos distinguir algunos específicos de dependiendo de su enfoque; así, tenemos:
+En cuanto a los algoritmos típicos de esta categoría de aprendizaje, podemos distinguirlos dependiendo de su enfoque; así, tenemos:
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textbf{Métodos de valores}. Se optimiza una función que asigna valores a cada estado o acción en función de la recompensa obtenida; por ejemplo, algoritmo Monte Carlo.
     \item \textbf{Métodos de política}. Se aprende una metodología que dicta que acción tomar en cada estado; por ejemplo, algoritmo Actor-Critic o Reinforce.
@@ -205,7 +213,7 @@ El modelo entonces \textit{aprende} a partir de los datos etiquetados y emplea e
 %figura
 \begin{figure}[H]
     \centering
-\includegraphics[scale=0.7]{Figuras/semi_supervised.jpg}
+\includegraphics[scale=0.5]{Figuras/semi_supervised.jpg}
     \caption{Flujo de trabajo de un modelo de aprendizaje semi-supervisado \cite{semi_supervised}}
     \label{fig:semi_supervisado}
 \end{figure}
@@ -213,36 +221,86 @@ El modelo entonces \textit{aprende} a partir de los datos etiquetados y emplea e
 %listado algoritmos
 Los algoritmos típicos utilizados en este tipo de métodos incluyen:
 \begin{itemize}[noitemsep, topsep=5pt]
-    \item \textbf{Clustering basado en grafos}. Se construye un grafo a partir de los datos etiquetados y se usa \textit{clustering} para asignar etiquetas a los desconocidos; p.ej. algoritmo de corte normalizado.
+    \item \textbf{Clustering basado en grafos}. Se construye un grafo a partir de los datos etiquetados y se usa \textit{clustering} para asignar etiquetas a los desconocidos; p.ej. algoritmo de corte normalizado \textit{NCut}.
     \item \textbf{Co-entrenamiento}. Dos modelos distintos etiquetan los datos desconocidos de forma iterativa usando cada uno las etiquetas asignadas por el otro para mejorar el rendimiento conjunto.
     \item \textbf{Modelos generativos}. Se intenta modelar la distribución conjunta de los datos y sus etiquetas y luego usan esta para asignar la de los atributos desconocidos; p.ej. modelos de mezcla de Gaussianas.
-    \item \textbf{\emph{Reducción de dimensionalidad}}. Se reduce la dimensionalidad de los datos y se usa agrupamiento para asignar etiquetas a los datos desconocidos; p.ej. PCA, análisis de factores.
+    \item \textbf{\emph{Reducción de dimensionalidad}}. Se reduce la dimensionalidad de los datos y se usa agrupamiento para asignar etiquetas a los datos desconocidos; p.ej. \textit{PCA}, análisis de factores.
 \end{itemize}
 
 \subsubsection{Aprendizaje por transferencia}
-En el aprendizaje por transferencia, también conocido como \textit{transfer learning}, se aprovecha el conocimiento adquirido por un modelo entrenado en una tarea específica para mejorar el rendimiento de un modelo destinada a otro fin o tarea relacionada pero diferente, sirviéndole así como punto de partida.
+En el aprendizaje por transferencia, también conocido como \textit{transfer learning}, se aprovecha el conocimiento adquirido por un modelo entrenado en una tarea específica para mejorar el rendimiento de un modelo destinado a otro fin o tarea relacionada pero diferente, sirviéndole así como punto de partida.
 
 A diferencia del resto de categorías de aprendizaje automático, el \textit{transfer learning} se centra en la transferencia de conocimiento de una tarea a otra, como se ve en la figura \ref{fig:transfer_learning}.
 
 %figura
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{Figuras/transfer_learning.png}
+    \includegraphics[scale=0.4]{Figuras/transfer_learning.png}
     \caption{Conceptualización de la aplicación del aprendizaje por transferencia}
     \label{fig:transfer_learning}
 \end{figure}
 
 %ejemplos y algoritmos
 
-Este tipo de métodos tienen su aplicación más común en el campo de visión artificial.Un algoritmo de este tipo serían los conocidos como \textit{fine-tuning}, que consisten en tomar una red pre-entrenada en una tarea y adaptarla al problema específico, usualmente eliminando las capas finales de la red neuronal del modelo original y reemplazándola por nuevas que se adapten a las \textit{salidas} del nuevo problema, para luego dar comienzo al entrenamiento.
+Este tipo de métodos tienen su aplicación más común en el campo de visión artificial, particularmente para la clasificación de imágenes y también en el ámbito del reconocimiento de voz y \textit{NLP}. Un algoritmo de este tipo serían los conocidos como tipo \textit{fine-tuning}, que consisten en tomar una red pre-entrenada en una tarea y adaptarla al problema específico - usualmente eliminando las capas finales de la red neuronal del modelo original y reemplazándola por otras que se adapten a las nuevas \textit{salidas} - para luego dar comienzo al entrenamiento.
 
 \subsubsection{Detección de anomalías}
-Los métodos de esta categoría tratan de identificar los puntos
+Los métodos de esta categoría tratan de identificar puntos u observaciones inusuales o anómalos en un conjunto de datos. La idea general es identificar patrones en los datos y, a partir de estos, identificar aquellos que no siguen la norma o que son indicativos de un comportamiento inesperado.
+
+Se puede considerar como una forma de clasificación al mismo tiempo que un aprendizaje no-supervisado, ya que solo existiría una clase de datos (\textit{one-class}) - aquellos que conforman el perfil de comportamiento normal - y con ellos detectar precisamente las anomalías que no se puedan agrupar y, por tanto, difieran de las características normales del conjunto.
+
+Cabe mencionar que en este tipo de técnicas se trabaja con el supuesto de que tenemos un volumen de datos con observaciones \textit{normales} mucho mayores que el conjunto que conforman las observaciones extrañas.
+
+En la figura \ref{fig:deteccion_anomalias} se observa la similitud y diferencias entre una tarea de clasificación y una de detección de anomalías. Aunque esta última pudiera parecer también un problema de clasificación binaria - clase normal y clase anómala - , la falta de observaciones, irregularidad y carácter esporádico de las mismas no permitirían nunca definir un \textit{patrón de datos anómalos}. 
+
+%figura
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{Figuras/deteccion_anomalias.png}
+    \caption{Detección de anomalías como tipo de clasificación \textit{One-class} \cite{deteccion_anomalias}}
+    \label{fig:deteccion_anomalias}
+\end{figure}
+
+Un ejemplo típico de algoritmos usados en estos métodos de detección de anomalías sería el denominado \textit{One-class SVM}, el cual intenta encontrar un hiperplano que contenga la mayor parte de los datos del conjunto, asumiendo que el resto - que se encuentran en la región menos poblada - son casos anómalos.
+
+Este tipo de técnicas son muy usadas para identificar transacciones bancarias inusuales o sospechosas que sean indicativas de actividades fraudulentas, detecciones de intrusiones en redes informáticas o monitorización de maquinaria industrial, por ejemplo.
+
 
 \subsubsection{Aprendizaje profundo}
-TODO
+El conocido como Aprendizaje Profundo, o \textit{Deep Learning}, es un campo de la IA; más específicamente, un sub-conjunto del \textit{Machine Learning}, que está inspirado por las estructuras biológicas y funcionamiento del cerebro humano, concretamente de su sistema neuronal.
+
+Así, las técnicas y algoritmos del Aprendizaje Profundo emplean lo que se denomina como redes neuronales profundas - \textit{Deep Neural Networks} -, las cuales contienen múltiples capas de 'neuronas' artificiales capaces de reconocer patrones y abstracciones, partiendo de los datos de entrada en crudo/sin procesamiento previo, de forma parecida a como lo hace la mente humana.
+
+Esta es quizás una de las características mas relevantes y diferenciadoras de estos métodos respecto a los anteriores recién vistos, y que también son parte del aprendizaje automático. Y es que, como veremos en el siguiente apartado de 'Desarrollo de modelos' \ref{sec:Desarrollo_de_modelos}, las técnicas tradicionales necesitan que el conjunto de datos que se usa para el entrenamiento, validación y test del modelo haya sido previamente tratado, limpiado, filtrado e incluso transformado para así obtener la entrada más apropiada para al tipo de algoritmo empleado. Esto se conoce como \textit{data pre-processing} y \textit{feature extraction}, es decir, preprocesamiento y extracción de datos y atributos. Ilustramos este concepto en la figura \ref{fig:ml_vs_dl}:
+
+%figura ml_vs_dl
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Figuras/ml_vs_dl.jpg}
+    \caption{Extracción de características y patrones en ML y DL \cite{ml_vs_dl}}
+    \label{fig:ml_vs_dl}
+\end{figure}
+
+Todas estas redes neuronales artificiales aprenden sus patrones del conjunto de datos mediante una técnica llamada \textbf{back-propagation} o retropropagación. Además, se pueden distinguir siempre tres tipos de capas en estas redes: las capas de entrada (\textit{input layer}), las capas ocultas (\textit{hidden layer}) y las capas de salida (\textit{output layer}), como se observa en la figura \ref{fig:red_neuronal}:
+
+%figura red neuronal artificial
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Figuras/red_neuronal_artificial.png}
+    \caption{(a) Neurona artificial o nodo con entradas y pesos asociados y función de activación. (b) Esquema de una red neuronal artificial de dos clases con dos capas ocultas. \cite{dl_red}}
+    \label{fig:red_neuronal}
+\end{figure}
+
+%clasificacion, tipos y usos
+Del mismo modo que las tres principales ramas del \textit{Aprendizaje Automático}, que hemos explicado anteriormente, eran el \textit{aprendizaje supervisado}, el \textit{no supervisado} y el de \textit{refuerzo}, en el \textit{Deep Learning} también se mantiene la misma clasificación, presentando redes neuronales con arquitecturas ligeramente diferentes y diseñadas acorde a la aplicación de uso final. Así, tenemos:
+\begin{itemize}[noitemsep, topsep=0pt]
+    \item \textbf{Aprendizaje supervisado}. Alberga las Redes Neuronales Artificiales (usadas en clasificación y regresión), Redes Neuronales Convolucionales (utilizadas en visión artificial) y Redes Neuronales Recurrentes (empleadas en análisis de series temporales)
+    \item \textbf{Aprendizaje no supervisado}. Se tiene, por ejemplo, las redes tipo AutoEncoders (usadas mucho en sistemas de recomendación) y los mapas auto-organizados \textit{SOM} (usados en reducción dimensional)
+    \item \textbf{Aprendizaje por refuerzo}. Se diseñan las denominadas Redes Neuronales de Valor o de acción.
+\end{itemize}
 
 \subsubsection{Desarrollo de modelos}
+\label{sec:Desarrollo_de_modelos}
 TODO
 %Data preprocessing.
 %Entrenamiento validacion y test.
@@ -321,7 +379,7 @@ Para ello, deben ponerse de acuerdo en una estrategia que determine el orden de 
     %\includesvg[pretex=\tiny]{Figuras/diagrama_p2p.svg}
     \includegraphics[scale=0.5]{Figuras/diagrama_p2p.png}
     \caption{Ejemplo de arquitectura cliente-servidor para sistema federado.}
-    \label{fig:arquitectura_cliente_servidor}
+    \label{fig:arquitectura_p2p}
 \end{figure}
 
 Comparado con la arquitectura clásica cliente-servidor, tiene la ventaja de que no se necesita este último rol, lo cual puede ser un requerimiento para ciertas aplicaciones prácticas; además de evitar las fugas de información a esta figura coordinadora central. Las desventajas son varias, pero la más importante es el aumento de tiempo que conlleva este diseño, ya que las actualizaciones se harían en serie y no en lotes paralelos, como en el primer caso.
@@ -683,7 +741,7 @@ El proceso se resume en lo siguiente:
         \caption{Actualizando e instalando paqueterías}
     \end{subfigure}
     \caption{\textcircled{3} - Conexión a dispositivos en WLAN, actualización de SO e instalación de Python y librerías}
-    \label{fig:so_raspberrys}
+    \label{fig:so_raspberrys_2}
 \end{figure}
 
 \paragraph{Jetson Nano}
@@ -944,6 +1002,7 @@ Las abreviaturas introducidas en el presente trabajo se recogen en la siguiente 
     \item[DHCP] \textit{Dynamic Host Configuration Protocol}, protocolo de red utilizado para asignar de manera automática direcciones IP y otros parámetros de configuración de red, sin necesidad de configuración manual.
     \item[P2P] \textit{Peer-To-Peer}, modelo de comunicación entre dos o más dispositivos, de manera que establecen conexiones para compartir datos y recursos directamente entre ellos, sin necesidad de un servidor central.
     \item[PCA] \textit{Principal Component Analysis}, técnica para analizar conjuntos de datos que contienen un gran número de dimensiones/características por observación, aumentando la interpretabilidad de los datos y su visualización reteniendo la máxima cantidad de información original.
+    \item[NLP] \textit{Natural Language Processing}, rama de la IA que se ocupa de la interacción entre personas y ordenadores empleando el lenguaje humano como medio de comunicación a través de algoritmos que analizan, comprenden y generan texto y habla de modo automatizado.
 \end{description}
 \end{quote}
 
