@@ -301,7 +301,107 @@ Del mismo modo que las tres principales ramas del \textit{Aprendizaje Automátic
 
 \subsubsection{Desarrollo de modelos}
 \label{sec:Desarrollo_de_modelos}
+En esta sección se abordarán conceptos generales del \textit{Machine Learning} que se han de tener en cuenta a la hora de desarrollar un modelo, además de los pasos y flujo comunes y necesarios para llevarlo a cabo.
+
+Primero esbozaremos las distintas partes del proceso para, en siguientes apartados, entrar más en detalle en que consisten cada una de ellas.
+
+En general, el desarrollo de un modelo de \textbf{ML} implica siempre las siguientes puntos, tal y como se ilustran en la figura-resumen \ref{fig:flowchart_ml}:
+
+\begin{enumerate}[noitemsep, topsep=5pt]
+    \item \textbf{Definir} y entender el problema.
+    \item \textbf{Recopilar} datos.
+    \item \textbf{Preparar} datos.
+    \item \textbf{Seleccionar} el algoritmo apropiado y construir el modelo.
+    \item \textbf{Evaluar} y optimizar el modelo.
+    \item \textbf{Desplegar} para uso práctico.
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Figuras/flow_chart_ml.png}
+    \caption{Flujo de desarrollo típico de un modelo de \textit{ML} \cite{flujo_ML}}
+    \label{fig:flowchart_ml}
+\end{figure}
+
+\subsubsection{\centering\textcircled{1} Definición del problema}
+Es muy importante empezar entendiendo el problema a resolver y sus necesidades y características; \textit{¿que objetivo buscamos?}
+
+Para dar una aplicación y uso satisfactorio hay que definir bien siempre los datos disponibles, el tipo de problema y los requisitos de para su solución.
+
+Así, el tipo de problema puede ser uno de predicción de valores, clasificación, agrupación, reconocimiento de voz o imágenes etc.
+
+Los datos disponibles pueden estar en varias localizaciones, o generarse y procesarse en tiempo real, además de presentar varios posibles formatos y necesitar más o menos pre-procesamiento.
+
+Los requisitos de la solución son todos aquellos requerimientos de negocio que necesite cumplir el modelo final, ya que no sirve de nada construir un modelo que luego no pueda cumplir en cuestión de tiempo de respuesta/disponibilidad/veracidad etc.
+
+\subsubsection{\centering\textcircled{2} Recopilación de datos}
+La recogida de datos de una o varias fuentes necesita satisfacer los requerimientos del problema y del modelo, que puede llegar a necesitar un gran volumen de datos representativos para ser capaz de descubrir los patrones y relaciones entre ellos.
+
+El formato de los datos y su estructura precisada para posteriores fases es trabajo para esta ciclo del desarrollo, que muchas veces echa mano de técnicas de \textit{Big Data} para lograrlo.
+
+\subsubsection{\centering\textcircled{3} Preparación de datos}
+TEST
+
+\subsubsection{\centering\textcircled{4} Selección y construcción del modelo}
+A estas alturas, la selección del algoritmo apropiado y el tipo de datos, estructura y conjunto de datos de trabajo que este necesita ya debería de estar listo, puesto que su tratamiento, división e incluso transformación - muchas veces específica al algoritmo, ya que puede funcionar mejor con según que tipo de entradas - ya se ha abordado en las fases de preparación de datos.
+
+Así, este aspecto de construcción del modelo implica el diseño de su arquitectura y puesta en marcha del mismo.
+
+En cuanto a su diseño, se puede optar por arquitecturas centralizadas o distribuidas. Un diseño centralizado implica un modelo donde todo el procesamiento de datos - y su entrenamiento - se realiza en un solo lugar, como una única máquina o servidor. Por la contra, las arquitecturas distribuidas dividen este proceso en varias máquinas o servidores, lo que permite realizar su tratamiento en paralelo y en diferentes lugares geográficos. Este último enfoque se ha de tener en cuenta si existe una necesidad de procesar grandes cantidades de datos en un tiempo razonable, además de si por la naturaleza del problema la recogida de datos y su almacenamiento presenta límites físicos o incluso legales que se han de considerar. El diseño también puede llevar en sí el propio dimensionamiento del modelo, sobre todo cuando se trabaja con técnicas de \textit{Deep Learning}, donde la decisión del número de capas ocultas, el número de neuronas por capa y las funciones de activación asignadas a estas es una parte tan fundamental como el propio conjunto de datos y la solución deseada.
+
+Por último, la puesta en marcha de un modelo no garantiza su eficacia ni éxito, y muchas veces es necesario probar con distintos algoritmos o técnicas para quedarse, al final, con el que presente mejores resultados y desempeño. Esto implica una serie de tareas repetitivas y tediosas que pueden alargar esta fase del desarrollo, y por ello ya existen cada vez más herramientas dispuestas a automatizar también este trabajo.
+
+En lo que se conoce como \textit{\emph{Automated Machine Learning}}, unas herramientas automatizan el proceso de construcción de modelos, ayudando, probando y seleccionando diversos algoritmos e hiper-parámetros correspondientes. Algunos también realizan la limpieza y preprocesamiento de datos. Herramientas populares de este ámbito incluyen \textit{DataRobot}, \textit{Google AutoML} y \textit{H2Oai}, por ejemplo.
+
+\subsubsection{\centering\textcircled{5} Evaluación y optimización}
+La evaluación y optimización del modelo significa la introducción de las métricas de desempeño, la función de coste o pérdida y la afinación de hiper-parámetros pero, ¿que son? y, ¿para que sirven?:
+
+\paragraph{Métricas}. Las métricas de desempeño son una serie de indicadores del rendimiento del modelo, de su eficacia, de como de 'bueno' es y, en general, de qué cantidad de error ha cometido cuando se evalúa contra el conjunto de datos de test o de validación.
+
+Existen muchas métricas de desempeño diferentes, pero generalmente se suelen dividir según el tipo de método de aprendizaje automático que se utilizando. Así, por ejemplo, hay métricas propias de técnicas de aprendizaje supervisado, no-supervisado y por refuerzo. A continuación desglosamos algunas de ellas.
+
+\vspace{1em}
+
+\textbf{Aprendizaje supervisado}\\
+Para evaluar modelos de regresión:
+%TODO - ecuaciones y figuras
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item MAE, \textit{Mean Absolute Error}, es el error absoluto medio entre la predicción y los valores reales.
+    \item RMSE, \textit{Roor Mean Squared Error}, es el error cuadrático medio entre predicciones y observaciones.
+    \item $R^2$, conocido como coeficiente de determinación, aplicado a la relación entre valores reales y predicciones.
+\end{itemize}
+Para evaluar modelos de clasificación:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item MAE
+\end{itemize}
+
+\textbf{Aprendizaje no-supervisado}\\
+
+\textbf{Aprendizaje por refuerzo}\\
+
+
+\paragraph{Función de coste}.
 TODO
+
+\paragraph{Hiper-parámetros}.
+TODO
+
+
+\subsubsection{\centering\textcircled{6} Despliegue}
+El despliegue y uso práctico de un modelo de \textit{ML} simplemente implica la integración del modelo final en un entorno de producción, donde podrá generar los resultados esperados y ser utilizado para la toma de decisiones.
+
+Los únicos factores que se tienen que tener en cuenta aquí son la escalabilidad del modelo, el rendimiento del mismo, la privacidad y seguridad de los datos, la capacidad de actualización y mantenimiento del modelo y las posibles regulaciones e impacto de su uso.
+
+\vspace{2cm}
+
+Para acabar, presentamos en al figura \ref{fig:flowchart_sl} otro esquema que representa algunas de las fases descritas en este apartado de desarrollo de modelos, ejemplificado para la construcción de un método genérico de aprendizaje supervisado:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Figuras/flow_chart_sl.png}
+    \caption{Diagrama del desarrollo y entrenamiento típico de un modelo de aprendizaje supervisado}
+    \label{fig:flowchart_sl}
+\end{figure}
 %Data preprocessing.
 %Entrenamiento validacion y test.
 %conceptos ML, overfitting etc
