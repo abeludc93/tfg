@@ -410,19 +410,55 @@ Una vez contabilizadas dichas observaciones en la matriz anterior, existen una s
     \[Prior=P(aleatorio) \rightarrow Mejora=\frac{Precision}{Prior}\]
 \end{itemize}
 
-Después de definir estás métricas se suele recurrir a las curvas \textbf{ROC}, \textit{Receiver Operating Characteristic} y con ella obtener el valor \textbf{AUC}, \textit{Area Under Curve}, que ayuda, esta última, a dar una idea general de cómo de bueno es el modelo, y la primera en escoger el valor del \textbf{umbral} óptimo, según el comportamiento que deseemos para en la situación.
+Después de definir estás métricas se suele recurrir a las curvas \textbf{ROC}, \textit{Receiver Operating Characteristic} y con ella obtener el valor \textbf{AUC}, \textit{Area Under Curve}, que ayuda, esta última, a dar una idea general de cómo de bueno es el modelo, y la primera a escoger el valor del \textbf{umbral} óptimo para la clasificación binaria, según el comportamiento que deseemos del modelo en nuestra situación.
 
+La curva \textit{ROC} enfrenta en una gráfica el \textit{True Positive Rate} o \textit{recall} contra el \textit{False Poisitive Rate}. Para un umbral determinado de la clasificación, nuestro modelo se sitúa en un determinado punto, como se observa en la figura \ref{fig:roc_basico}:
+
+%figura ROC basica
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Figuras/roc_basico.png}
+    \caption{Punto en curva \textit{ROC} de modelo clasificatorio con umbral determinado}
+    \label{fig:roc_basico}
+\end{figure}
+
+Según se varia este umbral, el modelo contabiliza nuevos valores de la matriz de confusión y con ellos nuevas métricas $$\frac{TPR}{FPR}$$, generando una curva, como ilustra la figura \ref{fig:roc_dos}.
+
+%figura ROC dos
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Figuras/roc_dos.png}
+    \caption{Curva \textit{ROC} de modelo clasificatorio, con comportamientos distintos según que umbrales \cite{roc_curve}}
+    \label{fig:roc_dos}
+\end{figure}
+
+El \textit{AUC} es precisamente el área de esta curva. Modelos con buen comportamiento tendrán valores de AUC cercanos a 1, lo cual implica buenas métricas de especificidad, precisión, F1, etc. Modelos con AUC similares a $1/2$ no mejoran en mucho a un modelo de clasificación puramente aleatorio.
 
 \textbf{Aprendizaje no-supervisado}\\
 Las métricas de desempeño no son exclusivas de métodos de aprendizaje supervisado; así, se distinguen aquí dos categorías principales, las métricas \textit{externas} y las \textit{internas}, distinguiéndose ambas en si hacen uso de información externa para la validación, es decir, información que no es producto de la técnica de agrupación utilizada.
 
-Las internas evalúan que tan buena es la estructura del \textit{clustering} sin necesidad de datos ajenos al propio algoritmo, y se suelen usar para escoger el mejor algoritmo y su número óptimo de clusters, mientras que las externas se usan para decidir que tipo de agrupamiento se ajusta más al \textit{dataset} específico a tratar, cuando se conoce algún dato/ relación a mayores entre ellas o se desea algún comportamiento especial del agrupamiento.
+Las internas evalúan que tan buena es la estructura del \textit{clustering} sin necesidad de datos ajenos al propio algoritmo, y se suelen usar para escoger el mejor algoritmo y su número óptimo de clusters, mientras que las externas se usan para decidir que tipo de agrupamiento se ajusta más al \textit{dataset} específico a tratar, cuando se conoce algún dato/ relación a mayores entre ellas o se desea algún comportamiento especial del agrupamiento.\\
+Las métricas internas se basan en criterios de cohesión y separación y las más utilizadas suelen ser alguna de las siguientes:
 \begin{itemize}[noitemsep, topsep=5pt]
-    \item 
+    \item SSW, \textit{Sum of Squared Within}, medida de cohesión, donde  \textit{k} es el número de clústeres, \textit{x} un punto del clúster y \textit{m\textsubscript i} el centroide del clúster \textit{c\textsubscript i}.
+    \[SSW = \Sigma_{i = 1}^k \Sigma_{x \epsilon c_i} dist^2 (m_i,x)\]
+    \item SSB, medida de separación, evaluando la distancia inter-clúster, con \textit{k} num. clústeres, \textit{n\textsubscript j} num. elementos cluster \textit{j}, \textit{c\textsubscript j} el centroide del clúster \textit{j} y $\Bar{x}$ la media del dataset.
+    \[SSB = \Sigma_{j=1}^k dist^2 (c_j-\Bar{x})\]
+    \item Coeficiente de Silhouette, se define para un punto \textit{x} de un determinado clúster como:
+    \[s(x) = \frac{b(x)-a(x)}{\max a(x), b(x)}\]
+    Siendo la función $a(x)$ la distancia promedio de $x$ a todos los demás puntos del mismo clúster (cohesión) y la función $b(x)$ la distancia promedio de $x$ a todos los demás puntos del clúster más cercano (separación). Luego se realiza la media aritmética de todos los puntos del agrupamiento:
+    \[SC = \frac{1}{N} \Sigma_{i=1}^N s(x)\]
+    El coeficiente resultante varia entre $(-1,1)$ siendo el primero un mal agrupamiento y el último uno óptimo.
+    \item Índice Davies-Bouldin (DB), entre otros, tasa de reducción de dimensionalidad...
 \end{itemize}
+Las métricas externas, para cuando se cuente con información/etiquetas a mayores, se basan en construir una matriz de confusión basado en los puntos del clúster objeto de estudio y obtener las métricas que vimos en el apartado anterior.
 
 \textbf{Aprendizaje por refuerzo}\\
-
+En esta última categoría tenemos métricas de desempeño como:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item Recompensa acumulada
+    \item Tasa de éxito en la resolución de tareas.
+\end{itemize}
 
 \paragraph{Función de coste}.
 TODO
