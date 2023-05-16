@@ -367,15 +367,59 @@ Para evaluar modelos de regresión:
 %TODO - ecuaciones y figuras
 \begin{itemize}[noitemsep, topsep=5pt]
     \item MAE, \textit{Mean Absolute Error}, es el error absoluto medio entre la predicción y los valores reales.
-    \item RMSE, \textit{Roor Mean Squared Error}, es el error cuadrático medio entre predicciones y observaciones.
+    \[MAE = \frac{1}{n} \sum_{j=1}^n |y_j - \hat{y}_j|\]
+    \item RMSE, \textit{Root Mean Squared Error}, es el error cuadrático medio entre predicciones y observaciones.
+    \[RMSE = \sqrt{\frac{1}{n} \sum_{j=1}^n (y_j - \hat{y}_j)^2}\]
     \item $R^2$, conocido como coeficiente de determinación, aplicado a la relación entre valores reales y predicciones.
+    \[R^2 = \frac{\sigma_{XY}^2}{\sigma_X^2\sigma_Y^2}\]
 \end{itemize}
-Para evaluar modelos de clasificación:
+Para evaluar modelos de clasificación, se determinan una serie de métricas basándose, primero, en los datos aportados por la denominada \textbf{matriz de confusión}, que se construye de la siguiente manera:
+
+Se enfrentan en una tabla, de tantas filas y columnas como número de clases exista en el conjunto de datos, la contabilidad de los casos reales y los predichos, produciéndose cuatro tipos de categorías distintas:
 \begin{itemize}[noitemsep, topsep=5pt]
-    \item MAE
+    \item Verdadero Positivo, \textit{True Positive} (\textbf{TP}): El valor real es positivo y la prueba predijo que también lo era.
+    \item Verdadero Negativo, \textit{True Negative} (\textbf{NP}): El valor real es negativo y la prueba predijo lo mismo.
+    \item Falso Positivo, \textit{False Positive} (\textbf{FP}): El valor real es negativo pero la prueba predijo que era positivo. (\textit{Error tipo I}) 
+    \item Falso Negativo, \textit{False Negative} (\textbf{FN}): El valor real es positivo y la prueba predijo que era negativo. (\textit{Error tipo II})
 \end{itemize}
 
+En la figura \ref{fig:matriz_confusion} se puede observar un ejemplo de esta matriz.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.6]{Figuras/matriz_confusion.png}
+    \caption{Esquema de la matriz de confusión \cite{matriz_conf}.}
+    \label{fig:matriz_confusion}
+\end{figure}
+
+Una vez contabilizadas dichas observaciones en la matriz anterior, existen una serie de parámetros para validad el desempeño del modelo. Los más reconocidos son:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item \textit{Accuracy}: Medida de exactitud. Para el total de datos, ¿cuantos son ciertos?
+    \[Accuracy = \frac{(TP+TN)}{Total}\]
+    \item \textit{Precision}: Medida de precisión. Para los casos positivos, ¿cuantos son ciertos?
+    \[Precision = \frac{TP}{TP+FP}\]
+    \item \textit{Recall}, también llamado \textit{True Positive Rate}: Medida de particularidad. Para los casos reales positivos, ¿cuantos predice?
+    \[TPR = \frac{TP}{TP+FN}\]
+    \item \textit{Specificity}: Medida de particularidad. Para los casos reales negativos, ¿cuantos predice?
+    \[Specificity = \frac{TN}{TN+FP}\]
+    \item \textit{F1 Score}: Puntuación F1. Combina 'precision' y 'recall' en uno para tener en cuenta positivos dados como ciertos y reales omitidos.
+    \[F1_{score} = \frac{2*Precision*Recall}{Precision+Recall}\in[0,1]\]
+    \item \textit{False Positive Rate}: Ratio de falsos positivos. El complementario de la 'specificity'.
+    \[FPR = 1-Specificity = 1 - \frac{TN}{TN+FP} = \frac{(TN+FP)-TN}{TN+FP}=\frac{FP}{TN+FP}]\]
+    \item \textit{Mejora}: Medida de mejora sobre decisión aleatoria.
+    \[Prior=P(aleatorio) \rightarrow Mejora=\frac{Precision}{Prior}\]
+\end{itemize}
+
+Después de definir estás métricas se suele recurrir a las curvas \textbf{ROC}, \textit{Receiver Operating Characteristic} y con ella obtener el valor \textbf{AUC}, \textit{Area Under Curve}, que ayuda, esta última, a dar una idea general de cómo de bueno es el modelo, y la primera en escoger el valor del \textbf{umbral} óptimo, según el comportamiento que deseemos para en la situación.
+
+
 \textbf{Aprendizaje no-supervisado}\\
+Las métricas de desempeño no son exclusivas de métodos de aprendizaje supervisado; así, se distinguen aquí dos categorías principales, las métricas \textit{externas} y las \textit{internas}, distinguiéndose ambas en si hacen uso de información externa para la validación, es decir, información que no es producto de la técnica de agrupación utilizada.
+
+Las internas evalúan que tan buena es la estructura del \textit{clustering} sin necesidad de datos ajenos al propio algoritmo, y se suelen usar para escoger el mejor algoritmo y su número óptimo de clusters, mientras que las externas se usan para decidir que tipo de agrupamiento se ajusta más al \textit{dataset} específico a tratar, cuando se conoce algún dato/ relación a mayores entre ellas o se desea algún comportamiento especial del agrupamiento.
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item 
+\end{itemize}
 
 \textbf{Aprendizaje por refuerzo}\\
 
