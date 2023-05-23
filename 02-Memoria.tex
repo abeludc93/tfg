@@ -265,7 +265,6 @@ Un ejemplo típico de algoritmos usados en estos métodos de detección de anoma
 
 Este tipo de técnicas son muy usadas para identificar transacciones bancarias inusuales o sospechosas que sean indicativas de actividades fraudulentas, detecciones de intrusiones en redes informáticas o monitorización de maquinaria industrial, por ejemplo.
 
-
 \subsubsection{Aprendizaje profundo}
 El conocido como Aprendizaje Profundo, o \textit{Deep Learning}, es un campo de la IA; más específicamente, un sub-conjunto del \textit{Machine Learning}, que está inspirado por las estructuras biológicas y funcionamiento del cerebro humano, concretamente de su sistema neuronal.
 
@@ -323,7 +322,7 @@ En general, el desarrollo de un modelo de \textbf{ML} implica siempre las siguie
     \label{fig:flowchart_ml}
 \end{figure}
 
-\subsubsection{\centering\textcircled{1} Definición del problema}
+\subsubsection*{\centering\textcircled{1} Definición del problema}
 Es muy importante empezar entendiendo el problema a resolver y sus necesidades y características; \textit{¿que objetivo buscamos?}
 
 Para dar una aplicación y uso satisfactorio hay que definir bien siempre los datos disponibles, el tipo de problema y los requisitos de para su solución.
@@ -334,12 +333,12 @@ Los datos disponibles pueden estar en varias localizaciones, o generarse y proce
 
 Los requisitos de la solución son todos aquellos requerimientos de negocio que necesite cumplir el modelo final, ya que no sirve de nada construir un modelo que luego no pueda cumplir en cuestión de tiempo de respuesta/disponibilidad/veracidad etc.
 
-\subsubsection{\centering\textcircled{2} Recopilación de datos}
+\subsubsection*{\centering\textcircled{2} Recopilación de datos}
 La recogida de datos de una o varias fuentes necesita satisfacer los requerimientos del problema y del modelo, que puede llegar a necesitar un gran volumen de datos representativos para ser capaz de descubrir los patrones y relaciones entre ellos.
 
 El formato de los datos y su estructura precisada para posteriores fases es trabajo para esta ciclo del desarrollo, que muchas veces echa mano de técnicas de \textit{Big Data} para lograrlo.
 
-\subsubsection{\centering\textcircled{3} Preparación de datos}
+\subsubsection*{\centering\textcircled{3} Preparación de datos}
 %data pre-processing
 La preparación de datos o \textbf{pre-procesamiento} de datos es uno de los pasos críticos, si no el que más, a la hora de construir un modelo de \textit{Machine Learning} eficaz, ya que no sólo dispone el conjunto de datos de tal modo que puedan ser alimentados al modelo, si no que también se encarga de su tratamiento para que estos arrojen unos resultados satisfactorios, adaptándose a las necesidades del modelo y a los requisitos de negocio.
 
@@ -395,7 +394,7 @@ Un indicador de que se está produciendo sobreajuste es cuando, luego de descend
 
 Para evitar el sobreajuste existen técnicas sencillas y complejas. La más sencilla de todas es la llamada \textit{early-stopping}, que significa detener el entrenamiento una vez que se observa tendencias distintas en los errores de la figura \ref{fig:overfitting2}. Otra de fácil implementación sería la propia validación cruzada que se explicó antes. Por último, la llamada \textbf{regularización} consiste en reducir la complejidad global del modelo, a costa de su varianza. Técnicas de este estilo incluyen la regularización \textit{L1}, \textit{L2}, \textit{Lasso} o \textit{Ridge}.
 
-\subsubsection{\centering\textcircled{4} Selección y construcción del modelo}
+\subsubsection*{\centering\textcircled{4} Selección y construcción del modelo}
 A estas alturas, la selección del algoritmo apropiado y el tipo, estructura y conjunto de datos de trabajo que este necesita ya debería de estar listo, puesto que su tratamiento, división e incluso transformación - muchas veces específica al algoritmo, ya que puede funcionar mejor con según que tipo de entradas - ya se ha abordado en las fases de preparación de datos.
 
 Así, este aspecto de construcción del modelo implica el diseño de su arquitectura y puesta en marcha del mismo.
@@ -406,10 +405,10 @@ Por último, la puesta en marcha de un modelo no garantiza su eficacia ni éxito
 
 En lo que se conoce como \textit{\emph{Automated Machine Learning}}, unas herramientas automatizan el proceso de construcción de modelos, ayudando, probando y seleccionando diversos algoritmos e hiper-parámetros correspondientes. Algunos también realizan la limpieza y preprocesamiento de datos. Herramientas populares de este ámbito incluyen \textit{DataRobot}, \textit{Google AutoML} y \textit{H2Oai}, por ejemplo.
 
-\subsubsection{\centering\textcircled{5} Evaluación y optimización}
+\subsubsection*{\centering\textcircled{5} Evaluación y optimización}
 La evaluación y optimización del modelo significa la introducción de las métricas de desempeño, la función de coste o pérdida y la afinación de hiper-parámetros pero, ¿que son? y, ¿para que sirven?:
 
-\paragraph{Métricas}. Las métricas de desempeño son una serie de indicadores del rendimiento del modelo, de su eficacia, de como de 'bueno' es y, en general, de qué cantidad de error ha cometido cuando se evalúa contra el conjunto de datos de test o de validación.
+\paragraph*{Métricas}. Las métricas de desempeño son una serie de indicadores del rendimiento del modelo, de su eficacia, de como de 'bueno' es y, en general, de qué cantidad de error ha cometido cuando se evalúa contra el conjunto de datos de test o de validación.
 
 Existen muchas métricas de desempeño diferentes, pero generalmente se suelen dividir según el tipo de método de aprendizaje automático que se utilizando. Así, por ejemplo, hay métricas propias de técnicas de aprendizaje supervisado, no-supervisado y por refuerzo. A continuación desglosamos algunas de ellas.
 
@@ -515,7 +514,7 @@ En esta última categoría tenemos métricas de desempeño como:
     \item Tasa de éxito en la resolución de tareas: proporción de intentos en los que el agente alcanza un objetivo o tarea exitosamente, por ejemplo, porcentaje de partidas ganadas por el agente.
 \end{itemize}
 
-\paragraph{Función de coste}.
+\paragraph*{Función de coste}.
 También llamada función de pérdida, \textit{loss function}, es una especie de medida usada en algoritmos de aprendizaje supervisado para cuantificar como de buenas son las predicciones de un modelo, comparando siempre valores reales de los datos de entrenamiento con las predicciones realizadas, de manera que esta función calcula un valor que refleja el error o discrepancia entre ambas.
 
 Durante el entrenamiento, el objetivo es siempre \textbf{minimizar} dicha función, ajustando los pesos o parámetros del modelo para que sus predicciones sean lo más similares posibles a los valores reales. La elección de la función de coste, y su optimización, depende del tipo de problema y del algoritmo empleado.
@@ -532,7 +531,7 @@ De este modo, funciones de pérdida comunes incluyen el MSE visto antes, la entr
     \label{fig:gradient}
 \end{figure}
 
-\paragraph{Hiper-parámetros}.
+\paragraph*{Hiper-parámetros}.
 Se conocen como hiper-parámetros a todos aquellos factores que se establecen antes del proceso de entrenamiento del modelo y que no se \textit{aprenden} directamente de los datos. Estos parámetros controlan la configuración, comportamiento y diseño del algoritmo de aprendizaje, y su debido ajuste es crucial a la hora de obtener un buen rendimiento del modelo.
 
 A diferencia de los pesos o parámetros del modelo que se aprenden durante el entrenamiento y optimización de la función de pérdida, los hiper-parámetros son seleccionados por el usuario como por el ejemplo la tasa de aprendizaje, el número de capas ocultas en una red neuronal artificial (ANN), el tamaño del lote de trabajo, el número máximo de iteraciones o tiempo requerido para la convergencia de la función, profundidad de un árbol de decisión ...
@@ -546,7 +545,7 @@ Existen técnicas para lograr hallar que hiper-parámetros ofrecen un mejor rend
     \label{fig:hyperparam}
 \end{figure}
 
-\subsubsection{\centering\textcircled{6} Despliegue}
+\subsubsection*{\centering\textcircled{6} Despliegue}
 El despliegue y uso práctico de un modelo de \textit{ML} simplemente implica la integración del modelo final en un entorno de producción, donde podrá generar los resultados esperados y ser utilizado para la toma de decisiones.
 
 Los únicos factores que se tienen que tener en cuenta aquí son la escalabilidad del modelo, el rendimiento del mismo, la privacidad y seguridad de los datos, la capacidad de actualización y mantenimiento del modelo y las posibles regulaciones e impacto de su uso.
@@ -570,7 +569,104 @@ Para acabar, presentamos en al figura \ref{fig:flowchart_sl} otro esquema que re
 % Introduccion -> Motivación, definición (Kairouz y Yang), características, categorias (cross-silo, cross-device, centrado en modelo y centrado en datos), proceso desarrollo (kairouz), privacidad (vulnerabilidades, actores y amenazas, técnicas SMC y DP).
 % Tipos -> HFL, VFL, FTL, FRL.
 % Aplicaciones y casos de uso, software y datasets.
+Con el auge de los dispositivos móviles y otros dispositivos embebidos - de uso doméstico o no - englobados en el llamado \textit{Internet of Things} (IoT) se produce, cada vez más, una abundancia de datos que, siendo adecuados y aprovechables para el entrenamiento de modelos de aprendizaje automático, se deben desaprovechar debido a restricciones físicas o éticas, siendo datos de una naturaleza privada, además de encontrarse distribuidos entre millares de dispositivos desconocidos.
 
+Con esta motivación e ideas de fondo fue como surgió el término de \textit{Federated Learning} o Aprendizaje Federado, acuñado por primera vez en el articulo de McMahan et al. \cite{paper_McMahan} títulado \textit{"Communication-Efficient Learning of Deep Networks from Decentralized Data}, en donde se da una primera definición y enfoque a la particular casuística y características que atañen estos modelos.
+
+En el citado articulo se centran específicamente en el caso de los dispositivos móviles, intentando usar los datos contenidos en estos para usarlos en modelos de ML que mejoren la usabilidad de los mismos; como se materializaría - a posteriori - con su implantación en el teclado móvil \textit{Gboard} del SO \textit{Android} para mejorar la predicción de palabras y \textit{emojis} del usuario.
+
+El anterior articulo presenta así una solución al uso de estos datos sensibles y distribuidos - que imposibilitan el enfoque tradicional (aunarlos en un centro de datos y realizar con ellos el desarrollo del modelo) - defendiendo una nueva técnica de aprendizaje que permite a los usuarios aprovechar colectivamente los beneficios de los modelos sin necesidad de almacenar los datos de forma centralizada ni llegar a compartirlos, creando una red federada de dispositivos que resuelve la función objetivo bajo la coordinación de un servidor central.
+
+Cada uno de los dispositivos - o clientes - mantiene así su conjunto de datos intacto y sólo comparte con el servidor unas actualizaciones iterativas de los pesos de su modelo local, que ni siquiera es necesario guardar en el servidor central una vez son aplicados, en completa sintonía con los principios de \textit{focused collection} y \textit{data-minimization} propuestos el informe de ciber-seguridad de la Casa Blanca \cite{paper_WH} de 2013.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{Figuras/fl_kairouz_1.png}
+    \caption{Ejemplo de aplicación, ciclo de vida y actores durante el entrenamiento de un sistema de Aprendizaje Federado \cite{libro_kairouz}}
+    \label{fig:fl_kairouz_1}
+\end{figure}
+
+A día de hoy, existen ya toda una serie de herramientas desplegadas en distintos productos digitales de consumo que han sido desarrolladas empleando técnicas de aprendizaje federado, como por ejemplo el ya mencionado teclado \textit{Gboard}, o su equivalente \textit{QuickType} de Apple, en \textit{Android Messages} y otras características de los móviles \textit{Pixel} de Google, en reconocimiento de voz para el asistente \textit{Siri}, en \textit{doc.ai} se están desarrollando soluciones para ayudar en la investigación médica etc.
+
+En resumen, podemos decir que las técnicas de Aprendizaje Federado surgen como solución a los problemas de aislamiento y fragmentación de datos sensibles que, a mayores, requieren, por motivos éticos y legales, adecuarse a restricciones de privacidad y seguridad.
+
+\subsubsection{Definición, características y proceso de desarrollo}
+
+Debido a que, en la primera introducción del término \textit{Federated Learning}, se hizo un especial enfoque en su uso en aplicaciones móviles, dejando abierta la puerta para futuras aplicaciones, como así se hizo, tenemos que ir a buscar una definición más general de este concepto en el libro de Kairouz et al. \cite{libro_kairouz} de años posteriores, que lo fija como:
+
+\begin{quote}
+    El Aprendizaje Federado es un entorno del aprendizaje automático en el que múltiples entidades (clientes) colaboran en la resolución de un problema de aprendizaje automático, bajo la coordinación de un servidor central o proveedor de servicios. Los datos brutos de cada cliente se almacenan localmente y no se intercambian ni transfieren; si no que, para lograr el objetivo del aprendizaje, se utilizan actualizaciones iterativas destinadas a su agregación inmediata.
+\end{quote}
+
+Caben dos apuntes en la anterior definición; la primera, es que estas 'actualizaciones iterativas' tienen el alcance justo y limitado para contener la mínima información necesaria para la tarea de aprendizaje en cuestión, además de realizar su agregación lo antes posible para minimización y, la segunda, es que no se tiene en cuenta ni distingue las técnicas de aprendizaje federada totalmente centralizadas (P2P), que también existen y se ilustra su diferencia con las primeras en la figura \ref{fig:arq_fl_yang}.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/yang_fl_1.png}
+        \caption{Modelo \textit{cliente-servidor}}
+    \end{subfigure}
+    \hfill
+        \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Figuras/yang_fl_2.png}
+        \caption{Modelo \textit{peer-to-peer}}
+    \end{subfigure}
+    \caption{Arquitecturas en sistemas de Aprendizaje Federado}
+    \label{fig:arq_fl_yang}
+\end{figure}
+
+Como se observa, de una u otra manera se mantienen los datos de entrenamiento descentralizados, y se mitigan así muchos de los riesgos y costes asociados a la privacidad de estos y derivados del aprendizaje automático tradicional y centralizado.
+
+De este modo se van recogiendo una serie de características, restricciones y desafíos que ocurren en la solución de problemas de ML que usan datos descentralizados - donde la privacidad es esencial - y que quedan adscritos bajo el término \textbf{Federated Learning}, que se puede pensar más como un campo interdisciplinario, ya que no sólo requiere técnicas de \textit{machine-learning}, si no la aplicación de otras tales como optimización distribuida, criptografía, privacidad diferencial, teoría de la información, estadística, entre otras.
+
+Entre las \textbf{características} de los problemas de optimización a los que se enfrentan las técnicas de aprendizaje federado se encuentran normalmente las siguientes:
+
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item \textbf{Distribución estadísticas desiguales y no-uniformes}: en estos entornos, no se pueden asumir los supuestos de las técnicas tradicionales de ML distribuido, como son el de datasets \textit{IID} (Independent and Identically Distributed), es decir, muestras independientes entre sí y con idénticas distribuciones de probabilidad. Y es que hay que suponer que, aunque cada cliente aporte datos locales correspondientes al mismo objetivo, debido al uso y circunstancias de cada uno, su distribución ha de ser distinta.
+    \item \textbf{Desequilibrado de datos}: Por la misma razón que el punto anterior, no se puede suponer que las muestras han de tener tamaños iguales o que contengan el mismo número de datos sobre clases o \textit{clusters} que el resto.
+    \item \textbf{Escalabilidad masiva}: debido a que los datos pueden estar distribuidos sobre un gran número dispositivos, es requisito fundamental que estos sean capaces de manejar distribuciones masivas de clientes.
+    \item \textbf{Diferencias computacionales}: Debido a la diversidad de dispositivos que pueden conformar estas redes federadas, se ha de tener en cuenta distintas capacidades computacionales, que pueden afectar, dependiendo del hardware disponible, en el número de iteraciones o rondas en las que participe el cliente o el tiempo esperado de respuesta de cada uno de ellos.
+    \item \textbf{Comunicaciones costosas}: A diferencia de lo que sucede en escenarios clásicos de computación distribuida, donde existe un ancho de banda, bajo redes locales, muy alta, en las redes federadas resulta ser lo contrario, con clientes que no siempre pueden estar disponibles y que usan conexiones lentas y poco fiables, por lo que el modelo tiene que poder gestionar desconexiones e incorporaciones súbitas. Además, a diferencia del resto, en el aprendizaje federado los costes de comunicación se convierten en el cuello de botella principal durante el entrenamiento del modelo, por lo que se incentiva usar los recursos computacionales, por pequeños que sean, de cada uno de los dispositivos locales, lo máximo que se pueda.
+\end{itemize}
+
+Una vez conocidos los principales retos y desafíos a los que se enfrenta el problema de la optimización federada, podemos introducir los pasos que siguen el típico \textbf{proceso de desarrollo y entrenamiento} de un modelo de aprendizaje federado, y cuyas fases se describen a continuación:
+
+\begin{enumerate}[noitemsep, topsep=5pt]
+    \item \textbf{Selección de clientes}: El coordinador central o servidor escoge un subconjunto de clientes que cumplan los requisitos apropiados.
+    \item \textbf{Difusión}: Los clientes seleccionados obtienen el estado del modelo global actual y su programa de entrenamiento.
+    \item \textbf{Cálculos locales}: Cada dispositivo realiza la computación del programa de entrenamiento sobre su conjunto de datos, por ejemplo SGD en un lote local de datos (para \textit{FedAvg}).
+    \item \textbf{Agregación}: El servidor recibe un cúmulo de actualizaciones locales de cada uno de los dispositivos. Los rezagados pueden ser abandonados y no tenidos en cuenta pasado un tiempo máximo, y sobre los disponibles sería el momento de aplicar las técnicas criptográficas diseñadas para el aumento de la seguridad global del sistema, como métodos de encriptación homomórfica para la agregación segura, uso de \textit{lossy compression} para comunicaciones más eficientes o la introducción de ruido en los resultados para aumento de la privacidad diferencial.
+    \item \textbf{Actualización del modelo global}: Por último, el servidor realiza la actualización del modelo global basándose en la agregación anterior.
+\end{enumerate}
+
+Cabe decir que, en el flujo anterior, el servidor/coordinador orquesta todo el proceso de entrenamiento (arquitectura cliente-servidor) y el proceso se repite (en caso de ser un modelo iterativo) durante sucesivas rondas hasta que este es detenido debido a su convergencia, número máximo de rondas o agotado el tiempo máximo de entreno.
+
+Por último, las fases de separación del cálculo local, agregación y actualización del modelo global no son un requisito estricto del aprendizaje federado per se, si no que excluye ciertas clases de algoritmos que, bien por su naturaleza no-iterativa, o bien por su asincronicidad, pueden no seguir exactamente el proceso descrito.
+
+\subsubsection{Categorías y tipos de aprendizaje federado}
+%centrando en modelo y datos
+%cross-silo cross-device
+%hfl, vfl etc
+Existen diversos tipos de divisiones y categorizaciones presentes en las técnicas de aprendizaje federado, dependiendo del ámbito u objeto al que correspondan, y las cuales explicaremos en esta sección.
+
+En primer lugar, en referencia al tipo y número de clientes que conformarán la red federada, se puede hablar de:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item \textbf{Cross-silo}: reservado para las aplicaciones de FL que involucren a un número reducido de clientes fiables, como por ejemplo, la colaboración entre múltiples organizaciones o entidades en aras de desarrollar un modelo de ML conjunto.
+    \item \textbf{Cross-device}: el apropiado para el resto de casos, donde el énfasis está redes masivas de dispositivos móviles o embebidos (\textit{edge devices}).
+\end{itemize}
+
+Dependiendo de quien sea el elemento que juega el papel central en el desarrollo del modelo, se pueden clasificar en otros dos tipos:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item \textbf{Centrado en modelo}: \textit{Model-Centric} el caso más común en FL. Los datos se generan localmente y no se comparten, si no que permanecen descentralizados y solo se envían los resultados de aplicar el programa de entrenamiento sobre ellos.
+    \item \textbf{Centrado en datos}: en estos escenarios, los dueños de los datos pueden dar acceso a terceros para que los empleen en sus respectivos modelos, recibiendo compensación u otro tipo de incentivo por ello. Aún así, estas aplicaciones no obtendrían un acceso ilimitado a los mismos, 
+\end{itemize}
+
+\subsubsection{Amenazas y privacidad de datos}
+%Externas
+%Internas
+\subsubsection{Casos de uso, \textit{software} y \textit{datasets}}
 
 
 \subsection{Algoritmos verdes}
@@ -595,14 +691,14 @@ Por esta razón el portátil, al tener mayor capacidad, será el encargado de al
 
 El método desarrollado es una aplicación de un sistema de aprendizaje automático federado, en donde la computación y entrenamiento del modelo se hace de manera distribuida. Así, se conforma una red compuesta de varios dispositivos interconectados, siendo uno de ellos coordinador del proceso global, rol asignado al ordenador portátil, trabajando en conjunto. También se han realizado pruebas, por comparativa, con algoritmos y técnicas equivalentes pero de arquitectura centralizada, llevadas a cabo de igual modo en el dicho portátil.
 
-\subsubsection{Arquitectura}
+\subsubsection{Arquitecturas}
 El diseño de estos sistemas se suele hacer siguiendo una arquitectura \textbf{cliente-servidor} clásica, donde un servidor orquestará el proceso de selección, entrenamiento, agregación y validación del modelo, y unos clientes que, teniendo acceso cada uno a su propio conjunto de datos, entrenarán un modelo local y recibirán las actualizaciones y directrices necesarias cuando sean llamados.
 
 Existe otro tipo de arquitectura para estos sistemas, aunque no está muy desarrollada, denominada P2P (\textit{peer-to-peer}).
 
 A continuación explicaremos estos dos tipos de arquitectura de manera genérica:
 
-\paragraph{Cliente-Servidor}
+\paragraph*{Cliente-Servidor}
 
 Este tipo de arquitectura es la más típica y utilizada en sistemas federados, y también es conocida como diseño tipo \textit{master-worker}. En ella, \textit{K} participantes o clientes, cada uno con un subconjunto del grupo de datos, entrenan de manera colaborativa el modelo de aprendizaje automático con la ayuda de un servidor - tambien denominado coordinador o servidor de agregación -. Los supuestos para estos casos es que los participantes pueden ser honestos mientras que el servidor es honesto-pero-curioso (\textit{honest-but-curious}). Este concepto implica que, aunque el servidor no introduzca maliciosamente - ni altere los resultados o cómputos del proceso -, el diseño del algoritmo de entrenamiento tiene que ser tal que prevenga cualquier tipo de fuga de información útil este pueda recibir de los clientes.
 
@@ -626,7 +722,7 @@ El proceso de entrenamiento de estos sistemas consiste normalmente de los siguie
 
 En el caso de tratarse de un algoritmo iterativo, el proceso anterior se repite hasta que la función objetivo - o \textit{loss function} - converja o se alcance el número máximo de rondas posibles.
 
-\paragraph{Peer-To-Peer}
+\paragraph*{Peer-To-Peer}
 
 Adicionalmente, también existe el denominado diseño Peer-To-Peer. En este, no existe ningún servidor central o coordinador si no que los \textit{K} participantes, también llamados en este escenario trabajadores o \textit{distributed trainers}, son responsables de gestionar el entrenamiento del modelo global usando solo los subconjutos de datos locales pertenecientes a cada uno de ellos.
 
@@ -673,7 +769,7 @@ Debido a su diseño especializado y enfocado en tareas específicas, los sistema
 
 \vspace{1cm}
 
-\paragraph{Raspberry Pi}
+\paragraph*{Raspberry Pi}
 
 Son una serie de computadoras de placa única (\textit{SBC}), de bajo coste y tamaño reducido, diseñadas para fomentar el aprendizaje y la enseñanza de la informática y electrónica, creadas en el Reino Unido por la \textit{Raspberry Pi Foundation}.
 
@@ -745,7 +841,7 @@ A continuación presentamos dos tablas con las especificaciones de cada uno de e
 
 \vspace{1cm}
 
-\paragraph{Jetson Nano}
+\paragraph*{Jetson Nano}
 
 Las Jetson son una serie de dispositivos embebidos de la compañía Nvidia que están diseñadas específicamente para aplicaciones de IA y robótica. Sus modelos son pequeños, de bajo consumo y ofrecen un alto rendimiento para las tareas de procesamiento de datos intensivas de estos campos, como procesamiento de imágenes, detección de objetos, reconocimiento de voz o \textit{Deep Learning}.
 
@@ -780,7 +876,7 @@ En este Trabajo Final se ha utilizado específicamente el modelo Jetson Nano B01
 \end{table}
 
 
-\subsubsection{Sistema físico y simulados}
+\subsubsection{Sistemas físicos y simulados}
 
 En este breve apartado solo se quiere dar una pequeña información en cuanto al equipo físico coordinador en el que se han realizado y desarrollado tanto el diseño como parte de las pruebas de este trabajo.
 
@@ -913,7 +1009,7 @@ En cuanto a las bibliotecas empleadas para el desarrollo de estos programas, enc
 
 En este apartado se procede a explicar, en detalle, cual ha sido la configuración, instalación y preparación necesaria para cada uno de los dispositivos embebidos utilizados.
 
-\paragraph{Raspberry Pi}
+\paragraph*{Raspberry Pi}
 
 Para los dos tipos de modelos usados - y descritos en apartados anteriores - el proceso ha sido el mismo y consta de las mismas partes. Se ha realizado, por tanto, un tipo de instalación llamado \textit{headless-config}, que se da cuando se instala y configura un SO sin ningún entorno gráfico ni soporte o periférico auxiliar, de manera que accedemos a él mediante una terminal de otro equipo conectado a la misma red.
 
@@ -1008,7 +1104,7 @@ El proceso se resume en lo siguiente:
     \label{fig:so_raspberrys_2}
 \end{figure}
 
-\paragraph{Jetson Nano}
+\paragraph*{Jetson Nano}
 
 Para el otro equipo restante, la Jetson Nano B01, el proceso ha sido similar pero con ciertas variaciones, fruto de las particularidades de este dispositivo. Así, por ejemplo, al no disponer de conexión inalámbrica (es cierto que ofrece un puerto de expansión pero la tarjeta de red se ha de instalar a mayores), se tuvo que enlazar por microUSB este dispositivo al ordenador portátil anfitrión y conectar como si fuera un puerto COM, para desde ahí realizar la instalación y configuración del SO correspondiente, siguiendo así una \textit{headless-config}, igual que antes.
 
@@ -1267,6 +1363,8 @@ Las abreviaturas introducidas en el presente trabajo se recogen en la siguiente 
     \item[P2P] \textit{Peer-To-Peer}, modelo de comunicación entre dos o más dispositivos, de manera que establecen conexiones para compartir datos y recursos directamente entre ellos, sin necesidad de un servidor central.
     \item[PCA] \textit{Principal Component Analysis}, técnica para analizar conjuntos de datos que contienen un gran número de dimensiones/características por observación, aumentando la interpretabilidad de los datos y su visualización reteniendo la máxima cantidad de información original.
     \item[NLP] \textit{Natural Language Processing}, rama de la IA que se ocupa de la interacción entre personas y ordenadores empleando el lenguaje humano como medio de comunicación a través de algoritmos que analizan, comprenden y generan texto y habla de modo automatizado.
+    \item[IID] \textit{Independent and Identically Distributed}, en estadística, se dice de aquellos conjuntos de datos que se puedan considerar independientes y con igual distribución probabilística.
+    \item[SGD] \textit{Stochastic Gradient Descent}, descenso de gradiente estocástico, es un algoritmo utilizado en aprendizaje automático para optimizar y minimizar la función de coste de un modelo.
 \end{description}
 \end{quote}
 
