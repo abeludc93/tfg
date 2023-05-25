@@ -569,36 +569,36 @@ Para acabar, presentamos en al figura \ref{fig:flowchart_sl} otro esquema que re
 % Introduccion -> Motivación, definición (Kairouz y Yang), características, categorias (cross-silo, cross-device, centrado en modelo y centrado en datos), proceso desarrollo (kairouz), privacidad (vulnerabilidades, actores y amenazas, técnicas SMC y DP).
 % Tipos -> HFL, VFL, FTL, FRL.
 % Aplicaciones y casos de uso, software y datasets.
-Con el auge de los dispositivos móviles y otros dispositivos embebidos - de uso doméstico o no - englobados en el llamado \textit{Internet of Things} (IoT) se produce, cada vez más, una abundancia de datos que, siendo adecuados y aprovechables para el entrenamiento de modelos de aprendizaje automático, se deben desaprovechar debido a restricciones físicas o éticas, siendo datos de una naturaleza privada, además de encontrarse distribuidos entre millares de dispositivos desconocidos.
+Con el auge de los dispositivos móviles y otros dispositivos embebidos - de uso doméstico o no - englobados en el llamado \textit{Internet of Things} (IoT) se produce, cada vez más, una abundancia de datos que, siendo adecuados y aprovechables para el entrenamiento de modelos de aprendizaje automático, se deben desaprovechar debido a restricciones físicas o éticas, siendo datos de una naturaleza privada o sensible, además de encontrarse distribuidos entre millares de dispositivos desconocidos.
 
-Con esta motivación e ideas de fondo fue como surgió el término de \textit{Federated Learning} o Aprendizaje Federado, acuñado por primera vez en el articulo de McMahan et al. \cite{paper_McMahan} títulado \textit{"Communication-Efficient Learning of Deep Networks from Decentralized Data}, en donde se da una primera definición y enfoque a la particular casuística y características que atañen estos modelos.
+Con esta motivación e ideas de fondo fue como surgió el término de \textit{Federated Learning} o Aprendizaje Federado, acuñado por primera vez en el articulo de McMahan et al. \cite{paper_McMahan} títulado \textit{Communication-Efficient Learning of Deep Networks from Decentralized Data}, en donde se da una primera definición y enfoque a la particular casuística y características que atañen a estos modelos.
 
 En el citado articulo se centran específicamente en el caso de los dispositivos móviles, intentando usar los datos contenidos en estos para usarlos en modelos de ML que mejoren la usabilidad de los mismos; como se materializaría - a posteriori - con su implantación en el teclado móvil \textit{Gboard} del SO \textit{Android} para mejorar la predicción de palabras y \textit{emojis} del usuario.
 
-El anterior articulo presenta así una solución al uso de estos datos sensibles y distribuidos - que imposibilitan el enfoque tradicional (aunarlos en un centro de datos y realizar con ellos el desarrollo del modelo) - defendiendo una nueva técnica de aprendizaje que permite a los usuarios aprovechar colectivamente los beneficios de los modelos sin necesidad de almacenar los datos de forma centralizada ni llegar a compartirlos, creando una red federada de dispositivos que resuelve la función objetivo bajo la coordinación de un servidor central.
+El anterior articulo presenta así una solución al uso de estos datos sensibles y distribuidos - que imposibilitan el enfoque tradicional, es decir, aunarlos en un centro de datos y realizar con ellos el desarrollo del modelo - defendiendo una nueva técnica de aprendizaje que permite a los usuarios aprovechar colectivamente los beneficios de los modelos sin necesidad de almacenar los datos de forma centralizada ni llegar a compartirlos, creando una red federada de dispositivos que resuelva la función objetivo bajo la coordinación de un servidor central.
 
 Cada uno de los dispositivos - o clientes - mantiene así su conjunto de datos intacto y sólo comparte con el servidor unas actualizaciones iterativas de los pesos de su modelo local, que ni siquiera es necesario guardar en el servidor central una vez son aplicados, en completa sintonía con los principios de \textit{focused collection} y \textit{data-minimization} propuestos el informe de ciber-seguridad de la Casa Blanca \cite{paper_WH} de 2013.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{Figuras/fl_kairouz_1.png}
+    \includegraphics[scale=0.9]{Figuras/fl_kairouz_1.png}
     \caption{Ejemplo de aplicación, ciclo de vida y actores durante el entrenamiento de un sistema de Aprendizaje Federado \cite{libro_kairouz}}
     \label{fig:fl_kairouz_1}
 \end{figure}
 
-A día de hoy, existen ya toda una serie de herramientas desplegadas en distintos productos digitales de consumo que han sido desarrolladas empleando técnicas de aprendizaje federado, como por ejemplo el ya mencionado teclado \textit{Gboard}, o su equivalente \textit{QuickType} de Apple, en \textit{Android Messages} y otras características de los móviles \textit{Pixel} de Google, en reconocimiento de voz para el asistente \textit{Siri}, en \textit{doc.ai} se están desarrollando soluciones para ayudar en la investigación médica etc.
+A día de hoy, existen ya toda una serie de herramientas desplegadas en distintos productos digitales de consumo que han sido desarrolladas empleando técnicas de aprendizaje federado, como por ejemplo el ya mencionado teclado \textit{Gboard}, o su equivalente \textit{QuickType} de Apple, en el \textit{Android Messages} y en ciertas características de los móviles \textit{Pixel} de Google para identificación de imágenes, en reconocimiento de voz para el asistente \textit{Siri} etc. En otros ámbitos, por ejemplo, en \textit{doc.ai} se están desarrollando soluciones para ayudar en la investigación médica.
 
 En resumen, podemos decir que las técnicas de Aprendizaje Federado surgen como solución a los problemas de aislamiento y fragmentación de datos sensibles que, a mayores, requieren, por motivos éticos y legales, adecuarse a restricciones de privacidad y seguridad.
 
 \subsubsection{Definición, características y proceso de desarrollo}
 
-Debido a que, en la primera introducción del término \textit{Federated Learning}, se hizo un especial enfoque en su uso en aplicaciones móviles, dejando abierta la puerta para futuras aplicaciones, como así se hizo, tenemos que ir a buscar una definición más general de este concepto en el libro de Kairouz et al. \cite{libro_kairouz} de años posteriores, que lo fija como:
+Debido a que, en la primera introducción del término \textit{Federated Learning}, se hizo un especial enfoque a su uso en dispositivos móviles, dejando abierta la puerta para futuras aplicaciones, como así fue, tenemos que ir a buscar una definición más general de este concepto en el libro de Kairouz et al. \cite{libro_kairouz} de años posteriores, que lo fija como:
 
 \begin{quote}
     El Aprendizaje Federado es un entorno del aprendizaje automático en el que múltiples entidades (clientes) colaboran en la resolución de un problema de aprendizaje automático, bajo la coordinación de un servidor central o proveedor de servicios. Los datos brutos de cada cliente se almacenan localmente y no se intercambian ni transfieren; si no que, para lograr el objetivo del aprendizaje, se utilizan actualizaciones iterativas destinadas a su agregación inmediata.
 \end{quote}
 
-Caben dos apuntes en la anterior definición; la primera, es que estas 'actualizaciones iterativas' tienen el alcance justo y limitado para contener la mínima información necesaria para la tarea de aprendizaje en cuestión, además de realizar su agregación lo antes posible para minimización y, la segunda, es que no se tiene en cuenta ni distingue las técnicas de aprendizaje federada totalmente centralizadas (P2P), que también existen y se ilustra su diferencia con las primeras en la figura \ref{fig:arq_fl_yang}.
+Caben dos apuntes en la anterior definición; la primera, es que estas 'actualizaciones iterativas' tienen el alcance justo y limitado para contener la mínima información necesaria para la tarea de aprendizaje en cuestión - además de realizar su agregación lo antes posible para evitar almacenar cualquier tipo de información que permita su reconstrucción - y, la segunda, es que no se tiene en cuenta las técnicas de aprendizaje federado totalmente descentralizadas (P2P), que carecen de servidor central y difieren de la arquitectura clásica cliente-servidor de la definición, como ilustra la figura \ref{fig:arq_fl_yang}.
 
 \begin{figure}[H]
     \centering
@@ -617,33 +617,33 @@ Caben dos apuntes en la anterior definición; la primera, es que estas 'actualiz
     \label{fig:arq_fl_yang}
 \end{figure}
 
-Como se observa, de una u otra manera se mantienen los datos de entrenamiento descentralizados, y se mitigan así muchos de los riesgos y costes asociados a la privacidad de estos y derivados del aprendizaje automático tradicional y centralizado.
+Como se observa, de una u otra manera se mantienen los datos de entrenamiento descentralizados, y así se mitigan muchos de los riesgos y costes asociados a la privacidad de estos y derivados del aprendizaje automático tradicional y centralizado que, además, como veremos en futuros capítulos, son menos eficientes energéticamente.
 
-De este modo se van recogiendo una serie de características, restricciones y desafíos que ocurren en la solución de problemas de ML que usan datos descentralizados - donde la privacidad es esencial - y que quedan adscritos bajo el término \textbf{Federated Learning}, que se puede pensar más como un campo interdisciplinario, ya que no sólo requiere técnicas de \textit{machine-learning}, si no la aplicación de otras tales como optimización distribuida, criptografía, privacidad diferencial, teoría de la información, estadística, entre otras.
+De este modo se van recogiendo una serie de características, restricciones y desafíos que surgen en la solución de problemas de ML que usan datos descentralizados - donde la privacidad es esencial - y que quedan adscritos bajo el término \textbf{Federated Learning}, que se puede pensar más como un campo interdisciplinario que combina técnicas de optimización distribuida, criptografía, privacidad diferencial, teoría de la información y estadística, entre otras.
 
-Entre las \textbf{características} de los problemas de optimización a los que se enfrentan las técnicas de aprendizaje federado se encuentran normalmente las siguientes:
+Entre las \textbf{características} de los problemas de optimización a los que se enfrentan las técnicas de aprendizaje federado se encuentran, normalmente, las siguientes:
 
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textbf{Distribución estadísticas desiguales y no-uniformes}: en estos entornos, no se pueden asumir los supuestos de las técnicas tradicionales de ML distribuido, como son el de datasets \textit{IID} (Independent and Identically Distributed), es decir, muestras independientes entre sí y con idénticas distribuciones de probabilidad. Y es que hay que suponer que, aunque cada cliente aporte datos locales correspondientes al mismo objetivo, debido al uso y circunstancias de cada uno, su distribución ha de ser distinta.
     \item \textbf{Desequilibrado de datos}: Por la misma razón que el punto anterior, no se puede suponer que las muestras han de tener tamaños iguales o que contengan el mismo número de datos sobre clases o \textit{clusters} que el resto.
     \item \textbf{Escalabilidad masiva}: debido a que los datos pueden estar distribuidos sobre un gran número dispositivos, es requisito fundamental que estos sean capaces de manejar distribuciones masivas de clientes.
     \item \textbf{Diferencias computacionales}: Debido a la diversidad de dispositivos que pueden conformar estas redes federadas, se ha de tener en cuenta distintas capacidades computacionales, que pueden afectar, dependiendo del hardware disponible, en el número de iteraciones o rondas en las que participe el cliente o el tiempo esperado de respuesta de cada uno de ellos.
-    \item \textbf{Comunicaciones costosas}: A diferencia de lo que sucede en escenarios clásicos de computación distribuida, donde existe un ancho de banda, bajo redes locales, muy alta, en las redes federadas resulta ser lo contrario, con clientes que no siempre pueden estar disponibles y que usan conexiones lentas y poco fiables, por lo que el modelo tiene que poder gestionar desconexiones e incorporaciones súbitas. Además, a diferencia del resto, en el aprendizaje federado los costes de comunicación se convierten en el cuello de botella principal durante el entrenamiento del modelo, por lo que se incentiva usar los recursos computacionales, por pequeños que sean, de cada uno de los dispositivos locales, lo máximo que se pueda.
+    \item \textbf{Comunicaciones costosas}: A diferencia de lo que sucede en escenarios clásicos de computación distribuida, donde existe un ancho de banda, bajo redes locales, muy alta, en las redes federadas resulta ser lo contrario, con clientes que no siempre pueden estar disponibles y que usan conexiones lentas y poco fiables, por lo que el modelo tiene que poder gestionar desconexiones e incorporaciones súbitas. Además, a diferencia del resto, en el aprendizaje federado los costes de comunicación se convierten en el cuello de botella principal durante el entrenamiento del modelo, por lo que se incentiva usar los recursos computacionales, por pequeños que sean, de cada uno de los dispositivos locales, lo máximo que se pueda - p.ej. incrementando el número de \textit{epochs} de cada entrenamiento local antes de realizar la comunicación de estos al coordinador -.
 \end{itemize}
 
-Una vez conocidos los principales retos y desafíos a los que se enfrenta el problema de la optimización federada, podemos introducir los pasos que siguen el típico \textbf{proceso de desarrollo y entrenamiento} de un modelo de aprendizaje federado, y cuyas fases se describen a continuación:
+Una vez conocidos los principales retos y desafíos a los que se enfrenta el problema de la optimización federada, podemos introducir los pasos que siguen el típico \textbf{proceso de desarrollo y entrenamiento} de un modelo de aprendizaje federado, cuyas fases se describen a continuación:
 
 \begin{enumerate}[noitemsep, topsep=5pt]
     \item \textbf{Selección de clientes}: El coordinador central o servidor escoge un subconjunto de clientes que cumplan los requisitos apropiados.
     \item \textbf{Difusión}: Los clientes seleccionados obtienen el estado del modelo global actual y su programa de entrenamiento.
-    \item \textbf{Cálculos locales}: Cada dispositivo realiza la computación del programa de entrenamiento sobre su conjunto de datos, por ejemplo SGD en un lote local de datos (para \textit{FedAvg}).
-    \item \textbf{Agregación}: El servidor recibe un cúmulo de actualizaciones locales de cada uno de los dispositivos. Los rezagados pueden ser abandonados y no tenidos en cuenta pasado un tiempo máximo, y sobre los disponibles sería el momento de aplicar las técnicas criptográficas diseñadas para el aumento de la seguridad global del sistema, como métodos de encriptación homomórfica para la agregación segura, uso de \textit{lossy compression} para comunicaciones más eficientes o la introducción de ruido en los resultados para aumento de la privacidad diferencial.
+    \item \textbf{Cálculos locales}: Cada dispositivo realiza la computación del programa de entrenamiento sobre su conjunto de datos, por ejemplo SGD en un lote local de datos (para un caso de  \textit{FedAvg}).
+    \item \textbf{Agregación}: El servidor recibe un cúmulo de actualizaciones locales de cada uno de los dispositivos. Los rezagados pueden ser abandonados y no tenidos en cuenta pasado un tiempo máximo, y sobre los disponibles este sería el momento de aplicar las técnicas criptográficas diseñadas para el aumento de la seguridad global del sistema, como métodos de encriptación homomórfica para la agregación segura, uso de \textit{lossy compression} para comunicaciones más eficientes o la introducción de ruido en los resultados para aumento de la privacidad diferencial.
     \item \textbf{Actualización del modelo global}: Por último, el servidor realiza la actualización del modelo global basándose en la agregación anterior.
 \end{enumerate}
 
 Cabe decir que, en el flujo anterior, el servidor/coordinador orquesta todo el proceso de entrenamiento (arquitectura cliente-servidor) y el proceso se repite (en caso de ser un modelo iterativo) durante sucesivas rondas hasta que este es detenido debido a su convergencia, número máximo de rondas o agotado el tiempo máximo de entreno.
 
-Por último, las fases de separación del cálculo local, agregación y actualización del modelo global no son un requisito estricto del aprendizaje federado per se, si no que excluye ciertas clases de algoritmos que, bien por su naturaleza no-iterativa, o bien por su asincronicidad, pueden no seguir exactamente el proceso descrito.
+Por último, la separación de las fases del cálculo local, agregación y actualización del modelo global no son un requisito estricto del aprendizaje federado per se, si no que excluye ciertas clases de algoritmos que, bien por su naturaleza no-iterativa, o bien por su asincronicidad, pueden no seguir exactamente el proceso descrito arriba.
 
 \subsubsection{Categorías y tipos de aprendizaje federado}
 %centrando en modelo y datos
@@ -657,10 +657,10 @@ En primer lugar, en referencia al tipo y número de clientes que conformarán la
     \item \textbf{Cross-device}: el apropiado para el resto de casos, donde el énfasis está redes masivas de dispositivos móviles o embebidos (\textit{edge devices}).
 \end{itemize}
 
-Dependiendo de quien sea el elemento que juega el papel central en el desarrollo del modelo, se pueden clasificar en otros dos tipos:
+Dependiendo de quien sea el elemento que juege el papel central en el desarrollo del modelo, se pueden clasificar en otros dos tipos:
 \begin{itemize}[noitemsep, topsep=5pt]
-    \item \textbf{Centrado en modelo}: \textit{Model-Centric} el caso más común en FL. Los datos se generan localmente y no se comparten, si no que permanecen descentralizados y solo se envían los resultados de aplicar el programa de entrenamiento sobre ellos, por ejemplo, sus gradientes. Se entrenan así una serie de modelos locales que son agregados remotamente para contribuir a la optimización de un modelo global resultante.
-    \item \textbf{Centrado en datos}: en estos escenarios, los dueños de los datos pueden dar acceso a terceros para que los empleen en sus respectivos modelos, recibiendo compensación u otro tipo de incentivo por ello. De esta manera, datos sensibles se podrían ser empleados por múltiples organizaciones permitiéndoles construir y entrenar modelos de ML para casos de uso muy diversos, 'encontrando' conjuntos de datos  curados sobre los que entrenarlos.
+    \item \textbf{Centrado en modelo}: \textit{Model-Centric}, el caso más común en FL. Los datos se generan localmente y no se comparten, si no que permanecen descentralizados y solo se envían los resultados de aplicar el programa de entrenamiento sobre ellos, por ejemplo, sus gradientes. Se entrenan así una serie de modelos locales que son agregados remotamente para contribuir a la optimización de un modelo global resultante.
+    \item \textbf{Centrado en datos}: \textit{Data-Centric}, en estos escenarios, los dueños de los datos pueden dar acceso a terceros para que los empleen en sus respectivos modelos, recibiendo compensación u otro tipo de incentivo por ello. De esta manera, datos sensibles se podrían ser empleados por múltiples organizaciones permitiéndoles construir y entrenar modelos de ML para casos de uso muy diversos, 'encontrando' conjuntos de datos apropiados sobre los que entrenarlos.
 \end{itemize}
 
 Las diferencias entre estos dos tipos se ilustran mejor en la figura \ref{fig:fl_model_centric} que mostramos a continuación:
@@ -680,13 +680,13 @@ Las diferencias entre estos dos tipos se ilustran mejor en la figura \ref{fig:fl
     \label{fig:fl_model_centric}
 \end{figure}
 
-Un ejemplo de aprendizaje federado centrado en el modelo sería el teclado de Google \textit{GBoard}, que aprende las preferencias en la escritura del usuario con el tiempo, sin enviar ningún contenido sensible, a base de ir actualizando y mejorando un modelo global de una red neuronal ya configurada (capas-hiper-parámetros etc).
+Un ejemplo de aprendizaje federado centrado en el modelo sería el teclado de Google \textit{GBoard}, que aprende las preferencias en la escritura del usuario con el tiempo, sin enviar ningún contenido sensible, a base de ir actualizando y mejorando un modelo global de una red neuronal ya configurada (capas, hiper-parámetros etc).
 
-Por la contra, un ejemplo de aprendizaje federado centrado en datos sería por ejemplo un dataset alojado en un servidor-en-la-nube que permita a usuarios entrenar sus modelos locales de una manera mucho más refinada, realizándole peticiones a este servidor por un conjunto de datos específicos sobre el que aplicar el entrenamiento. Tan pronto como se encuentren datos apropiados disponibles - y sean aceptados por su dueño - el modelo empieza su entreno y eventualmente es devuelto al cliente ya optimizado. Esto podría imaginarse como una API para experimentación científica en casos de diagnostico médico, por ejemplo, ya que puede ser difícil encontrar muestras adecuadas a estas circunstancias.
+Por la contra, un ejemplo de aprendizaje federado centrado en datos sería, por ejemplo, un dataset alojado en un servidor-en-la-nube que permita a usuarios entrenar sus modelos locales de una manera mucho más refinada, realizándole peticiones a este servidor para obtener un conjunto de datos específicos sobre el que aplicar el entrenamiento. Tan pronto como se encuentren datos apropiados disponibles - y sean aceptados por su dueño - el modelo empieza su entreno y eventualmente es devuelto al cliente ya optimizado. Esto podría imaginarse como una API para experimentación científica en casos de diagnostico médico, por ejemplo, ya que puede ser difícil encontrar muestras adecuadas a estas circunstancias y hacerse con ellas.
 
 En general la división anterior se puede aplicar al ML en general, refiriéndose el tipo \textbf{centrado en modelos} a aquellos que se enfocan más en optimizar el modelo y probar distintos algoritmos e hiper-parámetros como medio para alcanzar mejores eficacias - considerando el dataset fijo - mientras que el tipo \textbf{centrado en datos} se focaliza más en tener un algoritmo fijo e ir mejorando la calidad de las muestras obtenidas, reduciendo el ruido y aumentando su consistencia.
 
-\vspace{1em}
+\vspace{2em}
 
 Por último queda un tipo de división final en el \textit{Federated Learning}, basado en la estructura de datos de cada conjunto de datos que participe en la red federada. Así, se distinguen:
 
@@ -700,7 +700,7 @@ Esta categoría es, además, una de las más sencillas de aplicar, ya que no hay
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.7]{Figuras/hfl_1.png}
+    \includegraphics[scale=0.9]{Figuras/hfl_1.png}
     \caption{Estructura de datos compartidas en HFL \cite{libro_Yang}}
     \label{fig:hfl}
 \end{figure}
@@ -709,7 +709,7 @@ Esta categoría es, además, una de las más sencillas de aplicar, ya que no hay
 \mbox{}\\
 El \textit{Aprendizaje Federado Vertical} o \textit{VFL} se centra en la colaboración entre múltiples participantes o clientes que poseen características diferentes pero complementarias en sus respectivos conjuntos de datos. Como mínimo, deben tener en común algún tipo de identificador que permita alinear los datos de los distintos conjuntos. Un esquema de dicha estructura se ilustra en la figura \ref{fig:fl_vfl}
 
-Lo anterior implica que se tienen que realizar operaciones previas a mayores para coordinar dichas diferencias, bien para realizar la intersección entre las variables de cada uno de ellos, bien para agrupar características dispares por ID, lo cual se tiene que hacer también mediante técnicas criptográficas para no revelar datos sensibles, en un proceso que se conoce como \textit{encripted-entity-aligment}.
+Lo anterior supone que se tienen que realizar operaciones previas a mayores para coordinar estas diferencias, bien para realizar la intersección entre las variables de cada uno de los conjuntos, bien para agrupar características dispares por algún tipo de identificador o ID, lo cual se tiene que hacer también mediante técnicas criptográficas para no revelar datos sensibles, en un proceso que se conoce como \textit{encripted-entity-aligment}.
 
 Este escenario es ideal para la colaboración entre múltiples entidades que comparten un grupo de clientes pero donde cada una de ellas tiene información diferente sobre cada uno de ellos. Así, podrían cooperar en el desarrollo de un modelo conjunto que beneficie a ambos sin revelar datos confidenciales de sus clientes el uno al otro.
 
@@ -717,12 +717,12 @@ Un ejemplo de caso de uso podría ser el de la publicidad personalizada, donde l
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{Figuras/vfl_1.png}
+    \includegraphics[scale=0.9]{Figuras/vfl_1.png}
     \caption{Estructura de datos complementarios en VFL \cite{libro_Yang}}
-    \label{fig:fl_hfl}
+    \label{fig:fl_vfl}
 \end{figure}
 
-Por último, el adjetivo de "vertical" proviene de los términos "partición vertical", usado comúnmente en el contexto de bases de datos tabulares en informática, para referirse a columnas de una tabla que son segmentadas o particionadas verticalmente en distintos subgrupos.
+Por último, el adjetivo de 'vertical' proviene de los términos 'partición vertical', usados comúnmente en el contexto de bases de datos tabulares en informática, para referirse a columnas de una tabla que son segmentadas o particionadas verticalmente en distintos subgrupos.
 
 \paragraph*{Federated Transfer Learning}
 \mbox{}\\
@@ -730,7 +730,7 @@ El \textit{Aprendizaje Federado por Transferencia} o FTL se usa en aquellas situ
 
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.5]{Figuras/ftl_1.png}
+    \includegraphics[scale=0.85]{Figuras/ftl_1.png}
     \caption{Estructura de datos en FTL \cite{libro_Yang}}
     \label{fig:fl_ftl}
 \end{figure}
@@ -738,25 +738,49 @@ El \textit{Aprendizaje Federado por Transferencia} o FTL se usa en aquellas situ
 Las características fundamentales de los conjuntos de datos de los participantes son las siguientes:
 
 \begin{itemize}[noitemsep, topsep=5pt]
-    \item 
+    \item Datasets con pocos atributos y muestras.
+    \item Distribuciones distintas entre dichos conjuntos.
+    \item Datasets de tamaño muy variable.
+    \item Algunos participantes tienen sin etiquetado alguno o muy limitadas.
 \end{itemize}
 
-En resumen, para resolver estos problemas, se combina el aprendizaje federado con técnicas de aprendizaje por transferencia a fin de permitir que una gama más amplia de posibles colaboradores - que disponen de pocos datos (pocas muestras y características superpuestas) y poco etiquetados - creen modelos de ML eficaces y precisos a la vez que cumplen con la ley de privacidad y seguridad de datos, excediendo el alcance de las anteriores configuraciones vistas de HFL y VFL existentes.
+En resumen, para resolver estos problemas, se combina el aprendizaje federado con técnicas de aprendizaje por transferencia a fin de permitir que una gama más amplia de posibles colaboradores - que disponen de pocos datos (pocas muestras y características superpuestas) y poco etiquetados - creen modelos de ML eficaces y precisos a la vez que cumplan con la ley de privacidad y seguridad de datos, excediendo el alcance de las anteriores configuraciones vistas de HFL y VFL existentes.
 
 \paragraph*{Federated Reinforcement Learning}
 \mbox{}\\
 Este última categoría, conocida como \textit{Aprendizaje Federado por Refuerzo} o FRL, nace como solución a los problemas de fuga de información y privacidad de los métodos distribuidos de aprendizaje por refuerzo clásicos (DRL).
 
-Uno de los intereses comúnmente estudiados en estos modelos es diseñar controladores bajo retroalimentación para sistemas dinámicos de tiempo discreto y continuo que combinen un control adaptativo al entorno y características óptimas, como por ejemplo sistemas de conducción autónoma o de sistemas industriales.
+Uno de los intereses comúnmente estudiados en estos modelos es diseñar controladores con retroalimentación para sistemas dinámicos de tiempo discreto o continuo que combinen un control adaptativo al entorno y alcancen características óptimas, como por ejemplo sistemas de conducción autónoma o de sistemas industriales.
 
-Sin profundizar en las distintas particularidades 
+Sin profundizar en las distintas particularidades de estas técnicas, únicamente destacamos la sub-división de estas en dos tipos de arquitecturas, conocidas como \textit{Horizontal Federated Reinforcement Learning} o HFRL y \textit{Vertical Federated Reinforcement Learning} o VFRL, cuya estructura ilustramos en la figura \ref{fig:frl} y cuyo funcionamiento exceden el ámbito de este trabajo:
 
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.8\linewidth}
+        \includegraphics[width=\linewidth]{Figuras/frl_1.png}
+        \caption{Aprendizaje federado por refuerzo horizontal}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}{.8\linewidth}
+        \includegraphics[width=\linewidth]{Figuras/frl_2.png}
+        \caption{Aprendizaje federado por refuerzo vertical}
+    \end{subfigure}
+    \caption{Estructura de datos en dos arquitecturas de Aprendizaje Federado por Refuerzo}
+    \label{fig:frl}
+\end{figure}
+
+\subsubsection{Optimización}
+%FedAvg
+TODO
 \subsubsection{Amenazas y privacidad de datos}
 %Externas
 %Internas
+%Secure aggregation HE
+%TEE
 
 \subsubsection{Casos de uso, \textit{software} y \textit{datasets}}
-
+%Ejemplos de posibles aplicaciones, software de desarrollo y prd y datasets
+TODO
 
 \subsection{Algoritmos verdes}
 TODO
