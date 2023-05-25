@@ -659,13 +659,102 @@ En primer lugar, en referencia al tipo y número de clientes que conformarán la
 
 Dependiendo de quien sea el elemento que juega el papel central en el desarrollo del modelo, se pueden clasificar en otros dos tipos:
 \begin{itemize}[noitemsep, topsep=5pt]
-    \item \textbf{Centrado en modelo}: \textit{Model-Centric} el caso más común en FL. Los datos se generan localmente y no se comparten, si no que permanecen descentralizados y solo se envían los resultados de aplicar el programa de entrenamiento sobre ellos.
-    \item \textbf{Centrado en datos}: en estos escenarios, los dueños de los datos pueden dar acceso a terceros para que los empleen en sus respectivos modelos, recibiendo compensación u otro tipo de incentivo por ello. Aún así, estas aplicaciones no obtendrían un acceso ilimitado a los mismos, 
+    \item \textbf{Centrado en modelo}: \textit{Model-Centric} el caso más común en FL. Los datos se generan localmente y no se comparten, si no que permanecen descentralizados y solo se envían los resultados de aplicar el programa de entrenamiento sobre ellos, por ejemplo, sus gradientes. Se entrenan así una serie de modelos locales que son agregados remotamente para contribuir a la optimización de un modelo global resultante.
+    \item \textbf{Centrado en datos}: en estos escenarios, los dueños de los datos pueden dar acceso a terceros para que los empleen en sus respectivos modelos, recibiendo compensación u otro tipo de incentivo por ello. De esta manera, datos sensibles se podrían ser empleados por múltiples organizaciones permitiéndoles construir y entrenar modelos de ML para casos de uso muy diversos, 'encontrando' conjuntos de datos  curados sobre los que entrenarlos.
 \end{itemize}
+
+Las diferencias entre estos dos tipos se ilustran mejor en la figura \ref{fig:fl_model_centric} que mostramos a continuación:
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.47\linewidth}
+        \includegraphics[width=\linewidth]{Figuras/fl_model_centric.png}    
+        \caption{Aprendizaje Federado centrado en modelo}    
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \includegraphics[width=\linewidth]{Figuras/fl_data_centric.png}
+        \caption{Aprendizaje Federado centrado en datos}
+    \end{subfigure}
+    \caption{Flujo de desarrollo en aprendizaje federado centrado en modelo y en datos \cite{paper_FL_centric}}
+    \label{fig:fl_model_centric}
+\end{figure}
+
+Un ejemplo de aprendizaje federado centrado en el modelo sería el teclado de Google \textit{GBoard}, que aprende las preferencias en la escritura del usuario con el tiempo, sin enviar ningún contenido sensible, a base de ir actualizando y mejorando un modelo global de una red neuronal ya configurada (capas-hiper-parámetros etc).
+
+Por la contra, un ejemplo de aprendizaje federado centrado en datos sería por ejemplo un dataset alojado en un servidor-en-la-nube que permita a usuarios entrenar sus modelos locales de una manera mucho más refinada, realizándole peticiones a este servidor por un conjunto de datos específicos sobre el que aplicar el entrenamiento. Tan pronto como se encuentren datos apropiados disponibles - y sean aceptados por su dueño - el modelo empieza su entreno y eventualmente es devuelto al cliente ya optimizado. Esto podría imaginarse como una API para experimentación científica en casos de diagnostico médico, por ejemplo, ya que puede ser difícil encontrar muestras adecuadas a estas circunstancias.
+
+En general la división anterior se puede aplicar al ML en general, refiriéndose el tipo \textbf{centrado en modelos} a aquellos que se enfocan más en optimizar el modelo y probar distintos algoritmos e hiper-parámetros como medio para alcanzar mejores eficacias - considerando el dataset fijo - mientras que el tipo \textbf{centrado en datos} se focaliza más en tener un algoritmo fijo e ir mejorando la calidad de las muestras obtenidas, reduciendo el ruido y aumentando su consistencia.
+
+\vspace{1em}
+
+Por último queda un tipo de división final en el \textit{Federated Learning}, basado en la estructura de datos de cada conjunto de datos que participe en la red federada. Así, se distinguen:
+
+\paragraph*{Horizontal Federated Learning}
+\mbox{}\\
+Este tipo, llamado \textit{Aprendizaje Federado Horizontal} o \textit{HFL}, representa el caso en el que los conjuntos de datos de cada uno de los clientes comparten una estructura de atributos semejante, como se observa en la figura \ref{fig:hfl}.
+
+De este modo, los participantes tienen \textit{datasets} similares en términos de características pero estos no pueden ser fusionados debido a restricciones legales, de privacidad o de seguridad. Al colaborar y combinar sus modelos locales se logra un modelo global más robusto y generalizado sin revelar los datos sensibles subyacentes.
+
+Esta categoría es, además, una de las más sencillas de aplicar, ya que no hay que realizar ningún tipo de comunicación previa entre clientes y servidor para gestionar las variables de cada uno y realizar el llamado alineamiento de entidades, como sucede en otras categorías que veremos a continuación.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.7]{Figuras/hfl_1.png}
+    \caption{Estructura de datos compartidas en HFL \cite{libro_Yang}}
+    \label{fig:hfl}
+\end{figure}
+
+\paragraph*{Vertical Federated Learning}
+\mbox{}\\
+El \textit{Aprendizaje Federado Vertical} o \textit{VFL} se centra en la colaboración entre múltiples participantes o clientes que poseen características diferentes pero complementarias en sus respectivos conjuntos de datos. Como mínimo, deben tener en común algún tipo de identificador que permita alinear los datos de los distintos conjuntos. Un esquema de dicha estructura se ilustra en la figura \ref{fig:fl_vfl}
+
+Lo anterior implica que se tienen que realizar operaciones previas a mayores para coordinar dichas diferencias, bien para realizar la intersección entre las variables de cada uno de ellos, bien para agrupar características dispares por ID, lo cual se tiene que hacer también mediante técnicas criptográficas para no revelar datos sensibles, en un proceso que se conoce como \textit{encripted-entity-aligment}.
+
+Este escenario es ideal para la colaboración entre múltiples entidades que comparten un grupo de clientes pero donde cada una de ellas tiene información diferente sobre cada uno de ellos. Así, podrían cooperar en el desarrollo de un modelo conjunto que beneficie a ambos sin revelar datos confidenciales de sus clientes el uno al otro.
+
+Un ejemplo de caso de uso podría ser el de la publicidad personalizada, donde los anunciantes podrían colaborar para construir un modelo de segmentación de audiencia sin compartir detalles individuales de los usuarios.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{Figuras/vfl_1.png}
+    \caption{Estructura de datos complementarios en VFL \cite{libro_Yang}}
+    \label{fig:fl_hfl}
+\end{figure}
+
+Por último, el adjetivo de "vertical" proviene de los términos "partición vertical", usado comúnmente en el contexto de bases de datos tabulares en informática, para referirse a columnas de una tabla que son segmentadas o particionadas verticalmente en distintos subgrupos.
+
+\paragraph*{Federated Transfer Learning}
+\mbox{}\\
+El \textit{Aprendizaje Federado por Transferencia} o FTL se usa en aquellas situaciones en las que no existen suficientes variables compartidas o muestras entre los participantes de la red federada. Así, se intenta construir un modelo federado combinado con aprendizaje por transferencia para transmitir el 'conocimiento' entre los participantes y lograr un mejor rendimiento. Un esquema ilustrativo de este caso se da en la figura \ref{fig:fl_ftl}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{Figuras/ftl_1.png}
+    \caption{Estructura de datos en FTL \cite{libro_Yang}}
+    \label{fig:fl_ftl}
+\end{figure}
+
+Las características fundamentales de los conjuntos de datos de los participantes son las siguientes:
+
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item 
+\end{itemize}
+
+En resumen, para resolver estos problemas, se combina el aprendizaje federado con técnicas de aprendizaje por transferencia a fin de permitir que una gama más amplia de posibles colaboradores - que disponen de pocos datos (pocas muestras y características superpuestas) y poco etiquetados - creen modelos de ML eficaces y precisos a la vez que cumplen con la ley de privacidad y seguridad de datos, excediendo el alcance de las anteriores configuraciones vistas de HFL y VFL existentes.
+
+\paragraph*{Federated Reinforcement Learning}
+\mbox{}\\
+Este última categoría, conocida como \textit{Aprendizaje Federado por Refuerzo} o FRL, nace como solución a los problemas de fuga de información y privacidad de los métodos distribuidos de aprendizaje por refuerzo clásicos (DRL).
+
+Uno de los intereses comúnmente estudiados en estos modelos es diseñar controladores bajo retroalimentación para sistemas dinámicos de tiempo discreto y continuo que combinen un control adaptativo al entorno y características óptimas, como por ejemplo sistemas de conducción autónoma o de sistemas industriales.
+
+Sin profundizar en las distintas particularidades 
 
 \subsubsection{Amenazas y privacidad de datos}
 %Externas
 %Internas
+
 \subsubsection{Casos de uso, \textit{software} y \textit{datasets}}
 
 
