@@ -1,5 +1,6 @@
 \documentclass[00-Trabajo_Final.tex]{subfiles}
 
+
 \begin{document}
 \makeatletter
 \renewcommand\listoftables{%
@@ -771,12 +772,92 @@ Sin profundizar en las distintas particularidades de estas técnicas, únicament
 
 \subsubsection{Optimización}
 %FedAvg
-TODO
+Aprovecharemos esta sección para explicar, más a fondo, uno de los algoritmos más utilizados en las técnicas de aprendizaje federado y, a la vez, la primera propuesta en el artículo de McMahan et al \cite{paper_McMahan} mencionado al principio del capitulo. Se trata del denominado \textit{FedAvg}, o promedio federado.
+
+Este algoritmo de optimización establece un sistema de actualizaciones síncronas que avanza en consecutivas rondas de comunicación cliente-servidor. Asume un número fijo de \textit{K} clientes, cada uno con un dataset local invariable. Al principio de cada ronda, una fracción aleatoria \textit{C} de participantes es seleccionada, y el servidor envia el actual estado global del algoritmo a cada uno de los clientes (p.ej. pesos de la RNN). Cada cliente entonces realiza el computo global de este aplicado sobre su propio conjunto de datos y envía los resultados de vuelta al coordinador. El servidor agrega estos cambios y el proceso se repite.
+
+Este algoritmo es aplicable a cualquier función objetivo de suma-finita de la forma:
+\begin{equation}
+\label{eq:1}
+\min_{w\in\mathbb{R}^{d}} f(w) \quad \text{donde} \quad f(w) = \frac{1}{N} \sum_{i=1}^{n}f_i(w)
+\end{equation}
+
+Para los problemas de aprendizaje automático, normalmente $f_i(w) = \ell(x_i, y_i; w)$, es decir, la pérdida en la predicción realizada por $(x_i, y_i)$ con los parámetros del modelo $w_i$. Asumiendo datos particionados entre \textit{K} clientes, con $\mathcal{P}_k$ la serie de índices de las muestras del cliente \textit{k} y $n_k = |\mathcal{P}_k|$, podemos reescribir la ecuación \eqref{eq:1} como:
+\begin{equation}
+\label{eq:2}
+f(w) = \sum_{k=1}^{K}\frac{n_k}{n}F_k(w) \quad \text{donde} \quad F_k(w) = \frac{1}{n_k} \sum_{i \in \mathcal{P}_k} f_i(w)
+\end{equation}
+
+Si la partición $\mathcal{P}_k$ se formó distribuyendo uniformemente los datos de entrenamientos entre los clientes de manera aleatoria entonces tendríamos que $\mathds{E}_{\mathcal{P}_k} [F_k(w)] = f(w)$. Este supuesto uniformemente distribuido es lo que se conoce como condición \textbf{IID}, y se asume típicamente en algoritmos de optimización distribuidos, aunque, como ya vimos, este algoritmo (\textit{FedAvg}) no contempla este caso; es decir, $F_k$ podría ser una mala aproximación aleatoria de $f$, por lo que se trabaja bajo condiciones \textbf{no-IID}.
+
+Bajo este tipo de funciones de coste se ha aplicado satisfactoriamente en aprendizaje automático distintas variantes del llamado \textit{gradiente Descendente Estocástico} o SGD para su optimización, y \textit{FedAvg} no es si no otra generalización de este.
+
+El \textbf{SGD} se puede aplicar directamente al problema de optimización federada, donde solo se realice, por ronda, un único calculo de gradiente por lote para aquellos clientes seleccionados; sin embargo, este enfoque es eficiente computacionalmente pero muy costoso en comunicaciones por el gran número de rondas necesarias para producir buenos resultados. Por lo tanto, se apostará por realizar múltiples \textit{epochs} locales con el objetivo de avanzar el aprendizaje y reducir el número de rondas totales.
+
+Así, para tomando como base el SGD, el algoritmo \textit{FedAvg} lo generaliza añadiendo tres parámetros: \textit{C} - fracción de clientes seleccionados cada ronda, \textit{E} - número de pases de entrenamiento realizados en cada cliente sobre su dataset local y \textit{B} - tamaño de los lotes locales usados para el entrenamiento.
+
+Cabe mencionar que si $C = 1 \quad E = 1 \quad B = \infty$ entonces \textit{FedAvg} se convierte sin más en la aplicación de SGD en una red federada.
+
+Para una tasa de aprendizaje $\eta$ cada cliente $k$ calculará $g_k = \nabla F_k(w_t)$, el gradiente promedio del modelo con los pesos $w_k$ para el dataset local, y el servidor central agregara los distintos gradientes recibidos y realiza la actualización del modelo global $w_{t+1} \leftarrow w_t - \eta \sum_{k=1}^K \frac{n_k}{n} g_k$, ya que $\sum_{k=1}^K \frac{n_k}{n} g_k = \nabla f(w_t)$. Una actualización equivalente se da para $\forall k, w_{t+1}^k \leftarrow w_t - \eta g_k$ y, por último $w_{t+1} \leftarrow \sum_{k=1}^K \frac{n_k}{n} w_{t+1}^k$.
+
+Esto quiere decir que cada cliente realiza una fase de entrenamiento y gradiente descendente, partiendo de su modelo actual, aplicado sobre su dataset para luego el coordinador actualizar el peso promedio de los modelos resultantes recibidos (\textit{FedSVG}).
+
+Cuando se añade más iteraciones locales de estos cálculos de gradiente para cada cliente ($E \uparrow$) pasamos a denominarlo, finalmente, \textbf{FedAvg}, cuyo algoritmo queda esquematizado en el pseudocódigo \ref{alg:fedavg}:
+
+\begin{algorithm}
+\caption{\textit{FederatedAveraging}. Los $K$ clientes se indexan por $k$, $B$ es el tamaño de lote local, $E$ el número de \textit{epochs} locales y $\eta$ la tasa de aprendizaje.}
+\label{alg:fedavg}
+\begin{algorithmic} 
+\STATE \textbf{Coordinador o servidor central:}
+\STATE inicializa $w_0$
+\FOR{cada ronda $t = 1, 2, \dots$}
+\STATE $m \leftarrow \max (C \cdot K, 1)$
+\STATE $S_t \leftarrow \text{(selección aleatoria de } m \text{ clientes)}$
+\FOR{cada cliente $k \in S_t$ en paralelo}
+\STATE $w_{t+1}^k \leftarrow \text{ActualizarCliente(}k, w_t \text{)}$
+\ENDFOR
+\STATE $m_t \leftarrow \sum_{k \in S_t} n_k$
+\STATE $w_{t+1} \leftarrow \sum_{k \in S_t} \frac{n_k}{m_t} w_{t+1}^k$
+\ENDFOR
+\STATE
+\STATE \textbf{ActualizarCliente(}\textit{k}\textbf{, }\textit{w}\textbf{):}
+\STATE $\mathcal{B} \leftarrow \text{(Particionar } \mathcal{P}_k \text{ en lotes de tamaño \emph{B})}$
+\FOR{cada \textit{epoch} local $i = 1, \dots, E$}
+\FOR{cada lote $b \in \mathcal{B}$}
+\STATE $w \leftarrow w - \eta \nabla \ell (w; b)$
+\ENDFOR
+\ENDFOR
+\RETURN $w \text{ al servidor}$
+\end{algorithmic}
+\end{algorithm}
+
 \subsubsection{Amenazas y privacidad de datos}
-%Externas
-%Internas
-%Secure aggregation HE
-%TEE
+%Externas-Internas Secure aggregation HE - TEE
+El \textit{Aprendizaje Federado} provee una estructura que permite una fácil descomposición de flujo de trabajo en piezas modulares que permiten un análisis detallado de los actores, amenazas y vulnerabilidades a los que se ve expuesto.
+
+Aunque el atractivo propio de las técnicas de FL es que tienen, por diseño, una naturaleza privada, haciendo que los usuarios o clientes participantes no revelen sus datos sensibles, si no solo actualizaciones de los modelos locales que entrenan - cumpliendo así la fisolofía de \textit{data-minimization} -, mejorando, por mucho, el nivel de privacidad existente en un modelo de aprendizaje automático distribuido, esto no quita que sigan siendo vulnerables a cierto tipo de ataques.\\
+Por ejemplo, es posible construir escenarios donde la información sobre los datos en bruto se filtren de un cliente hacia el servidor y con el que, sabiendo el estado anterior del modelo y la actualización enviada, se pueda inferir los datos de entrenamiento de dicho cliente.
+
+El anterior ejemplo sería un ataque por fuga de información que afecta a la privacidad del sistema, pero también existen otros tipos de ataques sobre las técnicas de FL, como, por ejemplo, cuando un adversario intenta prevenir que el modelo 'aprenda', interfiriendo con él y envenenándolo para imposibilitar su convergencia u obtener predicciones que le favorezcan.
+
+Así, podemos distinguir dos tipos de escenarios:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item Global: encargado de proteger el funcionamiento del sistema federado frente a dispositivos externos maliciosos u honestos pero curiosos.
+    \item Local: encargado de evitar fugas de información sensible del cliente hacia el servidor durante las comunicaciones que realizan entre sí.
+\end{itemize}
+
+Otro tipo de distinción para el tratamiento formal de las posibles amenazas de estas técnicas es la caracterización de los diferentes actores presentes en estos sistemas federados, con el objetivo de definir sus roles y así presentar sus vulnerabilidades y posibles soluciones. Así, es deseable distinguir el punto de vista de un administrador que el de un analista de modelos o el de los múltiples clientes que conforman dicha red.
+
+%tabla actores
+
+
+Aunque la privacidad no se puede tratar como una cualidad binaria o exactamente cuantificable se pueden presentar una serie de asunciones y objetivos de privacidad mediante la introducción de una serie de parámetros para, por lo menos, justificar el uso de distintas herramientas y tecnologías en ciertas partes del flujo de trabajo y que respeten y refuercen las metas y puntos débiles del sistema.
+
+Por ejemplo, un sistema en particular podría ofrecer una garantía de privacidad diferencial mediante un parámetro $\epsilon$ para el administrador del servidor, mientras que los resultados observador por el analista de dicho modelo podrían requerir de un nivel superior de protección $\epsilon' < \epsilon$. Otro ejemplo; frente a un adversario imaginario que controle hasta una fracción $\gamma$ de clientes (observando e influenciando sus resultados) y capaz de romper mecanismos criptográficos de un determinado nivel de seguridad $\sigma$, se podría requerir que aún así el administrador del servidor tuviese sobre el modelo un nivel de privacidad diferencial sólo un tanto mayor que el inicial $\epsilon_o > \epsilon$.
+
+En definitiva, especificar y parametrizar los objetivos y metas en cuanto a privacidad y seguridad del sistema puede concretarse en instanciaciones de determinados parámetros ($\epsilon, \epsilon ', \epsilon_o, \gamma, \sigma, \dots$) que cuantifiquen este comportamiento mediante la introducción de conceptos como privacidad diferencial o privacidad honesta-pero-curiosa, como veremos en detalle más adelante.
+
+Para conseguir estas propiedades de privacidad tan deseadas el aprendizaje federado recurre a ciertas técnicas, que introducimos a continuación, conformando un sistema de extremo-a-extremo que potencialmente puede emplear múltiples capas de estas en varios puntos del sistema (p.ej. ejecutar protocolos de \textit{Secure-Multi-Party-Computations} y \textit{Differential-Privacy} en la agregación y envío de resultados).
 
 \subsubsection{Casos de uso, \textit{software} y \textit{datasets}}
 %Ejemplos de posibles aplicaciones, software de desarrollo y prd y datasets
