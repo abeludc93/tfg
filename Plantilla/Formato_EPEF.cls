@@ -35,12 +35,10 @@
 \RequirePackage{listings}
 \RequirePackage{float}
 \RequirePackage{wrapfig}
-%\usepackage{dsfont}
-%\usepackage{algorithm}
-%\usepackage{algorithmic}
 \RequirePackage{dsfont}
 \RequirePackage{algorithm}
 \RequirePackage{algorithmic}
+\RequirePackage{booktabs}
 
 % Definición del color "Rosa UDC"
 \definecolor{UDC_Pink}{RGB}{199, 0, 125}
