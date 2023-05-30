@@ -970,6 +970,81 @@ En cuanto a los conjuntos de datos o \textbf{datasets} para el entrenamiento de 
 \subsection{Algoritmos verdes}
 TODO
 
+\subsubsection{Notación Big-O}
+Una herramienta muy funcional a tener en cuenta a la hora de describir la complejidad computacional de un algoritmo es la llamada \textbf{Notación Big-O}, también conocida como notación \textit{Asintótica} o \textit{Landau}, en honor a uno de los autores a los que se atribuye - Edmund Landau - matemático alemán de comienzos del siglo pasado.
+
+La Notación Big-O se usa para medir como de bien escala un algoritmo o programa, según aumenta el número de elementos procesados, respecto al tiempo que tarda en ejecutarlo, es decir, nos da el \textit{ratio de crecimiento} de dichas operaciones.
+
+Es una medida muy útil para comparar la eficiencia entre algoritmos, ya que aunque no nos proporcione el tiempo de ejecución exacto de estos, si nos da una idea de cómo de rápido se incrementa este tiempo de ejecución en función del número de datos de entrada. Así, se clasifican los algoritmos según la clase de ratio de crecimiento que tengan, una medida de su buena/mala escalabilidad.
+
+Formalmente, se puede describir como el límite de una función cuando los argumentos de entrada de esta tienden a infinito.
+
+En la tabla \ref{tbl:bigo} se resumen algunas de estas clases de notaciones y sus nombres, y en la figura \ref{fig:bigo} se puede observar gráficamente la representación de estas, enfrentando el número de pasos o operaciones requeridas por el algoritmo frente al número de elementos.
+
+%tabla
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{@{}ll@{}}
+    \toprule
+    Notación            & Nombre             \\ \midrule
+    $O(1)$              & constante          \\
+    $O(\log n)$         & logarítmico        \\
+    $O(n)$              & lineal             \\
+    $O(n \cdot \log n)$ & lineal logarítmico \\
+    $O(n^2)$            & cuadrático         \\
+    $O(2^n)$            & exponencial        \\
+    $O(n!)$             & factorial          \\ \bottomrule
+    \end{tabular}
+    \caption{Órdenes más utilizados en análisis de algoritmos para la notación Big-O}
+    \label{tbl:bigo}
+\end{table}
+%figura
+
+\begin{figure}[htb]
+    \centering
+    \includegraphics[scale=0.6]{Figuras/bigo.jpg}
+    \caption{Gráfica del ratio de crecimiento y escalabilidad de las distintas clases de notaciones Big-O \cite{bigo}}
+    \label{fig:bigo}
+\end{figure}
+
+Mayor número de operaciones representa mayor tiempo de ejecución y mayor coste computacional, lo cual implica, a su vez, mayor coste energético y por lo tanto una \textbf{menor eficiencia energética}.
+
+%ejemplo y algoritmo complejo -> nos quedamos con el más grande
+Veamos con un ejemplo las tres propiedades que se suelen asumir a la hora de el grado $O$ de una función $f(n)$:
+
+\begin{enumerate}
+    \item Si una función o algoritmo se puede escribir como una suma finita de otras funciones, entonces marca el grado de $f(n)$ la que tenga mayor ratio de crecimiento.
+    \item Si una función o algoritmo es multiplicada por algún factor contante, es decir, uno que no dependa de $n$, se puede omitir.
+    \item Si un algoritmo es producto de dos funciones el grado resultante del mismo es el producto de ambos.
+    \begin{equation}
+        f_1 = O(g_1) \quad f_2 = O(g_2) \rightarrow f_1 f_2 = O(g_1 g_2)
+    \end{equation}
+\end{enumerate}
+
+Dadas las anteriores características, es fácil demostrar que, para la función de ejemplo \eqref{eq:bigo}, el grado de complejidad es cúbico:
+\begin{equation}
+    \label{eq:bigo}
+    f(n) = 5 \log n + 5 (\log n )^4 + 2n^2 + n^3 = O(n^3) \quad n \to \infty
+\end{equation}
+
+Asegurarse de que los algoritmos de optimización presentes en los modelos usados en FL sean lo más eficientes posibles implica un análisis de este para saber como se comporta ante distintos volúmenes de datos de entrada, y saber así como de bien escala. Obviamente es preferible algoritmos de tiempos constantes $O(1)$, logarítmicos $O(\log n)$, lineales $O(n)$ o lineal-logarítmicos $O(n \log n)$ pero eso dependerá únicamente del tipo de técnica y modelo de aprendizaje automático empleado.
+
+Existe, sin embargo, una razón por la que el aprendizaje federado se beneficia y gana mayor eficiencia que sus contrapartidas tradicionales, aún usado modelos y algoritmos de optimización equivalentes, y que se pueden explicar con esta notación:
+
+\begin{enumerate}[noitemsep, topsep=5pt]
+    \item Sea un modelo de ML $\mathcal{M}$ cuyo fase de entrenamiento $\mathcal{E}$ implica un cuello de botella en su proceso de optimización marcado por el uso de cierto algoritmo de optimización $\mathcal{A}$ clasificado como de tiempo cuadrático $O(n^2)$.
+    \item Sea $\theta$ el nº de operaciones, $\tau$ el tiempo de ejecución y  $\epsilon$ el coste energético, medida en cualquier unidad de energía que se prefiera ($kW \cdot h \quad J\dots$).
+    \item $\uparrow \theta \rightarrow \uparrow \tau \leadsto \uparrow \epsilon$
+    \item Si el volumen de datos de entrada para cada ronda de $E$ es de $\eta$, esto implica que: $\mathcal{A} \leadsto O(\eta^2) = \theta$
+    \item Si este mismo volumen es distribuido entre múltiples participantes - p.ej. \textbf{cuatro} - de una red federada, las fases de $\mathcal{E}$ se benefician de una reducción inmensa en sus tiempos de ejecución y coste energético:
+    \begin{equation}
+        \mathcal{A}_fed \leadsto O(\frac{\eta}{4}^2) \cdot 4_\textit{clientes} = \frac{\theta}{4} 
+    \end{equation}
+    \item Es decir, una reducción de tres cuartos en el tiempo y coste de dicho entrenamiento y construcción del modelo, siempre que supongamos condiciones ideales y una distribución perfectamente paralela y síncrona de clientes con igual poder computacional.
+\end{enumerate}
+
+He aquí uno de los grandes beneficios ocultos de estas técnicas de FL. Aún suponiendo participantes heterogéneos, con distintas potencias computacionales y aún siendo estas, por separado, ínfimas en comparación a la que pueda tener una máquina o servidor de un gran centro de datos; aún suponiendo tiempos de respuesta variables y asíncronas; aún con todo, se pueden encontrar beneficios derivados de su uso tanto por tiempos de entrenamiento como en eficiencia energética.
+
 \newpage
 
 \section{Diseño e implementación}
@@ -1530,8 +1605,6 @@ TODO. Posibles subsecciones de optimización hiperparams.
 
 \subsection{Comparativas}
 TODO. Posibles subsecciones: contra algoritmo original, centralizado, entre sí, etc.
-
-\subsubsection{Notación Big-O}
 
 \subsubsection{Consumo energético}
 TODO
