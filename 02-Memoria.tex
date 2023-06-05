@@ -963,12 +963,35 @@ La diferencia entre los anteriores y las plataformas o \textbf{software para des
 En cuanto a los conjuntos de datos o \textbf{datasets} para el entrenamiento de estos modelos se tienen que simular conjuntos descentralizados, desequilibrados y con gran variabilidad en el número de muestras de cada uno. Aunque es una labor que se puede hacer con diseccionando datasets centralizados más reconocidos y habituales, es cierto que existen un par de datasets que ya han sido preparados y sirven de \textit{benchmark} para estas técnicas:
 
 \begin{itemize}
-    \item \textit{EMNIST}: Se trata de una versión del clásico MNIST preparada para el entrono federado, dividiendo más de medio millón de imagenes de digitos y letras del abecedario entre 3400 clientes, con distribuciones IID y no-IID.
+    \item \textit{EMNIST}: Se trata de una versión del clásico MNIST preparada para el entrono federado, dividiendo más de medio millón de imágenes de dígitos y letras del abecedario entre 3400 clientes, con distribuciones IID y no-IID.
     \item \textit{Shakespeare}: dataset para el modelado NLP extraído de \textit{The Complete Works of William Shakespeare}, que incluye los dialogas contiguos de 715 personajes, repartidos en casi 20000 frases.
 \end{itemize}
 
+\newpage
+
 \subsection{Algoritmos verdes}
-TODO
+
+La Inteligencia Artificial y, por tanto, el Aprendizaje Automático, no están exentos de traer consigo riesgos para el cambio climático derivados del coste energético asociado al desarrollo y aplicación de estas tecnologías. En este sentido, parece que jueguen roles opuestos ya que, por un lado, pueden colaborar como papel fundamental en la reducción de esta crisis - al diseñar redes eléctricas inteligentes (\textit{smart-grid}), desarrollando infraestructura sostenible o modelando nuevos sistemas climáticos - y, por otro, se está convirtiendo en un emisor de carbono cada vez más significante.
+
+Por ejemplo, en el articulo '\textit{Energy and Policy Considerations for Deep Learning in NLP}' \cite{energy_ml}, de 2019, se cuantificaron los costes medioambientales y el $CO_2$ equivalente del entrenamiento de modelos avanzados de NLP, para estimar que supuso alrededor de $300.000$ kg de dióxido de carbono, parejo a las emisiones producidas por 125 vuelos de ida y vuelta entre \textit{Nueva York} y \textit{Beijing}, para hacerse una idea.
+
+Pero es que, además de esto, hay que destacar que, en el anterior estudio, sólo se tuvieron en cuenta los costes de entrenamiento de dicho modelo basado puramente en su demanda computacional aunque, una visión más acertada y global de este impacto debería de considerar también el efecto de la infraestructura necesaria en torno al despliegue de estos sistemas por parte de las \textit{Big-Tech}, así como el origen de la energía dispensada a estos. Este tema se tratará en más detalle en la sección \ref{ss:emisiones_co2_ia}.
+
+Es por eso que, cada vez más, se está apostando por una concienciación para el desarrollo de la IA dentro de un contexto de responsabilidad, comprendiendo el impacto medioambiental que suponen y fomentando el desarrollo de una inteligencia artificial sostenible, que ponga en equilibrio \textit{eficiencia} y \textit{eficacia} y aplique buenas prácticas, marcando una distinción entre lo que algunos artículos - \cite{green_red_ai} \cite{carbon_computation} - ya denominan \textbf{Algoritmos Verdes} o \textbf{Green AI} y \textbf{Red AI}, como veremos en la sección \ref{ss:green_ia}.
+
+En la última sección, para finalizar, hablaremos de algunas de las iniciativas políticas puestas en marcha a nivel europeo y nacional para fijar marcos de referencia, objetivos de desarrollo sostenible e integración en el tejido productivo de estas nuevas tecnologías \ref{ss:politica_ia}.
+
+En definitiva, es importante tener en cuenta que, aunque la IA es una herramienta con muchísimo potencial, también se puede convertir en una gran consumidora de recursos, por lo que hay que tener presente que los beneficios - progreso científico, tecnológico, social etc - de esta deberán siempre compensar sus inconvenientes.
+
+\subsubsection{IA verde y roja}
+\label{ss:green_ia}
+
+\subsubsection{Emisiones y huella de carbono de la IA} \label{ss:emisiones_co2_ia}
+
+\paragraph*{Cálculo y simuladores}
+
+\subsubsection{Iniciativas políticas europeas y nacionales}
+\label{ss:politica_ia}
 
 \subsubsection{Notación Big-O}
 Una herramienta muy funcional a tener en cuenta a la hora de describir la complejidad computacional de un algoritmo es la llamada \textbf{Notación Big-O}, también conocida como notación \textit{Asintótica} o \textit{Landau}, en honor a uno de los autores a los que se atribuye - Edmund Landau - matemático alemán de comienzos del siglo pasado.
