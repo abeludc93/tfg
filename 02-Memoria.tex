@@ -986,12 +986,94 @@ En definitiva, es importante tener en cuenta que, aunque la IA es una herramient
 \subsubsection{IA verde y roja}
 \label{ss:green_ia}
 
+Para asegurarse de que la IA sea beneficiosa también en el aspecto medioambiental es importante alentar a los investigadores a que prioricen el empleo y desarrollo de \textit{hardware} y algoritmos computacionalmente eficientes, así como estandarizar la publicación de informes de rendimiento que contengan resultados de tiempos de entrenamiento y susceptibilidad de los hiper-parámetros del modelo.
+
+Y es que, en un estudio realizado por \textit{Dario Amodei} en 2018, \cite{openai_compute}, se descubrió que los costes computacionales utilizados para el entrenamiento de grandes modelos de IA se vienen duplicando desde 2012 cada tres meses y medio, aproximadamente, como se observa en la figura \ref{fig:moore_law}. De continuar esta tendencia, significaría un incremento incluso mayor que el observado en la clásica \textit{Ley de Moore} sobre el número de transistores en los circuitos integrados.
+
+%todo figura
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.6\linewidth}
+        \includegraphics[width=\linewidth,height=.9\linewidth]{Figuras/moore_law_2.png}
+        \caption{Ley de Moore comparada con datos históricos [\href{https://es.wikipedia.org/wiki/Ley_de_Moore}{Wikipedia}]}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}{.6\linewidth}
+        \includegraphics[width=\linewidth,height=.9\linewidth]{Figuras/moore_law_1.png}
+        \caption[Coste computacional IA]{Coste computacional, en \textit{pfs-   día} \protect\footnotemark[2], para el entrenamiento de distintas IA \cite{openai_compute}}    
+    \end{subfigure}
+    \caption[Ley de Moore vs IA]{Comparación entre ratios de crecimiento del número de transistores en CI y costes computacionales en IA \protect\footnotemark[3]}
+    \label{fig:moore_law}
+\end{figure}
+\footnotetext[2]{petaflop/s-día (\textit{pfs/día}) recordemos que los FLOPS son operaciones de coma flotante por segundo y el \textit{pfs/día} intenta dar así una medida de consumo computacional, semejante al kW-h para energía.}
+\footnotetext[3]{Advertir como ambos ejes verticales - para nº de transistores y nº de pfs-día - se encuentran en escala logarítmica.}
+
+
+Otro artículo, titulado \textit{Green AI} \cite{green_red_ai}, ha acuñado el término \textit{IA verde} para describir la tendencia reciente de desarrollar el aprendizaje automático de manera sostenible, en contraste con lo que también denominan \textit{IA roja}.
+
+En este estudio, se hace un llamado a considerar la eficiencia como un criterio de igual importancia - al mismo nivel que la precisión y otras métricas de eficacia - en las investigaciones y desarrollos de ML. Además, se propone la inclusión de un precio o coste financiero que refleje los gastos asociados al desarrollo y entrenamiento de dichos modelos. Por último, se sugiere el reemplazo de modelos cada vez más eficientes en los estándares o \textit{benchmark} más empleados.
+
+Según ellos, en el llamado \textit{red IA}, los modelos obtienen mejores rendimientos a base de usar cantidades absurdas de recursos - bien sea por el aumento de los datos de entrada o del número de experimentos (\textit{tuning}) -, de modo que, para lograr un pequeño incremento lineal en su desempeño, se requieren modelos de tamaño exponencialmente mayor, acarreando por tanto una mayor huella de carbono.
+
+Son modelos que, para lograr rendimientos y resultados considerados como de 'estado-del-arte', lo hacen a través del abuso de cantidades ingentes de poder computacional, premiando no así el diseño y la eficiencia si no a través de fuerza bruta.
+
+El estudio refleja también que existe una prevalencia clara de este tipo de construcciones en el desarrollo de modelos de IA a día de hoy, indicando los resultados obtenidos de analizar diferentes \textit{papers} de investigación enviados al \textit{Annual Meeting of the Association 
+for Computational Linguistics}, \textit{Conference on Neurological 
+Information Processing Systems} y \textit{Conference on 
+Computer Vision and Pattern Recognition}; donde se concluyó que más de el 75\% de ellos cumplían todos los requisitos de la \textbf{red-IA}.
+
+La tendencia al empleo de técnicas como NAS, \textit{Neural Architecture Search}, para el diseño de las redes neuronales, o la utilización de herramientas para la búsqueda y ajuste automático de hiper-parámetros (AutoML), hacen que su escalabilidad, en términos computacionales, sea cada vez más exigente energéticamente.
+
+No por ello hay que restar importancia a los resultados obtenidos por dichos modelos, ya que contribuyen y llevan al extremo las fronteras conocidas de la IA, pero el retorno en las mejoras de rendimiento obtenidas por ellos se van a ver reducidas cada vez más a la vez que van a demandar cantidades mayores de recursos, lo cual no es un buen plan de futuro, aun que todavía se siga \textit{in crescendo}.
+
+Existen tres factores determinantes para entender lo que consideran como IA roja que serían:
+\begin{enumerate}[noitemsep, topsep=5pt]
+    \item \textbf{E}, coste de ejecutar el modelo con una sola muestra.
+    \item \textbf{D}, tamaño del \textit{dataset} o conjunto de datos.
+    \item \textbf{H}, número de ajustes en hiper-parámetros, es decir, cuantas veces el modelo es entrenado durante su desarrollo.
+    \item[] \textbf{R}, coste de producción de un determinado resultado o rendimiento.
+\end{enumerate}
+
+\begin{equation}
+    \text{Coste(}R\text{)} \propto E \cdot D \cdot H
+\end{equation}
+Cuando los costes de producir un resultado en un modelo de IA incrementan linealmente con alguno de los factores anteriores, estamos ante uno de estos diseños. Contrariamente, definen la green-AI o \textbf{IA verde} como:
+\begin{quote}
+Investigación en inteligencia artificial que produzca nuevos resultados sin aumentar su coste computacional, e idealmente reduciéndolo.    
+\end{quote}
+
+En el citado artículo \cite{green_red_ai} también se dan una serie de recomendaciones en cuanto a métricas de eficiencia a utilizar en las investigaciones de IA, entre cuales destacamos las siguientes:
+\begin{itemize}[noitemsep, topsep=5pt]
+    \item \textbf{Consumo eléctrico}
+    \item \textbf{Tiempo de ejecución}
+    \item \textbf{Número de parámetros}
+    \item[]  agnóstico al lugar y época, aunque si es dependiente del \textit{hardware} en el que se ejecute el modelo.Aún así, depende del \textit{hardware} empleado, de si hay otros procesos corriendo en la máquina y del número de núcleos usados, por ejemplo, por lo que es difícil distinguir las contribuciones de un mejor diseño a las de una mejor maquina, otra medida que implica de modo natural menor eficiencia, ya que por lo general llevan consigo mayor cantidad de trabajo. Aún así, no se suele usar mucho ya que, dependiendo del algoritmo y de la arquitectura (ancha o profunda), modelos con un número similar de parámetros pueden realizar cantidades muy diferentes de trabajo.
+    \item \textbf{FPO}, el estudio se decanta por utilizar el FPO o \textit{Floating Points Operations} es decir, el número de operaciones de coma flotante como estimación de la cantidad de trabajo realizado por un proceso computacional. Esta métrica está ligada directamente al consumo energético y al tiempo de ejecución, sin depender del \textit{hardware} utilizado.
+\end{itemize}
+%TODO siglas FLOPS NAS FPO
+
+En la siguiente figura \ref{fig:eficiencia_ml} se puede observar esta tendencia en la disminución de la mejora de la precisión con el sucesivo aumento de los costes computacionales.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.8]{Figuras/eficiencia_ml.png}
+    \caption{Distintos modelos de detección de objetos en visión artificial: precisión (acc) - FPO (billones) y  número de parámetros (millones) \cite{green_red_ai}}
+    \label{fig:eficiencia_ml}
+\end{figure}
+
+No todos los problemas requieren soluciones basadas en el ML, y resolver problemas sencillos que pueden ser tratados con una IA menos intensiva computacionalmente, con redes neuronales profundas, es un despilfarro.
+
 \subsubsection{Emisiones y huella de carbono de la IA} \label{ss:emisiones_co2_ia}
 
+Una métrica en las que no entró el estudio anterior es el de las emisiones de carbono, considerada fuera del alcance al depender estas de la infraestructura y fuentes de energía locales que abastezcan a los equipos, por lo que no resulta nada práctico comparar entre investigadores en lugares distintos o incluso en épocas distintas del año.
+%todo mencionar que esto justo fue lo que hicieron estos dos equipos
+
 \paragraph*{Cálculo y simuladores}
+%todo explicar los dos simuladores y enlazar capturas y enlaces a ellos.
 
 \subsubsection{Iniciativas políticas europeas y nacionales}
 \label{ss:politica_ia}
+%ENIA, PNAV y EGD
 
 \subsubsection{Notación Big-O}
 Una herramienta muy funcional a tener en cuenta a la hora de describir la complejidad computacional de un algoritmo es la llamada \textbf{Notación Big-O}, también conocida como notación \textit{Asintótica} o \textit{Landau}, en honor a uno de los autores a los que se atribuye - Edmund Landau - matemático alemán de comienzos del siglo pasado.
@@ -1061,7 +1143,7 @@ Existe, sin embargo, una razón por la que el aprendizaje federado se beneficia 
     \item Si el volumen de datos de entrada para cada ronda de $E$ es de $\eta$, esto implica que: $\mathcal{A} \leadsto O(\eta^2) = \theta$
     \item Si este mismo volumen es distribuido entre múltiples participantes - p.ej. \textbf{cuatro} - de una red federada, las fases de $\mathcal{E}$ se benefician de una reducción inmensa en sus tiempos de ejecución y coste energético:
     \begin{equation}
-        \mathcal{A}_fed \leadsto O(\frac{\eta}{4}^2) \cdot 4_\textit{clientes} = \frac{\theta}{4} 
+        \mathcal{A}_{fed} \leadsto O(\frac{\eta}{4}^2) \cdot 4_\textit{clientes} = \frac{\theta}{4} 
     \end{equation}
     \item Es decir, una reducción de tres cuartos en el tiempo y coste de dicho entrenamiento y construcción del modelo, siempre que supongamos condiciones ideales y una distribución perfectamente paralela y síncrona de clientes con igual poder computacional.
 \end{enumerate}
