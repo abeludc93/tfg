@@ -49,7 +49,7 @@ El ámbito de aplicación de este Trabajo Final aborda diversos aspectos dentro 
 Planteamos esta sección con un doble objetivo: realizar una revisión de las distintas tendencias y estado-del-arte dentro de la inteligencia artificial así como el de efectuar un compendio teórico de los distintos campos que forman parte de ella.
 
 \subsection{Inteligencia Artificial}
-Antes de entrar de lleno en las diferentes técnicas y algoritmos que ofrece la Inteligencia Artificial, es bueno dar un repaso por los fundamentos de este campo y sus diferentes ramas. La mejor forma de introducir así este tema es tener bien claro a que nos estamos refiriendo; ¿que es aquello a lo que se llama \textit{Artificial Intelligence}?, ¿como se distingue de otros conceptos como \textit{Machine Learning}, \textit{Data Mining}, \textit{Big Data} y otros conceptos tan en boga hoy día?
+Antes de entrar de lleno en las diferentes técnicas y algoritmos que ofrece la Inteligencia Artificial, es bueno dar un repaso por los fundamentos de este campo y sus diferentes ramas. La mejor forma de introducir este tema es tener bien claro a que nos estamos refiriendo; ¿que es aquello a lo que se llama \textit{Artificial Intelligence}?, ¿como se distingue de otros conceptos como \textit{Machine Learning}, \textit{Data Mining}, \textit{Big Data} y otros conceptos tan en boga hoy día?
 
 A continuación presentamos un mapa conceptual \ref{fig:diagrama_ia} y unas definiciones que ayudan a aclarar estas nociones:
 
@@ -62,40 +62,38 @@ A continuación presentamos un mapa conceptual \ref{fig:diagrama_ia} y unas defi
 
 \begin{description}
     \item[Artificial Intelligence] disciplina que busca crear algoritmos y sistemas que puedan imitar a la inteligencia humana para realizar tareas complejas de forma autónoma, por ejemplo percepción, toma de decisiones o aprendizaje.
-    \item[Machine Learning] conjunto de algoritmos capaces de identificar y reconocer patrones en conjuntos de datos para, posteriormente, realizar predicciones u otras tareas, descubriendo así relaciones entre las variables de las observaciones por si solos y sin haber sido programados explícitamente para ello, si no a base de tratar con un gran volumen de datos o ejemplos.\\ Machine Learning es un término originado en los años 1950, definido por primera vez por Arthur Lee Samuel, informático teórico estadounidense. Tom Mitchell, informático teórico posterior, llegó a proponer la siguiente definición, más precisa: \textit{Un programa se dice que aprende de la experiencia \emph{E} con respecto a una tarea \emph{T} y una métrica de desempeño \emph{P}, si su rendimiento en \emph{T}, medido por \emph{P}, mejora con la experiencia \emph{E}}.
+    \item[Machine Learning] conjunto de algoritmos capaces de identificar y reconocer patrones en conjuntos de datos para realizar predicciones u otras tareas, descubriendo relaciones entre las variables de las observaciones por si solos y sin haber sido programados explícitamente para ello, si no a base de tratar con un gran volumen de datos o ejemplos.\\ Machine Learning es un término originado en los años 1950, definido por primera vez por Arthur Lee Samuel, informático teórico estadounidense. Tom Mitchell, informático teórico posterior, llegó a proponer la siguiente definición, más precisa: \textit{Un programa se dice que aprende de la experiencia \emph{E} con respecto a una tarea \emph{T} y una métrica de desempeño \emph{P}, si su rendimiento en \emph{T}, medido por \emph{P}, mejora con la experiencia \emph{E}}.
 
-    \item De estas dos definiciones anteriores podemos concluir que el Aprendizaje Automático es una manera de Inteligencia Artificial. De todos modos, podemos tener IA sin ML; por ejemplo, si codificamos reglas, árboles de decisión o técnicas de búsqueda, podemos crear un agente heurístico de inteligencia artificial, sin un enfoque basado en el del ML.
+    \item De estas dos definiciones podemos concluir que el Aprendizaje Automático es una manera de Inteligencia Artificial. De todos modos, podemos tener IA sin ML; por ejemplo, si codificamos reglas, árboles de decisión o técnicas de búsqueda, podemos crear un agente heurístico de inteligencia artificial, sin un enfoque basado en el del ML.
     \item[Deep Learning] técnica de ML que imita redes neuronales de manera artificial para aprender a partir de datos no estructurados, consiguiendo una mayor capacidad de representación que otras técnicas de ML tradicional.
     \item[Data Science] campo interdisciplinario que utiliza métodos estadísticos, de programación y de análisis de datos para extraer conocimiento de conjuntos de datos.
     \item[Big Data] término usado para el almacenamiento y procesado de grandes volúmenes de datos.
     \item[Data Mining] proceso de exploración y análisis de grandes conjuntos de datos para extraer valor de los mismos, como descubrir patrones, tendencias o relaciones útiles.
 \end{description}
 
-Las técnicas exploradas y desarrolladas en este Trabajo Final corresponden a un área dentro del \textit{Aprendizaje Automático}, relativamente reciente, llamado \textit{Aprendizaje Federado}, por lo que las siguientes secciones se centrarán en profundizar en los fundamentos de ambas, así como en las técnicas de procesado de datos y preparación de los mismos, que es tan fundamental para un buen desempeño como la idoneidad o eficacia del propio algoritmo. Para acabar se introducirá el concepto de \textit{Algoritmos verdes}, que es lo quiere decir y que pretende alcanzar.
+Las técnicas exploradas y desarrolladas en este Trabajo Final corresponden a un área dentro del \textit{Aprendizaje Automático} relativamente reciente, llamado \textit{Aprendizaje Federado}, por lo que las siguientes secciones se centrarán en profundizar en los fundamentos de ambas, así como en las técnicas de procesado de datos y preparación de los mismos, que son tan fundamentales para un buen desempeño como la idoneidad o eficacia del propio algoritmo. Para acabar se introducirá el concepto de \textit{Algoritmos verdes}, que quiere decir y que pretende alcanzar.
 
 \subsection{Aprendizaje automático}
-El aprendizaje automático nace con la idea de buscar algoritmos que hagan posible que los ordenadores pudiesen \textit{aprender} - sin ser programados para seguir unas reglas específicas dictadas de antemano - a través de la experiencia, partiendo de un gran volumen de ejemplos.
+El aprendizaje automático nace con la idea de buscar algoritmos que hagan posible que los ordenadores pudiesen \textit{aprender} - sin ser programados para seguir unas reglas específicas dictadas de antemano - a través de la experiencia; partiendo de un gran volumen de ejemplos.
 
 Estos ejemplos formarán lo que se conoce luego como datos de entrada y, más específicamente, predictores o características (\textit{features or predictors}). Así, los algoritmos de ML se usan para descubrir patrones ocultos, establecer relaciones y grupos o predecir algún atributo.
 
-De lo anterior se puede concluir, a grosso modo, que el \textit{Machine Learning} se puede usar para la resolución de problemas que no estén determinados con fórmulas precisas y que, por tanto, se podrían reducir a un planteamiento basado en sistemas de reglas; si no para aquellos donde se desconozca, bien por la gran cantidad de variables dependientes, bien por la complejidad o aleatoriedad de las mismas, la correspondencia entre causas y efectos.
+De lo anterior se puede concluir que el \textit{Machine Learning} se puede usar para la resolución de problemas que no estén determinados con fórmulas precisas y que, por tanto, se podrían reducir a un planteamiento basado en sistemas de reglas; si no para aquellos donde se desconozca la correspondencia entre causas y efectos, bien por la gran cantidad de variables dependientes, bien por la complejidad o aleatoriedad de las mismas.
 
 Las técnicas de ML hacen uso conjunto de distintas áreas de conocimiento para lograr sus objetivos, como la estadística, probabilística, cálculo y optimización mediante métodos numéricos. Además, también se inspira en otras disciplinas como la teoría de la información, la psicología o la neurociencia.
 
 Antes de entrar en los distintos tipos de aprendizaje automático existentes y, puesto que explicaremos en secciones posteriores, más en detalle, los fundamentos de estos y de técnicas más avanzadas como \textit{Deep Learning}, además de cómo desarrollar un modelo y sus pasos, se va a introducir ahora la terminología necesaria y también una aproximación general al funcionamiento de un método típico de ML.
 
-Haciendo un símil tosco, un método de ML \textit{aprende} de la experiencia como lo podrían hacer unos estudiantes. Primero estos son enseñados por sus profesores (\textbf{\emph{entrenamiento/training}}). A final de curso, necesitan examinarse (\textbf{\emph{prueba/testing}}). La nota obtenida, calificada según determinadas métricas (\textbf{\emph{evaluación/evaluation}}), determina, si pasamos cierto corte (\textbf{umbral\\/baseline}), la necesidad de repetir todo el proceso de nuevo o si estamos preparados para su aplicación (\textbf{\emph{despliegue/deployment}}).
+Las recuadros enfatizados en la figura \ref{fig:procesado_ML} son parte de dicha terminología e ilustran, de manera muy simple, el flujo de trabajo de un método genérico de \textit{aprendizaje automático}, donde se recogen unos datos brutos, se preparan, para luego alimentarlos al modelo divididos en conjuntos para su  entreno, validación y optimización. Una vez satisfechos con el rendimiento y eficacia dadas por las métricas de evaluación se considera el modelo listo y se procede a su despliegue.
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[height=0.4\textwidth, width= 0.8\textwidth]{Figuras/ml_process.png}
-    \caption{Flujo de procesado en métodos de Machine Learning \cite{flujo_ML}}
+    \includegraphics[height=0.4\textwidth, width= 0.8\textwidth]{Figuras/flujo_ml_abel.png}
+    \caption{Flujo de procesado en métodos de Machine Learning}
     \label{fig:procesado_ML}
 \end{figure}
 
-Las palabras enfatizadas son parte de esta terminología e ilustran, en la figura \ref{fig:procesado_ML}, de manera muy simple, el flujo de trabajo de un método básico de \textit{aprendizaje automático}.
-
-Existen varios tipos de Aprendizaje Automático, pero sin duda hay dos grandes categorías, \textbf{aprendizaje supervisado} y el \textbf{aprendizaje no-supervisado}. La diferencia entre estos, y algunos algoritmos de uso típico de cada uno de ellos, se explicarán en secciones posteriores. A continuación se deja una figura \ref{fig:cateogorizacion_ML} que muestra esta gran división categórica y algunos ejemplos de aplicación de cada una.
+Existen varios tipos de Aprendizaje Automático, pero sin duda hay dos grandes categorías, \textbf{aprendizaje supervisado} y el \textbf{aprendizaje no-supervisado}. La diferencia entre estos, y algunos algoritmos de uso típico de cada uno de ellos, se explicarán en secciones posteriores. A continuación se tiene la figura \ref{fig:cateogorizacion_ML}, que muestra esta gran división categórica y algunos ejemplos de aplicación de cada una.
 
 %ilustracion categorias ML
 \begin{figure}[h!]
@@ -119,7 +117,7 @@ En general, se diferencian los siguientes tipos de ML:
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{Figuras/unsupervised_supervised_reinforcement.jpeg}
-    \caption{Descripción de las tres categorías principales en Aprendizaje automático \cite{starship_ML}}
+    \caption{Resumen de las tres categorías principales en Aprendizaje automático \cite{starship_ML}}
     \label{fig:categorias_ml}
 \end{figure}
 
@@ -128,8 +126,7 @@ Como sugiere el nombre, el aprendizaje para estos métodos está supervisado por
 
 Así, el conjunto de datos consta de un atributo-objetivo etiquetado y acompañado de otras variables que se usarán para predecirlo, denominadas \textit{predictores} o \textit{características}.
 
-El objetivo puede ser un atributo numérico continuo, un atributo binario que indique grupos sí/no
-o un atributo multiclase con más de dos categorías. Basado en la anterior separación, se habla entonces de tareas de aprendizaje supervisado de \textbf{regresión} o \textbf{clasificación}, correspondientemente.
+El objetivo puede ser un atributo numérico continuo o un atributo de clases para representar múltiples categorías. Basado en la anterior separación, se habla entonces de tareas de aprendizaje supervisado de \textbf{regresión} o \textbf{clasificación}, correspondientemente.
 
 Las primeras tratan así de predecir valores continuos, mientras que las últimas agrupan en una u otra clase el conjunto de datos.
 
@@ -247,9 +244,9 @@ Este tipo de métodos tienen su aplicación más común en el campo de visión a
 \subsubsection{Detección de anomalías}
 Los métodos de esta categoría tratan de identificar puntos u observaciones inusuales o anómalos en un conjunto de datos. La idea general es identificar patrones en los datos y, a partir de estos, identificar aquellos que no siguen la norma o que son indicativos de un comportamiento inesperado.
 
-Se puede considerar como una forma de clasificación al mismo tiempo que un aprendizaje no-supervisado, ya que solo existiría una clase de datos (\textit{one-class}) - aquellos que conforman el perfil de comportamiento normal - y con ellos detectar precisamente las anomalías que no se puedan agrupar y, por tanto, difieran de las características normales del conjunto.
+Se puede considerar como una forma de clasificación al mismo tiempo que un aprendizaje no-supervisado, ya que solo existiría una clase de datos (one-class) - \textit{aquellos que conforman el perfil de comportamiento normal} - y con ellos detectar precisamente las anomalías que no se puedan agrupar y, por tanto, difieran de las características normales del conjunto.
 
-Cabe mencionar que en este tipo de técnicas se trabaja con el supuesto de que tenemos un volumen de datos con observaciones \textit{normales} mucho mayores que el conjunto que conforman las observaciones extrañas.
+Cabe mencionar que, en este tipo de técnicas, se trabaja con el supuesto de que tenemos un volumen de datos con observaciones normales mucho mayores que el conjunto que conforman las observaciones extrañas.
 
 En la figura \ref{fig:deteccion_anomalias} se observa la similitud y diferencias entre una tarea de clasificación y una de detección de anomalías. Aunque esta última pudiera parecer también un problema de clasificación binaria - clase normal y clase anómala - , la falta de observaciones, irregularidad y carácter esporádico de las mismas no permitirían nunca definir un \textit{patrón de datos anómalos}. 
 
@@ -266,11 +263,11 @@ Un ejemplo típico de algoritmos usados en estos métodos de detección de anoma
 Este tipo de técnicas son muy usadas para identificar transacciones bancarias inusuales o sospechosas que sean indicativas de actividades fraudulentas, detecciones de intrusiones en redes informáticas o monitorización de maquinaria industrial, por ejemplo.
 
 \subsubsection{Aprendizaje profundo}
-El conocido como Aprendizaje Profundo, o \textit{Deep Learning}, es un campo de la IA; más específicamente, un sub-conjunto del \textit{Machine Learning}, que está inspirado por las estructuras biológicas y funcionamiento del cerebro humano, concretamente de su sistema neuronal.
+El conocido como Aprendizaje Profundo, o \textit{Deep Learning}, es un campo de la IA, más específicamente, un sub-conjunto del \textit{Machine Learning} que está inspirado por las estructuras biológicas y funcionamiento del cerebro humano, concretamente de su sistema neuronal.
 
-Así, las técnicas y algoritmos del Aprendizaje Profundo emplean lo que se denomina como redes neuronales profundas - \textit{Deep Neural Networks} -, las cuales contienen múltiples capas de 'neuronas' artificiales capaces de reconocer patrones y abstracciones, partiendo de los datos de entrada en crudo/sin procesamiento previo, de forma parecida a como lo hace la mente humana.
+Las técnicas y algoritmos del Aprendizaje Profundo emplean lo que se denomina como redes neuronales profundas - \textit{Deep Neural Networks} -, las cuales contienen múltiples capas de 'neuronas' artificiales capaces de reconocer patrones y abstracciones, partiendo de los datos de entrada en crudo (sin procesamiento previo), de forma parecida a como lo hace la mente humana.
 
-Esta es quizás una de las características mas relevantes y diferenciadoras de estos métodos respecto a los anteriores recién vistos, y que también son parte del aprendizaje automático. Y es que, como veremos en el siguiente apartado de 'Desarrollo de modelos' \ref{sec:Desarrollo_de_modelos}, las técnicas tradicionales necesitan que el conjunto de datos que se usa para el entrenamiento, validación y test del modelo haya sido previamente tratado, limpiado, filtrado e incluso transformado para así obtener la entrada más apropiada para al tipo de algoritmo empleado. Esto se conoce como \textit{data pre-processing} y \textit{feature extraction}, es decir, preprocesamiento y extracción de datos y atributos. Ilustramos este concepto en la figura \ref{fig:ml_vs_dl}:
+Esta es quizás una de las características mas relevantes y diferenciadoras de estos métodos respecto a los anteriores recién vistos, y que también son parte del aprendizaje automático. Y es que, como veremos en el siguiente apartado de 'Desarrollo de modelos' \ref{sec:Desarrollo_de_modelos}, las técnicas tradicionales necesitan que el conjunto de datos que se usa para el entrenamiento, validación y test del modelo haya sido previamente tratado, limpiado, filtrado e incluso transformado para así obtener la entrada más apropiada para el tipo de algoritmo empleado. Esto se conoce como \textbf{data pre-processing} y \textbf{feature extraction}, es decir, preprocesamiento y extracción de datos y atributos. Ilustramos este concepto en la figura \ref{fig:ml_vs_dl}:
 
 %figura ml_vs_dl
 \begin{figure}[H]
@@ -291,7 +288,7 @@ Todas estas redes neuronales artificiales aprenden sus patrones del conjunto de 
 \end{figure}
 
 %clasificacion, tipos y usos
-Del mismo modo que las tres principales ramas del \textit{Aprendizaje Automático}, que hemos explicado anteriormente, eran el \textit{aprendizaje supervisado}, el \textit{no supervisado} y el de \textit{refuerzo}, en el \textit{Deep Learning} también se mantiene la misma clasificación, presentando redes neuronales con arquitecturas ligeramente diferentes y diseñadas acorde a la aplicación de uso final. Así, tenemos:
+Del mismo modo que las tres principales ramas del \textit{Aprendizaje Automático} que hemos explicado anteriormente eran el \textit{aprendizaje supervisado}, el \textit{no supervisado} y el de \textit{refuerzo}, en el \textit{Deep Learning} también se mantiene la misma clasificación, presentando redes neuronales con arquitecturas ligeramente diferentes y diseñadas acorde a la aplicación de uso final. Así, tenemos:
 \begin{itemize}[noitemsep, topsep=0pt]
     \item \textbf{Aprendizaje supervisado}. Alberga las Redes Neuronales Artificiales (usadas en clasificación y regresión), Redes Neuronales Convolucionales (utilizadas en visión artificial) y Redes Neuronales Recurrentes (empleadas en análisis de series temporales)
     \item \textbf{Aprendizaje no supervisado}. Se tiene, por ejemplo, las redes tipo AutoEncoders (usadas mucho en sistemas de recomendación) y los mapas auto-organizados \textit{SOM} (usados en reducción dimensional)
@@ -300,11 +297,11 @@ Del mismo modo que las tres principales ramas del \textit{Aprendizaje Automátic
 
 \subsubsection{Desarrollo de modelos}
 \label{sec:Desarrollo_de_modelos}
-En esta sección se abordarán conceptos generales del \textit{Machine Learning} que se han de tener en cuenta a la hora de desarrollar un modelo, además de los pasos y flujo comunes y necesarios para llevarlo a cabo.
+En esta sección se abordarán conceptos generales de \textit{Machine Learning} que se han de tener en cuenta a la hora de desarrollar un modelo, además de los pasos y flujos necesarios para llevarlos a cabo.
 
-Primero esbozaremos las distintas partes del proceso para, en siguientes apartados, entrar más en detalle en que consisten cada una de ellas.
+Primero esbozaremos las distintas partes del proceso para, en siguientes apartados, entrar en más detalle sobre que consiste cada una de ellas.
 
-En general, el desarrollo de un modelo de \textbf{ML} implica siempre las siguientes puntos, tal y como se ilustran en la figura-resumen \ref{fig:flowchart_ml}:
+En general, el desarrollo de un modelo de \textbf{ML} implica siempre las siguientes fases, tal y como se ilustran en la figura-resumen \ref{fig:flowchart_ml}:
 
 \begin{enumerate}[noitemsep, topsep=5pt]
     \item \textbf{Definir} y entender el problema.
@@ -323,9 +320,9 @@ En general, el desarrollo de un modelo de \textbf{ML} implica siempre las siguie
 \end{figure}
 
 \subsubsection*{\centering\textcircled{1} Definición del problema}
-Es muy importante empezar entendiendo el problema a resolver y sus necesidades y características; \textit{¿que objetivo buscamos?}
+Es muy importante empezar entendiendo el problema a resolver y las necesidades y características del mismo; \textit{¿que objetivo buscamos?}
 
-Para dar una aplicación y uso satisfactorio hay que definir bien siempre los datos disponibles, el tipo de problema y los requisitos de para su solución.
+Para lograr una aplicación y uso satisfactorio hay que definir bien los datos disponibles, el tipo de problema y los requisitos de su solución.
 
 Así, el tipo de problema puede ser uno de predicción de valores, clasificación, agrupación, reconocimiento de voz o imágenes etc.
 
@@ -336,21 +333,21 @@ Los requisitos de la solución son todos aquellos requerimientos de negocio que 
 \subsubsection*{\centering\textcircled{2} Recopilación de datos}
 La recogida de datos de una o varias fuentes necesita satisfacer los requerimientos del problema y del modelo, que puede llegar a necesitar un gran volumen de datos representativos para ser capaz de descubrir los patrones y relaciones entre ellos.
 
-El formato de los datos y su estructura precisada para posteriores fases es trabajo para esta ciclo del desarrollo, que muchas veces echa mano de técnicas de \textit{Big Data} para lograrlo.
+El formato de los datos y la estructura precisada para posteriores fases es trabajo para este ciclo del desarrollo, que muchas veces echa mano de técnicas de \textit{Big Data} para lograrlo.
 
 \subsubsection*{\centering\textcircled{3} Preparación de datos}
 %data pre-processing
 La preparación de datos o \textbf{pre-procesamiento} de datos es uno de los pasos críticos, si no el que más, a la hora de construir un modelo de \textit{Machine Learning} eficaz, ya que no sólo dispone el conjunto de datos de tal modo que puedan ser alimentados al modelo, si no que también se encarga de su tratamiento para que estos arrojen unos resultados satisfactorios, adaptándose a las necesidades del modelo y a los requisitos de negocio.
 
-El pre-procesamiento de datos alberga dos grandes fases, que son la \textbf{transformación de datos} y la \textbf{selección/generación de características}. A grandes rasgos, la primera atañe, para \textit{valores numéricos}, su escalado, tratamiento de datos faltantes y atípicos y su agrupamiento, mientras que para \textit{valores categóricos} concierne su codificación y tratamiento de valores faltantes. La segunda trata de seleccionar aquellos atributos y características representativos del problema, filtrar los datos incompletos o generarles datos nuevos si fuese necesario.
+El pre-procesamiento de datos alberga dos grandes fases, que son la \textbf{transformación de datos} y la \textbf{selección/generación de características}. A grandes rasgos, la primera atañe, para \textit{valores numéricos}, su escalado, tratamiento de datos faltantes y atípicos y su agrupamiento, mientras que para \textit{valores categóricos} concierne su codificación y tratamiento de valores faltantes. La segunda fase trata de seleccionar aquellos atributos y características representativas del problema, filtrar los datos incompletos o generar datos nuevos si fuese necesario.
 
-Esta preparación de datos incumbe así toda una serie de pasos que se describen - superficialmente - a continuación:
+Esta preparación de datos incumbe toda una serie de pasos que se describen - superficialmente - a continuación:
 \begin{enumerate}[noitemsep, topsep=5pt]
     \item \textbf{Limpieza de datos}: consiste en eliminar datos incompletos, irrelevantes y, en general, la transformación del conjunto a un formato uniforme y coherente.
-    \item \textbf{Exploración de datos}: se realiza un primer análisis del 'dataset' para visualizar patrones, tendencias, correlaciones entre variables e identificar valores atípicos o \textit{outliers} (valores que se salen de una medida del rango intercuartílico adoptada), los cuales se suelen o bien eliminar del conjunto o bien sustituir por datos acotados - técnicas \textit{trimming} o \textit{winsorizing} respectivamente -.
-    \item \textbf{Selección de características}: efectuado el anterior análisis, se deberían de filtrar ahora las características/atributos más relevantes y significativas, y descartar aquellas cuya correlación es nula o irrelevante, para ayudar a la convergencia en el entrenamiento del modelo y mejorar así su precisión en las predicciones.
-    \item \textbf{Tratamiento de valores faltantes} (\textit{missing-values}): en gran parte de escenarios se encuentran observaciones donde faltan alguna de las características muestreadas, por lo que se suele llevar a cabo una de las siguientes acciones - \textit{eliminación de la observación}, \textit{reemplazo por una constante global o por media/mediana} o la \textit{imputación de valores probables obtenidos por otros modelos de ML}.
-    \item \textbf{Datos desbalanceados}: repercute, sobre todo, a problemas clasificatorios de aprendizaje supervisado, ya que es común encontrarse con datos en los que una de las clases tiene menos muestras que el resto. En estos casos de conjuntos desequilibrados se suele remediar mediante métodos como el \textit{down-sampling} o \textit{over-sampling}. El primero reduciendo el número de muestras de las clases mayoritarias hasta tener una población equilibrada y el segundo aumentando el número de muestras de la clase minoritaria (duplicando o creando datos nuevos).
+    \item \textbf{Exploración de datos}: se realiza un primer análisis del 'dataset' para visualizar patrones, tendencias, correlaciones entre variables e identificar valores atípicos o \textit{outliers} (valores que se salen de una medida del rango intercuartílico adoptada), los cuales se suelen o bien eliminar del conjunto o bien sustituir por datos acotados - técnicas \textit{trimming}/\textit{winsorizing} respectivamente -.
+    \item \textbf{Selección de características}: efectuado el anterior análisis, se deberían de filtrar ahora las características/atributos más relevantes y significativos, y descartar aquellos cuya correlación es nula o irrelevante, para ayudar a la convergencia en el entrenamiento del modelo y mejorar así su precisión en las predicciones.
+    \item \textbf{Tratamiento de valores faltantes} (\textit{missing-values}): en gran parte de escenarios se encuentran observaciones donde faltan alguna de las características muestreadas, por lo que se suele llevar a cabo una de las siguientes acciones - \textit{eliminación de la observación}, \textit{reemplazo por una constante global o por media/mediana} o la \textit{imputación de valores probables generados por otros modelos de ML}.
+    \item \textbf{Datos desbalanceados}: repercute, sobre todo, a problemas clasificatorios de aprendizaje supervisado, ya que es común encontrarse con datos en los que una de las clases tiene menos muestras que el resto. En estos casos de conjuntos desequilibrados se suele remediar mediante métodos como el \textit{down-sampling} o \textit{over-sampling}. El primero reduce el número de muestras de las clases mayoritarias hasta tener una población equilibrada y el segundo aumenta el número de muestras de la clase minoritaria (duplicando o creando datos nuevos).
     \item \textbf{Codificación de datos}: en este paso se realiza la transformación de datos para su entrada al modelo y mejorar así su rendimiento. Incluye etapas de escalado y normalización, usando técnicas como \textit{estandarización Z-score} o \textit{normalización min-max}, además de realizar la codificación de datos categóricos, usando por ejemplo \textit{one-hot encoding}, o, también, el agrupamiento o \textit{binning} de valores numéricos, incluyendo además posibles transformaciones logarítmicas o exponenciales que ayuden al modelo.
     \item \textbf{División de datos}: paso fundamental y necesario en el desarrollo de todo modelo, y por el cual se fragmenta aleatoriamente el dataset, pre-procesado, en tres conjuntos, \textbf{entrenamiento}, \textbf{validación} y \textbf{test}, en unas determinadas proporciones, normalmente un $60\%-20\%-20\%$ correspondientemente. El modelo 'aprende' con los datos de entrenamiento, evalúa con los evaluación y prueba con los de test.
     %figura
@@ -372,7 +369,7 @@ Esta preparación de datos incumbe así toda una serie de pasos que se describen
 
 Con este pre-procesamiento del conjunto de datos se pretende que el 'dataset' obtenido sea \textbf{representativo}, para obtener un modelo eficaz y sacar predicciones útiles del mismo.
 
-Esto significa, entre otras cosas, evitar el \textbf{overfitting} o sobreajuste y el \textbf{underfitting} o infraajuste del modelo, y escapar así del conflicto que existe entre optimización y generalización.
+Esto significa, entre otras cosas, evitar el \textbf{overfitting} o sobreajuste y el \textbf{underfitting} o infraajuste del modelo, y escapar así del conflicto que existe entre \textit{optimización} y \textit{generalización}.
 
 El sobreajuste ocurre cuando se entrena demasiado un modelo del cual se conocen sus salidas deseadas, 'memorizando' pautas que son demasiado específicas de los datos de entrenamiento e irrelevantes para datos nuevos, como se puede apreciar en la figura \ref{fig:overfitting1}. Infraajuste es cuando ocurre todo lo contrario, y el modelo carece de capacidad de representación para ajustarse a las necesidades del dataset.
 %fig
@@ -392,30 +389,30 @@ Un indicador de que se está produciendo sobreajuste es cuando, luego de descend
     \label{fig:overfitting2}
 \end{figure}
 
-Para evitar el sobreajuste existen técnicas sencillas y complejas. La más sencilla de todas es la llamada \textit{early-stopping}, que significa detener el entrenamiento una vez que se observa tendencias distintas en los errores de la figura \ref{fig:overfitting2}. Otra de fácil implementación sería la propia validación cruzada que se explicó antes. Por último, la llamada \textbf{regularización} consiste en reducir la complejidad global del modelo, a costa de su varianza. Técnicas de este estilo incluyen la regularización \textit{L1}, \textit{L2}, \textit{Lasso} o \textit{Ridge}.
+Para evitar el sobreajuste existen técnicas sencillas y complejas. La más sencilla de todas es la llamada \textit{early-stopping}, que significa detener el entrenamiento una vez que se observa tendencias distintas en los errores de la figura \ref{fig:overfitting2}. Otra de fácil implementación sería la propia \textit{validación cruzada} que se explicó antes. Por último, la llamada \textbf{regularización} consiste en reducir la complejidad global del modelo, a costa de su varianza. Técnicas de este estilo incluyen la regularización \textit{L1}, \textit{L2}, \textit{Lasso} o \textit{Ridge}.
 
 \subsubsection*{\centering\textcircled{4} Selección y construcción del modelo}
 A estas alturas, la selección del algoritmo apropiado y el tipo, estructura y conjunto de datos de trabajo que este necesita ya debería de estar listo, puesto que su tratamiento, división e incluso transformación - muchas veces específica al algoritmo, ya que puede funcionar mejor con según que tipo de entradas - ya se ha abordado en las fases de preparación de datos.
 
 Así, este aspecto de construcción del modelo implica el diseño de su arquitectura y puesta en marcha del mismo.
 
-En cuanto a su diseño, se puede optar por arquitecturas centralizadas o distribuidas. Un diseño centralizado implica un modelo donde todo el procesamiento de datos - y su entrenamiento - se realiza en un solo lugar, como una única máquina o servidor. Por la contra, las arquitecturas distribuidas dividen este proceso en varias máquinas o servidores, lo que permite realizar su tratamiento en paralelo y en diferentes lugares geográficos. Este último enfoque se ha de tener en cuenta si existe una necesidad de procesar grandes cantidades de datos en un tiempo razonable, además de si por la naturaleza del problema la recogida de datos y su almacenamiento presenta límites físicos o incluso legales que se han de considerar. El diseño también puede llevar en sí el propio dimensionamiento del modelo, sobre todo cuando se trabaja con técnicas de \textit{Deep Learning}, donde la decisión del número de capas ocultas, el número de neuronas por capa y las funciones de activación asignadas a estas es una parte tan fundamental como el propio conjunto de datos y la solución deseada.
+En cuanto a su diseño, se puede optar por arquitecturas centralizadas o distribuidas. Un diseño centralizado implica un modelo donde todo el procesamiento de datos - y su entrenamiento - se realiza en un solo lugar, como una única máquina o servidor. Por la contra, las arquitecturas distribuidas dividen este proceso en varias máquinas o servidores, lo que permite realizar su tratamiento en paralelo y en diferentes lugares geográficos. Este último enfoque se ha de tener en cuenta si existe una necesidad de procesar grandes cantidades de datos en un tiempo razonable, además de si, por la naturaleza del problema, la recogida de datos y su almacenamiento presenta límites físicos o incluso legales que se han de considerar. El diseño también puede llevar consigo el propio dimensionamiento del modelo, sobre todo cuando se trabaja con técnicas de \textit{Deep Learning}, donde la decisión del número de capas ocultas, el número de neuronas por capa y las funciones de activación asignadas a estas es una parte tan fundamental como el propio conjunto de datos y la solución deseada.
 
 Por último, la puesta en marcha de un modelo no garantiza su eficacia ni éxito, y muchas veces es necesario probar con distintos algoritmos o técnicas para quedarse, al final, con el que presente mejores resultados y desempeño. Esto implica una serie de tareas repetitivas y tediosas que pueden alargar esta fase del desarrollo, y por ello ya existen cada vez más herramientas dispuestas a automatizar también este trabajo.
 
-En lo que se conoce como \textit{\emph{Automated Machine Learning}}, unas herramientas automatizan el proceso de construcción de modelos, ayudando, probando y seleccionando diversos algoritmos e hiper-parámetros correspondientes. Algunos también realizan la limpieza y preprocesamiento de datos. Herramientas populares de este ámbito incluyen \textit{DataRobot}, \textit{Google AutoML} y \textit{H2Oai}, por ejemplo.
+En lo que se conoce como \textbf{Automated Machine Learning}, unas herramientas automatizan el proceso de construcción de modelos, ayudando, probando y seleccionando diversos algoritmos e hiper-parámetros correspondientes. Algunos también realizan la limpieza y preprocesamiento de datos. Herramientas populares de este ámbito incluyen \textit{DataRobot}, \textit{Google AutoML} y \textit{H2Oai}, por ejemplo.
 
 \subsubsection*{\centering\textcircled{5} Evaluación y optimización}
 La evaluación y optimización del modelo significa la introducción de las métricas de desempeño, la función de coste o pérdida y la afinación de hiper-parámetros pero, ¿que son? y, ¿para que sirven?:
 
-\paragraph*{Métricas}. Las métricas de desempeño son una serie de indicadores del rendimiento del modelo, de su eficacia, de como de 'bueno' es y, en general, de qué cantidad de error ha cometido cuando se evalúa contra el conjunto de datos de test o de validación.
+\paragraph*{Métricas} Las métricas de desempeño son una serie de indicadores del rendimiento del modelo, de su eficacia, de como de 'bueno' es y, en general, de qué cantidad de error ha cometido cuando se evalúa contra el conjunto de datos de test o de validación.
 
-Existen muchas métricas de desempeño diferentes, pero generalmente se suelen dividir según el tipo de método de aprendizaje automático que se utilizando. Así, por ejemplo, hay métricas propias de técnicas de aprendizaje supervisado, no-supervisado y por refuerzo. A continuación desglosamos algunas de ellas.
+Existen muchas métricas de desempeño diferentes, pero generalmente se suelen dividir según el tipo de método de aprendizaje automático que se utilice. Así, por ejemplo, hay métricas propias de técnicas de aprendizaje supervisado, no-supervisado y por refuerzo. A continuación desglosamos algunas de ellas.
 
 \vspace{1em}
 
 \textbf{Aprendizaje supervisado}\\
-Para evaluar modelos de regresión:
+Para evaluar modelos de \textbf{regresión}:
 %TODO - ecuaciones y figuras
 \begin{itemize}[noitemsep, topsep=5pt]
     \item MAE, \textit{Mean Absolute Error}, es el error absoluto medio entre la predicción y los valores reales.
@@ -425,7 +422,7 @@ Para evaluar modelos de regresión:
     \item $R^2$, conocido como coeficiente de determinación, aplicado a la relación entre valores reales y predicciones.
     \[R^2 = \frac{\sigma_{XY}^2}{\sigma_X^2\sigma_Y^2}\]
 \end{itemize}
-Para evaluar modelos de clasificación: 
+Para evaluar modelos de \textbf{clasificación}: 
 
 Se determinan una serie de métricas basándose, primero, en los datos aportados por la denominada \textbf{matriz de confusión}, que se construye de la siguiente manera:
 
@@ -446,7 +443,7 @@ En la figura \ref{fig:matriz_confusion} se puede observar un ejemplo de esta mat
     \label{fig:matriz_confusion}
 \end{figure}
 
-Una vez contabilizadas dichas observaciones en la matriz anterior, existen una serie de parámetros para validad el desempeño del modelo. Los más reconocidos son:
+Una vez contabilizada la matriz anterior, existen una serie de parámetros para validar el desempeño del modelo. Los más reconocidos son:
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textit{Accuracy}: Medida de exactitud. Para el total de datos, ¿cuantos son ciertos?
     \[Accuracy = \frac{(TP+TN)}{Total}\]
@@ -464,7 +461,7 @@ Una vez contabilizadas dichas observaciones en la matriz anterior, existen una s
     \[Prior=P(aleatorio) \rightarrow Mejora=\frac{Precision}{Prior}\]
 \end{itemize}
 
-Después de definir estás métricas se suele recurrir a las curvas \textbf{ROC}, \textit{Receiver Operating Characteristic} y con ella obtener el valor \textbf{AUC}, \textit{Area Under Curve}, que ayuda, esta última, a dar una idea general de cómo de bueno es el modelo, y la primera a escoger el valor del \textbf{umbral} óptimo para la clasificación binaria, según el comportamiento que deseemos del modelo en nuestra situación.
+Después de definir estás métricas se suele recurrir a las curvas \textbf{ROC}, \textit{Receiver Operating Characteristic} y con ella obtener el valor \textbf{AUC}, \textit{Area Under Curve}, que ayuda, esta última, a dar una idea general de cómo de bueno es el modelo, y la primera a escoger el valor del \textbf{umbral} óptimo para la clasificación binaria, según el comportamiento que deseemos obtener del modelo en nuestra situación particular.
 
 La curva \textit{ROC} enfrenta en una gráfica el \textit{True Positive Rate} o \textit{recall} contra el \textit{False Poisitive Rate}. Para un umbral determinado de la clasificación, nuestro modelo se sitúa en un determinado punto, como se observa en la figura \ref{fig:roc_basico}:
 
@@ -488,11 +485,13 @@ Según se varia este umbral, el modelo contabiliza nuevos valores de la matriz d
 
 El \textit{AUC} es precisamente el área de esta curva. Modelos con buen comportamiento tendrán valores de AUC cercanos a 1, lo cual implica buenas métricas de especificidad, precisión, F1, etc. Modelos con AUC similares a $1/2$ no mejoran en mucho a un modelo de clasificación puramente aleatorio.
 
-\textbf{Aprendizaje no-supervisado}\\
-Las métricas de desempeño no son exclusivas de métodos de aprendizaje supervisado; así, se distinguen aquí dos categorías principales, las métricas \textit{externas} y las \textit{internas}, distinguiéndose ambas en si hacen uso de información externa para la validación, es decir, información que no es producto de la técnica de agrupación utilizada.
+\vspace{1em}
 
-Las internas evalúan que tan buena es la estructura del \textit{clustering} sin necesidad de datos ajenos al propio algoritmo, y se suelen usar para escoger el mejor algoritmo y su número óptimo de clusters, mientras que las externas se usan para decidir que tipo de agrupamiento se ajusta más al \textit{dataset} específico a tratar, cuando se conoce algún dato/ relación a mayores entre ellas o se desea algún comportamiento especial del agrupamiento.\\
-Las métricas internas se basan en criterios de cohesión y separación y las más utilizadas suelen ser alguna de las siguientes:
+\textbf{Aprendizaje no-supervisado}\\
+Las métricas de desempeño no son exclusivas de métodos de aprendizaje supervisado; si no que se pueden evaluar modelos no-supervisados, distinguiéndose aquí dos categorías principales, las métricas \textit{externas} y las \textit{internas}, diferenciándose ambas en si hacen uso de información externa para la validación, es decir, información que no es producto de la técnica de agrupación utilizada.
+
+Las internas evalúan que tan buena es la estructura del \textit{clustering} sin necesidad de datos ajenos al propio algoritmo, y se suelen usar para escoger la mejor técnica y su número óptimo de clusters, mientras que las externas se usan para decidir que tipo de agrupamiento se ajusta más al \textit{dataset} específico a tratar, cuando se conoce algún dato/relación a mayores entre ellas o se desea algún comportamiento especial del agrupamiento.\\
+Las métricas internas se basan en criterios de cohesión y separación y las más utilizadas se listan a continuación:
 \begin{itemize}[noitemsep, topsep=5pt]
     \item SSW, \textit{Sum of Squared Within}, medida de cohesión, donde  \textit{k} es el número de clústeres, \textit{x} un punto del clúster y \textit{m\textsubscript i} el centroide del clúster \textit{c\textsubscript i}.
     \[SSW = \Sigma_{i = 1}^k \Sigma_{x \epsilon c_i} dist^2 (m_i,x)\]
@@ -503,9 +502,10 @@ Las métricas internas se basan en criterios de cohesión y separación y las m�
     Siendo la función $a(x)$ la distancia promedio de $x$ a todos los demás puntos del mismo clúster (cohesión) y la función $b(x)$ la distancia promedio de $x$ a todos los demás puntos del clúster más cercano (separación). Luego se realiza la media aritmética de todos los puntos del agrupamiento:
     \[SC = \frac{1}{N} \Sigma_{i=1}^N s(x)\]
     El coeficiente resultante varia entre $(-1,1)$ siendo el primero un mal agrupamiento y el último uno óptimo.
-    \item Índice Davies-Bouldin (DB), entre otros, tasa de reducción de dimensionalidad...
 \end{itemize}
-Las métricas externas, para cuando se cuente con información/etiquetas a mayores, se basan en construir una matriz de confusión basado en los puntos del clúster objeto de estudio y obtener las métricas que vimos en el apartado anterior.
+Las métricas externas, cuando se cuenta con información/etiquetas a mayores, se basan en construir la matriz de confusión con los puntos del clúster objeto de estudio y obtener las métricas que vimos en el apartado anterior.
+
+\vspace{1em}
 
 \textbf{Aprendizaje por refuerzo}\\
 En esta última categoría tenemos métricas de desempeño como:
@@ -514,12 +514,12 @@ En esta última categoría tenemos métricas de desempeño como:
     \item Tasa de éxito en la resolución de tareas: proporción de intentos en los que el agente alcanza un objetivo o tarea exitosamente, por ejemplo, porcentaje de partidas ganadas por el agente.
 \end{itemize}
 
-\paragraph*{Función de coste}.
-También llamada función de pérdida, \textit{loss function}, es una especie de medida usada en algoritmos de aprendizaje supervisado para cuantificar como de buenas son las predicciones de un modelo, comparando siempre valores reales de los datos de entrenamiento con las predicciones realizadas, de manera que esta función calcula un valor que refleja el error o discrepancia entre ambas.
+\paragraph*{Función de coste}
+También llamada función de pérdida, \textit{loss function}, es una medida usada en algoritmos de aprendizaje supervisado para cuantificar como de buenas son las predicciones de un modelo, comparando valores reales de los datos de entrenamiento con sus predicciones, de manera que esta función calcula un valor que refleja el error o discrepancia entre ambas.
 
-Durante el entrenamiento, el objetivo es siempre \textbf{minimizar} dicha función, ajustando los pesos o parámetros del modelo para que sus predicciones sean lo más similares posibles a los valores reales. La elección de la función de coste, y su optimización, depende del tipo de problema y del algoritmo empleado.
+Durante el entrenamiento, el objetivo es siempre \textbf{minimizar} dicha función, ajustando los pesos o parámetros del modelo para que sus predicciones sean lo más similares posibles a los valores reales. La elección de la función de coste, y su optimización, depende del tipo de problema y algoritmo empleado.
 
-Así, existen funciones de pérdida de determinados algoritmos - lineales - que permiten una resolución no-iterativa y cerrada del mismo, mientras que en la gran mayoría se suelen recurrir a métodos numéricos para intentar optimizar dicha función de manera iterativa hasta un deseado mínimo global, aún sin saber en muchas ocasiones si este ha sido alcanzado.
+Aun que hay algoritmos de métodos lineales cuya función de coste permiten una resolución no-iterativa y cerrada del mismo, en la gran mayoría de ellos se suele recurrir a métodos numéricos para intentar optimizar dicha función de manera iterativa hasta un esperado mínimo global, aún sin saber, en muchas ocasiones, si este ha sido alcanzado.
 
 De este modo, funciones de pérdida comunes incluyen el MSE visto antes, la entropía cruzada (en redes neuronales) o la precisión, y los métodos numéricos de optimización usados varian desde descenso de gradiente (\textit{Gradient Descent}) o ADAM (\textit{Adaptative Moment Estimation}), entre otros. A continuación se ilustra uno de estos procesos de minimización \ref{fig:gradient}:
 
@@ -531,12 +531,12 @@ De este modo, funciones de pérdida comunes incluyen el MSE visto antes, la entr
     \label{fig:gradient}
 \end{figure}
 
-\paragraph*{Hiper-parámetros}.
-Se conocen como hiper-parámetros a todos aquellos factores que se establecen antes del proceso de entrenamiento del modelo y que no se \textit{aprenden} directamente de los datos. Estos parámetros controlan la configuración, comportamiento y diseño del algoritmo de aprendizaje, y su debido ajuste es crucial a la hora de obtener un buen rendimiento del modelo.
+\paragraph*{Hiper-parámetros}
+Se conocen como hiper-parámetros todos aquellos factores que se establecen antes del proceso de entrenamiento del modelo y que no se \textit{aprenden} directamente de los datos. Estos parámetros controlan la configuración, comportamiento y diseño del algoritmo de aprendizaje, y su ajuste es crucial a la hora de obtener un buen rendimiento del modelo.
 
-A diferencia de los pesos o parámetros del modelo que se aprenden durante el entrenamiento y optimización de la función de pérdida, los hiper-parámetros son seleccionados por el usuario como por el ejemplo la tasa de aprendizaje, el número de capas ocultas en una red neuronal artificial (ANN), el tamaño del lote de trabajo, el número máximo de iteraciones o tiempo requerido para la convergencia de la función, profundidad de un árbol de decisión ...
+A diferencia de los pesos o parámetros del modelo que se aprenden durante su entrenamiento y optimización de la función de pérdida, los hiper-parámetros son seleccionados por el usuario, como por ejemplo la tasa de aprendizaje, el número de capas ocultas en una red neuronal (ANN), el tamaño del lote de trabajo, el número máximo de iteraciones o tiempo requerido para la convergencia de la función, profundidad de un árbol de decisión ...
 
-Existen técnicas para lograr hallar que hiper-parámetros ofrecen un mejor rendimiento del modelo; algunas son brutas y sistémicas como la búsqueda en cuadrícula (grid \textit{grid sear}) o aleatoria (\textit{random search}) y otras algo más avanzadas como la optimización bayesiana (\textit{bayesian optimization}). En la figura \ref{fig:hyperparam} podemos ver un ejemplo de este concepto:
+Existen técnicas para lograr hallar que hiper-parámetros ofrecen un mejor rendimiento del modelo; algunas son brutas y sistémicas como la búsqueda en cuadrícula (\textit{grid search}) o aleatoria (\textit{random search}) y otras algo más avanzadas como la optimización bayesiana (\textit{bayesian optimization}). En la figura \ref{fig:hyperparam} podemos ver un ejemplo de este concepto:
 
 \begin{figure}[H]
     \centering
@@ -546,13 +546,13 @@ Existen técnicas para lograr hallar que hiper-parámetros ofrecen un mejor rend
 \end{figure}
 
 \subsubsection*{\centering\textcircled{6} Despliegue}
-El despliegue y uso práctico de un modelo de \textit{ML} simplemente implica la integración del modelo final en un entorno de producción, donde podrá generar los resultados esperados y ser utilizado para la toma de decisiones.
+El despliegue y uso práctico de un modelo de \textit{ML} implica la integración del modelo final en un entorno de producción, donde podrá generar los resultados esperados y ser utilizado para la toma de decisiones.
 
-Los únicos factores que se tienen que tener en cuenta aquí son la escalabilidad del modelo, el rendimiento del mismo, la privacidad y seguridad de los datos, la capacidad de actualización y mantenimiento del modelo y las posibles regulaciones e impacto de su uso.
+Los únicos factores que se tienen que tener en cuenta aquí son la escalabilidad del modelo, su rendimiento, su capacidad de actualización y mantenimiento, la privacidad y seguridad de los datos y las posibles regulaciones e impacto derivados de su uso.
 
 \vspace{2cm}
 
-Para acabar, presentamos en al figura \ref{fig:flowchart_sl} otro esquema que representa algunas de las fases descritas en este apartado de desarrollo de modelos, ejemplificado para la construcción de un método genérico de aprendizaje supervisado:
+Para acabar, presentamos en la figura \ref{fig:flowchart_sl} otro esquema que representa algunas de las fases descritas en este apartado de desarrollo de modelos, ejemplificado para la construcción de un método genérico de aprendizaje supervisado:
 
 \begin{figure}[H]
     \centering
@@ -569,15 +569,15 @@ Para acabar, presentamos en al figura \ref{fig:flowchart_sl} otro esquema que re
 % Introduccion -> Motivación, definición (Kairouz y Yang), características, categorias (cross-silo, cross-device, centrado en modelo y centrado en datos), proceso desarrollo (kairouz), privacidad (vulnerabilidades, actores y amenazas, técnicas SMC y DP).
 % Tipos -> HFL, VFL, FTL, FRL.
 % Aplicaciones y casos de uso, software y datasets.
-Con el auge de los dispositivos móviles y otros dispositivos embebidos - de uso doméstico o no - englobados en el llamado \textit{Internet of Things} (IoT) se produce, cada vez más, una abundancia de datos que, siendo adecuados y aprovechables para el entrenamiento de modelos de aprendizaje automático, se deben desaprovechar debido a restricciones físicas o éticas, siendo datos de una naturaleza privada o sensible, además de encontrarse distribuidos entre millares de dispositivos desconocidos.
+Con el auge de los dispositivos móviles y otros dispositivos embebidos - de uso doméstico o no - englobados en el llamado \textit{Internet of Things} (IoT) se produce, cada vez más, una abundancia de datos que, siendo adecuados y aprovechables para el entrenamiento de modelos de aprendizaje automático, se desaprovechan por restricciones físicas o éticas, debido a su naturaleza privada o sensible, además de encontrarse distribuidos entre millares de dispositivos desconocidos.
 
 Con esta motivación e ideas de fondo fue como surgió el término de \textit{Federated Learning} o Aprendizaje Federado, acuñado por primera vez en el articulo de McMahan et al. \cite{paper_McMahan} títulado \textit{Communication-Efficient Learning of Deep Networks from Decentralized Data}, en donde se da una primera definición y enfoque a la particular casuística y características que atañen a estos modelos.
 
-En el citado articulo se centran específicamente en el caso de los dispositivos móviles, intentando usar los datos contenidos en estos para usarlos en modelos de ML que mejoren la usabilidad de los mismos; como se materializaría - a posteriori - con su implantación en el teclado móvil \textit{Gboard} del SO \textit{Android} para mejorar la predicción de palabras y \textit{emojis} del usuario.
+En el citado estudio se centran específicamente en el caso de los dispositivos móviles, intentando usar los datos contenidos en estos para usarlos en modelos de ML que mejoren la usabilidad de los mismos; como se materializaría - a posteriori - con su implantación en el teclado móvil \textit{Gboard} del SO \textit{Android} para mejorar la predicción de palabras y \textit{emojis} del usuario.
 
-El anterior articulo presenta así una solución al uso de estos datos sensibles y distribuidos - que imposibilitan el enfoque tradicional, es decir, aunarlos en un centro de datos y realizar con ellos el desarrollo del modelo - defendiendo una nueva técnica de aprendizaje que permite a los usuarios aprovechar colectivamente los beneficios de los modelos sin necesidad de almacenar los datos de forma centralizada ni llegar a compartirlos, creando una red federada de dispositivos que resuelva la función objetivo bajo la coordinación de un servidor central.
+El anterior articulo presenta una solución al uso de estos datos sensibles y distribuidos - que imposibilitan el enfoque tradicional, es decir, aunarlos en un centro de datos y realizar con ellos el desarrollo del modelo - defendiendo una nueva técnica de aprendizaje que permite a los usuarios aprovechar colectivamente los beneficios de los modelos sin necesidad de almacenar los datos de forma centralizada ni llegar a compartirlos, creando una red federada de dispositivos que resuelva la función objetivo bajo la coordinación de un servidor central.
 
-Cada uno de los dispositivos - o clientes - mantiene así su conjunto de datos intacto y sólo comparte con el servidor unas actualizaciones iterativas de los pesos de su modelo local, que ni siquiera es necesario guardar en el servidor central una vez son aplicados, en completa sintonía con los principios de \textit{focused collection} y \textit{data-minimization} propuestos el informe de ciber-seguridad de la Casa Blanca \cite{paper_WH} de 2013.
+Cada uno de los dispositivos - o clientes - mantiene su conjunto de datos intacto y sólo comparte con el servidor unas actualizaciones iterativas de los pesos de su modelo local, que ni siquiera son necesarios guardar en el servidor central una vez son aplicadas, en completa sintonía con los principios de \textit{focused collection} y \textit{data-minimization} propuestos el informe de ciber-seguridad de la Casa Blanca \cite{paper_WH} de 2013 \textit{'Consumer data privacy in a networked world'}.
 
 \begin{figure}[H]
     \centering
@@ -586,19 +586,19 @@ Cada uno de los dispositivos - o clientes - mantiene así su conjunto de datos i
     \label{fig:fl_kairouz_1}
 \end{figure}
 
-A día de hoy, existen ya toda una serie de herramientas desplegadas en distintos productos digitales de consumo que han sido desarrolladas empleando técnicas de aprendizaje federado, como por ejemplo el ya mencionado teclado \textit{Gboard}, o su equivalente \textit{QuickType} de Apple, en el \textit{Android Messages} y en ciertas características de los móviles \textit{Pixel} de Google para identificación de imágenes, en reconocimiento de voz para el asistente \textit{Siri} etc. En otros ámbitos, por ejemplo, en \textit{doc.ai} se están desarrollando soluciones para ayudar en la investigación médica.
+A día de hoy, existen ya toda una serie de herramientas desplegadas en distintos productos digitales de consumo que han sido desarrolladas empleando técnicas de aprendizaje federado, como por ejemplo el ya mencionado teclado \textit{Gboard}, su equivalente \textit{QuickType} en Apple, pero también en ciertas características de los móviles \textit{Pixel} de Google para identificación de imágenes o en reconocimiento de voz para asistentes como \textit{Siri}. En otros ámbitos, por ejemplo, en \textit{doc.ai} se están desarrollando soluciones para ayudar en la investigación médica.
 
 En resumen, podemos decir que las técnicas de Aprendizaje Federado surgen como solución a los problemas de aislamiento y fragmentación de datos sensibles que, a mayores, requieren, por motivos éticos y legales, adecuarse a restricciones de privacidad y seguridad.
 
 \subsubsection{Definición, características y proceso de desarrollo}
 
-Debido a que, en la primera introducción del término \textit{Federated Learning}, se hizo un especial enfoque a su uso en dispositivos móviles, dejando abierta la puerta para futuras aplicaciones, como así fue, tenemos que ir a buscar una definición más general de este concepto en el libro de Kairouz et al. \cite{libro_kairouz} de años posteriores, que lo fija como:
+Debido a que, en la primera introducción del término \textit{Federated Learning}, se hizo un especial enfoque a su uso en dispositivos móviles, dejando la puerta abierta a otras aplicaciones, como así fue, tenemos que ir a buscar una definición más general de este concepto en el libro de Kairouz et al. \cite{libro_kairouz} de años posteriores, que lo explica como:
 
 \begin{quote}
     El Aprendizaje Federado es un entorno del aprendizaje automático en el que múltiples entidades (clientes) colaboran en la resolución de un problema de aprendizaje automático, bajo la coordinación de un servidor central o proveedor de servicios. Los datos brutos de cada cliente se almacenan localmente y no se intercambian ni transfieren; si no que, para lograr el objetivo del aprendizaje, se utilizan actualizaciones iterativas destinadas a su agregación inmediata.
 \end{quote}
 
-Caben dos apuntes en la anterior definición; la primera, es que estas 'actualizaciones iterativas' tienen el alcance justo y limitado para contener la mínima información necesaria para la tarea de aprendizaje en cuestión - además de realizar su agregación lo antes posible para evitar almacenar cualquier tipo de información que permita su reconstrucción - y, la segunda, es que no se tiene en cuenta las técnicas de aprendizaje federado totalmente descentralizadas (P2P), que carecen de servidor central y difieren de la arquitectura clásica cliente-servidor de la definición, como ilustra la figura \ref{fig:arq_fl_yang}.
+Caben dos apuntes en la anterior definición; la primera, es que estas 'actualizaciones iterativas' tienen el alcance justo y limitado para contener la mínima información necesaria para la tarea de aprendizaje en cuestión - realizando su agregación lo antes posible evitando su almacenaje y posible reconstrucción - y, la segunda, es que no se tiene en cuenta las técnicas de aprendizaje federado totalmente descentralizadas (P2P), que carecen de servidor central y difieren de la arquitectura clásica cliente-servidor de la definición, como ilustra la figura \ref{fig:arq_fl_yang}.
 
 \begin{figure}[H]
     \centering
@@ -617,11 +617,11 @@ Caben dos apuntes en la anterior definición; la primera, es que estas 'actualiz
     \label{fig:arq_fl_yang}
 \end{figure}
 
-Como se observa, de una u otra manera se mantienen los datos de entrenamiento descentralizados, y así se mitigan muchos de los riesgos y costes asociados a la privacidad de estos y derivados del aprendizaje automático tradicional y centralizado que, además, como veremos en futuros capítulos, son menos eficientes energéticamente.
+Como se observa, de una u otra manera se mantienen los datos de entrenamiento descentralizados, y así se mitigan muchos de los riesgos y costes asociados a la privacidad y derivados del aprendizaje automático tradicional y centralizado que, además, como veremos en futuros capítulos, son menos eficientes energéticamente.
 
-De este modo se van recogiendo una serie de características, restricciones y desafíos que surgen en la solución de problemas de ML que usan datos descentralizados - donde la privacidad es esencial - y que quedan adscritos bajo el término \textbf{Federated Learning}, que se puede pensar más como un campo interdisciplinario que combina técnicas de optimización distribuida, criptografía, privacidad diferencial, teoría de la información y estadística, entre otras.
+De este modo se recogen una serie de características, restricciones y desafíos que surgen en la solución de problemas de ML que usan datos descentralizados - donde la privacidad es esencial - y que quedan adscritos bajo el término \textbf{Federated Learning}; que se puede pensar como un campo interdisciplinario que combina técnicas de optimización distribuida, criptografía, privacidad diferencial, teoría de la información y estadística, entre otras.
 
-Entre las \textbf{características} de los problemas de optimización a los que se enfrentan las técnicas de aprendizaje federado se encuentran, normalmente, las siguientes:
+Entre las \textbf{características de los problemas de optimización} a los que se enfrentan las técnicas de aprendizaje federado se encuentran, normalmente, las siguientes:
 
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textbf{Distribución estadísticas desiguales y no-uniformes}: en estos entornos, no se pueden asumir los supuestos de las técnicas tradicionales de ML distribuido, como son el de datasets \textit{IID} (Independent and Identically Distributed), es decir, muestras independientes entre sí y con idénticas distribuciones de probabilidad. Y es que hay que suponer que, aunque cada cliente aporte datos locales correspondientes al mismo objetivo, debido al uso y circunstancias de cada uno, su distribución ha de ser distinta.
@@ -631,7 +631,7 @@ Entre las \textbf{características} de los problemas de optimización a los que 
     \item \textbf{Comunicaciones costosas}: A diferencia de lo que sucede en escenarios clásicos de computación distribuida, donde existe un ancho de banda, bajo redes locales, muy alta, en las redes federadas resulta ser lo contrario, con clientes que no siempre pueden estar disponibles y que usan conexiones lentas y poco fiables, por lo que el modelo tiene que poder gestionar desconexiones e incorporaciones súbitas. Además, a diferencia del resto, en el aprendizaje federado los costes de comunicación se convierten en el cuello de botella principal durante el entrenamiento del modelo, por lo que se incentiva usar los recursos computacionales, por pequeños que sean, de cada uno de los dispositivos locales, lo máximo que se pueda - p.ej. incrementando el número de \textit{epochs} de cada entrenamiento local antes de realizar la comunicación de estos al coordinador -.
 \end{itemize}
 
-Una vez conocidos los principales retos y desafíos a los que se enfrenta el problema de la optimización federada, podemos introducir los pasos que siguen el típico \textbf{proceso de desarrollo y entrenamiento} de un modelo de aprendizaje federado, cuyas fases se describen a continuación:
+Una vez conocidos los principales retos y desafíos a los que se enfrenta el \textit{problema de la optimización federada}, podemos introducir los pasos que siguen el típico \textbf{proceso de desarrollo y entrenamiento} de un modelo de aprendizaje federado, cuyas fases se describen a continuación:
 
 \begin{enumerate}[noitemsep, topsep=5pt]
     \item \textbf{Selección de clientes}: El coordinador central o servidor escoge un subconjunto de clientes que cumplan los requisitos apropiados.
@@ -643,7 +643,7 @@ Una vez conocidos los principales retos y desafíos a los que se enfrenta el pro
 
 Cabe decir que, en el flujo anterior, el servidor/coordinador orquesta todo el proceso de entrenamiento (arquitectura cliente-servidor) y el proceso se repite (en caso de ser un modelo iterativo) durante sucesivas rondas hasta que este es detenido debido a su convergencia, número máximo de rondas o agotado el tiempo máximo de entreno.
 
-Por último, la separación de las fases del cálculo local, agregación y actualización del modelo global no son un requisito estricto del aprendizaje federado per se, si no que excluye ciertas clases de algoritmos que, bien por su naturaleza no-iterativa, o bien por su asincronicidad, pueden no seguir exactamente el proceso descrito arriba.
+Por último, la separación de las fases del cálculo local, agregación y actualización del modelo global no son un requisito estricto del aprendizaje federado, si no que excluye ciertas clases de algoritmos que, bien por su naturaleza no-iterativa, o bien por su asincronicidad, pueden no seguir exactamente el proceso descrito arriba.
 
 \subsubsection{Categorías y tipos de aprendizaje federado}
 %centrando en modelo y datos
@@ -654,16 +654,16 @@ Existen diversos tipos de divisiones y categorizaciones presentes en las técnic
 En primer lugar, en referencia al tipo y número de clientes que conformarán la red federada, se puede hablar de:
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textbf{Cross-silo}: reservado para las aplicaciones de FL que involucren a un número reducido de clientes fiables, como por ejemplo, la colaboración entre múltiples organizaciones o entidades en aras de desarrollar un modelo de ML conjunto.
-    \item \textbf{Cross-device}: el apropiado para el resto de casos, donde el énfasis está redes masivas de dispositivos móviles o embebidos (\textit{edge devices}).
+    \item \textbf{Cross-device}: el apropiado para el resto de casos, donde el énfasis está en redes masivas de dispositivos móviles o embebidos (\textit{edge devices}).
 \end{itemize}
 
 Dependiendo de quien sea el elemento que juege el papel central en el desarrollo del modelo, se pueden clasificar en otros dos tipos:
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textbf{Centrado en modelo}: \textit{Model-Centric}, el caso más común en FL. Los datos se generan localmente y no se comparten, si no que permanecen descentralizados y solo se envían los resultados de aplicar el programa de entrenamiento sobre ellos, por ejemplo, sus gradientes. Se entrenan así una serie de modelos locales que son agregados remotamente para contribuir a la optimización de un modelo global resultante.
-    \item \textbf{Centrado en datos}: \textit{Data-Centric}, en estos escenarios, los dueños de los datos pueden dar acceso a terceros para que los empleen en sus respectivos modelos, recibiendo compensación u otro tipo de incentivo por ello. De esta manera, datos sensibles se podrían ser empleados por múltiples organizaciones permitiéndoles construir y entrenar modelos de ML para casos de uso muy diversos, 'encontrando' conjuntos de datos apropiados sobre los que entrenarlos.
+    \item \textbf{Centrado en datos}: \textit{Data-Centric}, en estos escenarios, los dueños de los datos pueden dar acceso a terceros para que los empleen en sus respectivos modelos, recibiendo compensación u otro tipo de incentivo por ello. De esta manera, datos sensibles podrían ser empleados por múltiples organizaciones permitiéndoles construir y entrenar modelos de ML para casos de uso muy diversos, 'encontrando' conjuntos de datos apropiados sobre los que entrenarlos.
 \end{itemize}
 
-Las diferencias entre estos dos tipos se ilustran mejor en la figura \ref{fig:fl_model_centric} que mostramos a continuación:
+Las diferencias entre estos dos últimos tipos se ilustran mejor en la figura \ref{fig:fl_model_centric} que mostramos a continuación:
 
 \begin{figure}[H]
     \centering
@@ -682,19 +682,19 @@ Las diferencias entre estos dos tipos se ilustran mejor en la figura \ref{fig:fl
 
 Un ejemplo de aprendizaje federado centrado en el modelo sería el teclado de Google \textit{GBoard}, que aprende las preferencias en la escritura del usuario con el tiempo, sin enviar ningún contenido sensible, a base de ir actualizando y mejorando un modelo global de una red neuronal ya configurada (capas, hiper-parámetros etc).
 
-Por la contra, un ejemplo de aprendizaje federado centrado en datos sería, por ejemplo, un dataset alojado en un servidor-en-la-nube que permita a usuarios entrenar sus modelos locales de una manera mucho más refinada, realizándole peticiones a este servidor para obtener un conjunto de datos específicos sobre el que aplicar el entrenamiento. Tan pronto como se encuentren datos apropiados disponibles - y sean aceptados por su dueño - el modelo empieza su entreno y eventualmente es devuelto al cliente ya optimizado. Esto podría imaginarse como una API para experimentación científica en casos de diagnostico médico, por ejemplo, ya que puede ser difícil encontrar muestras adecuadas a estas circunstancias y hacerse con ellas.
+Por la contra, un ejemplo de aprendizaje federado centrado en datos sería, por ejemplo, un dataset alojado en un servidor-en-la-nube que permita a usuarios entrenar sus modelos locales de una manera mucho más refinada, realizándole peticiones a este para obtener un conjunto de datos específico sobre el que aplicar el entrenamiento. Tan pronto como se encuentren datos apropiados disponibles - y sean aceptados por su dueño - el modelo empieza su entreno y eventualmente es devuelto al cliente ya optimizado. Esto podría imaginarse como una API para experimentación científica en casos de diagnostico médico, por ejemplo, ya que puede ser difícil encontrar muestras adecuadas a estas circunstancias y hacerse con ellas.
 
-En general la división anterior se puede aplicar al ML en general, refiriéndose el tipo \textbf{centrado en modelos} a aquellos que se enfocan más en optimizar el modelo y probar distintos algoritmos e hiper-parámetros como medio para alcanzar mejores eficacias - considerando el dataset fijo - mientras que el tipo \textbf{centrado en datos} se focaliza más en tener un algoritmo fijo e ir mejorando la calidad de las muestras obtenidas, reduciendo el ruido y aumentando su consistencia.
+La división anterior se puede aplicar al ML en general, refiriéndose el tipo \textbf{centrado en modelos} a aquellos que se enfocan más en optimizar el modelo y probar distintos algoritmos e hiper-parámetros como medio para alcanzar mejores eficacias - considerando el dataset fijo - mientras que el tipo \textbf{centrado en datos} se focaliza más en tener un algoritmo fijo e ir mejorando la calidad de las muestras obtenidas, reduciendo el ruido y aumentando su consistencia.
 
 \vspace{2em}
 
-Por último queda un tipo de división final en el \textit{Federated Learning}, basado en la estructura de datos de cada conjunto de datos que participe en la red federada. Así, se distinguen:
+Por último queda un tipo de división final en el \textit{Federated Learning}, basado en la estructura de cada conjunto de datos que participe en la red federada. Así, se distinguen:
 
 \paragraph*{Horizontal Federated Learning}
 \mbox{}\\
 Este tipo, llamado \textit{Aprendizaje Federado Horizontal} o \textit{HFL}, representa el caso en el que los conjuntos de datos de cada uno de los clientes comparten una estructura de atributos semejante, como se observa en la figura \ref{fig:hfl}.
 
-De este modo, los participantes tienen \textit{datasets} similares en términos de características pero estos no pueden ser fusionados debido a restricciones legales, de privacidad o de seguridad. Al colaborar y combinar sus modelos locales se logra un modelo global más robusto y generalizado sin revelar los datos sensibles subyacentes.
+De este modo, los participantes tienen \textit{datasets} similares en términos de características que no pueden ser fusionados debido a restricciones legales, de privacidad o de seguridad. Al colaborar y combinar sus modelos locales se logra un modelo global más robusto y generalizado sin revelar los datos sensibles subyacentes.
 
 Esta categoría es, además, una de las más sencillas de aplicar, ya que no hay que realizar ningún tipo de comunicación previa entre clientes y servidor para gestionar las variables de cada uno y realizar el llamado alineamiento de entidades, como sucede en otras categorías que veremos a continuación.
 
@@ -709,7 +709,7 @@ Esta categoría es, además, una de las más sencillas de aplicar, ya que no hay
 \mbox{}\\
 El \textit{Aprendizaje Federado Vertical} o \textit{VFL} se centra en la colaboración entre múltiples participantes o clientes que poseen características diferentes pero complementarias en sus respectivos conjuntos de datos. Como mínimo, deben tener en común algún tipo de identificador que permita alinear los datos de los distintos conjuntos. Un esquema de dicha estructura se ilustra en la figura \ref{fig:fl_vfl}
 
-Lo anterior supone que se tienen que realizar operaciones previas a mayores para coordinar estas diferencias, bien para realizar la intersección entre las variables de cada uno de los conjuntos, bien para agrupar características dispares por algún tipo de identificador o ID, lo cual se tiene que hacer también mediante técnicas criptográficas para no revelar datos sensibles, en un proceso que se conoce como \textit{encripted-entity-aligment}.
+Lo anterior supone una serie de operaciones previas a mayores para coordinar estas diferencias, bien para realizar la intersección entre las variables de cada uno de los conjuntos, bien para agrupar características dispares por algún tipo de identificador o \textit{ID}, lo cual se tiene que hacer también mediante técnicas criptográficas para no revelar datos sensibles, en un proceso que se conoce como \textit{encripted-entity-aligment}.
 
 Este escenario es ideal para la colaboración entre múltiples entidades que comparten un grupo de clientes pero donde cada una de ellas tiene información diferente sobre cada uno de ellos. Así, podrían cooperar en el desarrollo de un modelo conjunto que beneficie a ambos sin revelar datos confidenciales de sus clientes el uno al otro.
 
@@ -741,16 +741,16 @@ Las características fundamentales de los conjuntos de datos de los participante
     \item Datasets con pocos atributos y muestras.
     \item Distribuciones distintas entre dichos conjuntos.
     \item Datasets de tamaño muy variable.
-    \item Algunos participantes tienen sin etiquetado alguno o muy limitadas.
+    \item Algunos participantes carecen de etiquetado objetivo alguno o es muy limitado.
 \end{itemize}
 
-En resumen, para resolver estos problemas, se combina el aprendizaje federado con técnicas de aprendizaje por transferencia a fin de permitir que una gama más amplia de posibles colaboradores - que disponen de pocos datos (pocas muestras y características superpuestas) y poco etiquetados - creen modelos de ML eficaces y precisos a la vez que cumplan con la ley de privacidad y seguridad de datos, excediendo el alcance de las anteriores configuraciones vistas de HFL y VFL existentes.
+En resumen, para resolver estos problemas, se combina el aprendizaje federado con técnicas de aprendizaje por transferencia a fin de permitir que una gama más amplia de posibles colaboradores - que disponen de pocos datos (pocas muestras y características superpuestas) y poco etiquetados - creen modelos de ML eficaces y precisos a la vez que cumplan con las leyes de privacidad y seguridad de datos, excediendo el alcance de las anteriores configuraciones de HFL y VFL ya vistas.
 
 \paragraph*{Federated Reinforcement Learning}
 \mbox{}\\
 Este última categoría, conocida como \textit{Aprendizaje Federado por Refuerzo} o FRL, nace como solución a los problemas de fuga de información y privacidad de los métodos distribuidos de aprendizaje por refuerzo clásicos (DRL).
 
-Uno de los intereses comúnmente estudiados en estos modelos es diseñar controladores con retroalimentación para sistemas dinámicos de tiempo discreto o continuo que combinen un control adaptativo al entorno y alcancen características óptimas, como por ejemplo sistemas de conducción autónoma o de sistemas industriales.
+Uno de los intereses comúnmente estudiados en estos modelos es diseñar controladores con retroalimentación para sistemas dinámicos de tiempo discreto o continuo que combinen un control adaptativo al entorno y alcancen características óptimas, como por ejemplo sistemas de conducción autónoma o sistemas industriales.
 
 Sin profundizar en las distintas particularidades de estas técnicas, únicamente destacamos la sub-división de estas en dos tipos de arquitecturas, conocidas como \textit{Horizontal Federated Reinforcement Learning} o HFRL y \textit{Vertical Federated Reinforcement Learning} o VFRL, cuya estructura ilustramos en la figura \ref{fig:frl} y cuyo funcionamiento exceden el ámbito de este trabajo:
 
@@ -773,7 +773,7 @@ Sin profundizar en las distintas particularidades de estas técnicas, únicament
 %FedAvg
 Aprovecharemos esta sección para explicar, más a fondo, uno de los algoritmos de optimización más utilizados en las técnicas de aprendizaje federado y que, a su vez, fue el propuesto inicialmente en el artículo de McMahan et al \cite{paper_McMahan} mencionado al principio del capitulo. Se trata del denominado \textit{FedAvg}, o promedio federado.
 
-Este algoritmo de optimización establece un sistema de actualizaciones síncronas que avanzan en consecutivas rondas de comunicación cliente-servidor. Asume un número fijo de \textit{K} clientes, cada uno con un dataset local invariable. Al principio de cada ronda, una fracción aleatoria \textit{C} de participantes es seleccionada, y el servidor envia el actual estado global del modelo a cada uno de los clientes (p.ej. pesos de la RNN). Cada cliente entonces realiza el computo global de este aplicado sobre su propio conjunto de datos y envía los resultados de vuelta al coordinador. El servidor agrega estos cambios y el proceso se repite.
+Este algoritmo de optimización establece un sistema de actualizaciones síncronas que avanzan en consecutivas rondas de comunicación cliente-servidor. Asume un número fijo de \textit{K} clientes, cada uno con un dataset local invariable. Al principio de cada ronda, una fracción aleatoria \textit{C} de participantes es seleccionada, y el servidor envia el actual estado global del modelo a cada uno de los clientes (p.ej. pesos de la RNN). Cada cliente realiza entonces el computo de este aplicado sobre su propio conjunto de datos y envía los resultados de vuelta al coordinador. El servidor agrega estos cambios y el proceso se repite.
 
 Este algoritmo es aplicable a cualquier función objetivo de suma-finita de la forma:
 \begin{equation}
@@ -789,11 +789,11 @@ f(w) = \sum_{k=1}^{K}\frac{n_k}{n}F_k(w) \quad \text{donde} \quad F_k(w) = \frac
 
 Si la partición $\mathcal{P}_k$ se formó distribuyendo uniformemente los datos de entrenamiento entre los clientes de manera aleatoria entonces tendríamos que $\mathds{E}_{\mathcal{P}_k} [F_k(w)] = f(w)$. Este supuesto uniformemente distribuido es lo que se conoce como condición \textbf{IID}, y se asume típicamente en algoritmos de optimización distribuidos, aunque, como ya vimos, este algoritmo (\textit{FedAvg}) no contempla este caso; es decir, $F_k$ podría ser una mala aproximación aleatoria de $f$, por lo que se trabaja bajo condiciones \textbf{no-IID}.
 
-Bajo este tipo de funciones de coste se ha aplicado satisfactoriamente, en aprendizaje automático, distintas variantes del llamado \textit{gradiente Descendente Estocástico} o SGD para su optimización, y \textbf{\emph{FedAvg} no es si no otra generalización de este}.
+Bajo este tipo de funciones de coste se ha aplicado satisfactoriamente, en aprendizaje automático, distintas variantes del llamado \textit{Gradiente Descendente Estocástico} o SGD para su optimización, y \textbf{\emph{FedAvg} no es si no otra generalización de este}.
 
-El \textbf{SGD} se podría aplicar directamente al problema de optimización federada, donde solo se realice, por ronda, un único calculo de gradiente por lote para aquellos clientes seleccionados; sin embargo, este enfoque es eficiente computacionalmente pero muy costoso en comunicaciones por el gran número de rondas necesarias para producir buenos resultados. Por lo tanto, se apostará por realizar múltiples \textit{epochs} locales con el objetivo de avanzar el aprendizaje y reducir el número de rondas totales.
+El \textbf{SGD} se podría aplicar directamente al problema de optimización federada, donde solo se realice, por ronda, un único calculo de gradiente por lote para aquellos clientes seleccionados; sin embargo, este enfoque es eficiente computacionalmente pero muy costoso en comunicaciones, debido al gran número de rondas necesarias para producir buenos resultados. Por lo tanto, se apostará por realizar múltiples \textit{epochs} locales con el objetivo de avanzar el aprendizaje y reducir el número total de rondas globales.
 
-Así, tomando como base el SGD, el algoritmo \textit{FedAvg} lo generaliza añadiendo tres parámetros: \textit{C} - fracción de clientes seleccionados cada ronda, \textit{E} - número de pases de entrenamiento realizados en cada cliente sobre su dataset local y \textit{B} - tamaño de los lotes locales usados para el entrenamiento.
+Así, tomando como base el SGD, el algoritmo \textit{FedAvg} lo generaliza añadiendo tres parámetros: \textit{C} - \textbf{fracción de clientes seleccionados cada ronda}, \textit{E} - \textbf{número de pases de entrenamiento realizados en cada cliente sobre su dataset local} y \textit{B} - \textbf{tamaño de los lotes locales usados para el entrenamiento}.
 
 Cabe mencionar que si $C = 1 \quad E = 1 \quad B = \infty$ entonces \textit{FedAvg} se convierte sin más en la aplicación de SGD en una red federada.
 
@@ -801,7 +801,7 @@ Para una tasa de aprendizaje $\eta$ cada cliente $k$ calculará $g_k = \nabla F_
 
 Esto quiere decir que cada cliente realiza una fase de entrenamiento y gradiente descendente, partiendo de su modelo actual y aplicado sobre su dataset, para que luego el coordinador actualice el peso promedio de los modelos resultantes recibidos (\textit{FedSVG}).
 
-Cuando se añade más iteraciones locales de estos cálculos de gradiente para cada cliente ($E \uparrow$) pasamos a denominarlo, finalmente, \textbf{FedAvg}, cuyo algoritmo queda esquematizado en el pseudocódigo \ref{alg:fedavg}:
+Cuando se añade más iteraciones locales de estos cálculos de gradiente por cada cliente ($E \uparrow$) pasamos a denominarlo, finalmente, \textbf{FedAvg}, cuyo algoritmo queda esquematizado en el pseudocódigo \ref{alg:fedavg}:
 
 \begin{algorithm}
 \caption{\textit{FederatedAveraging}. Los $K$ clientes se indexan por $k$, $B$ es el tamaño de lote local, $E$ el número de \textit{epochs} locales y $\eta$ la tasa de aprendizaje.}
@@ -832,10 +832,10 @@ Cuando se añade más iteraciones locales de estos cálculos de gradiente para c
 
 \subsubsection{Amenazas y privacidad de datos}
 %Externas-Internas Secure aggregation HE - TEE
-El \textit{Aprendizaje Federado} provee una estructura que permite una fácil descomposición del flujo de trabajo en piezas modulares que permiten un análisis detallado de los actores, amenazas y vulnerabilidades a los que se ve expuesto.
+El \textit{Aprendizaje Federado} posee una estructura que permite una fácil descomposición del flujo de trabajo en piezas modulares que permiten un análisis detallado de los actores, amenazas y vulnerabilidades a los que se ve expuesto.
 
-Aunque el atractivo propio de las técnicas de FL es que tienen, por diseño, una naturaleza privada, haciendo que los usuarios o clientes participantes no revelen sus datos sensibles, si no solo actualizaciones de los modelos locales que entrenan - cumpliendo así la fisolofía de \textit{data-minimization} -, y mejorando, por mucho, el nivel de privacidad existente en un modelo de aprendizaje automático distribuido tradicional, esto no quita que sigan siendo vulnerables a cierto tipo de ataques.\\
-Por ejemplo, es posible construir escenarios donde la información sobre los datos en bruto se filtren de un cliente hacia el servidor y con los que, sabiendo el estado anterior del modelo y la actualización enviada, se pueda inferir los datos de entrenamiento de dicho cliente.
+Aunque el atractivo propio de las técnicas de FL es que tienen, \textbf{por diseño, una naturaleza privada}, haciendo que los clientes participantes no revelen sus datos sensibles, si no solo actualizaciones de los modelos locales que entrenan - cumpliendo así la fisolofía de \textit{data-minimization} -, y mejorando, por mucho, el nivel de privacidad existente en un modelo de aprendizaje automático distribuido tradicional, esto no quita que sigan siendo vulnerables a cierto tipo de ataques.\\
+Por ejemplo, es posible construir escenarios en donde la información sobre los datos en bruto se filtren de un cliente hacia el servidor y con los que, sabiendo el estado anterior del modelo y la actualización enviada, se puedan inferir los datos de entrenamiento de dicho cliente.
 
 El anterior ejemplo sería un ataque por fuga de información que afecta a la privacidad del sistema, pero también existen otros tipos de ataques sobre las técnicas de FL, como, por ejemplo, cuando un adversario intenta prevenir que el modelo 'aprenda'; interfiriendo con él y ofuscándolo para imposibilitar su convergencia u obtener predicciones que le favorezcan.
 
@@ -845,7 +845,7 @@ Así, podemos distinguir dos tipos de escenarios:
     \item Local: encargado de evitar fugas de información sensible del cliente hacia el servidor durante las comunicaciones que realizan entre sí.
 \end{itemize}
 
-Otro tipo de distinción para el tratamiento formal de las posibles amenazas de estas técnicas es la caracterización de los diferentes actores presentes en estos sistemas federados, con el objetivo de definir sus roles y así presentar sus vulnerabilidades y posibles soluciones. Así, es deseable distinguir el punto de vista de un administrador que el de un analista de modelos o el de los múltiples clientes que conforman dicha red, como se puede apreciar en la tabla \ref{tbl:threat_model}.
+Otro tipo de distinción para el tratamiento formal de las posibles amenazas de estas técnicas es la caracterización de los diferentes actores presentes en estos sistemas federados, con el objetivo de definir sus roles y presentar sus vulnerabilidades. Así, es deseable distinguir el punto de vista de un administrador que el de un analista de modelos o el de los múltiples clientes que conforman dicha red, como se puede apreciar en la tabla \ref{tbl:threat_model}.
 
 %tabla actores
 \begin{table}[htb]
@@ -856,13 +856,13 @@ Otro tipo de distinción para el tratamiento formal de las posibles amenazas de 
 Clientes                       & \begin{tabular}[c]{@{}l@{}}Alguien con acceso de super-usuario al\\ dispositivo del cliente, bien por falla en\\ diseño o por comprometer el dispositivo\end{tabular} & \begin{tabular}[c]{@{}l@{}}Clientes maliciosos podrían inspeccionar\\ todas los mensajes recibidos del servidor \\ e interferir en el proceso de entrenamiento.\\ Un cliente honesto-pero-curioso también\\ podría inspeccionar los mensajes pero no\\ interferiría con el entreno.\end{tabular}                                                                                         \\
 Servidor                       & \begin{tabular}[c]{@{}l@{}}Alguien con acceso de super-usuario al\\ servidor, bien por falla en diseño o\\ comprometiendo el dispositivo\end{tabular}                 & \begin{tabular}[c]{@{}l@{}}Un servidor malicioso puede inspeccionar\\ todos los mensajes enviados a él en todas\\ las rondas de entrenamiento e interferir con\\ este proceso. Un servidor honesto-pero\\ -curioso podría leer esta información pero\\ no interferir con ella.\end{tabular}                                                                                              \\
 Salida del modelo              & Analistas                                                                                                                                                             & \begin{tabular}[c]{@{}l@{}}Un analista malicioso podría tener acceso\\ a múltiples salidas del sistema, como p.ej.,\\ secuencias de sucesivas iteraciones del\\ modelo para el entrenamiento de distintos\\ hiper-parámetros.\end{tabular}                                                                                                                                               \\
-Modelo desplegado              & Usuarios finales                                                                                                                                                      & \begin{tabular}[c]{@{}l@{}}En el caso de situaciones cross-device,\\ los usuarios finales se pueden contar\\ por millones. Aún así, se distinguen\\ usuarios finales parcialmente\\ comprometidos si solo tienen acceso \\ tipo 'caja-negra' al modelo desplegado,\\ y usuarios finales totalmente \\ comprometidos si tienen acceso total al\\ modelo desplegado\end{tabular} \\ \bottomrule
+Modelo desplegado              & Usuarios finales                                                                                                                                                      & \begin{tabular}[c]{@{}l@{}}En el caso de situaciones cross-device,\\ los usuarios finales se pueden contar\\ por millones. Aún así, se distinguen\\ usuarios finales parcialmente\\ comprometidos, si solo tienen acceso \\ tipo 'caja-negra' al modelo desplegado,\\ y usuarios finales totalmente \\ comprometidos, si tienen acceso total al\\ modelo desplegado.\end{tabular} \\ \bottomrule
 \end{tabular}}
     \caption{Amenazas y vulnerabilidades de diversos actores presentes en FL \cite{libro_kairouz}}
     \label{tbl:threat_model}
 \end{table}
 
-Aunque la privacidad no se puede tratar como una cualidad binaria, o perfectamente cuantificable, si se puede presentar una serie de asunciones y objetivos de privacidad mediante la introducción de una serie de parámetros para, por lo menos, justificar el uso de distintas herramientas y tecnologías en ciertas partes del flujo de trabajo que respeten y refuercen los puntos débiles del sistema, como por ejemplo mediante el concepto de \textbf{privacidad diferencial}.
+Aunque la privacidad no se puede tratar como una cualidad binaria, o perfectamente cuantificable, si se puede presentar una serie de objetivos de privacidad para, por lo menos, justificar el uso de distintas herramientas y tecnologías en ciertas partes del flujo de trabajo que respeten y refuercen los puntos débiles del sistema.
 
 Existen tres aspectos de la privacidad de estos sistemas que tienen que ser comprendidos y analizados para saber que tipo de remedio se puede usar para reforzarlos. Podemos imaginar y simplificar el proceso de las técnicas de aprendizaje federado como el de la evaluación de una función $f$ en un conjunto de datos distribuidos en varios clientes. Dada esta analogía, habría que tener en cuenta:
 
@@ -874,7 +874,7 @@ Existen tres aspectos de la privacidad de estos sistemas que tienen que ser comp
 
 \paragraph*{Secure Multi-Party Computation}\mbox{}\\
 %HE
-También conocidos como \textbf{protocolos seguros} o computación segura multi-partita, se trata de un campo de la criptografía encargado de hacer que una red de participantes calculen una función acordada, con sus datos locales como entradas, de tal manera que solo revelen la salida de estas a los demás clientes, sin que se pueda inferir de estos resultados ninguna información acerca de las primeras.
+También conocidos como \textbf{protocolos seguros} o computación segura distribuida, se trata de un campo de la criptografía encargado de hacer que una red de participantes calculen una función acordada, con sus datos locales como entradas, de tal manera que solo revelen la salida de estas a los demás clientes, sin que se pueda inferir de estos resultados ninguna información acerca de las primeras.
 
 Una de estas técnicas es la llamada \textbf{encriptación homomórfica} (\textit{homomorphic encryption}), que permiten que ciertas operaciones matemáticas - normalmente suma y multiplicación - se realicen directamente sobre textos cifrados sin tener que descifrarlos primero, y produciendo como resultado otro texto cifrado que contiene la salida correspondiente. Para el escenario de FL, esto permitiría a clientes y servidor realizar el agregado de las actualizaciones recibidas del modelo manteniendo los valores de los pesos/parámetros ocultos.
 
@@ -890,7 +890,7 @@ Un punto flaco de la implementación de estas técnicas en sistemas de aprendiza
 
 \paragraph*{Differential Privacy}\mbox{}\\
 %DP
-La privacidad-diferencial se entiende como una herramienta para cuantificar y limitar la fuga de información sensible sobre los participantes, de modo que pretende introducir cierto nivel de incertidumbre en el modelo suficiente para enmascarar la contribución de cualquier usuario individual.
+La privacidad-diferencial (DP) se entiende como una herramienta para cuantificar y limitar la fuga de información sensible sobre los participantes, de modo que pretende introducir cierto nivel de incertidumbre en el modelo suficiente para enmascarar la contribución de cualquier usuario individual.
 
 La DP se cuantifica mediante los parámetros de pérdida de privacidad $(\epsilon, \delta)$, donde menor $(\epsilon, \delta)$ corresponde a mayor privacidad. Formalmente, se dice que un algoritmo cualquiera $A$ tiene un nivel de privacidad diferencial $(\epsilon, \delta)$ si $\forall \mathcal{S} \subseteq Range(A)$ y para todos los datasets adyacentes $D$ y $D^\prime$:
 
@@ -900,23 +900,23 @@ La DP se cuantifica mediante los parámetros de pérdida de privacidad $(\epsilo
 \footnote{\textit{D} y \textit{D'} son datasets descentralizados y adyacentes si \textit{D'} se puede obtener a partir de añadir o substraer todos las muestras de un determinado cliente de \textit{D}}
 \end{equation}
 
-Normalmente en FL, el papel de coordinador - en arquitectura clásica el servidor central - es la parte confiada a implementar el mecanismo de DP en el sistema, asegurándose que sólo salidas 'privatizadas' del modelo son liberadas al analista o usuario final. Sin embargo, se puede reducir la necesidad de esta parte de confianza usando privacidad diferencial local:
+Normalmente en FL, el papel de coordinador es la parte confiada a implementar el mecanismo de DP en el sistema, asegurándose que sólo salidas 'privatizadas' del modelo son liberadas al analista o usuario final. Sin embargo, se puede reducir la necesidad de esta parte de confianza usando \textit{privacidad diferencial local}:
 
 \begin{itemize}
-    \item Privacidad local diferencial, o \textit{Local Differential Privacy}: aplica el mecanismo enseñado en \eqref{eq:2} al algoritmo que procesa el conjunto de datos del cliente local $D$, con la garantía de privacidad respecto a cualquier otro posible dataset local $D'$. Otra forma de alcanzarla sería que cada participante perturbase su propio modelo antes de la agregación de actualizaciones; de modo que, añadiendo ruido en estos datos, se consiga el mismo efecto.
+    \item Privacidad local diferencial, o \textit{Local Differential Privacy}: aplica el mecanismo enseñado en \eqref{eq:3} al algoritmo que procesa el conjunto de datos del cliente local $D$, con la garantía de privacidad respecto a cualquier otro posible dataset local $D'$. Por ejemplo, si cada participante perturbase su propio modelo añadiendo ruido antes de la agregación de actualizaciones.
 \end{itemize}
 
 \paragraph*{Zero Knowledge Proof}\mbox{}\\
 %ZKP
 Las \textbf{pruebas de conocimiento cero}, o \textit{zero knowledge proofs} son  unas técnicas criptográficas que permiten a un cliente probar a otro que ha ejecutado cierto computo o programa sobre unos datos según lo acordado, sin comprometer ni revelar ninguna información sensible sobre ella.
 
-En el contexto de FL se puede usar para dos situaciones: el servidor podría demostrar así que ha realizado ciertas operaciones específicas como la agregación o adición de ruido para DP y, por último, los clientes podrían demostrar al servidor que sus entradas y comportamiento han seguido la especificación o protocolo acordado - la entrada del conjunto de datos es acorde a cierto rango/requisitos y/o que la salida es un texto cifrado correctamente generado -.
+En el contexto de FL se puede usar para dos situaciones: el servidor podría demostrar así que ha realizado ciertas operaciones específicas como la agregación o adición de ruido para DP y, por último, los clientes podrían demostrar al servidor que sus entradas y comportamiento han seguido la especificación o protocolo acordado - la entrada del conjunto de datos es acorde a ciertos requisitos y/o que la salida es un texto cifrado correctamente generado -.
 
 \vspace{1em}
 
 Estos métodos tiene tres propiedades fundamentales:
 \begin{itemize}
-    \item \textit{Completeness} o integridad: si una declaración es verdadera y ambas partes - demostrador y verificador - siguen el protocolo, esta última aceptará la prueba.
+    \item \textit{Completeness} o integridad: si una declaración es verdadera y ambas partes - demostrador y verificador - siguen el protocolo, este última aceptará la prueba.
     \item \textit{Soundness} o solvencia: si una declaración es falsa y el verificador sigue el protocolo, este rechazará la prueba.
     \item \textit{Zero-knowledge} o conocimiento nulo: si la declaración es verdadera y el demostrador sigue el protocolo, el verificador solo podrá evidenciar que la prueba es cierta y no obtendrá ninguna información confidencial de la interacción entre ambas partes.
 \end{itemize}
@@ -926,11 +926,11 @@ Estos métodos tiene tres propiedades fundamentales:
 %Ejemplos de posibles aplicaciones, software de desarrollo y prd y datasets
 El aprendizaje federado es una tendencia relativamente reciente que en los últimos años ha conseguido un auge tanto en investigación como en el desarrollo de productos finales. Siendo un mecanismo que permite modelos de IA personalizados y compartidos, construidos sobre conjuntos de datos descentralizados y esparcidos entre múltiples participantes sin comprometer la privacidad y seguridad de estos tiene, por lo tanto, un futuro prometedor en numerosos ámbitos, como el financiero, sanitario, educativo, \textit{smart city}, \textit{edge computing} o \textit{blockchain}.
 
-En el sector financiero, por ejemplo, puede ayudar a instituciones bancarias a compartir datos que permitan la construcción de mejores modelos para evitar el fraude bancario o, también, para construir perfiles financieros de sus clientes - con el objetivo de ofrecer servicios personalizados - mucho más definidos; de realizar esta colaboración con los datos aportados por otras compañías y servicios de comercio electrónico o incluso redes sociales, y adaptarse así al poder adquisitivo y preferencias de compra de sus clientes.
+En el sector financiero, por ejemplo, puede ayudar a instituciones bancarias a compartir datos que permitan la construcción de mejores modelos para evitar el fraude bancario o, también, para construir perfiles financieros de sus clientes - con el objetivo de ofrecer servicios personalizados - mucho más definidos; colaborando con los datos aportados por otras compañías y servicios de comercio electrónico o incluso redes sociales, y adaptarse así al poder adquisitivo y preferencias de compra de sus clientes.
 
-En el ámbito sanitario, el gran cuello de botella a la hora de generar modelos eficaces de IA que permitan el diagnostico y tratamiento de pacientes es el de la recogida de un volumen suficiente grande y rico de datos que puedan describir exhaustivamente los síntomas de un paciente. Distintas instituciones médicas podrían unirse, compartiendo sus datos, para poseer un conjunto que funcione mucho mejor que aquel entrenado sobre datos de un único centro, aunando así el trabajo de analíticas, informes médicos y secuenciaciones genéticas, por ejemplo.
+En el ámbito sanitario, el gran cuello de botella a la hora de generar modelos eficaces de IA que permitan el diagnostico y tratamiento de pacientes es el de la recogida de un volumen suficientemente grande y rico de datos que puedan describir exhaustivamente los síntomas de un paciente. Distintas instituciones médicas podrían unirse, compartiendo sus datos, para poseer un conjunto que funcione mucho mejor que aquel entrenado sobre datos de un único centro, aunando así el trabajo de analíticas, informes médicos y secuenciaciones genéticas, por ejemplo.
 
-En las \textit{smart cities}, por ejemplo, las empresas de alquiler de vehículos pueden crear modelos, en colaboración otras empresas de transporte, públicas o no, usando sus usuarios para mejorar las rutas de transporte y mejorando la satisfacción de los clientes e incluso obteniendo beneficios secundarios derivados de la distribución y reducción de la congestión del tráfico.
+En las \textit{smart cities}, por ejemplo, las empresas de alquiler de vehículos pueden crear modelos, en colaboración con otras empresas de transporte, usando a sus usuarios para mejorar las rutas de transporte y mejorando la satisfacción de los clientes e incluso obteniendo beneficios secundarios derivados de la distribución y reducción de la congestión del tráfico.
 
 Debido al acrecentamiento del número de dispositivos conectados a Internet, tanto por teléfonos móviles como por dispositivos embebidos o \textit{edge devices}, que conforman parte del conocido como \textit{IoT}, se promueve, cada vez más, el desarrollo del \textit{Mobile Edge Computing} (MEC). Este permite que la computación se produzca donde nacen los datos, en lugar de enviarlo a servidores encargados de procesarlos.
 
@@ -942,7 +942,7 @@ En cuanto al software disponible se puede hacer una distinción entre el dedicad
 
 \vspace{1em}
 
-El \textbf{software para simulación de FL} requiere la gestión de computación en paralelo, simulando distintos clientes, procesamiento eficiente de datasets particionados y proporcionar métricas y resultados de especial interés para estas técnicas como puede ser el ancho de banda consumido en las comunicaciones y la simulación de tiempos de respuesta variables. Algunas de las aplicaciones/librerías más destacadas son:
+El \textbf{software para simulación de FL} requiere la gestión de computación en paralelo (simulando distintos clientes), procesamiento eficiente de datasets particionados y proporcionar métricas y resultados de especial interés para estas técnicas como puede ser el ancho de banda consumido en las comunicaciones y la simulación de tiempos de respuesta variables. Algunas de las aplicaciones/librerías más destacadas son:
 
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textit{TensorFlow Federated}: (TFF) framework  de código abierto de FL y otros cálculos con datos descentralizados para la investigación y experimentación simulada, para Python.
@@ -952,7 +952,7 @@ El \textbf{software para simulación de FL} requiere la gestión de computación
     \item \textit{PyVertical}: proyecto para la implementación de aprendizaje federado vertical (VFL) en Python, usando PySyft.
 \end{itemize}
 
-La diferencia entre los anteriores y las plataformas o \textbf{software para desarrollo} de productos finales es que estos, además, deben ocuparse de gestionar diversos aspectos que no se suelen simular en los primeros, como la autenticación, protocolos de comunicación y de encriptación y el despliegue e instalación en servidores y dispositivos participantes.
+La diferencia entre los anteriores y las plataformas o \textbf{software para desarrollo} de productos finales es que estos, además, deben ocuparse de gestionar diversos aspectos que no se suelen simular en los primeros, como la autenticación, protocolos de comunicación y encriptación y despliegue e instalación en servidores y dispositivos participantes.
 
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textit{FATE}: framework de grado industrial diseñado para implementar arquitecturas de FL y computación segura de cualquier algoritmo de ML. 
@@ -960,11 +960,11 @@ La diferencia entre los anteriores y las plataformas o \textbf{software para des
     \item \textit{IBM Federated Learning}: herramienta de IBM para recolectar, pre-procesar, configurar y desplegar modelos de FL.
 \end{itemize}
 
-En cuanto a los conjuntos de datos o \textbf{datasets} para el entrenamiento de estos modelos se tienen que simular conjuntos descentralizados, desequilibrados y con gran variabilidad en el número de muestras de cada uno. Aunque es una labor que se puede hacer con diseccionando datasets centralizados más reconocidos y habituales, es cierto que existen un par de datasets que ya han sido preparados y sirven de \textit{benchmark} para estas técnicas:
+En cuanto a los conjuntos de datos o \textbf{datasets} para el entrenamiento de estos modelos se tienen que simular conjuntos descentralizados, desequilibrados y con gran variabilidad en el número de muestras de cada uno. Aunque es una labor que se puede hacer diseccionando datasets centralizados más reconocidos y habituales, es cierto que existen un par de datasets que ya han sido preparados y sirven de \textit{benchmark} para estas técnicas:
 
 \begin{itemize}
     \item \textit{EMNIST}: Se trata de una versión del clásico MNIST preparada para el entrono federado, dividiendo más de medio millón de imágenes de dígitos y letras del abecedario entre 3400 clientes, con distribuciones IID y no-IID.
-    \item \textit{Shakespeare}: dataset para el modelado NLP extraído de \textit{The Complete Works of William Shakespeare}, que incluye los dialogas contiguos de 715 personajes, repartidos en casi 20000 frases.
+    \item \textit{Shakespeare}: dataset para el modelado NLP extraído de \textit{The Complete Works of William Shakespeare}, que incluye los diálogos contiguos de 715 personajes, repartidos en casi 20000 frases.
 \end{itemize}
 
 \newpage
@@ -979,7 +979,7 @@ Pero es que, además de esto, en el anterior estudio sólo se tuvieron en cuenta
 
 Es por eso que, cada vez más, se está apostando por una concienciación para el desarrollo de la IA dentro de un contexto de responsabilidad, comprendiendo el impacto medioambiental que suponen y fomentando el desarrollo de una inteligencia artificial sostenible, que ponga en equilibrio \textit{eficiencia} y \textit{eficacia} y aplique buenas prácticas, marcando una distinción entre lo que algunos artículos ya denominan \textbf{Algoritmos Verdes} \cite{carbon_computation} o \textbf{Green \& Red AI} \cite{green_red_ai} , como veremos en la sección \ref{ss:green_ia}.
 
-En la última sección, para finalizar, hablaremos de algunas de las iniciativas políticas puestas en marcha a nivel europeo y nacional para fijar marcos de referencia, objetivos de desarrollo sostenible e integración en el tejido productivo de estas nuevas tecnologías \ref{ss:politica_ia}.
+En la última sección, para finalizar, hablaremos de algunas de las iniciativas políticas puestas en marcha a nivel europeo y nacional para fijar marcos de referencia, objetivos de desarrollo sostenible e integración en el tejido productivo de estas nuevas tecnologías [\ref{ss:politica_ia}].
 
 En definitiva, es importante tener en cuenta que, aunque la IA es una herramienta con muchísimo potencial, también se puede convertir en una gran consumidora de recursos, por lo que hay que tener presente que los beneficios - progreso científico, tecnológico, social etc - de esta deberán siempre compensar sus inconvenientes.
 
@@ -988,7 +988,7 @@ En definitiva, es importante tener en cuenta que, aunque la IA es una herramient
 
 Para asegurarse de que la IA sea beneficiosa también en el aspecto medioambiental es importante alentar a los investigadores a que prioricen el empleo y desarrollo de \textit{hardware} y algoritmos computacionalmente eficientes, así como estandarizar la publicación de informes de rendimiento que contengan resultados de tiempos de entrenamiento y susceptibilidad de los hiper-parámetros del modelo.
 
-Y es que, en un estudio realizado por \textit{Dario Amodei} en 2018, \cite{openai_compute}, se descubrió que los costes computacionales utilizados para el entrenamiento de grandes modelos de IA se vienen duplicando desde 2012 cada tres meses y medio, aproximadamente, como se observa en la figura \ref{fig:moore_law}. De continuar esta tendencia, significaría un incremento incluso mayor que el observado en la clásica \textit{Ley de Moore} sobre el número de transistores en los circuitos integrados.
+Y es que, en un estudio realizado por \textit{Dario Amodei} en 2018, \cite{openai_compute}, se descubrió que los costes computacionales utilizados para el entrenamiento de grandes modelos de IA se vienen duplicando desde 2012 cada tres meses y medio aproximadamente, como se observa en la figura \ref{fig:moore_law}. De continuar esta tendencia, significaría un incremento incluso mayor que el observado en la clásica \textit{Ley de Moore} sobre el número de transistores en los circuitos integrados.
 
 %todo figura
 \begin{figure}[H]
@@ -1009,24 +1009,24 @@ Y es que, en un estudio realizado por \textit{Dario Amodei} en 2018, \cite{opena
 \footnotetext[3]{Advertir como ambos ejes verticales - para nº de transistores y nº de pfs-día - se encuentran en escala logarítmica.}
 
 
-Otro artículo, titulado \textit{Green AI} \cite{green_red_ai}, ha acuñado el término \textit{IA-Verde} para describir la tendencia reciente de desarrollar el aprendizaje automático de manera sostenible, en contraste con lo que también denominan \textit{IA-Roja}.
+Otro artículo, titulado \textit{Green AI} \cite{green_red_ai}, ha acuñado el término \textbf{IA-Verde} para describir la tendencia reciente de desarrollar el aprendizaje automático de manera sostenible, en contraste con lo que también denominan \textbf{IA-Roja}.
 
 En este estudio, se hace un llamado a considerar la eficiencia como un criterio de igual importancia - al mismo nivel que la precisión y otras métricas de eficacia - en las investigaciones y desarrollos de ML. Además, se propone la inclusión de un precio o coste financiero que refleje los gastos asociados al desarrollo y entrenamiento de dichos modelos. Por último, se sugiere el reemplazo de modelos cada vez más eficientes en los estándares o \textit{benchmark} más empleados.
 
 Según ellos, en el llamado \textit{red IA}, los modelos obtienen mejores rendimientos únicamente a base de usar cantidades absurdas de recursos - bien sea por el aumento de los datos de entrada o del número de experimentos (\textit{tuning}) -, de modo que, para lograr un pequeño incremento lineal en su desempeño, se requieren modelos de tamaño exponencialmente mayor, acarreando por tanto una mayor huella de carbono.
 
-Son modelos que, para lograr rendimientos y resultados considerados como de 'estado-del-arte', lo hacen a través del abuso de cantidades ingentes de poder computacional, premiando no así el diseño y la eficiencia si no a través de fuerza bruta.
+Son modelos que, para lograr rendimientos y resultados considerados como de 'estado-del-arte', lo hacen a través del abuso de cantidades ingentes de poder computacional, premiando no así el diseño y la eficiencia si no mediante fuerza bruta.
 
 El estudio refleja también que existe una prevalencia clara de este tipo de construcciones en el desarrollo de modelos de IA a día de hoy, indicando los resultados obtenidos de analizar los diferentes \textit{papers} de investigación enviados al \textit{Annual Meeting of the Association 
 for Computational Linguistics}, \textit{Conference on Neurological 
 Information Processing Systems} y \textit{Conference on 
-Computer Vision and Pattern Recognition}; donde se concluyó que más de el 75\% de ellos cumplían todos los requisitos de la \textbf{red-IA}.
+Computer Vision and Pattern Recognition}; donde se concluyó que más de el 75\% de ellos cumplían todos los requisitos de la \textit{red-IA}.
 
 La tendencia al empleo de técnicas como NAS, \textit{Neural Architecture Search}, para el diseño de las redes neuronales, o la utilización de herramientas para la búsqueda y ajuste automático de hiper-parámetros (AutoML), hacen que su escalabilidad, en términos computacionales, sea cada vez más exigente energéticamente.
 
-No por ello hay que restar importancia a los resultados obtenidos por dichos modelos, ya que contribuyen y llevan al extremo las fronteras conocidas de la IA, pero el retorno en las mejoras de rendimiento obtenidas se van a ver reducidas cada vez más a la vez que van a demandar cantidades mayores de recursos, lo cual no es un buen plan de futuro, aun que todavía se siga \textit{in crescendo}.
+No por ello hay que restar importancia a los resultados obtenidos por dichos modelos, ya que contribuyen y llevan al extremo las fronteras conocidas de la IA, pero el retorno en las mejoras de rendimiento obtenidas se van a ver reducidas cada vez más a la vez que demandan cantidades mayores de recursos, lo cual no es un buen plan de futuro, aun que todavía se siga \textit{in crescendo}.
 
-Existen tres factores determinantes para entender lo que consideran como IA-Roja, que serían:
+Existen tres factores determinantes para entender lo que consideran como \textbf{IA-Roja}, que serían:
 \begin{enumerate}[noitemsep, topsep=5pt]
     \item \textbf{E}, coste de ejecutar el modelo con una sola muestra.
     \item \textbf{D}, tamaño del \textit{dataset} o conjunto de datos.
@@ -1037,12 +1037,12 @@ Existen tres factores determinantes para entender lo que consideran como IA-Roja
 \begin{equation}
     \text{Coste(}R\text{)} \propto E \cdot D \cdot H
 \end{equation}
-Cuando los costes de producir un resultado en un modelo de IA incrementan linealmente con alguno de los factores anteriores, estamos ante uno de estos diseños. Contrariamente, definen la green-AI o \textbf{IA-Verde} como:
+Cuando los costes de producir un resultado en un modelo de IA incrementan linealmente con alguno de los factores anteriores, estamos ante uno de estos diseños. Contrariamente, definen la \textit{green-AI} o \textbf{IA-Verde} como:
 \begin{quote}
 Investigación en inteligencia artificial que produzca nuevos resultados sin aumentar su coste computacional, e idealmente reduciéndolo.    
 \end{quote}
 
-En el citado artículo \cite{green_red_ai} también se dan una serie de recomendaciones en cuanto a métricas de eficiencia a utilizar en las investigaciones de IA, entre cuales destacamos las siguientes:
+En el citado artículo \cite{green_red_ai} también se dan una serie de recomendaciones en cuanto a métricas de eficiencia a utilizar en las investigaciones de IA, entre las cuales destacamos las siguientes:
 \begin{itemize}[noitemsep, topsep=5pt]
     \item \textbf{Consumo eléctrico}
     \item \textbf{Tiempo de ejecución}
@@ -1066,13 +1066,13 @@ No todos los problemas requieren soluciones basadas en el ML, y resolver problem
 
 \subsubsection{Emisiones y huella de carbono de la IA} \label{ss:emisiones_co2_ia}
 
-Una métrica en las que no entró el estudio anterior es el de las emisiones de carbono, considerada fuera del alcance al depender estas de la infraestructura y fuentes de energía locales que abastezcan a los equipos, por lo que no resulta nada práctico comparar entre investigadores de lugares distintos o incluso bajo épocas distintas del año.
+Una métrica en las que no entró el estudio anterior es el de las emisiones de carbono, considerada fuera de alcance al depender estas de la infraestructura y fuentes de energía locales que abastezcan a los equipos, por lo que no resulta nada práctico comparar entre investigadores de lugares distintos o incluso bajo épocas distintas del año.
 %todo mencionar que esto justo fue lo que hicieron estos dos equipos
-Aún así, y para salvar este escollo, se han realizado estudios, como los dos siguientes \cite{carbon_computation} y \cite{carbon_ml}, que si tienen en cuenta dichos aspectos. En ambos se trabajaron formas de cuantificar las emisiones de carbono teniendo en cuenta la ubicación de la maquina que ejecuta el entrenamiento del modelo, su duración, el tipo de energía que usa y el \textit{hardware} en el que se realiza. Para facilitar que los investigadores informen de estos resultados energéticos y eficientes han desarrollado sendos simuladores que explicaremos a continuación.
+Aún así, y para salvar este escollo, se han realizado estudios, como los dos siguientes \cite{carbon_computation} y \cite{carbon_ml}, que si tienen en cuenta dichos aspectos. En ambos se trabajaron formas de cuantificar las emisiones de carbono teniendo en cuenta la ubicación de la maquina que ejecuta el entrenamiento del modelo, su duración, el tipo de energía que usa y el \textit{hardware} en el que se realiza. Para facilitar que los investigadores informen sobre resultados energéticos y de eficiencia han desarrollado sendos simuladores que explicaremos a continuación.
 
 \paragraph*{Cálculo y simuladores}\mbox{}\\
 %todo explicar los dos simuladores y enlazar capturas y enlaces a ellos.
-En el artículo \cite{carbon_ml} elaboraron esta calculadora \href{https://mlco2.github.io/impact/}{ML $CO_2$ Impact}, en la que, indicando el tipo de \textit{hardware} usado, el tiempo de ejecución del entrenamiento (en horas), el proveedor del servicio de computación en la nube (AWS, Azure, Google Cloud Platform etc) y, por último, la localización de dicho servidor realiza una estimación de los kg de $CO_2$ equivalente, como se observa en la figura \ref{fig:ml_calc_carbon}:
+En el artículo \cite{carbon_ml} elaboraron la calculadora \href{https://mlco2.github.io/impact/}{'ML $CO_2$ Impact'}, en la que, indicando el tipo de \textit{hardware} usado, el tiempo de ejecución del entrenamiento (en horas), el proveedor del servicio de computación en la nube (AWS, Azure, Google Cloud Platform etc) y, por último, la localización de dicho servidor realiza una estimación de los kg de $CO_2$ equivalente, como se observa en la figura \ref{fig:ml_calc_carbon}:
 %fig1fig2
 \begin{figure}[H]
     \centering
@@ -1090,7 +1090,7 @@ En el artículo \cite{carbon_ml} elaboraron esta calculadora \href{https://mlco2
 \end{figure}
 
 En el último estudio, \textit{Green Algorithms: Quantifying the carbon 
-footprint of computation} \cite{carbon_computation}, también realizaron un simulador web para calcular estas emisiones (\href{http://calculator.green-algorithms.org/}{Green Algorithms}), con la diferencia sobre el primero que este presenta un mayor número de parámetros y son más específicos, aunque se basen también en el número de horas de entrenamiento, \textit{hardware} empleado, factor de uso de la máquina y localización de esta, como se observa en la figura \ref{fig:ml_calc_carbon_ml}:
+footprint of computation} \cite{carbon_computation}, también realizaron un simulador web para calcular estas emisiones \href{http://calculator.green-algorithms.org/}{'Green Algorithms'}, con la diferencia sobre el primero que este presenta un mayor número de parámetros y son más específicos, aunque se basen también en el número de horas de entrenamiento, \textit{hardware} empleado, factor de uso de la máquina y localización de esta, como se observa en la figura \ref{fig:ml_calc_carbon_ml}:
 %fig3fig4
 \begin{figure}[H]
     \centering
@@ -1106,14 +1106,14 @@ footprint of computation} \cite{carbon_computation}, también realizaron un simu
     \caption{Otro simulador web para la estimación del cálculo de $CO_2$ equivalente de una ANN}
     \label{fig:ml_calc_carbon_ml}
 \end{figure}
-Explican más en detalle, eso sí, cuales son los cálculos realizados para producir esas estimaciones, que presentamos aquí:
+Para este último simulador explican más en detalle cuales son los cálculos realizados para producir esas estimaciones, que presentamos aquí:
 \begin{equation}
 \label{eq:4}
     E = t \cdot (\eta_c \cdot P_c \cdot \mu_c + \eta_m \cdot P_m) \cdot PUE \cdot 0.001
 \end{equation}
 
 Donde, en \eqref{eq:4}, $t$ es el tiempo de ejecución en horas, $\eta_c$ el número de núcleos del CPU, 
-$\eta_m$ el tamaño de la memoria RAM disponible en GB, $\mu_c$ es el factor de uso del CPU, $P_c$ la potencia requerida por cada uno de los núcleos (W), $P_m$ la potencia requerida por la memoria (W) y, por último, $PUE$ (\textit{Power Usage Effectiveness}) la eficiencia del centro de datos, medida como la razón entre la potencia o energía requerida total entre la que va destinada al uso del equipamiento TI.
+$\eta_m$ el tamaño de la memoria RAM disponible en GB, $\mu_c$ es el factor de uso del CPU, $P_c$ la potencia requerida por cada uno de los núcleos (W), $P_m$ la potencia requerida por la memoria (W) y, por último, $PUE$ (\textit{Power Usage Effectiveness}) la eficiencia del centro de datos, medida como la razón entre la potencia o energía requerida total dividido entre la destinada al uso del equipamiento TI.
 
 Por último, la estimación de la huella de carbono ($gCO_{2e}$) la hacen multiplicando la energía precisada en \eqref{eq:4} ($kWh$) multiplicada por el $CI$, \textit{carbon intensity} ($\frac{gCO_{2e}}{kWh}$) de la localización:
 \begin{equation}
@@ -1157,9 +1157,9 @@ Para finalizar, enumeramos los cuatro puntos clave existentes dentro del PNAV, m
 \end{enumerate}
 
 \subsubsection{Notación Big-O}
-Una herramienta muy funcional a tener en cuenta a la hora de describir la complejidad computacional de un algoritmo es la llamada \textbf{Notación Big-O}, también conocida como notación \textit{Asintótica} o \textit{Landau}, en honor a uno de los autores a los que se atribuye - Edmund Landau - matemático alemán de comienzos del siglo pasado.
+Una herramienta muy funcional a tener en cuenta a la hora de describir la complejidad computacional de un algoritmo es la llamada \textbf{Notación Big-O}, conocida también como notación \textit{Asintótica} o \textit{Landau}, en honor a uno de los autores a los que se atribuye - Edmund Landau - matemático alemán de comienzos del siglo pasado.
 
-La Notación Big-O se usa para medir como de bien escala un algoritmo o programa, según aumenta el número de elementos procesados, respecto al tiempo que tarda en ejecutarlo, es decir, nos da el \textit{ratio de crecimiento} de dichas operaciones.
+La Notación Big-O se usa para medir como de bien escala un algoritmo o programa - según aumenta el número de elementos procesados - respecto al tiempo que tarda en ejecutarlo, es decir, nos da el \textit{ratio de crecimiento} de dichas operaciones.
 
 Es una medida muy útil para comparar la eficiencia entre algoritmos, ya que aunque no nos proporcione el tiempo de ejecución exacto de estos, si nos da una idea de cómo de rápido se incrementa este tiempo de ejecución en función del número de datos de entrada. Así, se clasifican los algoritmos según la clase de ratio de crecimiento que tengan, una medida de su buena/mala escalabilidad.
 
@@ -1196,7 +1196,7 @@ En la tabla \ref{tbl:bigo} se resumen algunas de estas clases de notaciones y su
 Mayor número de operaciones representa mayor tiempo de ejecución y mayor coste computacional, lo cual implica, a su vez, mayor coste energético y por lo tanto una \textbf{menor eficiencia energética}.
 
 %ejemplo y algoritmo complejo -> nos quedamos con el más grande
-Veamos con un ejemplo las tres propiedades que se suelen asumir a la hora de el grado $O$ de una función $f(n)$:
+Veamos, con un ejemplo, las tres propiedades que se suelen asumir a la hora de analizar el grado $O$ de una función $f(n)$:
 
 \begin{enumerate}
     \item Si una función o algoritmo se puede escribir como una suma finita de otras funciones, entonces marca el grado de $f(n)$ la que tenga mayor ratio de crecimiento.
@@ -1213,42 +1213,42 @@ Dadas las anteriores características, es fácil demostrar que, para la función
     f(n) = 5 \log n + 5 (\log n )^4 + 2n^2 + n^3 = O(n^3) \quad n \to \infty
 \end{equation}
 
-Asegurarse de que los algoritmos de optimización presentes en los modelos usados en FL sean lo más eficientes posibles implica un análisis de este para saber como se comporta ante distintos volúmenes de datos de entrada, y saber así como de bien escala. Obviamente es preferible algoritmos de tiempos constantes $O(1)$, logarítmicos $O(\log n)$, lineales $O(n)$ o lineal-logarítmicos $O(n \log n)$ pero eso dependerá únicamente del tipo de técnica y modelo de aprendizaje automático empleado.
+Asegurarse de que los algoritmos de optimización presentes en los modelos usados en \textbf{FL} sean lo más eficientes posibles implica un análisis de este tipo para saber como se comporta ante distintos volúmenes de datos de entrada, y saber así como de bien escala. Obviamente es preferible algoritmos de ordenes bajos, como lineal o logarítmico, pero eso dependerá únicamente del modelo y las técnicas de optimización empleadas.
 
-Existe, sin embargo, una razón por la que el aprendizaje federado se beneficia y gana mayor eficiencia que sus contrapartidas tradicionales, aún usado modelos y algoritmos de optimización equivalentes, y que se pueden explicar con esta notación:
+Existe, sin embargo, una razón por la que el aprendizaje federado se beneficia y gana mayor eficiencia que sus contrapartidas tradicionales, aún usado modelos y algoritmos de optimización equivalentes, y que se pueden explicar usando esta notación:
 
-\begin{enumerate}[noitemsep, topsep=5pt]
+\begin{enumerate}[itemsep=5pt, topsep=5pt]
     \item Sea un modelo de ML $\mathcal{M}$ cuyo fase de entrenamiento $\mathcal{E}$ implica un cuello de botella en su proceso de optimización marcado por el uso de cierto algoritmo de optimización $\mathcal{A}$ clasificado como de tiempo cuadrático $O(n^2)$.
-    \item Sea $\theta$ el nº de operaciones, $\tau$ el tiempo de ejecución y  $\epsilon$ el coste energético, medida en cualquier unidad de energía que se prefiera ($kW \cdot h \quad J\dots$).
-    \item $\uparrow \theta \rightarrow \uparrow \tau \leadsto \uparrow \epsilon$
-    \item Si el volumen de datos de entrada para cada ronda de $E$ es de $\eta$, esto implica que: $\mathcal{A} \leadsto O(\eta^2) = \theta$
+    \item Sea $\theta$ el nº de operaciones, $\tau$ el tiempo de ejecución y  $\epsilon$ el coste energético, medida en cualquier unidad de energía que se prefiera ($kW \cdot h \quad J\dots$), de modo que: 
+    \item[] \begin{center}$\uparrow \theta \rightarrow \uparrow \tau \leadsto \uparrow \epsilon$ \end{center}
+    \item Si el volumen de datos de entrada para cada ronda de $\mathcal{E}$ es de $\eta$, esto implica que: \begin{center}$\mathcal{A} \leadsto O(\eta^2) = \theta$\end{center}
     \item Si este mismo volumen es distribuido entre múltiples participantes - p.ej. \textbf{cuatro} - de una red federada, las fases de $\mathcal{E}$ se benefician de una reducción inmensa en sus tiempos de ejecución y coste energético:
     \begin{equation}
-        \mathcal{A}_{fed} \leadsto O(\frac{\eta}{4}^2) \cdot 4_\textit{clientes} = \frac{\theta}{4} 
+        \mathcal{A}_{fed} \leadsto O(\frac{\eta}{4}^2) \cdot 4_\textit{clientes} = \frac{\theta}{4} \rightarrow \frac{\tau}{4} \rightarrow \frac{\epsilon}{4} 
     \end{equation}
-    \item Es decir, una reducción de tres cuartos en el tiempo y coste de dicho entrenamiento y construcción del modelo, siempre que supongamos condiciones ideales y una distribución perfectamente paralela y síncrona de clientes con igual poder computacional.
+    \item Es decir, una reducción de tres cuartos en el tiempo, coste y construcción del modelo, siempre que supongamos condiciones ideales y una distribución perfectamente paralela y síncrona de clientes con igual poder computacional.
 \end{enumerate}
 
-He aquí uno de los grandes beneficios ocultos de estas técnicas de FL. Aún suponiendo participantes heterogéneos, con distintas potencias computacionales y aún siendo estas, por separado, ínfimas en comparación a la que pueda tener una máquina o servidor de un gran centro de datos; aún suponiendo tiempos de respuesta variables y asíncronas; aún con todo, se pueden encontrar beneficios derivados de su uso tanto por tiempos de entrenamiento como en eficiencia energética.
+He aquí uno de los grandes beneficios de estas técnicas de \textbf{FL}. Aún suponiendo participantes heterogéneos, con distintas potencias computacionales, y siendo estas, por separado, ínfimas en comparación a la que pueda tener una máquina o servidor de un gran centro de datos; además de tiempos de respuesta variables y asíncronos; con todo, se pueden encontrar beneficios derivados de su diseño distribuido tanto por tiempos de entrenamiento como en eficiencia energética.
 
 \newpage
 
 \section{Diseño e implementación}
 En este capítulo se describe el diseño e implementación del sistema sobre el que se realizarán las pruebas de los distintos métodos desarrollados.
 
-Empezaremos así con una vista global del conjunto y de su arquitectura, para luego describir en detalle los dispositivos embebidos, sistemas operativos, lenguajes de programación, librerías empleadas y configuración de los mismos.
+Empezaremos con una vista global del conjunto y de su arquitectura, para luego describir en detalle los dispositivos embebidos, sistemas operativos, lenguajes de programación, librerías empleadas y configuración de los mismos.
 
 \subsection{Vista global del sistema}
 
-Antes de entrar detalles pormenorizados del diseño final del sistema es necesario concretar una vista global de este, incluyendo así los distintos elementos que formarán parte de él y las relaciones existentes entre ellos.
+Antes de entrar detalles pormenorizados del diseño final del sistema es necesario concretar una vista global de este, incluyendo los distintos elementos que formarán parte de él y las relaciones existentes entre ellos.
 
 Todas las técnicas y pruebas desarrolladas se harán en cuatro tipos distintos de dispositivos físicos: un ordenador portátil personal, dos modelos diferentes de Raspberry Pi y una Jetson Nano.
 
-La división de trabajo y almacenamiento de datos se hará acorde a los límites y características de cada uno de ellos, de manera que no lleguemos a sobrepasarlos, fallando así la reproducción de un entorno federado real.
+La división de trabajo y almacenamiento de datos se hará acorde a los límites y características de cada uno de ellos, de manera que no lleguemos a sobrepasarlos.
 
 Por esta razón el portátil, al tener mayor capacidad, será el encargado de albergar el servidor así como sucesivos lotes de clientes simulados, para cuando se realicen pruebas de escalabilidad.
 
-El método desarrollado es una aplicación de un sistema de aprendizaje automático federado, en donde la computación y entrenamiento del modelo se hace de manera distribuida. Así, se conforma una red compuesta de varios dispositivos interconectados, siendo uno de ellos coordinador del proceso global, rol asignado al ordenador portátil, trabajando en conjunto. También se han realizado pruebas, por comparativa, con algoritmos y técnicas equivalentes pero de arquitectura centralizada, llevadas a cabo de igual modo en el dicho portátil.
+El método desarrollado es una aplicación de un sistema de aprendizaje automático federado, en donde la computación y entrenamiento del modelo se hace de manera distribuida. Así, se conforma una red compuesta de varios dispositivos interconectados, siendo uno de ellos coordinador del proceso global, rol asignado al ordenador portátil, trabajando en conjunto. También se han realizado pruebas, por comparativa, con algoritmos y técnicas equivalentes pero de arquitectura centralizada, llevadas a cabo de igual modo en dicho portátil.
 
 \subsubsection{Arquitecturas}
 El diseño de estos sistemas se suele hacer siguiendo una arquitectura \textbf{cliente-servidor} clásica, donde un servidor orquestará el proceso de selección, entrenamiento, agregación y validación del modelo, y unos clientes que, teniendo acceso cada uno a su propio conjunto de datos, entrenarán un modelo local y recibirán las actualizaciones y directrices necesarias cuando sean llamados.
@@ -1259,7 +1259,7 @@ A continuación explicaremos estos dos tipos de arquitectura de manera genérica
 
 \paragraph*{Cliente-Servidor}
 
-Este tipo de arquitectura es la más típica y utilizada en sistemas federados, y también es conocida como diseño tipo \textit{master-worker}. En ella, \textit{K} participantes o clientes, cada uno con un subconjunto del grupo de datos, entrenan de manera colaborativa el modelo de aprendizaje automático con la ayuda de un servidor - tambien denominado coordinador o servidor de agregación -. Los supuestos para estos casos es que los participantes pueden ser honestos mientras que el servidor es honesto-pero-curioso (\textit{honest-but-curious}). Este concepto implica que, aunque el servidor no introduzca maliciosamente - ni altere los resultados o cómputos del proceso -, el diseño del algoritmo de entrenamiento tiene que ser tal que prevenga cualquier tipo de fuga de información útil este pueda recibir de los clientes.
+Este tipo de arquitectura es la más utilizada en sistemas federados, conocida también como diseño tipo \textit{master-worker}. En ella, \textit{K} participantes o clientes, cada uno con un subconjunto del grupo de datos, entrenan de manera colaborativa el modelo de aprendizaje automático con la ayuda de un servidor - tambien denominado coordinador o servidor de agregación -. Los supuestos para estos casos es que los participantes pueden ser honestos mientras que el servidor es honesto-pero-curioso (\textit{honest-but-curious}). Este concepto implica que, aunque el servidor no altere maliciosamente los resultados o cómputos del proceso, el diseño del algoritmo de entrenamiento tiene que prevenir cualquier tipo de fuga de información útil que este pueda recibir de los clientes.
 
 El proceso de entrenamiento de estos sistemas consiste normalmente de los siguientes pasos.
 
@@ -1289,7 +1289,7 @@ Para ello, deben ponerse de acuerdo en una estrategia que determine el orden de 
 
 \begin{description}
     \item[Transferencia cíclica] en ella, los trabajadores se organizan en cadena. Así, el primero manda, aguas abajo, el actual estado del modelo global al siguiente trabajador de la cadena, que lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de datos de entrenamiento, agregándolo y pasándoselo al siguiente. Este proceso se repite de manera consecutiva hasta que el modelo converja, el número máximo de iteraciones se alcance o se sobrepase el tiempo máximo de entrenamiento.
-    \item[Transferencia aleatoria] en esta, un trabajador \textit{k} selecciona aleatoriamente un número \textit{i} de $\{1,....,L\} \backslash \{k\}$ aleatoriamente y bajo igual probabilidad, para posteriormente enviarle el estado actual del modelo (sus pesos). Este trabajador \textit{i} lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de entrenamiento, para luego ser él quien seleccione al siguiente participante. Este proceso se ejecuta de manera concurrente entre los \textit{K} participantes y finaliza cuando todos ellos acuerden que el modelo haya convergido o que se sobrepasase el tiempo máximo establecido. A este método también se le llama \textbf{Gossip Learning}.
+    \item[Transferencia aleatoria] en esta, un trabajador \textit{k} selecciona aleatoriamente cliente \textit{i} de $L$ aleatoriamente y bajo igual probabilidad, para posteriormente enviarle el estado actual del modelo (sus pesos). Este trabajador \textit{i} lo recibe y lo actualiza con los resultados obtenidos de ensayar lotes de su conjunto de entrenamiento, para luego ser él quien seleccione al siguiente participante. Este proceso se ejecuta de manera concurrente entre los \textit{K} participantes y finaliza cuando todos ellos acuerden que el modelo haya convergido o que se sobrepasase el tiempo máximo establecido. A este método también se le llama \textbf{Gossip Learning}.
 \end{description}
 
 %figura diseño p2p
@@ -1320,7 +1320,7 @@ En este apartado examinaremos los sistemas informáticos empleados en la ejecuci
 \subsubsection{Sistemas embebidos}
 Se denominan así a los sistemas de computación basados en microprocesadores o microcontroladores que están diseñados para realizar unas pocas funciones dedicadas y limitadas; en contraste con los ordenadores personales, de propósito general.
 
-Suelen estar integrados todos sus componentes en la placa base, presentando un aspecto distinto al asociado a una computadora normal y específico al fin que deban cumplir.
+Suelen estar todos sus componentes integrados en la placa base, presentando un aspecto distinto al asociado a una computadora normal y específico al fin que deban cumplir.
 
 Normalmente se programan directamente en el lenguaje ensamblador del propio microcontrolador/microprocesador, aun que usando compiladores característicos, pueden utilizarse lenguajes como C, C++ o incluso Java.
 
@@ -1334,11 +1334,11 @@ Son una serie de computadoras de placa única (\textit{SBC}), de bajo coste y ta
 
 El primer modelo fue lanzado en 2012 y, desde entonces, se han incorporado varias versiones, cada una con diferentes especificaciones y características.
 
-Estos dispositivos encuentran así utilidad en una amplia gama de proyectos, incluyendo sistemas de domótica, servidores web, centros multimedia, robots y en general todo lo relacionado con el \textit{IoT}.
+Estos dispositivos encuentran utilidad en una amplia gama de proyectos, incluyendo sistemas de domótica, servidores web, centros multimedia, robots y en general todo lo relacionado con el \textit{IoT}.
 
 La placa única de la Raspberry Pi cuenta, en todas sus versiones, con un procesador Broadcom, memoria RAM, puertos USB, HDMI, GPU, Ethernet, 40 pines GPIO, conector para cámara, ranura para tarjetas SD y todos los componentes necesarios para ejecutar un sistema operativo completo y aplicaciones de software.
 
-Su sistema operativo oficial es una versión adaptada de Debian llamada Raspberry Pi OS, aunque permite usar otros sistemas operativos que tengan distribuciones para arquitectura ARM, incluidos RISC OS 5, Arch Linux ARM, Pidora e incluso una versión de Windows 10. Como se puede observar la mayoría de ellos están basados en SO GNU/Linux.
+Su sistema operativo oficial es una versión adaptada de Debian llamada \textit{Raspberry Pi OS}, aunque permite usar otros sistemas operativos que tengan distribuciones para arquitectura ARM, incluidos RISC OS 5, Arch Linux ARM, Pidora e incluso una versión de Windows 10. Como se puede observar la mayoría de ellos están basados en SO GNU/Linux.
 
 \begin{figure}[h]
     \centering
@@ -1404,9 +1404,9 @@ A continuación presentamos dos tablas con las especificaciones de cada uno de e
 
 Las Jetson son una serie de dispositivos embebidos de la compañía Nvidia que están diseñadas específicamente para aplicaciones de IA y robótica. Sus modelos son pequeños, de bajo consumo y ofrecen un alto rendimiento para las tareas de procesamiento de datos intensivas de estos campos, como procesamiento de imágenes, detección de objetos, reconocimiento de voz o \textit{Deep Learning}.
 
-Se ofrecen así una serie de modelos, que vienen equipados con un amplio rango de potentes procesadores CPU/GPU para lo normal en tipo de dispositivos, incluyendo además interfaces para cámaras, sensores y otros dispositivos externos.
+Se ofrecen una serie de modelos, que vienen equipados con un amplio rango de potentes procesadores CPU/GPU, incluyendo además interfaces para cámaras, sensores y otros dispositivos externos.
 
-En este Trabajo Final se ha utilizado específicamente el modelo Jetson Nano B01, del que se puede apreciar su aspecto en la figura \ref{fig:foto_jetson_nano} y sus especificaciones en la tabla siguiente \ref{tab:especificaciones_jetson_nano}:
+En este Trabajo Final se ha utilizado el modelo Jetson Nano B01, del que se puede apreciar su aspecto en la figura \ref{fig:foto_jetson_nano} y sus especificaciones en la tabla siguiente \ref{tab:especificaciones_jetson_nano}:
 
 \begin{figure}[h]
     \centering
@@ -1437,9 +1437,9 @@ En este Trabajo Final se ha utilizado específicamente el modelo Jetson Nano B01
 
 \subsubsection{Sistemas físicos y simulados}
 
-En este breve apartado solo se quiere dar una pequeña información en cuanto al equipo físico coordinador en el que se han realizado y desarrollado tanto el diseño como parte de las pruebas de este trabajo.
+En este breve apartado se muestra un pequeño informe del equipo físico coordinador en el que se ha realizado y desarrollado el diseño y las pruebas de este trabajo.
 
-El ordenador en sí es un portátil Lenovo, modelo Legion Y540-15IRH, cuyo aspecto y especificaciones se pueden observar en la figura \ref{fig:foto_lenovo_modelo} y tabla \ref{tab:especificaciones_lenovo}, respectivamente.
+El ordenador es un portátil Lenovo, modelo Legion Y540-15IRH, cuyo aspecto y especificaciones se pueden observar en la figura \ref{fig:foto_lenovo_modelo} y tabla \ref{tab:especificaciones_lenovo}, respectivamente.
 
 \begin{figure}[h]
     \centering
@@ -1466,11 +1466,11 @@ El ordenador en sí es un portátil Lenovo, modelo Legion Y540-15IRH, cuyo aspec
     \label{tab:especificaciones_lenovo}
 \end{table}
 
-Con respecto a los sistemas simulados, nos referimos a todos aquellos clientes que, por insuficiencia de dispositivos físicos/embebidos, hemos tenido que simular mediante \textit{software}. De este modo, por ejemplo, en las pruebas realizadas para los métodos estudiados bajo el entorno federado, para ensayar la escalabilidad del mismo, ha sido necesario generar lotes sucesivos de clientes que se unían a dicha red de aprendizaje de forma artificial y que, en realidad, corrían bajo este propio equipo.
+Con respecto a los sistemas simulados, nos referimos a todos aquellos clientes que, por carencia de dispositivos físicos/embebidos suficientes, hemos tenido que simular mediante \textit{software}. De este modo, en las pruebas de escalabilidad realizadas para los métodos estudiados bajo el entorno federado, ha sido necesario generar lotes sucesivos de clientes que se unían a dicha red de aprendizaje de forma artificial y que, en realidad, corrían bajo este propio equipo.
 
 \subsection{Sistemas operativos}
 
-Esta breve sección dispone, a modo informativo, los distintos sistemas operativos escogidos para los distintos sistemas informáticos. Dicha información se puede resumir en la tabla \ref{tab:sistemas_operativos}.
+Esta sección dispone, a modo informativo, los distintos sistemas operativos escogidos para los diferentes sistemas informáticos. Esta información se puede resumir en la tabla \ref{tab:sistemas_operativos}.
 
 \begin{table}[h]
     \centering
@@ -1486,9 +1486,9 @@ Jetson Nano B01           & Jetson Nano Developer Kit Image (Linux4Tegra) \\ \hl
     \label{tab:sistemas_operativos}
 \end{table}
 
-Aun que ya se han tratado anteriormente, cabe mencionar que la \textit{Jetson Nano Developer Kit SD Card Image} está basada en una distribución Ubuntu (Linux) diseñada específicamente para este tipo de placas de Nvidia, denominada Linux4Tegra. Proporciona un entorno de desarrollo completo y preconfigurado para la programación de aplicaciones de IA y robótica, incluyendo bibliotecas y herramientas para la creación de redes neuronales y gestión de la aceleración por GPU.
+Aun que ya se han tratado anteriormente, cabe mencionar que la \textit{Jetson Nano Developer Kit SD Card Image} está basada en una distribución Ubuntu (Linux), diseñada específicamente para este tipo de placas de Nvidia, denominada \textit{Linux4Tegra}. Proporciona un entorno de desarrollo completo y preconfigurado para la programación de aplicaciones de IA y robótica, incluyendo bibliotecas y herramientas para la creación de redes neuronales y gestión de la aceleración por GPU.
 
-Por otro lado, y en un sentido contrario, hemos elegido para los dispositivos del fabricante Raspberry el SO \textit{Raspberry Pi OS Lite}, que es la versión más compacta, ligera y minimalista disponible que ofrece el fabricante, ya que no incluye un entorno gráfico ni demasiadas aplicaciones preinstaladas, lo cual obliga a realizar dicha configuración manualmente, como se verá en apartado \ref{sec:config}.
+Por otro lado, y en un sentido contrario, hemos elegido para los dispositivos del fabricante Raspberry el SO \textit{Raspberry Pi OS Lite}, que es la versión más compacta, ligera y minimalista disponible que se ofrece, ya que no incluye un entorno gráfico ni demasiadas aplicaciones preinstaladas, lo cual obliga a realizar su configuración manualmente, como se verá en apartado \ref{sec:config}.
 
 Por último, en el ordenador portátil personal se ha utilizado una versión de Windows 10 de 64-bits, acorde al hardware instalado. 
 
@@ -1496,9 +1496,9 @@ Por último, en el ordenador portátil personal se ha utilizado una versión de 
 
 El lenguaje de programación utilizado durante todo este Trabajo Final ha sido \textbf{Python}, en concreto su versión 3.10.
 
-Python lenguaje de programación de alto nivel, interpretado y que soporta múltiples paradigmas de programación, como la orientada a objetos, la imperativa y, en menor medida, la funcional. Uno de sus grandes atractivos es la gestión de memoria automática y su tipado dinámico.
+Python es un lenguaje de alto nivel, interpretado y que soporta múltiples paradigmas de programación, como la orientada a objetos, la imperativa y, en menor medida, la funcional. Uno de sus grandes atractivos es la gestión de memoria automática y su tipado dinámico.
 
-Utilizado en una amplia gama de aplicaciones, presenta una sintaxis muy sencilla, repercutiendo así en su clara legibilidad. Creado por Guido van Rossum en 1991, este informático hizo especial hincapié, desde las primeras fases de este proyecto, en seguir una filosofía de \textit{programación para todos}, en donde este lenguaje debería ser fácil, intuitivo y tan potente como otros, de código abierto, comprensible y apto para actividades diarias de prototipado rápido así como para productos finales.
+Utilizado en una amplia gama de aplicaciones, presenta una sintaxis muy sencilla, repercutiendo así en su clara legibilidad. Creado por Guido van Rossum en 1991, este informático hizo especial hincapié, desde las primeras fases de este proyecto, en seguir una filosofía de \textit{programación para todos}, para lo cual este debería ser fácil, intuitivo y tan potente como otros, de código abierto, comprensible y apto para actividades diarias de prototipado rápido así como para productos finales.
 
 Aún que existen otros lenguajes de programación que son apropiados para el campo de la IA y el aprendizaje automático, como pueden ser C/C++, JavaScript, Java o incluso R, se ha escogido Python por las siguientes razones:
 
@@ -1506,13 +1506,13 @@ Aún que existen otros lenguajes de programación que son apropiados para el cam
     \item Facilidad de uso, configuración e instalación sencilla.
     \item Gran abanico de librerías y herramientas para los campos de IA y ML.
     \item Multiplataforma y gratuito.
-    \item Parte del código base implementado ya en este lenguaje.
+    \item Parte del código base del modelo de estudio implementado ya en este lenguaje.
 \end{itemize}
 
 En cuanto a las bibliotecas empleadas para el desarrollo de estos programas, encontramos las siguientes:
 
 \begin{itemize}[noitemsep,topsep=0pt]
-    \item Numpy, \textit{Numerical Python}, utilizada para realizar operaciones matemáticas y científicas con matrices multidimensionales, proporcionando así herramientas para la manipulación de datos y cálculo numérico, incluyendo operaciones de álgebra lineal, transformadas de Fourier, números aleatorios y muchas más. Es, por tanto, una parte integral y base de muchas otras librerías usadas en la ciencia de datos y aprendizaje automático.
+    \item Numpy, \textit{Numerical Python}, utilizada para realizar operaciones matemáticas y científicas con matrices multidimensionales, proporcionando herramientas para la manipulación de datos y cálculo numérico, incluyendo operaciones de álgebra lineal, transformadas de Fourier, números aleatorios y muchas más. Es, por tanto, una parte integral y base de muchas otras librerías usadas en la ciencia de datos y aprendizaje automático.
     \begin{figure}[h]
         \centering
         \includegraphics[height=0.1\textwidth, width=0.1\textwidth]{Figuras/numpy_logo.png}
@@ -1540,7 +1540,7 @@ En cuanto a las bibliotecas empleadas para el desarrollo de estos programas, enc
         \caption{Logo librería Scikit-Learn}
         \label{fig:logo_scikit}
     \end{figure}
-    \item Keras, se trata de una API de alto nivel de \textit{Deep Learning} - o aprendizaje profundo - escrita en Python, que utiliza para su funcionamiento el framework proporcionado por la librería TensorFlow. Permite así crear modelos de DL complejos con una mínima cantidad de código, siendo fácil de usar, modular y extensible.
+    \item Keras, se trata de una API de alto nivel de \textit{Deep Learning} - o aprendizaje profundo - escrita en Python, que utiliza para su funcionamiento el framework proporcionado por la librería TensorFlow. Permite así crear modelos de DL complejos con una mínima cantidad de código, siendo muy fácil de usar, modular y extensible.
     \begin{figure}[h]
         \centering
         \includegraphics[height=0.1\textwidth, width=0.1\textwidth]{Figuras/keras_logo.png}
@@ -1752,7 +1752,7 @@ En definitiva, los pasos fueron los siguientes:
 \clearpage
 
 \section{Metodología}
-En este capítulo explicamos como se han abordado las distintas pruebas que forman parte de este proyecto; desde su aplicación bajo distintos entornos, al procesamiento previo de datos de los conjuntos escogidos, pasando por optimización y validación de los modelos y las diferentes métricas utilizadas para ello.
+En este capítulo explicamos como se han abordado las distintas pruebas que forman parte de este proyecto; desde su aplicación bajo distintos entornos, al procesamiento previo de datos de los conjuntos escogidos, pasando por la optimización, validación de los modelos y las diferentes métricas utilizadas para ello.
 
 \subsection{Aplicación del sistema centralizado}
 TODO
