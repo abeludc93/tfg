@@ -1224,7 +1224,7 @@ Existe, sin embargo, una razón por la que el aprendizaje federado se beneficia 
     \item Si el volumen de datos de entrada para cada ronda de $\mathcal{E}$ es de $\eta$, esto implica que: \begin{center}$\mathcal{A} \leadsto O(\eta^2) = \theta$\end{center}
     \item Si este mismo volumen es distribuido entre múltiples participantes - p.ej. \textbf{cuatro} - de una red federada, las fases de $\mathcal{E}$ se benefician de una reducción inmensa en sus tiempos de ejecución y coste energético:
     \begin{equation}
-        \mathcal{A}_{fed} \leadsto O(\frac{\eta}{4}^2) \cdot 4_\textit{clientes} = \frac{\theta}{4} \rightarrow \frac{\tau}{4} \rightarrow \frac{\epsilon}{4} 
+        \mathcal{A}_{fed} \leadsto O((\frac{\eta}{4})^2) \cdot 4_\textit{clientes} = \frac{\theta}{4} \rightarrow \frac{\tau}{4} \rightarrow \frac{\epsilon}{4} 
     \end{equation}
     \item Es decir, una reducción de tres cuartos en el tiempo, coste y construcción del modelo, siempre que supongamos condiciones ideales y una distribución perfectamente paralela y síncrona de clientes con igual poder computacional.
 \end{enumerate}
@@ -1527,7 +1527,7 @@ En cuanto a las bibliotecas empleadas para el desarrollo de estos programas, enc
         \label{fig:logo_matplotlib}
     \end{figure}
     \item Pandas, utilizada para la manipulación y análisis de datos en estructuras conocidas como \textit{DataFrames}, con forma de tablas. Incluye herramientas para la limpieza de datos, transformación, agregación y filtrado de los mismos, además de utilidades para el manejo de datos faltantes o integración de varias fuentes.
-    \begin{figure}[h]
+    \begin{figure}[H]
         \centering
         \includegraphics[height=0.1\textwidth, width=0.2\textwidth]{Figuras/pandas_logo.png}
         \caption{Logo librería Pandas}
@@ -1562,6 +1562,8 @@ En cuanto a las bibliotecas empleadas para el desarrollo de estos programas, enc
         \label{fig:logo_scipy}
     \end{figure}
 \end{itemize}
+
+\vspace{4cm}
 
 \subsection{Configuración del entorno}
 \label{sec:config}
