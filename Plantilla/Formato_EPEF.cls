@@ -39,12 +39,20 @@
 \RequirePackage{algorithm}
 \RequirePackage{algorithmic}
 \RequirePackage{booktabs}
+\RequirePackage{forest}
+\RequirePackage{wrapfig}
+\RequirePackage{tablefootnote}
 
 % Definición del color "Rosa UDC"
 \definecolor{UDC_Pink}{RGB}{199, 0, 125}
 
 % Cambio del tipo de fuente para el documento
 \renewcommand{\familydefault}{\sfdefault} % Sans Serif
+\newcommand{\bsym}[1]{\boldsymbol{#1}}
+\floatname{algorithm}{Algoritmo}
+\renewcommand{\algorithmicrequire}{\textbf{function }}
+\renewcommand{\algorithmicensure}{\textbf{end function}}
+
 
 % Modificación para el título de los capítulos
 \newcommand{\unchapter}[1]{
@@ -127,6 +135,9 @@
 \definecolor{arduinoOrange}{rgb}{0.8,0.4,0.0}
 \definecolor{arduinoBlue}{rgb}{0.01,0.61,0.98}
 \definecolor{arduinoDarkBlue}{rgb}{0.0,0.2,0.5}
+
+
+\newcommand{\inv}{^{\raisebox{.2ex}{$\scriptscriptstyle-1$}}}
 
 \lstdefinelanguage{Arduino}{
     language=C++,
