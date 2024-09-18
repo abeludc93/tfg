@@ -3,19 +3,18 @@
 \begin{document}
 \renewcommand{\NombreDocumento}{Anexos}
 \subfile{Plantilla/Portada_documento}
-\renewcommand{\contentsname}{Índice \NombreDocumento}
-\localtableofcontents
+
 \newpage
 
-Este documento de Anexos está formado por la documentación de partida de este Trabajo Final, que alberga la propuesta original, así como las referencias a los \textit{papers} o trabajos en los que se basaron las técnicas desarrolladas.
+Este documento de Anexos está formado por la documentación de partida de este Trabajo Final de Grado, que alberga la propuesta original y las referencias a los artículos en los que se desarrolló el modelo de partida de este proyecto.
 
-Por último se incluyen enlaces al repositorio que aloja los códigos de programación elaborados, así como su estructura y una breve guía para su uso e instalación.
+Por último se incluyen enlaces al repositorio público que aloja los códigos de programación elaborados, un esquema de su estructura, la configuración del entorno detallada para los distintos dispositivos embebidos empleados en este proyecto y algunas figuras y tablas resultado de los programas mencionados en el capítulo \ref{sec:resultados_final_anex} de \textit{Resultados finales}.
 
 \section{Documentación de partida}
 
 \vspace{1cm}
 
-\subsection*{Papers}
+\subsection*{Artículos científicos}
 
 \begin{itemize}[noitemsep, topsep=5pt]
     \item Enrique Castillo, Óscar Fontenla-Romero, Bertha Guijarro-Berdiñas and Amparo Alonso-Betanzos. \textit{A global optimum approach for One-Layer Neural Networks}. 2002.
@@ -24,7 +23,7 @@ Por último se incluyen enlaces al repositorio que aloja los códigos de program
     \item Óscar Fontenla-Romero, Bertha Guijarro-Berdiñas and Beatriz Pérez-Sánchez. \textit{LANN-SVD: A Non-Iterative SVD-Based Learning Algorithm for One-Layer Neural Networks}. 2018.
     \item Óscar Fontenla-Romero, Bertha Guijarro-Berdiñas and Beatriz Pérez-Sánchez. \textit{Regularized One-Layer Neural Networks for Distributed and Incremental Environments}. 2020.
     \item Óscar Fontenla-Romero, Bertha Guijarro-Berdiñas, Beatriz Pérez-Sánchez and elena Hernández-Pereira. \textit{An effective and efficient green federated learning method for one-layer neural networks}. 2022.
-    \item Don Kurian-Dennis, Tian Li and Virginia Smith. \textit{Heterogeneity for the win: One-shot federated clustering}. 2021
+    \item Óscar Fontenla-Romero, Bertha Guijarro-Berdiñas, Beatriz Pérez-Sánchez and elena Hernández-Pereira. \textit{FedHEONN: Federated and homomorphically encrypted learning method for one-layer neural networks}. 2023.
 \end{itemize}
 
 \vspace{1em}
@@ -36,19 +35,495 @@ Copia de la propuesta inicial de asignación del Trabajo Final.
 
 \newpage
 
-\section{Código de programación}
-Todo el código de programación elaborado para la realización de las distintas pruebas de este Trabajo Final se encuentra hospedado bajo el servicio gratuito \textbf{GitHub}, que ofrece un entorno en la nube para el alojamiento de código fuente y su versionado mediante la herramienta \textit{Git}. 
+\section{Código de programación} \label{codigo_seccion}
+Todo el código de programación elaborado para la realización de las distintas pruebas de este Trabajo Final de Grado se encuentra hospedado bajo el servicio gratuito \textbf{GitHub}, que ofrece un entorno en la nube para el alojamiento de código fuente y su versionado mediante la herramienta \textit{Git}. 
 
 \subsection*{Repositorio y estructura}
-Se puede acceder al repositorio a través del siguiente enlace \url{https://github.com/abeludc93/tfg}. Su estructura se ilustra en la siguiente figura [\ref{}]:
+Se puede acceder al repositorio a través del siguiente enlace \url{https://github.com/abeludc93/fedheonn_ensemble}. Su estructura básica y descripción se ilustran en la siguiente página. 
+
+A mayores, cabe destacar que el repositorio dispone de dos ramas o \textit{branches} distintas, una denominada \textbf{master} y otra llamada \textbf{codecarbon}. En la primera se deja una versión simplificada del algoritmo, con menos ejemplos pero sólo con las dependencias estrictamente requeridas por el programa base. En la otra se encuentran, a mayores, los experimentos y dependencias necesarias para el estudio medioambiental y energético realizado junto con la librería \href{https://github.com/mlco2/codecarbon}{CodeCarbon}.
 
 \vspace{1em}
 
-\textbf{TODO: Esquema de árbol con la estructura}
-
 \subsection*{Instalación y ejemplos}
+Dentro del repositorio existe un fichero denominado \textit{requirements.txt} que lista las dependencias (librerías externas) necesarias para la ejecución del programa, además de la versión empleada; y, por último, se encuentra otro fichero de texto llamado \textit{README.md}, donde se dan unas instrucciones para la correcta instalación de estas en un equipo o entorno con Python.
 
-\textbf{TODO: HOWTO y README}
+
+\newpage
+
+\begin{forest}
+  for tree={
+    font=\ttfamily,
+    grow'=0,
+    child anchor=west,
+    parent anchor=south,
+    anchor=west,
+    calign=first,
+    edge path={
+      \noexpand\path [draw, \forestoption{edge}]
+      (!u.south west) +(7.5pt,0) |- node[fill,inner sep=1.25pt] {} (.child anchor)\forestoption{edge label};
+    },
+    before typesetting nodes={
+      if n=1
+        {insert before={[,phantom]}}
+        {}
+    },
+    fit=band,
+    before computing xy={l=15pt},
+  }
+[fedheon-ensemble
+  [algorithm:    paquetería con la implementación de algoritmos FedHEONN
+    [fedHEONN-clients]
+    [fedHEONN-coordinators]
+    [activation-functions]
+    [metrics]
+  ]
+  [api:    paquetería con el servidor REST API y cliente para su consumo
+    [client]
+    [server]
+    [utils]
+  ]
+  [auxiliary:    módulos para carga de configuraciones y logging
+    [decorators]
+    [config-loader]
+    [logger]
+  ]
+  [datasets:    directorio con algunas de las bases de datos empleadas
+    [DryBean-Dataset]
+    [MiniBooNE-Dataset]
+    [...]
+  ]
+  [examples: paquetería con todos los ejemplos y experimentos realizados
+    [utils]
+    [mnist]
+    [demo-server]
+    [demo-client]
+    [...]
+  ]
+  [README]
+  [requirements]
+  [demo-config]
+  
+]
+\end{forest}
 
 \cleardoublepage
+
+\section{Configuración del entorno}
+\label{sec:config}
+
+La configuración de los dispositivos embebidos incluyó la instalación de un sistema operativo sin interfaz gráfica (llamado \textit{headless-config}). Para la Raspberry Pi, se usó Raspberry Pi OS Lite, configurando la red y el acceso SSH antes de conectarse mediante terminal para actualizar e instalar Python y las librerías necesarias. En el caso de Jetson Nano, se realizó un proceso similar, pero con conexión inicial por microUSB, seguida de configuración de red vía Ethernet, al no disponer de tarjeta inalámbrica. Ambos procesos se basaron en sendas guías oficiales de referencia que enlazamos en la sección \ref{sec:documentacion}.
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.7\textwidth]{Figuras/pizero3.PNG}
+        \caption{Menú de configuración de Raspberry Pi Imager Installer para modelo Pi Zero}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.7\textwidth]{Figuras/4b1.PNG}
+        \caption{Menú de configuración de Raspberry Pi Imager Installer para modelo Pi 4B}
+    \end{subfigure}
+    \caption{\textcircled{1} - Configuración e instalación de SO en dispositivos Raspberry}
+    \label{fig:so_raspberrys}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.7\textwidth]{Figuras/jetson5.PNG}
+        \caption{Creando usuario}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.7\textwidth]{Figuras/jetson16.PNG}
+        \caption{Instalación terminada, primer inicio }
+    \end{subfigure}
+    \caption{\textcircled{2} - Configuración e instalación de SO para Jetson Nano}
+    \label{fig:so_jetson}
+\end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.7\textwidth]{Figuras/4b4.PNG}
+        \caption{Accediendo por SSH a Raspberry Pi}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.7\textwidth]{Figuras/4b6.PNG}
+        \caption{Actualizando e instalando paqueterías}
+    \end{subfigure}
+    \vfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.7\linewidth]{Figuras/jetson18.PNG}
+        \caption{Accediendo mediante SSH al dispositivo}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}{.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth, height=0.7\textwidth]{Figuras/jetson23.PNG}
+        \caption{Instalando dependencias necesarias}
+    \end{subfigure}
+    \caption{\textcircled{3} - Conexión mediante SSH y actualización e instalación de programas y librerías}
+    \label{fig:ssh_so_librerias}
+\end{figure}
+
+En las figuras \ref{fig:so_raspberrys} y \ref{fig:so_jetson} podemos ver parte del proceso de instalación del SO en los dispositivos embebidos, y la posterior instalación y actualización de librerías y lenguajes de programación en \ref{fig:ssh_so_librerias}.
+
+\newpage
+\section{Tablas y figuras de resultados}\label{sec:anexo_resultados}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{Figuras/cmd_output_mnist.PNG}
+    \caption{Salida del programa \texttt{mnist\_gridsearchcv\_remote.py}}
+    \label{fig:cmd_mnist}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{Figuras/cmd_output_skin.PNG}
+    \caption{Salida del programa \texttt{skin\_gridsearchcv\_remote.py}}
+    \label{fig:cmd_skin}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{Figuras/cmd_output_drybean.PNG}
+    \caption{Salida del programa \texttt{drybean\_gridsearchcv\_remote.py}}
+    \label{fig:cmd_drybean}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{Figuras/cmd_output_carbon.PNG}
+    \caption{Salida del programa \texttt{carbon\_gridsearchcv\_remote.py}}
+    \label{fig:cmd_carbon}
+\end{figure}
+
+%TABLAS EXCEL
+%MNIST
+\begin{table}[H]
+\centering
+\textbf{\large MNIST} \\[1ex]
+
+\begin{tabular}{@{}crrrrrrcc@{}}
+\toprule
+  \texttt{Fila} &    
+  $\bsym{\lambda}$ &
+  $\bsym{T}$ &
+  $\bsym{\beta_s}$ &
+  $\bsym{\beta_f}$ &
+  $\bsym{\rho_s}$ &
+  $\bsym{\rho_f}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Precisión \%\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0 & 0.01 & 75 & \checkmark & X & 0.2 & 0.8 & 95.94 & 2.37 \\
+\multicolumn{9}{l}{$\cdots$} \\
+64 & 0.1 & 75 & \checkmark & X & 0.3 & 0.7 & 95.23 & 1.38 \\
+\multicolumn{9}{l}{$\cdots$} \\
+128 & 0.01 & 75 & X & X & 0.3 & 0.9 & 94.83 & 2.42 \\
+\multicolumn{9}{l}{$\cdots$} \\
+192 & 0.01 & 25 & \checkmark & X & 0.3 & 1 & 94.59 & 2.56 \\
+\multicolumn{9}{l}{$\cdots$} \\
+256 & 0.1 & 100 & \checkmark & X & 0.6 & 0.8 & 94.27 & 1.62 \\
+\multicolumn{9}{l}{$\cdots$} \\
+320 & 0.01 & 25 & X & \checkmark & 0.2 & 1 & 93.96 & 2.39 \\
+\multicolumn{9}{l}{$\cdots$} \\
+384 & 0.1 & 100 & \checkmark & \checkmark & 0.5 & 1 & 93.71 & 1.69 \\
+\multicolumn{9}{l}{$\cdots$} \\
+448 & 0.1 & 50 & X & X & 0.5 & 0.8 & 93.32 & 2.13 \\
+\multicolumn{9}{l}{$\cdots$} \\
+512 & 0.1 & 100 & X & \checkmark & 0.5 & 0.9 & 92.84 & 1.70 \\
+\multicolumn{9}{l}{$\cdots$} \\
+576 & 0.01 & 75 & X & \checkmark & 0.5 & 0.7 & 92.36 & 1.68 \\
+
+	\bottomrule
+\end{tabular}
+\caption{Algunos resultados del \textit{grid-search} de \texttt{mnist\_gridsearchcv\_remote.py}}
+\label{tab:gscv_mnist}
+\end{table}
+
+\begin{table}[H]
+\centering
+\textbf{\large MNIST} \\[1ex]
+\begin{tabular}{@{}rcc@{}}
+\toprule  
+  $\bsym{\lambda}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Precisión \%\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0.01 & 88.15 & 3.14 \\
+0.1 & 87.99 & 3.22 \\
+
+	\bottomrule
+\end{tabular}
+\caption{Métricas para regularizaciones usadas sin \textit{ensemble} en MNIST}
+\label{tab:gscv_mnist_classic}
+\end{table}
+
+%SKIN
+\begin{table}[H]
+\centering
+\textbf{\large SKIN} \\[1ex]
+
+\begin{tabular}{@{}crrrrrrcc@{}}
+\toprule
+  \texttt{Fila} &    
+  $\bsym{\lambda}$ &
+  $\bsym{T}$ &
+  $\bsym{\beta_s}$ &
+  $\bsym{\beta_f}$ &
+  $\bsym{\rho_s}$ &
+  $\bsym{\rho_f}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Precisión \%\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0 & 10 & 2 & X & \checkmark & 0.1 & 0.7 & 84.21 & 0.34 \\
+\multicolumn{9}{l}{$\cdots$} \\
+36 & 10 & 2 & \checkmark & \checkmark & 0.4 & 0.9 & 83.59 & 0.36 \\
+\multicolumn{9}{l}{$\cdots$} \\
+72 & 10 & 2 & \checkmark & X & 0.2 & 0.9 & 81.51 & 0.32 \\
+\multicolumn{9}{l}{$\cdots$} \\
+108 & 1 & 2 & X & X & 0.5 & 0.8 & 81.21 & 0.34 \\
+\multicolumn{9}{l}{$\cdots$} \\
+144 & 10 & 10 & \checkmark & X & 0.3 & 0.8 & 80.57 & 0.34 \\
+\multicolumn{9}{l}{$\cdots$} \\
+180 & 1 & 10 & X & X & 0.3 & 0.9 & 80.42 & 0.34 \\
+\multicolumn{9}{l}{$\cdots$} \\
+216 & 1 & 5 & X & X & 0.4 & 0.7 & 80.36 & 0.33 \\
+\multicolumn{9}{l}{$\cdots$} \\
+252 & 10 & 5 & \checkmark & \checkmark & 0.2 & 0.7 & 79.92 & 0.30 \\
+\multicolumn{9}{l}{$\cdots$} \\
+288 & 1 & 5 & \checkmark & \checkmark & 0.4 & 0.8 & 79.85 & 0.29 \\
+\multicolumn{9}{l}{$\cdots$} \\
+324 & 1 & 10 & \checkmark & \checkmark & 0.2 & 0.9 & 79.62 & 0.28 \\
+\multicolumn{9}{l}{$\cdots$} \\
+
+	\bottomrule
+\end{tabular}
+\caption{Algunos resultados del \textit{grid-search} de \texttt{skin\_gridsearchcv\_remote.py}}
+\label{tab:gscv_skin}
+\end{table}
+
+\begin{table}[H]
+\centering
+\textbf{\large SKIN} \\[1ex]
+\begin{tabular}{@{}rcc@{}}
+\toprule  
+  $\bsym{\lambda}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Precisión \%\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+10 & 80.52 & 0.31 \\
+1 & 80.52 & 0.30 \\
+
+	\bottomrule
+\end{tabular}
+\caption{Métricas para regularizaciones usadas sin \textit{ensemble} en Skin}
+\label{tab:gscv_skin_classic}
+\end{table}
+
+%MINIBOONE
+\begin{table}[H]
+\centering
+\textbf{\large MINIBOONE} \\[1ex]
+
+\begin{tabular}{@{}crrrrrrcc@{}}
+\toprule
+  \texttt{Fila} &    
+  $\bsym{\lambda}$ &
+  $\bsym{T}$ &
+  $\bsym{\beta_s}$ &
+  $\bsym{\beta_f}$ &
+  $\bsym{\rho_s}$ &
+  $\bsym{\rho_f}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Precisión \%\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0 & 0.01 & 2 & X & X & 0.05 & 0.9 & 86.85 & 0.39 \\
+\multicolumn{9}{l}{$\cdots$} \\
+14 & 0.01 & 2 & \checkmark & X & 0.1 & 0.7 & 86.10 & 0.29 \\
+\multicolumn{9}{l}{$\cdots$} \\
+28 & 0.01 & 20 & X & X & 0.1 & 0.9 & 85.76 & 0.31 \\
+\multicolumn{9}{l}{$\cdots$} \\
+43 & 0.01 & 2 & \checkmark & \checkmark & 0.15 & 0.7 & 85.56 & 0.30 \\
+\multicolumn{9}{l}{$\cdots$} \\
+57 & 0.01 & 2 & X & \checkmark & 0.1 & 0.9 & 85.46 & 0.22 \\
+\multicolumn{9}{l}{$\cdots$} \\
+72 & 0.01 & 10 & \checkmark & \checkmark & 0.1 & 0.7 & 85.27 & 0.26 \\
+\multicolumn{9}{l}{$\cdots$} \\
+86 & 0.01 & 20 & \checkmark & \checkmark & 0.15 & 0.9 & 85.16 & 0.28 \\
+\multicolumn{9}{l}{$\cdots$} \\
+100 & 0.01 & 10 & X & \checkmark & 0.05 & 0.7 & 85.02 & 0.35 \\
+\multicolumn{9}{l}{$\cdots$} \\
+115 & 0.01 & 5 & X & \checkmark & 0.1 & 0.5 & 84.66 & 0.32 \\
+\multicolumn{9}{l}{$\cdots$} \\
+129 & 0.01 & 2 & X & \checkmark & 0.15 & 0.5 & 84.55 & 0.43 \\
+
+	\bottomrule
+\end{tabular}
+\caption{Algunos resultados del \textit{grid-search} de \texttt{miniboone\_gridsearchcv\_remote.py}}
+\label{tab:gscv_miniboone}
+\end{table}
+
+\begin{table}[H]
+\centering
+\textbf{\large MINIBOONE} \\[1ex]
+\begin{tabular}{@{}rcc@{}}
+\toprule  
+  $\bsym{\lambda}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Precisión \%\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0.01 & 85.34 & 0.30 \\
+
+	\bottomrule
+\end{tabular}
+\caption{Métricas para regularizaciones usadas sin \textit{ensemble} en MiniBoone}
+\label{tab:gscv_miniboone_classic}
+\end{table}
+
+%DRYBEAN
+\begin{table}[H]
+\centering
+\textbf{\large DRY BEAN} \\[1ex]
+
+\begin{tabular}{@{}crrrrrrcc@{}}
+\toprule
+  \texttt{Fila} &    
+  $\bsym{\lambda}$ &
+  $\bsym{T}$ &
+  $\bsym{\beta_s}$ &
+  $\bsym{\beta_f}$ &
+  $\bsym{\rho_s}$ &
+  $\bsym{\rho_f}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Precisión \%\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0 & 0.01 & 10 & \checkmark & X & 0.8 & 1 & 91.01 & 1.03 \\
+\multicolumn{9}{l}{$\cdots$} \\
+1280 & 0.01 & 75 & \checkmark & X & 0.1 & 0.6 & 89.08 & 0.87 \\
+\multicolumn{9}{l}{$\cdots$} \\
+2560 & 1 & 10 & X & X & 0.3 & 0.9 & 88.52 & 0.69 \\
+\multicolumn{9}{l}{$\cdots$} \\
+3840 & 1 & 75 & X & \checkmark & 0.6 & 0.7 & 88.10 & 0.67 \\
+\multicolumn{9}{l}{$\cdots$} \\
+5120 & 0.1 & 25 & \checkmark & \checkmark & 0.8 & 0.5 & 87.55 & 0.90 \\
+\multicolumn{9}{l}{$\cdots$} \\
+6400 & 0.1 & 2 & \checkmark & X & 0.1 & 0.8 & 86.20 & 0.89 \\
+\multicolumn{9}{l}{$\cdots$} \\
+7680 & 0.01 & 75 & \checkmark & \checkmark & 0.7 & 0.3 & 82.54 & 0.70 \\
+\multicolumn{9}{l}{$\cdots$} \\
+8960 & 10 & 200 & X & \checkmark & 0.8 & 0.4 & 77.45 & 0.67 \\
+\multicolumn{9}{l}{$\cdots$} \\
+10240 & 1 & 100 & X & \checkmark & 0.2 & 0.3 & 71.91 & 0.81 \\
+\multicolumn{9}{l}{$\cdots$} \\
+11520 & 10 & 2 & X & \checkmark & 0.4 & 0.4 & 58.83 & 1.14 \\
+
+	\bottomrule
+\end{tabular}
+\caption{Algunos resultados del \textit{grid-search} de \texttt{drybean\_gridsearchcv\_remote.py}}
+\label{tab:gscv_mnist}
+\end{table}
+
+\begin{table}[H]
+\centering
+\textbf{\large DRY BEAN} \\[1ex]
+\begin{tabular}{@{}rcc@{}}
+\toprule  
+  $\bsym{\lambda}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}Precisión \%\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0.01 & 90.69 & 1.01 \\
+0.1 & 90.10 & 0.97 \\
+1 & 88.72 & 0.68 \\
+10 & 87.60 & 0.67 \\
+
+	\bottomrule
+\end{tabular}
+\caption{Métricas para regularizaciones usadas sin \textit{ensemble} en Dry Bean}
+\label{tab:gscv_drybean_classic}
+\end{table}
+
+%CARBON
+\begin{table}[H]
+\centering
+\textbf{\large CARBON NANOTUBES} \\[1ex]
+
+\begin{tabular}{@{}crrrrrrcc@{}}
+\toprule
+  \texttt{Fila} &    
+  $\bsym{\lambda}$ &
+  $\bsym{T}$ &
+  $\bsym{\beta_s}$ &
+  $\bsym{\beta_f}$ &
+  $\bsym{\rho_s}$ &
+  $\bsym{\rho_f}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}MSE\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0 & 0.01 & 75 & \checkmark & X & 0.4 & 1 & 7.8320E-05 & 8.6860E-05 \\
+\multicolumn{9}{l}{$\cdots$} \\
+1280 & 0.01 & 5 & X & \checkmark & 1 & 1 & 4.2933E-03 & 1.4246E-04 \\
+\multicolumn{9}{l}{$\cdots$} \\
+2560 & 0.01 & 100 & X & \checkmark & 0.5 & 1 & 8.5784E-03 & 1.6715E-04 \\
+\multicolumn{9}{l}{$\cdots$} \\
+3840 & 0.1 & 50 & X & X & 1 & 0.7 & 1.2420E-02 & 1.9559E-04 \\
+\multicolumn{9}{l}{$\cdots$} \\
+5120 & 0.01 & 25 & X & X & 0.1 & 0.6 & 1.4846E-02 & 2.6839E-04 \\
+\multicolumn{9}{l}{$\cdots$} \\
+6400 & 0.01 & 75 & \checkmark & \checkmark & 0.9 & 0.6 & 1.9217E-02 & 2.8718E-04 \\
+\multicolumn{9}{l}{$\cdots$} \\
+7680 & 0.1 & 100 & \checkmark & \checkmark & 0.7 & 0.4 & 2.9835E-02 & 3.7920E-04 \\
+\multicolumn{9}{l}{$\cdots$} \\
+8960 & 0.01 & 10 & \checkmark & \checkmark & 0.5 & 0.2 & 3.8300E-02 & 4.6811E-04 \\
+\multicolumn{9}{l}{$\cdots$} \\
+10240 & 0.01 & 200 & \checkmark & X & 0.3 & 0.2 & 5.5343E-02 & 7.3884E-04 \\
+\multicolumn{9}{l}{$\cdots$} \\
+11520 & 1 & 75 & \checkmark & \checkmark & 0.3 & 0.1 & 8.4262E-02 & 1.2766E-03 \\
+\multicolumn{9}{l}{$\cdots$} \\
+	\bottomrule
+\end{tabular}
+\caption[Resultados \textit{grid-search} de \texttt{carbon\_nanotubes\_gridsearchcv\_remote.py}]{Algunos resultados del \textit{grid-search} de \texttt{carbon\_nanotubes\_gridsearchcv\_remote.py}}
+\label{tab:gscv_mnist}
+\end{table}
+
+\begin{table}[H]
+\centering
+\textbf{\large CARBON NANOTUBES} \\[1ex]
+\begin{tabular}{@{}rcc@{}}
+\toprule  
+  $\bsym{\lambda}$ &
+  \multicolumn{2}{|c|}{\textbf{\begin{tabular}[c]{@{}c@{}}MSE\\ $(\bsym{\mu},\,\bsym{\sigma})$\end{tabular}}} \\ \midrule
+
+0.01 & 7.8466E-05 & 8.7030E-05 \\
+0.1 & 7.8466E-05 & 8.7031E-05 \\
+1 & 7.8474E-05 & 8.7045E-05 \\
+10 & 7.9242E-05 & 8.7180E-05 \\
+
+
+	\bottomrule
+\end{tabular}
+\caption{Métricas para regularizaciones usadas sin \textit{ensemble} en Carbon Nanotubes}
+\label{tab:gscv_carbon_classic}
+\end{table}
+
+Los resultados están ordenados por métrica de manera ascendente para los casos de clasificación y de manera descendente en los de regresión. Como se puede apreciar en las tablas anteriores, la técnica de ensamblaje solo mejora notablemente la obtenida por el modelo original en los conjuntos \textit{MNIST-test} y \textit{Skin}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=1.2\linewidth,width=1\linewidth]{Figuras/par_50_series.png}
+    \caption{Salida de \texttt{mnist\_parallel.py} en serie.}
+    \label{fig:mnist_par_serie}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=1.4\linewidth,width=1\linewidth]{Figuras/par_50_par.png}
+    \caption{Salida de \texttt{mnist\_parallel.py} en paralelo.}
+    \label{fig:mnist_par_par}
+\end{figure}
+
 \end{document}

@@ -3,57 +3,54 @@
 \begin{document}
 \renewcommand{\NombreDocumento}{Resumen}
 \subfile{Plantilla/Portada_documento}
-\renewcommand{\contentsname}{Índice \NombreDocumento}
-\localtableofcontents
+
 \newpage
 
-A continuación se incluye el título y una breve descripción, a modo de resumen, en castellano, gallego e inglés, como requerido por la norma de formato de Trabajo Final.
+A continuación se incluye una breve descripción, a modo de resumen, en castellano, gallego e inglés, del proyecto realizado para este Trabajo Final de Grado.
 
-\section{Título y resumen}
+\section{Resumen}
 
-\textit{Escalabilidad y eficiencia en Inteligencia Artificial a través de algoritmos federados verdes}
+En los últimos años los modelos de Inteligencia Artificial (IA) han aumentado de tamaño en pasos agigantados, aupados por unos resultados y casos de uso cada vez mejores y más refinados; con todo, los algoritmos actuales de estos modelos se centran, como único objetivo, en conseguir la máxima eficacia en la resolución del problema asignado, pero no tienen en cuenta la eficiencia energética del modelo conjunto. Se ha comprobado que estos modelos, y la infraestructura necesaria para ellos, tienen un impacto muy importante en el consumo de recursos eléctricos e hídricos, por lo que es necesario incluir este enfoque en su desarrollo y reducir tales impactos.
 
-\vspace{1em}
-\noindent
-En este Trabajo Final de Grado se ha abordado el desarrollo, análisis y experimentación con métodos de aprendizaje federado desde una perspectiva verde, en sintonía con la manifestación de interés del Programa Nacional de Algoritmos Verdes \cite{libro_PNAV} publicado por el Ministerio de Asuntos Económicos y Transformación Digital \cite{web_ministerio}.
+Un planteamiento reciente en la IA es el llamado Aprendizaje Federado, que permite entrenar modelos de manera colaborativa en múltiples dispositivos sin necesidad de centralizar sus datos y preservando su privacidad. 
 
-Para ello se dio comienzo por un repaso de las principales ramas y estado del arte en Inteligencia Artificial y Aprendizaje Automático hasta llegar a las técnicas proporcionadas por una tendencia reciente conocida como Aprendizaje Federado.
+Dicha técnica se presenta como una alternativa que solventa las desventajas de las técnicas centralizadas corrientes, que requieren grandes silos de información y un mayor consumo energético y temporal para su entrenamiento. El Aprendizaje Federado, por otro lado, es distribuido, eficiente y privativo por diseño, por lo que es un incentivo para la convergencia de las nuevas tecnologías de la información como \textit{IoT} y las operativas propias de la \textit{Industria 4.0}.
 
-Estas últimas se presentan como una alternativa que solventa las desventajas del entrenamiento centralizado corriente, que requiere grandes silos de información y un mayor consumo y tiempo para su entrenamiento. El aprendizaje federado es así distribuido, eficiente y privativo por naturaleza, por lo que es un incentivo para la convergencia de las nuevas tecnologías de la información como \textit{IoT} y las operativas propias de la \textit{Industria 4.0}. Al mismo tiempo son medio-ambientalmente sostenibles, ya que requieren consumos de energía menores que su contrapartida centralizada.
+En este Trabajo Final de Grado se ha abordado el desarrollo, análisis y experimentación de métodos de aprendizaje federado desde una perspectiva verde, en sintonía con la manifestación de interés del Programa Nacional de Algoritmos Verdes \cite{libro_PNAV} publicado por el Ministerio de Asuntos Económicos y Transformación Digital \cite{web_ministerio}. Específicamente, hemos contribuido y mejorado el método de entrenamiento regularizado y encriptado para redes neuronales de una sola capa que ha sido desarrollado por la UDC en entornos federados (\textit{FedHEONN}) \cite{paper_FEDHEONN}, y experimentado con su implementación en dispositivos embebidos y simulados.
 
-El propósito ha sido así el de experimentar con técnicas de aprendizaje federado, en especial contribuir y mejorar, bajo nuevos escenarios, el método de entrenamiento regularizado para redes neuronales de una sola capa que ha sido desarrollado por la UDC en entornos federados (\textit{FedROLANN}) \cite{paper_FEDROLANN} y la implementación de estos algoritmos en dispositivos embebidos y simulados.
+Como tal, hemos aplicado un método de ensamblaje conocido como Random Patches al algoritmo para contrastar su rendimiento frente la versión original, además de implementar la capacidad de realizar un entrenamiento incremental por lotes, con el objetivo de lograr un algoritmo más versátil y de mayor capacidad de representación; obteniendo resultados satisfactorios y acompañando estos apartados con un estudio de la eficacia de estas técnicas en comparación con su versión original y otro tipo de modelos.
 
-Como tal, se ha procedido a aplicar métodos de ensamblaje a dicho algoritmo para verificar su rendimiento contra la versión original y, por último, se ha usado como pieza en un sistema formado junto con otro algoritmo federado de agrupamiento de características similares (\textit{k-FED}) \cite{paper_kFED}, con el objetivo de lograr, entre ambos, un algoritmo más potente y de mayor capacidad de representación que el original.\\\\En ambos casos se lograron con éxito dichas metas.
+Por último, desarrollamos también la paralelización de ciertos procesos clave del algoritmo de entrenamiento de FedHEONN, con el objetivo de reducir los tiempos globales de ejecución, a la par que se construye una API para servidor y cliente/s que proporciona los medios para su uso entre varios dispositivos conectados a la red, simulando un escenario federado realista.
 
-\section{Título e resumo}
-\textit{Escalabilidade e eficiencia en Intelixencia Artificial a través de algoritmos federados verdes}
+\newpage
+\section{Resumo}
 
-\vspace{1em}
-\noindent
-Neste Traballo Final de Grao abordouse o desenvolvemento, análise e experimentación con métodos de aprendizaxe federada dende unha perspectiva verde, en sintonía coa manifestación de interese do Programa Nacional de Algoritmos Verdes \cite{libro_PNAV} publicado polo Ministerio de Asuntos Económicos e Transformación Dixital \cite{web_ministerio}.
+Nos últimos anos os modelos de Intelixencia Artificial (IA) aumentaron de tamaño en pasos axigantados, levados por uns resultados e casos de uso cada vez mellores e máis refinados; con todo, os algoritmos actuais destes modelos céntranse, como único obxectivo, en conseguir a máxima eficacia na resolución do problema asignado, pero non teñen en conta a eficiencia enerxética do modelo conxunto. Comprobouse que estes modelos, e a infraestrutura necesaria para eles, teñen un impacto moi importante no consumo de recursos eléctricos e hídricos, polo que é necesario incluír este enfoque no seu desenvolvemento e reducir tales impactos.
 
-Para isto deuse comezo por un repaso das principais ramas e estado da arte en Intelixencia Artificial e Aprendizaxe Automática ata chegar ás técnicas proporcionadas por unha tendencia recente coñecida como Aprendizaxe Federada.
+Unha formulación recente na IA é a chamada Aprendizaxe Federada, que permite adestrar modelos de maneira colaborativa en múltiples dispositivos sen necesidade de centralizar os seus datos e preservando a súa privacidade.
 
-Estas últimas preséntanse como unha alternativa ás desvantaxes do adestramento centralizado corrente, que require grandes silos de información e un maior consumo e tempo para o seu adestramento. A aprendizaxe federada é así distribuída, eficiente e privativa por natureza, polo que é un incentivo para a converxencia das novas tecnoloxías da información como \textit{IoT} e as operativas propias da \textit{Industria 4.0}. Ao mesmo tempo son medio-ambientalmente sostibles, xa que requiren consumos de enerxía menores que a súa contrapartida centralizada.
+Dita técnica preséntase como unha alternativa que resolve as desvantaxes das técnicas centralizadas correntes, que requiren grandes silos de información e un maior consumo enerxético e temporal para o seu adestramento. A Aprendizaxe Federada, doutra banda, é distribuído, eficiente e privativo por deseño, polo que é un incentivo para a converxencia das novas tecnoloxías da información como \textit{IoT} e as operativas propias da \textit{Industria 4.0}.
 
-O propósito foi así o de experimentar cas técnicas de aprendizaxe federada, en especial contribuír e mellorar, baixo novos escenarios, o método de adestramento regularizado para redes neuronais dunha soa capa que foi desenvolto pola UDC en contornas federadas (\textit{FedROLANN}) \cite{paper_FEDROLANN} e a implementación destes algoritmos en dispositivos embebidos e simulados.
+Neste Traballo Final de Grao abordouse o desenvolvemento, análise e experimentación con métodos de aprendizaxe federada dende unha perspectiva verde, en sintonía coa manifestación de interese do Programa Nacional de Algoritmos Verdes \cite{libro_PNAV} publicado polo Ministerio de Asuntos Económicos e Transformación Dixital \cite{web_ministerio}. Especificamente, contribuímos e melloramos o método de adestramento regularizado e encriptado para redes neuronais dunha soa capa desenvolto pola UDC en contornas federadas (\textit{FedHEONN}) \cite{paper_FEDHEONN}, e experimentamos coa súa implementación en dispositivos embebidos e simulados.
 
-Como tal, procedeuse a aplicar métodos de ensamblaxe ao devandito algoritmo para verificar o seu rendemento contra a versión orixinal e, por último, usouse como peza nun sistema formado xunto outro algoritmo federado de agrupamento de características similares (\textit{k-FED}) \cite{paper_kFED}, co obxectivo de lograr, entre ambos, un algoritmo máis potente e de maior capacidade de representación que o orixinal.\\\\En ambos os casos lográronse con éxito ditas metas.
+Como tal, aplicamos un método de ensamblaxe coñecido como Random Patches ao algoritmo para contrastar o seu rendemento fronte a versión orixinal, ademais de implementar a capacidade de realizar un adestramento incremental por lotes, co obxectivo de lograr un algoritmo máis versátil e de maior capacidade de representación; obtendo resultados satisfactorios e acompañando estes apartados cun estudo da eficacia destas técnicas en comparación coa versión orixinal e outro tipo de modelos.
 
-\section{Title and summary}
-\textit{Scalability and efficiency in Artificial Intelligence through federated green algorithms}
+Por último, desenvolvemos tamén a paralelización de certos procesos crave do algoritmo de adestramento de FedHEONN, co obxectivo de reducir os tempos globais de execución, á vez que se constrúe unha API para servidor e cliente/s que proporciona os medios para o seu uso entre varios dispositivos conectados á rede, simulando un escenario federado realista.
 
-\vspace{1em}
-\noindent
-This Final Degree Project has addressed the development, analysis and experimentation of federated learning methods within a green perspective, in line with the manifestation of interest of the National Green Algorithms Program \cite{libro_PNAV} published by the Ministry of Economic Affairs and Digital Transformation \cite{web_ministerio}.
+\newpage
+\section{Summary}
 
-To do so, we started with a review on the main fields and state-of-the-art methods in Artificial Intelligence and Machine Learning up to the techniques provided by a recent trend known as Federated Learning.
+In recent years, Artificial Intelligence (AI) models have increased in size inmensly, boosted by increasingly better and more refined results and use cases; however, the current algorithms of these models focus, as their sole objective, on achieving maximum effectiveness in solving the assigned problem, but do not take into account the energy efficiency of the joint model. It has been found that these models, and the infrastructure required for them, have a very significant impact on the consumption of electrical and water resources, so it is necessary to include this approach in their development in order to reduce such impacts.
 
-The latter is presented as an alternative that overcomes the disadvantages of the current centralized training methods, which require large silos of data and a greater energy-consumption and time for its training. Federated learning is thus distributed, efficient and privative by nature, making it an incentive for the convergence of new information technologies such as \textit{IoT} and \textit{Industry 4.0} operations. At the same time they are environmentally sustainable, as they require lower energy consumptions than their centralized counterpart.
+A recent approach in AI is the so-called Federated Learning, which allows models to be trained collaboratively on multiple devices without the need to centralize their data and preserving their privacy.
 
-The purpose has thus been to experiment with federated learning techniques, and in particular to contribute and improve, under new scenarios, the regularized training method for single-layer neural networks that has been developed by the UDC for federated environments (\textit{FedROLANN}) \cite{paper_FEDROLANN}, along with the implementation of these algorithms in embedded and simulated devices.
+This technique is presented as an alternative that overcomes the disadvantages of current centralized techniques, which require large information silos and greater energy and time consumption for its training. Federated Learning, on the other hand, is distributed, efficient and privative by design, making it an incentive for the convergence of new information technologies such as IoT and Industry 4.0 operations.
 
-As such, ensemble methods have been applied to this algorithm to verify its performance against the original version and, finally, it has been used as a building block for a greater system formed together with another federated clustering algorithm of similar characteristics (\textit{k-FED}) \cite{paper_kFED}; with the aim of achieving, using both, a more powerful algorithm with a higher representation capacity than the original one. Both cases were successfully achieved.
+This Final Degree Project has addressed the development, analysis and experimentation of federated learning methods within a green perspective, in line with the manifestation of interest of the National Green Algorithms Program \cite{libro_PNAV} published by the Ministry of Economic Affairs and Digital Transformation \cite{web_ministerio}. Specifically, we have contributed to and improved the regularized and encrypted training method for single-layer neural networks that has been developed by UDC in federated environments (\textit{FedHEONN}) \cite{paper_FEDHEONN}, and experimented with its implementation on embedded and simulated devices.
+
+As such, we have applied an ensemble method known as Random Patches to the algorithm to contrast its performance against the original version, in addition to implementing the ability to perform incremental batch training, with the aim of achieving a more versatile algorithm and greater representation capacity, obtaining satisfactory results and accompanying these sections with a study of the efficiency of these techniques compared to its original version and other types of models.
+
+Finally, we also developed the parallelization of certain key processes of the FedHEONN training algorithm, with the aim of reducing the overall execution times, while building an API for server and client/s that provides a medium for its use among several devices connected to the network, simulating a realistic federated scenario.
 
 \cleardoublepage
 \end{document}
